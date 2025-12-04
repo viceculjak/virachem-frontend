@@ -1,26 +1,29 @@
+'use client';
+
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      router.push('/products');
+    }
+  };
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Logo */}
-          <div className="mb-8 flex justify-center">
-            <Image 
-              src="/logo.png" 
-              alt="ViraChem Logo" 
-              width={300} 
-              height={300}
-              className="w-64 md:w-80 h-auto"
-              priority
-            />
-          </div>
-          
           {/* Tagline */}
           <p className="text-2xl md:text-3xl font-bold text-accent-red mb-4">
             EDGE OF RESEARCH
@@ -38,14 +41,35 @@ export default function Home() {
           <p className="text-sm text-gray-500 mb-8">
             MBS: 060500406 | OIB: 73782597071 | Trgovački sud u Splitu
           </p>
+
+          {/* Search Bar */}
+          <form onSubmit={handleSearch} className="max-w-3xl mx-auto mb-8">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Input
+                type="text"
+                placeholder="Search catalog by name or CAS number..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="flex-1 px-6 py-6 text-lg border-2 border-gray-300 focus:border-accent-red"
+              />
+              <Button 
+                type="submit"
+                size="lg"
+                className="bg-accent-red hover:bg-accent-red/90 text-white px-8 py-6 text-lg"
+              >
+                Search
+              </Button>
+            </div>
+          </form>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/products">
               <Button 
                 size="lg" 
-                className="bg-accent-red hover:bg-accent-red/90 text-white px-8 py-6 text-lg"
+                variant="outline"
+                className="border-dark text-dark hover:bg-dark/10 px-8 py-6 text-lg"
               >
-                Browse Catalog
+                Browse All Products
               </Button>
             </Link>
             <Link href="/quote">

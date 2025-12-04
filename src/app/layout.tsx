@@ -51,7 +51,7 @@ export default function RootLayout({
           <nav className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               {/* Logo/Brand */}
-              <Link href="/" className="flex items-center">
+              <Link href="/" className="flex items-center gap-3">
                 <Image 
                   src="/molecule.png" 
                   alt="ViraChem" 
@@ -60,6 +60,10 @@ export default function RootLayout({
                   className="w-12 h-12 object-contain"
                   priority
                 />
+                <div className="text-2xl font-bold">
+                  <span className="text-dark">VIRA</span>
+                  <span className="text-text-secondary">CHEM</span>
+                </div>
               </Link>
 
               {/* Navigation Links */}
