@@ -1,48 +1,75 @@
-# Virachem Project - Cursor AI Rules
+# ViraChem Project - Cursor AI Rules
 
 ## Project Overview
-Virachem is a B2B research chemical catalog for laboratories. Quote-based system (no cart/payments).
+ViraChem j.d.o.o. is a REAL registered Croatian company (MBS: 060500406, OIB: 73782597071) providing licensed intermediation in research chemicals. This is a professional B2B platform for qualified research institutions, NOT a demo project.
+
+## Company Identity
+- Registered: Trgovački sud u Splitu (Commercial Court Split)
+- Location: Pujanke 24A, 21000 Split, Croatia
+- Activity: 46.19.0 - Chemical intermediation for R&D purposes
+- Tagline: "EDGE OF RESEARCH"
+- Market: EU research institutions, pharmaceutical companies, biotech labs
 
 ## Tech Stack
 - Next.js 14 (App Router, TypeScript, React 19)
-- Tailwind CSS v4 (config in globals.css)
+- Tailwind CSS v4 (config in @theme in globals.css)
 - ShadCN UI (New York style)
-- Supabase PostgreSQL
+- Supabase PostgreSQL with RLS
 - Urbanist font
+- RDKit for chemical structure generation
 
-## Design System
-Colors: Primary #FF4215, Dark #531003, Background #FFFAF7
-Style: Clean, modern, cards, badges, subtle shadows
+## Brand Design System
+Official ViraChem Colors (from logo):
+- Primary Navy: #0B1F3F (brand, headings, molecular structure)
+- Accent Red: #C9364F (CTAs, tagline, important actions)
+- Accent Gold: #E8B341 (badges, purity tags, highlights)
+- Accent Teal: #5A8A8F (links, hover states, accents)
+- Text Grey: #798996 (secondary text, subtle elements)
+- Background: #FFFFFF (pure white, clinical)
 
-## Database
-products: id, name, cas, smiles, mw, purity_options[], image_url
-quote_requests: id, product_id, name, email, institution, quantity, vial_size, purity, message, status
+Style: Professional, scientific, trustworthy, EU-compliant
+
+## Database Schema
+products: id, name, cas, smiles, mw, purity_options[], image_url, created_at
+quote_requests: id, product_id, name, email, institution, quantity, vial_size, purity, message, status, created_at
+RLS enabled with public read (products) and public insert/read (quote_requests)
 
 ## Code Standards
-- Use 'use client' for forms/interactions
-- Server components by default
-- TypeScript strict
+- Use 'use client' for forms/interactions/search
+- Server components by default where possible
+- TypeScript strict mode always
 - Supabase pattern: const { data, error } = await supabase.from('table').select('*')
-- Tailwind utilities only (no inline styles)
-- Mobile-first responsive
+- Tailwind utilities only (NO inline styles)
+- Mobile-first responsive design
+- Wrap useSearchParams in Suspense (Next.js 14 requirement)
 
 ## Chemical Data Format
-- CAS: Badge with monospace font
-- MW: Include "g/mol" 
-- Purity: "≥95%" format with tags
-- SMILES: Monospace in gray box
+- CAS: Badge with gold background, monospace font
+- MW: Include "g/mol" unit
+- Purity: "≥95%" format with teal tags
+- SMILES: Monospace in grey box
+- Structures: SVG in public/structures/
+
+## CRITICAL Legal Requirements
+- "Research Use Only" disclaimers on ALL product pages
+- Footer with company registration (MBS, OIB, court) on every page
+- GDPR compliance in Privacy Policy
+- Croatian law compliance in Terms
+- NO claims for human/veterinary use EVER
 
 ## Always Include
 - Mobile responsive design
-- Error handling + loading states
-- Empty states
-- TypeScript types
-- Accessibility
+- Error handling + loading states + empty states
+- TypeScript types (no any/unknown)
+- Accessibility (labels, semantic HTML, ARIA)
+- Professional, scientific tone (B2B audience)
+- Company registration info visible
 
 ## Prefer
 - Server components over client
 - ShadCN components
 - Simple solutions
+- Navy for headings, Red for CTAs, Gold for badges, Teal for accents
 
 ## Priority Features
 1. Product categories + filtering
@@ -51,5 +78,20 @@ quote_requests: id, product_id, name, email, institution, quantity, vial_size, p
 4. Product comparison
 5. Advanced search
 
-## Environment
-NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY required in .env.local
+## File Structure
+- Header navigation in layout.tsx with logo and links
+- Footer component (src/components/footer.tsx) with registration
+- Legal pages: /about, /privacy, /terms
+- Product pages with disclaimers at top
+
+## Environment Variables
+Required in .env.local:
+- NEXT_PUBLIC_SUPABASE_URL
+- NEXT_PUBLIC_SUPABASE_ANON_KEY
+Never commit .env.local (in .gitignore)
+
+## Contact Information
+- Email: info@virachem.com
+- Location: Split, Croatia (EU)
+- Registration: Trgovački sud u Splitu
+- Timezone: CET

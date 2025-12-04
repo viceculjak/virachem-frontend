@@ -1,22 +1,51 @@
-# Virachem - Research Chemical Catalog
+# ViraChem - EU-Registered Research Chemical Distribution
 
-A modern B2B web application for browsing and requesting quotes on high-purity research chemicals. Built with Next.js 14, Supabase, and ShadCN UI with a clean urban design aesthetic.
+**EDGE OF RESEARCH** | Split, Croatia 🇭🇷
 
-## Features
+A professional B2B platform for licensed intermediation in fine chemicals and biochemicals. ViraChem j.d.o.o. is a registered Croatian company serving research institutions across Europe and internationally.
 
-- **Product Catalog**: Browse research chemicals with detailed information including CAS numbers, molecular weights, and chemical structures
-- **Quote System**: Request custom quotes for specific products with flexible quantities and purity options
-- **Modern UI**: Beautiful, responsive design using ShadCN UI components with Urbanist font
-- **Real-time Data**: Powered by Supabase for real-time product data and quote management
-- **Structure Visualization**: SVG chemical structure images generated from SMILES strings
+## 🏢 Company Information
 
-## Tech Stack
+**ViraChem jednostavno društvo s ograničenom odgovornošću**  
+- **Registration**: Trgovački sud u Splitu (Commercial Court in Split)
+- **MBS**: 060500406
+- **OIB**: 73782597071  
+- **EUID**: HRSR.060500406
+- **Activity Code**: 46.19.0 (Intermediation in wholesale trade)
+- **Founded**: June 27, 2025
+- **Location**: Pujanke 24A, 21000 Split, Croatia
+
+## 🎨 Brand Identity
+
+### Colors
+- **Navy**: #0B1F3F (Primary brand, headings, molecular structure)
+- **Red**: #C9364F (CTAs, "EDGE OF RESEARCH" tagline)
+- **Gold**: #E8B341 (Badges, purity tags)
+- **Teal**: #5A8A8F (Accents, hover states)
+- **Grey**: #798996 (Secondary text)
+
+### Typography
+- **Font**: Urbanist (Google Fonts)
+- **Logo**: VIRACHEM (split: VIRA in navy, CHEM in grey)
+- **Tagline**: EDGE OF RESEARCH
+
+## ✨ Features
+
+- **Product Catalog**: Research chemicals with CAS numbers, molecular weights, purity options, and structure images
+- **Search Functionality**: Real-time search by product name or CAS number
+- **Quote System**: Professional quote request system with product pre-fill
+- **Legal Compliance**: GDPR-compliant Privacy Policy, Terms & Conditions, research use disclaimers
+- **Company Pages**: About Us with full registration details, Contact information
+- **Professional Footer**: Company registration info on every page
+- **EU Focus**: Registered Croatian business serving European research institutions
+
+## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 14 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS v4, ShadCN UI components
-- **Backend**: Supabase (PostgreSQL, Authentication, Storage)
+- **Backend**: Supabase (PostgreSQL, Row Level Security)
 - **Deployment**: Vercel (frontend), Supabase Cloud (backend)
-- **Tools**: RDKit (Python) for structure generation
+- **Tools**: RDKit (Python) for chemical structure SVG generation
 
 ## Prerequisites
 
@@ -87,27 +116,35 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 virachem-frontend/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              # Homepage
+│   │   ├── page.tsx              # Homepage with company branding
+│   │   ├── layout.tsx            # Root layout with header & footer
+│   │   ├── about/page.tsx        # About Us with company details
+│   │   ├── privacy/page.tsx      # GDPR-compliant Privacy Policy
+│   │   ├── terms/page.tsx        # Terms & Conditions
 │   │   ├── products/
-│   │   │   ├── page.tsx          # Product listing
-│   │   │   └── [id]/page.tsx     # Product detail
-│   │   └── quote/
-│   │       └── page.tsx          # Quote request form
+│   │   │   ├── page.tsx          # Product listing with search
+│   │   │   └── [id]/page.tsx     # Product detail page
+│   │   └── quote/page.tsx        # Quote request form
 │   ├── components/
+│   │   ├── footer.tsx            # Company footer with registration
 │   │   └── ui/                   # ShadCN UI components
 │   └── lib/
 │       └── supabase.ts           # Supabase client
 ├── public/
+│   ├── logo.png                  # ViraChem logo
 │   └── structures/               # Chemical structure SVGs
+├── assets/                       # Original logo files
 ├── scripts/
-│   └── generate-images.py        # Structure generator
+│   └── generate-images.py        # Structure generator (RDKit)
 ├── database-schema.sql           # Database setup
+├── UPDATE-PRODUCTS.sql           # Product update script
+├── .cursorrules                  # Cursor AI project context
 └── .env.local                    # Environment variables (create this)
 ```
 
@@ -140,22 +177,35 @@ vercel
 
 Your Supabase backend is already hosted in the cloud. No additional deployment needed.
 
-## Customization
+## 🎨 Customization
+
+### Brand Colors (ViraChem Official)
+
+Defined in `src/app/globals.css`:
+```css
+--color-primary: #0B1F3F        /* Navy - brand primary */
+--color-accent-red: #C9364F     /* Red - CTAs */
+--color-accent-gold: #E8B341    /* Gold - badges */
+--color-accent-teal: #5A8A8F    /* Teal - accents */
+--color-dark: #0B1F3F           /* Navy - headings */
+--color-text-secondary: #798996 /* Grey - secondary text */
+```
 
 ### Adding Products
 
-1. Add product data to your Supabase `products` table via the dashboard
-2. (Optional) Add SMILES string to `scripts/generate-images.py` and regenerate images
-3. Products will automatically appear in the catalog
+1. Add product data to Supabase `products` table:
+   - Use `database-schema.sql` structure
+   - Include CAS number, SMILES, molecular weight, purity options
+2. Generate structure images:
+   - Add SMILES to `scripts/generate-images.py`
+   - Run: `python3 scripts/generate-images.py`
+3. Products appear automatically in catalog with search functionality
 
-### Styling
+### Logo
 
-- Brand colors defined in `src/app/globals.css`:
-  - Primary: `#FF4215` (orange-red)
-  - Dark: `#531003` (dark brown)
-  - Background: `#FFFAF7` (off-white)
-- Font: Urbanist (Google Fonts)
-- Modify these in the globals.css file to match your brand
+- Located in `public/logo.png` and `assets/`
+- Text-based logo: **VIRACHEM** (VIRA = navy, CHEM = grey)
+- Tagline: "EDGE OF RESEARCH" in red (#C9364F)
 
 ### Database Schema
 
