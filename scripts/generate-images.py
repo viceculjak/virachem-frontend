@@ -37,13 +37,13 @@ except ImportError:
 products = [
     {
         "id": "VC-001",
-        "name": "Aspirin",
-        "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+        "name": "Retatrutide",
+        "smiles": "CC(C)C[C@H](NC(=O)[C@H](CC(C)C)NC(=O)[C@H](CCCNC(N)=N)NC(=O)[C@H](CCCCN)NC(=O)[C@@H]1CCCN1C(=O)[C@H](CCCCN)NC(=O)[C@H](CO)NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@@H]1CCCN1C(=O)[C@H](CCCCN)NC(=O)[C@H](C)NC(=O)[C@H](C)N)C(=O)N[C@@H](CC(C)C)C(=O)N[C@@H](Cc1c[nH]c2ccccc12)C(=O)N[C@@H](CC(C)C)C(=O)N[C@@H](CCCNC(N)=N)C(=O)NCC(=O)N[C@@H](Cc1ccccc1)C(=O)N[C@@H](CC(C)C)C(=O)N[C@@H](CO)C(=O)N[C@@H](Cc1ccccc1)C(=O)N[C@@H](CCCCN)C(=O)N[C@@H](C)C(=O)N[C@@H](CCCCN)C(=O)N[C@@H](Cc1c[nH]c2ccccc12)C(=O)N[C@@H](Cc1c[nH]c2ccccc12)C(=O)N[C@@H](CCC(=O)O)C(=O)N[C@@H](C)C(=O)N[C@@H](CCCCN)C(N)=O"
     },
     {
         "id": "VC-002",
-        "name": "Caffeine",
-        "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+        "name": "GHK-Cu",
+        "smiles": "N[C@@H](CC(=O)N[C@@H](Cc1c[nH]cn1)C(=O)N[C@@H](CCCCN)C(=O)O)C(=O)O"
     },
 ]
 
