@@ -88,7 +88,7 @@ function ProductsPageContent() {
         {/* Research Use Only Disclaimer */}
         <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4">
           <p className="text-sm text-gray-900 font-semibold">
-            ⚠️ <strong>RESEARCH USE ONLY:</strong> All products are intended for research and development purposes only. 
+            <strong>WARNING: RESEARCH USE ONLY</strong> — All products are intended for research and development purposes only. 
             Not for human or veterinary use. By accessing this catalog, you confirm you are a qualified research professional.
           </p>
         </div>

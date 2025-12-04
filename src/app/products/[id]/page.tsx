@@ -90,7 +90,7 @@ export default function ProductDetailPage() {
         {/* Research Use Only Disclaimer */}
         <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4">
           <p className="text-sm text-gray-900 font-semibold">
-            ⚠️ <strong>RESEARCH USE ONLY:</strong> This product is intended for research and development purposes only. 
+            <strong>WARNING: RESEARCH USE ONLY</strong> — This product is intended for research and development purposes only. 
             Not for human or veterinary use. Proper laboratory safety protocols must be followed.
           </p>
         </div>
@@ -182,19 +182,19 @@ export default function ProductDetailPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-teal mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">•</span>
                     <span>High purity with comprehensive analytical data (NMR, HPLC, MS)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-teal mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">•</span>
                     <span>Available in multiple vial sizes for flexibility</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-teal mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">•</span>
                     <span>Proper storage and handling documentation included</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-teal mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">•</span>
                     <span>Fast turnaround and secure shipping</span>
                   </li>
                 </ul>

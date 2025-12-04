@@ -72,7 +72,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-6 mb-6">
           <div className="bg-accent-red/10 border border-accent-red/30 rounded-lg p-4">
             <p className="text-sm text-gray-200">
-              <strong className="text-accent-red">⚠️ Research Use Only:</strong> All products are intended for research and development purposes only. 
+              <strong className="text-accent-red">WARNING: Research Use Only</strong> — All products are intended for research and development purposes only. 
               Not for human or veterinary use. ViraChem operates in full compliance with Croatian and EU regulations 
               for the distribution of fine chemicals (Activity Code: 46.19.0).
             </p>

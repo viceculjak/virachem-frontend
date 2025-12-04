@@ -144,10 +144,9 @@ export default function AboutPage() {
           <section>
             <h2 className="text-3xl font-semibold text-dark mb-6">What We Do</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-accent-red/20">
+              <Card className="border-accent-red/20 border-l-4 border-l-accent-red">
                 <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <span className="text-accent-red text-2xl">🧪</span>
+                  <CardTitle className="text-lg">
                     Research Grade Compounds
                   </CardTitle>
                 </CardHeader>
@@ -159,10 +158,9 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-accent-teal/20">
+              <Card className="border-accent-teal/20 border-l-4 border-l-accent-teal">
                 <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <span className="text-accent-teal text-2xl">🔬</span>
+                  <CardTitle className="text-lg">
                     Scientific Support
                   </CardTitle>
                 </CardHeader>
@@ -174,10 +172,9 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-accent-gold/20">
+              <Card className="border-accent-gold/20 border-l-4 border-l-accent-gold">
                 <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <span className="text-accent-gold text-2xl">🌍</span>
+                  <CardTitle className="text-lg">
                     International Shipping
                   </CardTitle>
                 </CardHeader>
@@ -208,7 +205,7 @@ export default function AboutPage() {
               </ul>
               <div className="mt-6 p-4 bg-accent-red/10 border border-accent-red/30 rounded">
                 <p className="text-sm text-gray-900 font-semibold">
-                  ⚠️ Research Use Only: All products are strictly for research and development purposes. 
+                  <strong>WARNING: Research Use Only</strong> — All products are strictly for research and development purposes. 
                   Not for human or veterinary use.
                 </p>
               </div>

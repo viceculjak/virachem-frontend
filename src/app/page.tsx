@@ -89,28 +89,28 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-6">
             <Card className="border-dark/20 text-center">
               <CardContent className="pt-6">
-                <div className="text-3xl mb-2">🇪🇺</div>
+                <div className="inline-block px-3 py-1 mb-3 text-sm font-semibold text-dark bg-dark/10 rounded">EU</div>
                 <h3 className="font-semibold text-dark mb-1">EU Registered</h3>
                 <p className="text-sm text-gray-600">Croatian commercial court registration</p>
               </CardContent>
             </Card>
             <Card className="border-dark/20 text-center">
               <CardContent className="pt-6">
-                <div className="text-3xl mb-2">⚖️</div>
+                <div className="inline-block px-3 py-1 mb-3 text-sm font-semibold text-dark bg-dark/10 rounded">LICENSED</div>
                 <h3 className="font-semibold text-dark mb-1">Licensed</h3>
                 <p className="text-sm text-gray-600">Activity Code 46.19.0 certified</p>
               </CardContent>
             </Card>
             <Card className="border-dark/20 text-center">
               <CardContent className="pt-6">
-                <div className="text-3xl mb-2">🔬</div>
+                <div className="inline-block px-3 py-1 mb-3 text-sm font-semibold text-accent-teal bg-accent-teal/10 rounded">RESEARCH</div>
                 <h3 className="font-semibold text-dark mb-1">Research Grade</h3>
                 <p className="text-sm text-gray-600">Purity ≥95% to ≥99% with CoA</p>
               </CardContent>
             </Card>
             <Card className="border-dark/20 text-center">
               <CardContent className="pt-6">
-                <div className="text-3xl mb-2">🌍</div>
+                <div className="inline-block px-3 py-1 mb-3 text-sm font-semibold text-dark bg-dark/10 rounded">GLOBAL</div>
                 <h3 className="font-semibold text-dark mb-1">International</h3>
                 <p className="text-sm text-gray-600">Serving EU and worldwide</p>
               </CardContent>
@@ -122,9 +122,8 @@ export default function Home() {
         <div className="mt-24 max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-dark text-center mb-12">Our Services</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-accent-teal/30">
+            <Card className="border-accent-teal/30 border-l-4 border-l-accent-teal">
               <CardContent className="pt-6">
-                <div className="text-4xl mb-4 text-accent-teal">🧪</div>
                 <h3 className="text-xl font-semibold text-dark mb-3">
                   EU Compliance
                 </h3>
@@ -135,9 +134,8 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card className="border-accent-gold/30">
+            <Card className="border-accent-gold/30 border-l-4 border-l-accent-gold">
               <CardContent className="pt-6">
-                <div className="text-4xl mb-4 text-accent-gold">🎯</div>
                 <h3 className="text-xl font-semibold text-dark mb-3">
                   Research Grade Quality
                 </h3>
@@ -148,9 +146,8 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card className="border-accent-red/30">
+            <Card className="border-accent-red/30 border-l-4 border-l-accent-red">
               <CardContent className="pt-6">
-                <div className="text-4xl mb-4 text-accent-red">🌐</div>
                 <h3 className="text-xl font-semibold text-dark mb-3">
                   Expert Support
                 </h3>
@@ -172,15 +169,15 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-dark mb-3">Research Institutions</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-teal mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">•</span>
                     <span>Universities & academic research laboratories</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-teal mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">•</span>
                     <span>Government research facilities</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-teal mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">•</span>
                     <span>Non-profit research organizations</span>
                   </li>
                 </ul>
@@ -189,15 +186,15 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-dark mb-3">Industry</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-gold mt-1">✓</span>
+                    <span className="text-accent-gold mt-1">•</span>
                     <span>Pharmaceutical R&D departments</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-gold mt-1">✓</span>
+                    <span className="text-accent-gold mt-1">•</span>
                     <span>Biotechnology companies</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-accent-gold mt-1">✓</span>
+                    <span className="text-accent-gold mt-1">•</span>
                     <span>Contract research organizations (CROs)</span>
                   </li>
                 </ul>

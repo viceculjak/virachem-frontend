@@ -41,7 +41,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-semibold text-dark mb-3">2. Research Use Only - Critical Disclaimer</h2>
             <div className="bg-red-50 border-2 border-red-300 rounded-lg p-6 my-4">
-              <h3 className="text-xl font-bold text-red-900 mb-3">⚠️ MANDATORY DISCLAIMER</h3>
+              <h3 className="text-xl font-bold text-red-900 mb-3">WARNING: MANDATORY DISCLAIMER</h3>
               <p className="text-red-900 font-semibold mb-3">
                 ALL PRODUCTS OFFERED BY VIRACHEM ARE STRICTLY FOR RESEARCH AND DEVELOPMENT PURPOSES ONLY.
               </p>
