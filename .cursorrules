@@ -1,0 +1,55 @@
+# Virachem Project - Cursor AI Rules
+
+## Project Overview
+Virachem is a B2B research chemical catalog for laboratories. Quote-based system (no cart/payments).
+
+## Tech Stack
+- Next.js 14 (App Router, TypeScript, React 19)
+- Tailwind CSS v4 (config in globals.css)
+- ShadCN UI (New York style)
+- Supabase PostgreSQL
+- Urbanist font
+
+## Design System
+Colors: Primary #FF4215, Dark #531003, Background #FFFAF7
+Style: Clean, modern, cards, badges, subtle shadows
+
+## Database
+products: id, name, cas, smiles, mw, purity_options[], image_url
+quote_requests: id, product_id, name, email, institution, quantity, vial_size, purity, message, status
+
+## Code Standards
+- Use 'use client' for forms/interactions
+- Server components by default
+- TypeScript strict
+- Supabase pattern: const { data, error } = await supabase.from('table').select('*')
+- Tailwind utilities only (no inline styles)
+- Mobile-first responsive
+
+## Chemical Data Format
+- CAS: Badge with monospace font
+- MW: Include "g/mol" 
+- Purity: "≥95%" format with tags
+- SMILES: Monospace in gray box
+
+## Always Include
+- Mobile responsive design
+- Error handling + loading states
+- Empty states
+- TypeScript types
+- Accessibility
+
+## Prefer
+- Server components over client
+- ShadCN components
+- Simple solutions
+
+## Priority Features
+1. Product categories + filtering
+2. Admin dashboard for quotes
+3. Email notifications
+4. Product comparison
+5. Advanced search
+
+## Environment
+NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY required in .env.local

@@ -1,0 +1,316 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+type Product = {
+  id: string;
+  name: string;
+  cas: string;
+  mw: string;
+  purity_options: string[];
+};
+
+export default function QuotePage() {
+  const searchParams = useSearchParams();
+  const productId = searchParams.get('product_id');
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    institution: '',
+    quantity: '',
+    vial_size: '',
+    purity: '',
+    message: '',
+    product_id: productId || '',
+  });
+
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loadingProduct, setLoadingProduct] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch product details if product_id is provided
+  useEffect(() => {
+    async function fetchProduct() {
+      if (!productId) return;
+      
+      setLoadingProduct(true);
+      try {
+        const { data, error } = await supabase
+          .from('products')
+          .select('id, name, cas, mw, purity_options')
+          .eq('id', productId)
+          .single();
+
+        if (error) throw error;
+        setProduct(data);
+      } catch (err) {
+        console.error('Error fetching product:', err);
+      } finally {
+        setLoadingProduct(false);
+      }
+    }
+
+    fetchProduct();
+  }, [productId]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const { error: submitError } = await supabase.from('quote_requests').insert([
+        {
+          ...formData,
+          quantity: parseInt(formData.quantity),
+        },
+      ]);
+
+      if (submitError) throw submitError;
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit quote request');
+      console.error('Error submitting quote:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-background p-8">
+        <div className="container mx-auto max-w-2xl">
+          <Card className="border-primary/20">
+            <CardHeader>
+              <CardTitle className="text-2xl text-primary">Quote Request Submitted!</CardTitle>
+              <CardDescription>
+                Thank you for your interest in Virachem research chemicals.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 mb-4">
+                We have received your quote request and will contact you at{' '}
+                <span className="font-semibold">{formData.email}</span> within 24-48 hours.
+              </p>
+              <p className="text-gray-600 text-sm mb-6">
+                Our team will provide you with detailed pricing, availability, and shipping information.
+              </p>
+              <div className="flex gap-4">
+                <Link href="/products">
+                  <Button variant="outline">Browse More Products</Button>
+                </Link>
+                <Link href="/">
+                  <Button>Return to Home</Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background p-8">
+      <div className="container mx-auto max-w-2xl">
+        <Link href="/products">
+          <Button variant="ghost" className="mb-4">
+            ← Back to Products
+          </Button>
+        </Link>
+
+        {/* Product Information Banner */}
+        {product && (
+          <Card className="mb-6 bg-primary/5 border-primary/20">
+            <CardContent className="pt-6">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-dark mb-2">
+                    Requesting Quote for: {product.name}
+                  </h2>
+                  <div className="space-y-1 text-sm text-gray-600">
+                    <p><span className="font-medium">CAS:</span> {product.cas}</p>
+                    <p><span className="font-medium">Molecular Weight:</span> {product.mw}</p>
+                    {product.purity_options && product.purity_options.length > 0 && (
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="font-medium">Available Purities:</span>
+                        <div className="flex flex-wrap gap-1">
+                          {product.purity_options.map((purity, idx) => (
+                            <span
+                              key={idx}
+                              className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded"
+                            >
+                              {purity}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <Link href={`/products/${product.id}`}>
+                  <Button variant="ghost" size="sm">
+                    View Details →
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-3xl text-dark">Request a Quote</CardTitle>
+            <CardDescription>
+              Fill out the form below and our team will get back to you with pricing and availability.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                  <p className="font-semibold">Error submitting quote</p>
+                  <p className="text-sm mt-1">{error}</p>
+                </div>
+              )}
+
+              <div className="space-y-2">
+                <Label htmlFor="name">Full Name *</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Dr. Jane Smith"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="jane.smith@university.edu"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="institution">Institution / Company *</Label>
+                <Input
+                  id="institution"
+                  type="text"
+                  value={formData.institution}
+                  onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
+                  placeholder="University Research Lab"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="quantity">Quantity (vials) *</Label>
+                  <Input
+                    id="quantity"
+                    type="number"
+                    min="1"
+                    value={formData.quantity}
+                    onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                    placeholder="1"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="vial_size">Vial Size *</Label>
+                  <Select
+                    value={formData.vial_size}
+                    onValueChange={(value) => setFormData({ ...formData, vial_size: value })}
+                    required
+                  >
+                    <SelectTrigger id="vial_size">
+                      <SelectValue placeholder="Select size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1mg">1 mg</SelectItem>
+                      <SelectItem value="5mg">5 mg</SelectItem>
+                      <SelectItem value="10mg">10 mg</SelectItem>
+                      <SelectItem value="25mg">25 mg</SelectItem>
+                      <SelectItem value="50mg">50 mg</SelectItem>
+                      <SelectItem value="100mg">100 mg</SelectItem>
+                      <SelectItem value="custom">Custom Amount</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="purity">Purity Required *</Label>
+                <Select
+                  value={formData.purity}
+                  onValueChange={(value) => setFormData({ ...formData, purity: value })}
+                  required
+                >
+                  <SelectTrigger id="purity">
+                    <SelectValue placeholder="Select purity" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="≥95%">≥95%</SelectItem>
+                    <SelectItem value="≥98%">≥98%</SelectItem>
+                    <SelectItem value="≥99%">≥99%</SelectItem>
+                    <SelectItem value="≥99.5%">≥99.5%</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="message">Additional Requirements (Optional)</Label>
+                <textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Any specific requirements or questions..."
+                  className="w-full min-h-[100px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-primary hover:bg-primary/90 text-white"
+                disabled={loading}
+              >
+                {loading ? 'Submitting...' : 'Submit Quote Request'}
+              </Button>
+
+              <p className="text-xs text-gray-500 text-center">
+                By submitting this form, you agree to be contacted regarding your quote request.
+              </p>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
