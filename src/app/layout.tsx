@@ -14,14 +14,28 @@ export const metadata: Metadata = {
   title: "ViraChem | EU-Registered Research Chemical Distribution",
   description: "Licensed intermediation in fine chemicals and biochemicals for research institutions. Based in Split, Croatia. MBS: 060500406",
   keywords: "research chemicals, biochemicals, fine chemicals, laboratory supplies, EU, Croatia, research grade, peptides",
+  manifest: '/site.webmanifest',
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/logo.png', sizes: '1563x1563', type: 'image/png' },
     ],
-    apple: '/logo.png',
-    shortcut: '/favicon.svg',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'icon', url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { rel: 'icon', url: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0B1F3F',
 };
 
 export default function RootLayout({
