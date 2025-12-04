@@ -11,9 +11,14 @@ export default function Home() {
         <div className="max-w-5xl mx-auto text-center">
           {/* Logo */}
           <div className="mb-8 flex justify-center">
-            <div className="text-6xl md:text-8xl font-bold text-dark">
-              <span className="text-dark">VIRA</span><span className="text-text-secondary">CHEM</span>
-            </div>
+            <Image 
+              src="/logo.png" 
+              alt="ViraChem Logo" 
+              width={300} 
+              height={300}
+              className="w-64 md:w-80 h-auto"
+              priority
+            />
           </div>
           
           {/* Tagline */}

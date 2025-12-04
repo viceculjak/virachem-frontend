@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "@/components/footer";
 import "./globals.css";
 
@@ -16,8 +17,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/logo.png', sizes: '1563x1563', type: 'image/png' },
     ],
-    apple: '/favicon.svg',
+    apple: '/logo.png',
+    shortcut: '/favicon.svg',
   },
 };
 
@@ -35,9 +38,14 @@ export default function RootLayout({
             <div className="flex items-center justify-between">
               {/* Logo/Brand */}
               <Link href="/" className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-dark rounded-md flex items-center justify-center">
-                  <span className="text-accent-red text-2xl font-bold">V</span>
-                </div>
+                <Image 
+                  src="/logo.png" 
+                  alt="ViraChem Logo" 
+                  width={48} 
+                  height={48}
+                  className="w-12 h-12 object-contain"
+                  priority
+                />
                 <div className="text-2xl font-bold hidden sm:block">
                   <span className="text-dark">VIRA</span>
                   <span className="text-text-secondary">CHEM</span>
