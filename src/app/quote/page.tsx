@@ -98,9 +98,9 @@ function QuotePageContent() {
     return (
       <div className="min-h-screen bg-background p-8">
         <div className="container mx-auto max-w-2xl">
-          <Card className="border-primary/20">
+          <Card className="border-accent-teal/20">
             <CardHeader>
-              <CardTitle className="text-2xl text-primary">Quote Request Submitted!</CardTitle>
+              <CardTitle className="text-2xl text-accent-teal">Quote Request Submitted!</CardTitle>
               <CardDescription>
                 Thank you for your interest in Virachem research chemicals.
               </CardDescription>
@@ -156,7 +156,7 @@ function QuotePageContent() {
                           {product.purity_options.map((purity, idx) => (
                             <span
                               key={idx}
-                              className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded"
+                              className="text-xs bg-accent-teal/20 text-accent-teal px-2 py-0.5 rounded border border-accent-teal/30"
                             >
                               {purity}
                             </span>
@@ -297,7 +297,7 @@ function QuotePageContent() {
 
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-white"
+                className="w-full bg-accent-red hover:bg-accent-red/90 text-white"
                 disabled={loading}
               >
                 {loading ? 'Submitting...' : 'Submit Quote Request'}

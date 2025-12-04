@@ -81,6 +81,14 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-background p-8">
       <div className="container mx-auto">
+        {/* Research Use Only Disclaimer */}
+        <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4">
+          <p className="text-sm text-gray-900 font-semibold">
+            ⚠️ <strong>RESEARCH USE ONLY:</strong> All products are intended for research and development purposes only. 
+            Not for human or veterinary use. By accessing this catalog, you confirm you are a qualified research professional.
+          </p>
+        </div>
+
         <div className="mb-8">
           <Link href="/">
             <Button variant="ghost" className="mb-4">
@@ -143,7 +151,7 @@ export default function ProductsPage() {
                       <div>
                         <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">CAS Number</span>
                         <div className="mt-1">
-                          <span className="inline-flex items-center px-3 py-1 rounded-md bg-dark/5 border border-dark/10 text-dark font-mono text-sm">
+                          <span className="inline-flex items-center px-3 py-1 rounded-md bg-accent-gold/20 border border-accent-gold/40 text-dark font-mono text-sm">
                             {product.cas}
                           </span>
                         </div>
@@ -163,7 +171,7 @@ export default function ProductsPage() {
                             {product.purity_options.map((purity, idx) => (
                               <span
                                 key={idx}
-                                className="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium"
+                                className="text-xs bg-accent-teal/20 text-accent-teal px-2 py-1 rounded font-medium border border-accent-teal/30"
                               >
                                 {purity}
                               </span>
@@ -174,7 +182,7 @@ export default function ProductsPage() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-primary hover:bg-primary/90">
+                    <Button className="w-full bg-accent-red hover:bg-accent-red/90 text-white">
                       View Details
                     </Button>
                   </CardFooter>

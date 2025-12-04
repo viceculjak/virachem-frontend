@@ -4,9 +4,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-primary: #FF4215;
-  --color-dark: #531003;
-  --color-background: #FFFAF7;
+  --color-primary: #0B1F3F;
+  --color-accent-red: #C9364F;
+  --color-accent-gold: #E8B341;
+  --color-accent-teal: #5A8A8F;
+  --color-dark: #0B1F3F;
+  --color-text-secondary: #798996;
+  --color-background: #FFFFFF;
   --color-foreground: var(--foreground);
   --font-sans: var(--font-urbanist);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -50,12 +54,12 @@ body {
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.2 0.05 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.2 0.05 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.2 0.05 250);
+  --primary: oklch(0.2 0.05 250);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);

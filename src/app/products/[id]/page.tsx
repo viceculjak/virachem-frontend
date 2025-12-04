@@ -87,6 +87,14 @@ export default function ProductDetailPage() {
           </Button>
         </Link>
 
+        {/* Research Use Only Disclaimer */}
+        <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4">
+          <p className="text-sm text-gray-900 font-semibold">
+            ⚠️ <strong>RESEARCH USE ONLY:</strong> This product is intended for research and development purposes only. 
+            Not for human or veterinary use. Proper laboratory safety protocols must be followed.
+          </p>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8">
           {/* Structure Image */}
           <Card>
@@ -141,7 +149,7 @@ export default function ProductDetailPage() {
                       {product.purity_options.map((purity, idx) => (
                         <span
                           key={idx}
-                          className="bg-primary/10 text-primary px-3 py-1 rounded font-medium"
+                          className="bg-accent-teal/20 text-accent-teal px-3 py-1 rounded font-medium border border-accent-teal/30"
                         >
                           {purity}
                         </span>
@@ -152,7 +160,7 @@ export default function ProductDetailPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-primary/5 border-primary/20">
+            <Card className="bg-accent-red/5 border-accent-red/20">
               <CardContent className="pt-6">
                 <h3 className="font-semibold text-dark mb-3">Request a Custom Quote</h3>
                 <p className="text-gray-700 text-sm mb-4">
@@ -160,7 +168,7 @@ export default function ProductDetailPage() {
                   information including analytical data, shipping options, and bulk pricing.
                 </p>
                 <Link href={`/quote?product_id=${product.id}`}>
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white" size="lg">
+                  <Button className="w-full bg-accent-red hover:bg-accent-red/90 text-white" size="lg">
                     Request Quote for {product.name}
                   </Button>
                 </Link>
@@ -174,19 +182,19 @@ export default function ProductDetailPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">✓</span>
                     <span>High purity with comprehensive analytical data (NMR, HPLC, MS)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">✓</span>
                     <span>Available in multiple vial sizes for flexibility</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">✓</span>
                     <span>Proper storage and handling documentation included</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
+                    <span className="text-accent-teal mt-1">✓</span>
                     <span>Fast turnaround and secure shipping</span>
                   </li>
                 </ul>
