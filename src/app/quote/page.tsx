@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -24,7 +24,7 @@ type Product = {
   purity_options: string[];
 };
 
-export default function QuotePage() {
+function QuotePageContent() {
   const searchParams = useSearchParams();
   const productId = searchParams.get('product_id');
 
@@ -314,3 +314,16 @@ export default function QuotePage() {
   );
 }
 
+export default function QuotePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background p-8">
+        <div className="container mx-auto max-w-2xl">
+          <p className="text-gray-600">Loading quote form...</p>
+        </div>
+      </div>
+    }>
+      <QuotePageContent />
+    </Suspense>
+  );
+}
