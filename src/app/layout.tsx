@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: "ViraChem | EU-Registered Research Chemical Distribution",
   description: "Licensed intermediation in fine chemicals and biochemicals for research institutions. Based in Split, Croatia. MBS: 060500406",
   keywords: "research chemicals, biochemicals, fine chemicals, laboratory supplies, EU, Croatia, research grade, peptides",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -28,8 +34,11 @@ export default function RootLayout({
           <nav className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               {/* Logo/Brand */}
-              <Link href="/" className="flex items-center gap-2">
-                <div className="text-2xl font-bold">
+              <Link href="/" className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-dark rounded-md flex items-center justify-center">
+                  <span className="text-accent-red text-2xl font-bold">V</span>
+                </div>
+                <div className="text-2xl font-bold hidden sm:block">
                   <span className="text-dark">VIRA</span>
                   <span className="text-text-secondary">CHEM</span>
                 </div>
