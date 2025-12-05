@@ -43,7 +43,9 @@ export default function PartnerGrid() {
             <img
               src={partner.logo}
               alt={partner.name}
-              className="h-10 w-auto object-contain partner-logo"
+              className={`h-10 w-auto object-contain partner-logo ${
+                partner.name === 'MOC Research Labs' ? 'rounded-lg' : ''
+              }`}
             />
           </motion.div>
         ))}
