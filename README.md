@@ -25,7 +25,7 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Grey**: #798996 (Secondary text)
 
 ### Typography
-- **Font**: Urbanist (Google Fonts, line-height: 1.7)
+- **Font**: Urbanist (Google Fonts, line-height: 1.6)
 - **Logo**: VIRACHEM (split: VIRA in navy, CHEM in grey)
 - **Letter Spacing**: -0.02em on headings for modern look
 
@@ -41,26 +41,22 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 
 ### Design & UX
 - **Mobile Hamburger Menu**: Slide-in drawer navigation for mobile devices with backdrop overlay
-- **Advanced Animations**: Framer Motion entrance effects, staggered card animations, smooth transitions
-- **Glass-morphism**: Modern frosted glass effects on trust badges and cards
-- **Gradient System**: Professional gradient backgrounds and text effects
-- **Micro-interactions**: Hover lift effects, scale animations, glow effects on cards
-- **Copy-to-Clipboard**: Quick copy functionality for CAS numbers and SMILES strings
+- **Responsive Design**: Mobile-first approach with simplified product cards and optimized layouts
 - **Toast Notifications**: Real-time feedback with Sonner for form submissions
 - **Tabs Component**: Organized product information (Overview, Specifications, Documentation)
-- **Certification Badges**: Animated trust indicators (GMP, EU, HPLC-MS, Research Grade)
-- **Responsive Navigation**: Desktop horizontal menu, mobile slide-in drawer
+- **Clean Navigation**: Desktop horizontal menu, mobile slide-in drawer
+- **Professional Aesthetic**: Minimal, institutional design focused on scientific B2B market
 
 ### Visual Identity
-- **Professional Design**: Clean, scientific aesthetic without emojis or casual elements
+- **Professional Design**: Clean, institutional aesthetic without emojis or casual elements
 - **Molecular Icon**: Professional molecule.png icon in navigation with VIRACHEM branding
-- **EU Focus**: Registered Croatian business serving all EU member states
+- **EU Focus**: Registered Croatian business serving European Union member states
+- **Language**: English-only interface for international B2B communication
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14 (App Router), React 19, TypeScript
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS v4, ShadCN UI components
-- **Animations**: Framer Motion (entrance effects, stagger animations)
 - **Notifications**: Sonner (toast notifications)
 - **Backend**: Supabase (PostgreSQL, Row Level Security)
 - **Deployment**: Vercel (frontend), Supabase Cloud (backend)
@@ -141,28 +137,22 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 virachem-frontend/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              # Homepage with search bar & animations
+│   │   ├── page.tsx              # Homepage with search bar
 │   │   ├── layout.tsx            # Root layout with header & Toaster
 │   │   ├── about/page.tsx        # About Us with company details
 │   │   ├── privacy/page.tsx      # GDPR-compliant Privacy Policy
 │   │   ├── terms/page.tsx        # Terms & Conditions
 │   │   ├── products/
-│   │   │   ├── page.tsx          # Product listing with animated cards
+│   │   │   ├── page.tsx          # Product listing with search
 │   │   │   └── [id]/page.tsx     # Product detail with tabs
 │   │   └── quote/page.tsx        # Quote request with toast feedback
 │   ├── components/
 │   │   ├── Header.tsx            # Responsive header with mobile burger menu
-│   │   ├── animations/
-│   │   │   ├── FadeIn.tsx        # Entrance animation wrapper
-│   │   │   └── StaggerContainer.tsx  # Staggered list animations
-│   │   ├── product/
-│   │   │   ├── PurityBadge.tsx   # Animated purity indicator
-│   │   │   └── CopyButton.tsx    # Copy-to-clipboard button
+│   │   ├── SearchBar.tsx         # Reusable search component
 │   │   ├── trust/
-│   │   │   ├── CertificationBadges.tsx  # Trust badges component
-│   │   │   └── CredentialsBanner.tsx    # Company credentials display
+│   │   │   └── PartnerGrid.tsx   # Partner logos display
 │   │   ├── footer.tsx            # Company footer with registration
-│   │   └── ui/                   # ShadCN UI components (including tabs)
+│   │   └── ui/                   # ShadCN UI components
 │   └── lib/
 │       └── supabase.ts           # Supabase client
 ├── public/
@@ -238,9 +228,9 @@ Defined in `src/app/globals.css`:
 - **Full logo**: `public/logo.png` - ViraChem complete logo with molecular structure
 - **Molecule icon**: `public/molecule.png` - Used in navbar and all favicons
 - **Navbar**: Shows molecule icon + "VIRACHEM" text (VIRA = navy, CHEM = grey)
-- **Design Philosophy**: Professional, scientific aesthetic without emojis
-- **Animations**: Subtle, purposeful animations that enhance UX without distraction
-- **Color System**: Gradient overlays and glass-morphism for modern B2B appeal
+- **Design Philosophy**: Clean, institutional aesthetic for scientific B2B market
+- **Typography**: Urbanist font family with tight tracking and proper line-height
+- **Color System**: Flat colors, minimal gradients, professional appearance
 
 ### Database Schema
 

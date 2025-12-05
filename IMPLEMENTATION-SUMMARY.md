@@ -11,8 +11,9 @@ All features have been successfully implemented for ViraChem j.d.o.o., a registe
 ### New Company Identity Integration
 - **Official Logo Colors**: Navy #0B1F3F, Red #C9364F, Gold #E8B341, Teal #5A8A8F
 - **Company Registration**: MBS 060500406, OIB 73782597071, Trgovački sud u Splitu
-- **Market Focus**: EU-only - serving all European Union member states
-- **Design Philosophy**: Professional B2B pharmaceutical aesthetic with modern animations
+- **Market Focus**: EU-only - serving European Union member states
+- **Design Philosophy**: Clean, institutional B2B aesthetic for scientific market
+- **Language**: English-only interface for international B2B communication
 
 ### Legal Pages Created
 1. **Privacy Policy** (`/privacy`) - GDPR-compliant, Croatian law compliant
@@ -110,70 +111,48 @@ All features have been successfully implemented for ViraChem j.d.o.o., a registe
   - Professional, consistent branding across all pages
   - Molecule.png used as primary brand icon
 
-### 10. Frontend Design Enhancement System
+### 10. Professional Design System
 - **Status**: Complete (December 2025)
-- **New Dependencies**:
-  - framer-motion (advanced animations)
+- **Dependencies**:
   - sonner (professional toast notifications)
   - lucide-react (icons for UI elements)
 - **Features Implemented**:
 
-#### Animation System
-- FadeIn component (directional entrance animations: up, down, left, right)
-- StaggerContainer component (sequential card animations with 100ms delay)
-- Applied across all pages (homepage, products, product details)
-- Smooth transitions with custom easing curves
-
 #### Visual Design System
-- Gradient system (primary, accent, hero radial gradients)
-- Utility classes (gradient-text, card-glow, glass-card, hover-lift)
-- Glass-morphism effects with backdrop-blur
-- Enhanced typography (line-height 1.7, letter-spacing -0.02em)
-- Multi-layer shadow system for depth
+- Flat colors without gradients for institutional appearance
+- Enhanced typography (line-height 1.6, letter-spacing -0.02em on headings)
+- Compact spacing system for efficient information density
+- Professional color palette (Navy #0B1F3F, Red #C9364F, Grey #798996)
 
-#### Homepage Enhancements
-- Gradient background overlay on hero section
-- Gradient text effect on main heading
-- Animated trust badges with glass-morphism
-- Staggered service card animations
-- Enhanced CTA button hover effects (scale 1.05, shadow)
-- Logo hover animation (rotate + scale)
+#### Homepage
+- Centered hero section with prominent search bar
+- Partner logos with grayscale hover effect
+- Minimal value propositions
+- Clean, focused design
 
-#### Product Cards Redesign
-- Animated gradient border effects on hover
-- Enhanced shadow system (hover: shadow-2xl)
-- PurityBadge component with animated entrance
-- CopyButton component for CAS numbers and SMILES
-- Gradient image container backgrounds
-- Group hover animations (scale, glow)
+#### Product Cards
+- Simplified mobile cards (name, CAS, "View" link only on mobile)
+- 2-column grid on mobile, 3-column on desktop
+- Molecule images hidden on mobile for cleaner layout
+- Hover color transitions (no scale/lift effects)
 
-#### Product Detail Page Overhaul
-- 3-column responsive layout with sticky sidebar
-- Tabs component (Overview, Specifications, Documentation)
-- CertificationBadges component integration (GMP, EU, HPLC-MS, Research Grade)
-- Enhanced specification table with hover states
-- Copy-to-clipboard functionality
-- Animated badge entrances with stagger
-
-#### Trust & Credibility Components
-- CertificationBadges component with animated icons
-- CredentialsBanner component for company info
-- Professional ISO-style badge design
-- Hover tooltips and scale effects
+#### Product Detail Pages
+- Single column, datasheet-like layout (800px max width)
+- Tabs component (Overview/Specs/Docs - abbreviated on mobile)
+- SMILES string collapsible on mobile
+- Clean specification tables
 
 #### Toast Notification System
 - Sonner integrated in layout
 - Success/error feedback on quote submission
-- Loading states with toast
 - Brand-matched styling (white bg, navy text)
 
-#### Micro-interactions & Polish
-- All buttons: hover scale (1.05) + shadow lift
-- Navigation links: scale + color transitions
-- Input focus: enhanced shadow effects
-- Card hover: translateY(-4px) lift effect
-- Smooth 300ms transitions throughout
-- Performance-conscious CSS transforms
+#### Responsive Design
+- Mobile-first approach
+- Simplified mobile product cards (no stretching)
+- Proper text sizing for readability
+- Full-width forms on mobile
+- Words break properly (no letter breaks)
 
 #### Mobile Navigation System
 - Hamburger menu icon (Menu from lucide-react)
@@ -209,13 +188,14 @@ All features have been successfully implemented for ViraChem j.d.o.o., a registe
 
 ### New Component Files:
 1. `src/components/Header.tsx` - Responsive header with mobile burger menu
-2. `src/components/animations/FadeIn.tsx` - Entrance animation wrapper
-3. `src/components/animations/StaggerContainer.tsx` - Staggered list animations
-4. `src/components/product/PurityBadge.tsx` - Animated purity indicator
-5. `src/components/product/CopyButton.tsx` - Copy-to-clipboard functionality
-6. `src/components/trust/CertificationBadges.tsx` - Animated trust badges
-7. `src/components/trust/CredentialsBanner.tsx` - Company credentials display
-8. `src/components/ui/tabs.tsx` - Tab component from ShadCN
+2. `src/components/SearchBar.tsx` - Reusable search component
+3. `src/components/trust/PartnerGrid.tsx` - Partner logos display
+4. `src/components/ui/tabs.tsx` - Tab component from ShadCN
+5. `src/components/ui/button.tsx` - Button component from ShadCN
+6. `src/components/ui/card.tsx` - Card component from ShadCN
+7. `src/components/ui/input.tsx` - Input component from ShadCN
+8. `src/components/ui/label.tsx` - Label component from ShadCN
+9. `src/components/ui/select.tsx` - Select component from ShadCN
 
 ### New Assets & Documentation:
 1. `public/logo.png` - ViraChem full logo
@@ -256,19 +236,17 @@ Navigate to: `http://localhost:3000/products`
 - URL parameter should update with search query
 - Clear search → Should show all products
 
-### 3. Test Professional Design & Animations
+### 3. Test Professional Design
 Navigate to any page:
 
 - No emojis should be visible anywhere
-- Trust section uses text badges: [EU], [LICENSED], [RESEARCH], [European Market]
-- Service cards have colored left borders with hover glow effects
-- Disclaimers use "WARNING:" text instead of warning emoji
-- List items use bullets (•) instead of checkmarks
-- Smooth entrance animations on page load
-- Hover lift effects on cards (4px translateY)
-- Gradient text effects on headings
-- Glass-morphism on trust badges
-- Professional, scientific aesthetic throughout
+- Clean, institutional aesthetic throughout
+- Partner logos display with grayscale effect (color on hover)
+- Professional typography with Urbanist font
+- Proper spacing and compact information density
+- Simple hover color transitions (no scale effects)
+- Mobile-responsive layouts
+- Flat colors without gradients
 
 ### 3a. Test Mobile Navigation
 Resize browser to mobile width (< 768px):
@@ -320,26 +298,26 @@ Check browser tab and bookmarks:
 
 ## Design Philosophy
 
-### Professional Scientific Aesthetic:
+### Institutional B2B Aesthetic:
 - No emojis or casual elements
-- Clean typography with Urbanist font
-- Color-coded sections with border accents
-- Text badges for professional labeling
-- Scientific tone throughout copy
+- Clean typography with Urbanist font (line-height 1.6, tight tracking)
+- Flat colors without gradients
+- Minimal, datasheet-like layouts
+- Scientific, professional tone throughout
 
 ### Brand Colors (ViraChem Official):
 - Navy #0B1F3F (primary, headings)
 - Red #C9364F (CTAs, accents)
-- Gold #E8B341 (badges, highlights)
-- Teal #5A8A8F (accents, links)
+- Gold #E8B341 (badges, highlights - minimal use)
+- Teal #5A8A8F (accents - minimal use)
 - Grey #798996 (secondary text)
 
 ### Visual Hierarchy:
-- Colored left borders on service cards
-- Text badges for trust indicators
-- Prominent search functionality
-- Clean product cards with structure images
-- Professional disclaimer formatting
+- Centered, focused layouts (max 800px for detail pages)
+- Prominent search functionality on homepage
+- Simplified mobile product cards
+- Partner logos with professional grayscale effect
+- Clean specification tables
 
 ---
 
@@ -486,5 +464,5 @@ If you encounter any issues:
 
 **Implementation Date**: December 4-5, 2025  
 **Status**: All features complete and ready for production  
-**Latest Updates**: Homepage search bar, professional design without emojis, complete branding system  
+**Latest Updates**: Institutional redesign, mobile responsiveness, partner logos, English-only interface  
 **Next**: Deploy to production and start serving customers
