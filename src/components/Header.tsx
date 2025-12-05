@@ -45,8 +45,9 @@ export default function Header() {
             height={32}
             className="w-8 h-8"
           />
-          <span className="text-[#0B1F3F] font-bold tracking-tighter text-2xl">VIRA</span>
-          <span className="text-[#798996] font-bold tracking-tighter text-2xl">CHEM</span>
+          <div className="font-bold tracking-tighter text-2xl">
+            <span className="text-[#0B1F3F]">VIRA</span><span className="text-[#798996]">CHEM</span>
+          </div>
         </Link>
         
         {/* Desktop Navigation */}
