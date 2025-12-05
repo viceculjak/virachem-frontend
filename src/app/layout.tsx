@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
-import Link from "next/link";
-import Image from "next/image";
+import Header from "@/components/Header";
 import Footer from "@/components/footer";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -46,71 +45,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${urbanist.variable} antialiased flex flex-col min-h-screen`}>
-        <Toaster 
-          position="top-right" 
-          toastOptions={{
-            style: {
-              background: 'white',
-              color: '#0B1F3F',
-              border: '1px solid #E5E7EB',
-            },
-            className: 'sonner-toast',
-          }}
-        />
-        {/* Header Navigation */}
-        <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-          <nav className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              {/* Logo/Brand */}
-              <Link href="/" className="flex items-center gap-3 group">
-                <Image 
-                  src="/molecule.png" 
-                  alt="ViraChem" 
-                  width={48} 
-                  height={48}
-                  className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
-                  priority
-                />
-                <div className="text-2xl font-bold transition-all duration-300">
-                  <span className="text-dark group-hover:gradient-text">VIRA</span>
-                  <span className="text-text-secondary">CHEM</span>
-                </div>
-              </Link>
-
-              {/* Navigation Links */}
-              <div className="hidden md:flex items-center gap-6">
-                <Link href="/" className="text-gray-700 hover:text-accent-red transition-all duration-300 font-medium hover:scale-105">
-                  Home
-                </Link>
-                <Link href="/products" className="text-gray-700 hover:text-accent-red transition-all duration-300 font-medium hover:scale-105">
-                  Products
-                </Link>
-                <Link href="/about" className="text-gray-700 hover:text-accent-red transition-all duration-300 font-medium hover:scale-105">
-                  About
-                </Link>
-                <Link href="/quote" className="px-4 py-2 bg-accent-red text-white rounded-md hover:bg-accent-red/90 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                  Request Quote
-                </Link>
-              </div>
-
-              {/* Mobile Menu Button - Simplified for now */}
-              <div className="md:hidden">
-                <Link href="/quote" className="px-4 py-2 bg-accent-red text-white rounded-md text-sm">
-                  Quote
-                </Link>
-              </div>
-            </div>
-          </nav>
-        </header>
-
-        {/* Main Content */}
-        <div className="flex-1">
-          {children}
+      <body className={`${urbanist.variable} antialiased`}>
+        <div className="min-h-screen bg-background flex flex-col">
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
         </div>
-
-        {/* Footer */}
-        <Footer />
+        <Toaster position="top-right" />
       </body>
     </html>
   );
