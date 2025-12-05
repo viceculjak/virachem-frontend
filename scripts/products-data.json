@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Semaglutide",
+    "cas": "910463-68-2",
+    "molecular_weight": "4114 g/mol",
+    "smiles": null,
+    "formula": "C187H291N45O59",
+    "category": "peptide",
+    "pubchem_cid": 56843331
+  },
+  {
+    "name": "Tirzepatide",
+    "cas": "2023788-19-2",
+    "molecular_weight": "4813.5 g/mol",
+    "smiles": null,
+    "formula": "C225H348N48O68",
+    "category": "peptide",
+    "notes": "GLP-1/GIP dual agonist"
+  },
+  {
+    "name": "BPC-157",
+    "cas": "137525-51-0",
+    "molecular_weight": "1419.5 g/mol",
+    "smiles": null,
+    "formula": "C62H98N16O22",
+    "category": "peptide",
+    "pubchem_cid": 9941957
+  },
+  {
+    "name": "TB-500",
+    "cas": "885340-08-9",
+    "molecular_weight": "889.0 g/mol",
+    "smiles": null,
+    "formula": "C38H68N10O14",
+    "category": "peptide",
+    "pubchem_cid": 62707662
+  },
+  {
+    "name": "BPC-157 + TB-500 Mix",
+    "cas": "N/A (Mixture)",
+    "molecular_weight": "N/A (Mixture)",
+    "smiles": null,
+    "formula": null,
+    "category": "mixture",
+    "notes": "Proprietary mixture of BPC-157 and TB-500"
+  },
+  {
+    "name": "Epithalon",
+    "cas": "64082-79-7",
+    "molecular_weight": "390.35 g/mol",
+    "smiles": null,
+    "formula": "C14H22N4O9",
+    "category": "peptide",
+    "pubchem_cid": 219042
+  },
+  {
+    "name": "PT-141",
+    "cas": "189691-06-3",
+    "molecular_weight": "1025.2 g/mol",
+    "smiles": null,
+    "formula": "C50H68N14O10",
+    "category": "peptide",
+    "pubchem_cid": 9941379
+  },
+  {
+    "name": "HGH Fragment 176-191",
+    "cas": null,
+    "molecular_weight": "1859.1 g/mol",
+    "smiles": null,
+    "formula": "C80H127N23O24S2",
+    "category": "peptide",
+    "pubchem_cid": 172966176
+  },
+  {
+    "name": "Melanotan 2",
+    "cas": "121062-08-6",
+    "molecular_weight": "1024.2 g/mol",
+    "smiles": null,
+    "formula": "C50H69N15O9",
+    "category": "peptide",
+    "notes": "Melanocortin receptor agonist"
+  },
+  {
+    "name": "CJC-1295 DAC",
+    "cas": "863288-34-0",
+    "molecular_weight": "3649.1 g/mol",
+    "smiles": null,
+    "formula": "C165H269N47O46",
+    "category": "peptide",
+    "notes": "GHRH analog with Drug Affinity Complex"
+  },
+  {
+    "name": "GHRP-2",
+    "cas": "158861-67-7",
+    "molecular_weight": "818.0 g/mol",
+    "smiles": null,
+    "formula": "C45H55N9O6",
+    "category": "peptide",
+    "pubchem_cid": 6918245
+  },
+  {
+    "name": "GHRP-6",
+    "cas": null,
+    "molecular_weight": "873.0 g/mol",
+    "smiles": null,
+    "formula": "C46H56N12O6",
+    "category": "peptide",
+    "pubchem_cid": 4345065
+  },
+  {
+    "name": "Selank",
+    "cas": "129954-34-3",
+    "molecular_weight": "751.9 g/mol",
+    "smiles": null,
+    "formula": "C33H57N11O9",
+    "category": "peptide",
+    "pubchem_cid": 11765600
+  },
+  {
+    "name": "Semax",
+    "cas": "80714-61-0",
+    "molecular_weight": "813.9 g/mol",
+    "smiles": null,
+    "formula": "C37H51N9O10S",
+    "category": "peptide",
+    "pubchem_cid": 9811102
+  },
+  {
+    "name": "MOTS-C",
+    "cas": "1627580-64-6",
+    "molecular_weight": "2174.6 g/mol",
+    "smiles": null,
+    "formula": "C101H152N28O22S2",
+    "category": "peptide",
+    "pubchem_cid": 146675088
+  },
+  {
+    "name": "GW-501516",
+    "cas": "317318-70-0",
+    "molecular_weight": "453.5 g/mol",
+    "smiles": null,
+    "formula": "C21H18F3NO3S2",
+    "category": "sarm",
+    "pubchem_cid": 9803963
+  },
+  {
+    "name": "Ostarine",
+    "cas": "841205-47-8",
+    "molecular_weight": "389.3 g/mol",
+    "smiles": null,
+    "formula": "C19H14F3N3O3",
+    "category": "sarm",
+    "pubchem_cid": 11326715
+  },
+  {
+    "name": "Ligandrol",
+    "cas": "1165910-22-4",
+    "molecular_weight": "338.25 g/mol",
+    "smiles": null,
+    "formula": "C14H12F6N2O",
+    "category": "sarm",
+    "pubchem_cid": 44137686
+  },
+  {
+    "name": "Ibutamoren",
+    "cas": "159634-47-6",
+    "molecular_weight": "528.7 g/mol",
+    "smiles": null,
+    "formula": "C27H36N4O5S",
+    "category": "sarm",
+    "pubchem_cid": 178024
+  },
+  {
+    "name": "Stenabolic",
+    "cas": "1379686-30-2",
+    "molecular_weight": "437.9 g/mol",
+    "smiles": null,
+    "formula": "C20H24ClN3O4S",
+    "category": "sarm",
+    "pubchem_cid": 57394020
+  },
+  {
+    "name": "Yohimbine HCL",
+    "cas": "65-19-0",
+    "molecular_weight": "390.9 g/mol",
+    "smiles": null,
+    "formula": "C21H27ClN2O3",
+    "category": "supplement",
+    "pubchem_cid": 6169
+  },
+  {
+    "name": "Oral BPC-157",
+    "cas": "137525-51-0",
+    "molecular_weight": "1419.5 g/mol",
+    "smiles": null,
+    "formula": "C62H98N16O22",
+    "category": "supplement",
+    "notes": "Oral formulation of BPC-157"
+  },
+  {
+    "name": "Oral Epithalon",
+    "cas": "64082-79-7",
+    "molecular_weight": "390.35 g/mol",
+    "smiles": null,
+    "formula": "C14H22N4O9",
+    "category": "supplement",
+    "notes": "Oral formulation of Epithalon"
+  },
+  {
+    "name": "NAD+",
+    "cas": "53-84-9",
+    "molecular_weight": "663.4 g/mol",
+    "smiles": null,
+    "formula": "C21H27N7O14P2",
+    "category": "supplement",
+    "pubchem_cid": 5892
+  },
+  {
+    "name": "Lipo NAD+",
+    "cas": "53-84-9",
+    "molecular_weight": "663.4 g/mol",
+    "smiles": null,
+    "formula": "C21H27N7O14P2",
+    "category": "supplement",
+    "notes": "Liposomal formulation of NAD+"
+  },
+  {
+    "name": "NAD+ Capsules",
+    "cas": "53-84-9",
+    "molecular_weight": "663.4 g/mol",
+    "smiles": null,
+    "formula": "C21H27N7O14P2",
+    "category": "supplement",
+    "notes": "NAD+ in capsule form"
+  },
+  {
+    "name": "Bluemethyl",
+    "cas": "13422-55-4",
+    "molecular_weight": "1344.4 g/mol",
+    "smiles": null,
+    "formula": "C63H88CoN14O14P",
+    "category": "supplement",
+    "notes": "Methylcobalamin (Vitamin B12)"
+  },
+  {
+    "name": "SLU-PP-332",
+    "cas": null,
+    "molecular_weight": "290.3 g/mol",
+    "smiles": null,
+    "formula": "C18H14N2O2",
+    "category": "research",
+    "pubchem_cid": 5338394
+  },
+  {
+    "name": "TUDCA",
+    "cas": "14605-22-2",
+    "molecular_weight": "499.7 g/mol",
+    "smiles": null,
+    "formula": "C26H45NO6S",
+    "category": "supplement",
+    "pubchem_cid": 9848818
+  },
+  {
+    "name": "Bacteriostatic Water",
+    "cas": "7732-18-5",
+    "molecular_weight": "18.015 g/mol",
+    "smiles": "O",
+    "formula": "H2O",
+    "category": "solvent",
+    "notes": "Sterile water with 0.9% benzyl alcohol"
+  }
+]
