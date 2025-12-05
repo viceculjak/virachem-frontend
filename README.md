@@ -1,10 +1,10 @@
 # ViraChem - EU-Registered Research Chemical Distribution
 
-**EDGE OF RESEARCH** | Split, Croatia 🇭🇷
+**EDGE OF RESEARCH** | Split, Croatia
 
 A professional B2B platform for licensed intermediation in fine chemicals and biochemicals. ViraChem j.d.o.o. is a registered Croatian company serving research institutions across Europe and internationally.
 
-## 🏢 Company Information
+## Company Information
 
 **ViraChem jednostavno društvo s ograničenom odgovornošću**  
 - **Registration**: Trgovački sud u Splitu (Commercial Court in Split)
@@ -15,7 +15,7 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Founded**: June 27, 2025
 - **Location**: Pujanke 24A, 21000 Split, Croatia
 
-## 🎨 Brand Identity
+## Brand Identity
 
 ### Colors
 - **Navy**: #0B1F3F (Primary brand, headings, molecular structure)
@@ -29,17 +29,19 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Logo**: VIRACHEM (split: VIRA in navy, CHEM in grey)
 - **Tagline**: EDGE OF RESEARCH
 
-## ✨ Features
+## Features
 
+- **Homepage Search Bar**: Prominent catalog search directly from homepage
 - **Product Catalog**: Research chemicals with CAS numbers, molecular weights, purity options, and structure images
-- **Search Functionality**: Real-time search by product name or CAS number
-- **Quote System**: Professional quote request system with product pre-fill
+- **Search Functionality**: Real-time search by product name or CAS number (homepage and products page)
+- **Quote System**: Professional quote request system with product pre-fill via URL parameters
 - **Legal Compliance**: GDPR-compliant Privacy Policy, Terms & Conditions, research use disclaimers
-- **Company Pages**: About Us with full registration details, Contact information
-- **Professional Footer**: Company registration info on every page
+- **Company Pages**: About Us with full registration details and company leadership
+- **Professional Design**: Clean, scientific aesthetic without emojis or casual elements
+- **Molecular Icon**: Professional molecule.png icon in navigation with VIRACHEM branding
 - **EU Focus**: Registered Croatian business serving European research institutions
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: Next.js 14 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS v4, ShadCN UI components
@@ -64,7 +66,7 @@ npm install
 
 ### 2. Configure Environment Variables
 
-⚠️ **IMPORTANT**: This step is required before running the app!
+**IMPORTANT**: This step is required before running the app!
 
 Create a `.env.local` file in the project root:
 
@@ -79,7 +81,7 @@ To get these values:
 3. Copy the **Project URL** (e.g., `https://xxxxx.supabase.co`) and **anon public** key
 4. Paste them into your `.env.local` file
 
-💡 **Tip**: See `SETUP-VERIFICATION.md` for detailed setup instructions and troubleshooting.
+**Tip**: See `SETUP-VERIFICATION.md` for detailed setup instructions and troubleshooting.
 
 ### 3. Set Up Database
 
@@ -116,13 +118,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 virachem-frontend/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              # Homepage with company branding
+│   │   ├── page.tsx              # Homepage with search bar
 │   │   ├── layout.tsx            # Root layout with header & footer
 │   │   ├── about/page.tsx        # About Us with company details
 │   │   ├── privacy/page.tsx      # GDPR-compliant Privacy Policy
@@ -137,13 +139,16 @@ virachem-frontend/
 │   └── lib/
 │       └── supabase.ts           # Supabase client
 ├── public/
-│   ├── logo.png                  # ViraChem logo
+│   ├── logo.png                  # ViraChem full logo (homepage hero)
+│   ├── molecule.png              # Molecular icon (navbar, favicons)
+│   ├── favicon.ico               # Multi-size favicon
+│   ├── apple-touch-icon.png      # iOS icon
+│   ├── android-chrome-*.png      # Android/PWA icons
+│   ├── site.webmanifest          # PWA configuration
 │   └── structures/               # Chemical structure SVGs
-├── assets/                       # Original logo files
 ├── scripts/
 │   └── generate-images.py        # Structure generator (RDKit)
 ├── database-schema.sql           # Database setup
-├── UPDATE-PRODUCTS.sql           # Product update script
 ├── .cursorrules                  # Cursor AI project context
 └── .env.local                    # Environment variables (create this)
 ```
@@ -177,7 +182,7 @@ vercel
 
 Your Supabase backend is already hosted in the cloud. No additional deployment needed.
 
-## 🎨 Customization
+## Customization
 
 ### Brand Colors (ViraChem Official)
 
@@ -201,11 +206,13 @@ Defined in `src/app/globals.css`:
    - Run: `python3 scripts/generate-images.py`
 3. Products appear automatically in catalog with search functionality
 
-### Logo
+### Logo & Branding
 
-- Located in `public/logo.png` and `assets/`
-- Text-based logo: **VIRACHEM** (VIRA = navy, CHEM = grey)
-- Tagline: "EDGE OF RESEARCH" in red (#C9364F)
+- **Full logo**: `public/logo.png` - ViraChem complete logo with molecular structure
+- **Molecule icon**: `public/molecule.png` - Used in navbar and all favicons
+- **Navbar**: Shows molecule icon + "VIRACHEM" text (VIRA = navy, CHEM = grey)
+- **Tagline**: "EDGE OF RESEARCH" in red (#C9364F)
+- **Design Philosophy**: Professional, scientific aesthetic without emojis
 
 ### Database Schema
 

@@ -2,7 +2,7 @@
 
 This document helps you verify that your Virachem project is configured correctly and ready to run.
 
-## ✅ Environment Variables
+## Environment Variables
 
 ### 1. Check `.env.local` exists
 ```bash
@@ -23,11 +23,11 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
    - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
    - **anon public** key (NOT service role) → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
-⚠️ **Important**: Never commit `.env.local` to git (already in `.gitignore`)
+**Important**: Never commit `.env.local` to git (already in `.gitignore`)
 
 ---
 
-## ✅ Database Setup
+## Database Setup
 
 ### 1. Execute the database schema:
 1. Go to your Supabase project dashboard
@@ -39,23 +39,23 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 
 ### 2. Verify tables were created:
 Go to **Table Editor** in Supabase and check for:
-- ✓ `products` table (7 columns)
-- ✓ `quote_requests` table (10 columns)
+- `products` table (7 columns)
+- `quote_requests` table (10 columns)
 
 ### 3. Verify sample data:
 Check that the `products` table has 2 sample products:
-- Aspirin (CAS: 50-78-2)
-- Caffeine (CAS: 58-08-2)
+- Retatrutide (CAS: 2381089-83-2)
+- GHK-Cu (CAS: 49557-75-7)
 
 ### 4. Verify RLS policies:
 Go to **Authentication → Policies** and check for:
-- ✓ "Allow public read access to products"
-- ✓ "Allow public insert to quote_requests"
-- ✓ "Allow public read to quote_requests"
+- "Allow public read access to products"
+- "Allow public insert to quote_requests"
+- "Allow public read to quote_requests"
 
 ---
 
-## ✅ Chemical Structure Images
+## Chemical Structure Images
 
 ### 1. Verify images were generated:
 ```bash
@@ -63,8 +63,8 @@ ls -la public/structures/
 ```
 
 Expected files:
-- ✓ `VC-001.svg` (Aspirin structure)
-- ✓ `VC-002.svg` (Caffeine structure)
+- `VC-001.svg` (Retatrutide structure)
+- `VC-002.svg` (GHK-Cu structure)
 
 ### 2. If images are missing:
 ```bash
@@ -77,7 +77,7 @@ python3 scripts/generate-images.py
 
 ---
 
-## ✅ Dependencies
+## Dependencies
 
 ### 1. Verify all npm packages are installed:
 ```bash
@@ -85,16 +85,16 @@ npm install
 ```
 
 ### 2. Key dependencies should be present:
-- ✓ `next` (16.0.7+)
-- ✓ `react` (19.2.0+)
-- ✓ `@supabase/supabase-js` (2.86.2+)
-- ✓ `tailwindcss` (4.0+)
-- ✓ ShadCN UI components
-- ✓ `lucide-react` (icons)
+- `next` (16.0.7+)
+- `react` (19.2.0+)
+- `@supabase/supabase-js` (2.86.2+)
+- `tailwindcss` (4.0+)
+- ShadCN UI components
+- `lucide-react` (icons)
 
 ---
 
-## ✅ Test the Application
+## Test the Application
 
 ### 1. Start the development server:
 ```bash
@@ -104,19 +104,23 @@ npm run dev
 ### 2. Test these pages:
 
 #### Homepage (`http://localhost:3000`)
-- [ ] Virachem branding displays
-- [ ] "Browse Catalog" button works
+- [ ] ViraChem branding displays (molecule icon + VIRACHEM text)
+- [ ] Large search bar visible in hero section
+- [ ] "Browse All Products" button works
 - [ ] "Request Quote" button works
-- [ ] Features section displays (3 cards)
+- [ ] Trust badges show (EU, LICENSED, RESEARCH, GLOBAL)
+- [ ] Services section displays with colored left borders (no emojis)
+- [ ] No emojis visible anywhere
 
 #### Products Page (`http://localhost:3000/products`)
 - [ ] Products load from Supabase
-- [ ] Search bar is visible
-- [ ] Can search by name (try "Aspirin")
-- [ ] Can search by CAS (try "50-78-2")
-- [ ] Chemical structure images display
-- [ ] CAS numbers show as badges
+- [ ] Search bar is visible at top
+- [ ] Can search by name (try "Retatrutide")
+- [ ] Can search by CAS (try "2381089-83-2")
+- [ ] Chemical structure images display (Retatrutide, GHK-Cu)
+- [ ] CAS numbers show as badges with monospace font
 - [ ] Purity tags display correctly
+- [ ] Disclaimers use "WARNING:" text (no emoji)
 - [ ] Clicking a product navigates to detail page
 
 #### Product Detail Page (`http://localhost:3000/products/[id]`)
@@ -141,9 +145,15 @@ npm run dev
 - [ ] "View Details" link works
 - [ ] Form submits with product_id
 
+#### Quote Form from Homepage
+- [ ] Type product name in homepage search
+- [ ] Click Search button
+- [ ] Should redirect to products page with filtered results
+- [ ] URL should contain ?search= parameter
+
 ---
 
-## ✅ Database Connection Test
+## Database Connection Test
 
 ### 1. Check if Supabase connection works:
 
@@ -161,7 +171,7 @@ If you see products load, the connection is working!
 - Check `.env.local` file exists and has correct values
 - Restart dev server after adding env variables
 
-❌ **"Error loading products"**
+**"Error loading products"**
 - Verify Supabase credentials are correct
 - Check that `database-schema.sql` was executed
 - Verify RLS policies are enabled
@@ -173,14 +183,14 @@ If you see products load, the connection is working!
 
 ---
 
-## ✅ Build for Production
+## Build for Production
 
 ### 1. Test production build:
 ```bash
 npm run build
 ```
 
-⚠️ **Note**: The build will fail if `.env.local` is not configured with valid Supabase credentials. This is expected behavior. Make sure you've completed the environment variables setup first.
+**Note**: The build will fail if `.env.local` is not configured with valid Supabase credentials. This is expected behavior. Make sure you've completed the environment variables setup first.
 
 Should complete without errors once environment variables are configured.
 
@@ -193,7 +203,7 @@ Visit `http://localhost:3000` and test all pages.
 
 ---
 
-## 🚀 Ready to Deploy!
+## Ready to Deploy!
 
 Once all checks pass, you're ready to deploy:
 
@@ -215,7 +225,7 @@ In your Vercel project settings, add:
 
 ---
 
-## 📋 Quick Setup Summary
+## Quick Setup Summary
 
 For a brand new setup, run these commands in order:
 
@@ -238,7 +248,7 @@ npm run dev
 
 ---
 
-## 🆘 Getting Help
+## Getting Help
 
 If you encounter issues:
 1. Check this verification checklist

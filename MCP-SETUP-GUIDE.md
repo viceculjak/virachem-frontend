@@ -4,7 +4,7 @@
 
 Model Context Protocol (MCP) is a way for AI assistants like Cursor to interact with external tools and services. For Virachem, we can use MCP to enhance AI-assisted development.
 
-## ⚠️ Important Note
+## Important Note
 
 The specific packages `@modelcontextprotocol/server-shadcn` and `@modelcontextprotocol/server-supabase` mentioned in your original spec **do not exist** on npm. 
 
@@ -12,11 +12,11 @@ Instead, Cursor has **built-in capabilities** that work better for your use case
 
 ---
 
-## 🚀 What Cursor Can Already Do (No MCP Setup Required)
+## What Cursor Can Already Do (No MCP Setup Required)
 
 Cursor's AI can already help you with:
 
-### ✅ ShadCN UI Components
+### ShadCN UI Components
 - **Ask**: "Add a new ShadCN dialog component"
 - **Ask**: "Create a table component using ShadCN"
 - Cursor knows the ShadCN component structure and can add them
@@ -26,7 +26,7 @@ Cursor's AI can already help you with:
 - **Ask**: "Create a function to update product purity"
 - Cursor can generate Supabase queries and operations
 
-### ✅ Database Schema Changes
+### Database Schema Changes
 - **Ask**: "Add a reviews table with user_id, product_id, rating, and comment"
 - Cursor can generate migration SQL
 
@@ -54,7 +54,7 @@ Create `.cursorrules` file in your project root to give Cursor context about you
 
 ---
 
-## 🎯 How to Use Cursor AI Effectively for Virachem
+## How to Use Cursor AI Effectively for Virachem
 
 ### For Adding ShadCN Components:
 ```
@@ -132,26 +132,26 @@ Add to `~/.cursor/config.json`:
 
 ---
 
-## 🎓 Practical AI-Assisted Development Workflow
+## Practical AI-Assisted Development Workflow
 
 Here's how to effectively use Cursor AI to continue building Virachem:
 
 ### 1. Adding New Features
 ```
-✅ Good Prompts:
+Good Prompts:
 - "Add a product comparison feature where users can compare 2 products side by side"
 - "Create an admin dashboard to manage quote requests"
 - "Add email notifications when a quote is submitted"
 - "Implement product categories and filtering"
 
-❌ Avoid:
+Avoid:
 - Vague requests: "Make it better"
 - Too broad: "Build the entire backend"
 ```
 
 ### 2. Improving Existing Features
 ```
-✅ Good Prompts:
+Good Prompts:
 - "Add debouncing to the search input to reduce API calls"
 - "Implement pagination for the products page (10 items per page)"
 - "Add form validation with error messages to the quote form"
@@ -160,7 +160,7 @@ Here's how to effectively use Cursor AI to continue building Virachem:
 
 ### 3. Database Operations
 ```
-✅ Good Prompts:
+Good Prompts:
 - "Add a product_categories table and create a many-to-many relationship"
 - "Create an index on the products.cas column for faster searches"
 - "Add a soft delete feature for products (deleted_at column)"
@@ -169,7 +169,7 @@ Here's how to effectively use Cursor AI to continue building Virachem:
 
 ### 4. UI/UX Improvements
 ```
-✅ Good Prompts:
+Good Prompts:
 - "Add loading skeletons to all pages"
 - "Implement dark mode toggle"
 - "Add animations when products load"
@@ -178,7 +178,7 @@ Here's how to effectively use Cursor AI to continue building Virachem:
 
 ---
 
-## 🔥 Next Features to Build (Use Cursor AI)
+## Next Features to Build (Use Cursor AI)
 
 Here are suggested features you can ask Cursor to implement:
 
@@ -221,7 +221,7 @@ Here are suggested features you can ask Cursor to implement:
 
 ---
 
-## 💡 Pro Tips for Cursor AI
+## Pro Tips for Cursor AI
 
 ### 1. Use @ Mentions
 ```
@@ -253,7 +253,7 @@ Refactor the quote form to use react-hook-form for better validation
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### If Cursor AI Seems Slow:
 1. Clear Cursor cache: Settings → Advanced → Clear Cache
@@ -272,7 +272,7 @@ Refactor the quote form to use react-hook-form for better validation
 
 ---
 
-## 📖 Learning Resources
+## Learning Resources
 
 - **Cursor Docs**: [cursor.sh/docs](https://cursor.sh/docs)
 - **MCP Specification**: [modelcontextprotocol.io](https://modelcontextprotocol.io)
@@ -281,7 +281,7 @@ Refactor the quote form to use react-hook-form for better validation
 
 ---
 
-## 🎯 Quick Start Checklist
+## Quick Start Checklist
 
 To start building with AI assistance:
 
@@ -297,6 +297,6 @@ To start building with AI assistance:
 
 ---
 
-**Ready to build!** 🚀
+**Ready to build!**
 
 Start by asking Cursor AI to help you implement any of the suggested features above, or come up with your own ideas!
