@@ -264,7 +264,7 @@ export default function TermsPage() {
               <p className="text-gray-800">
                 <strong>ViraChem j.d.o.o.</strong><br />
                 Pujanke 24A, 21000 Split, Croatia<br />
-                Email: info@virachem.com<br />
+                Email: info@virachemical.com<br />
                 OIB: 73782597071<br />
                 MBS: 060500406
               </p>

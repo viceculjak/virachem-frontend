@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
               please contact us at:
             </p>
             <ul className="list-disc pl-6 text-gray-700">
-              <li>Email: info@virachem.com</li>
+              <li>Email: info@virachemical.com</li>
               <li>Address: Pujanke 24A, 21000 Split, Croatia</li>
             </ul>
           </section>
@@ -143,7 +143,7 @@ export default function PrivacyPolicyPage() {
               <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time</li>
             </ul>
             <p className="text-gray-700 mt-3">
-              To exercise these rights, contact us at <strong>info@virachem.com</strong>. We will respond within 30 days.
+              To exercise these rights, contact us at <strong>info@virachemical.com</strong>. We will respond within 30 days.
             </p>
           </section>
 
@@ -216,7 +216,7 @@ export default function PrivacyPolicyPage() {
                 <strong>ViraChem j.d.o.o.</strong><br />
                 Data Protection Officer<br />
                 Pujanke 24A, 21000 Split, Croatia<br />
-                Email: info@virachem.com<br />
+                Email: info@virachemical.com<br />
                 OIB: 73782597071
               </p>
             </div>

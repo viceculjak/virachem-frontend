@@ -147,7 +147,11 @@ export default function AboutPage() {
                     <div className="space-y-2">
                       <div>
                         <p className="text-sm font-semibold text-gray-600">Email</p>
-                        <p className="text-gray-900">info@virachem.com</p>
+                        <p className="text-gray-900">info@virachemical.com</p>
+                        <p className="text-sm text-gray-600 mt-3">Specialized contacts:</p>
+                        <p className="text-gray-700 text-sm">Quotes: quotes@virachemical.com</p>
+                        <p className="text-gray-700 text-sm">Technical: tech@virachemical.com</p>
+                        <p className="text-gray-700 text-sm">Compliance: compliance@virachemical.com</p>
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-gray-600">Business Hours</p>

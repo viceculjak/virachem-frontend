@@ -184,6 +184,8 @@ function QuotePageContent() {
               GMP-aligned contract manufacturing with flexible formulation options. Our Poland-based synthesis facility 
               provides custom peptide production with HPLC-MS verification. Specify your requirements below for batch 
               production from milligram to multi-gram scale.
+              <br /><br />
+              <span className="text-sm">Prefer email? Send your requirements directly to: <strong>quotes@virachemical.com</strong></span>
             </CardDescription>
           </CardHeader>
           <CardContent>

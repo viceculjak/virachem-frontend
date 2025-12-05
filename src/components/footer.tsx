@@ -65,7 +65,8 @@ export default function Footer() {
             </ul>
             <div className="mt-4 text-sm text-gray-400">
               <p><strong>Contact:</strong></p>
-              <p>info@virachem.com</p>
+              <p>info@virachemical.com</p>
+              <p className="mt-1 text-xs">Quotes: quotes@virachemical.com</p>
             </div>
           </div>
         </div>
