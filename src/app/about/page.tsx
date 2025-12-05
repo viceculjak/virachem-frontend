@@ -19,24 +19,48 @@ export default function AboutPage() {
             EDGE OF RESEARCH
           </p>
           <p className="text-xl text-gray-700">
-            EU-Registered Research Chemical Distribution | Split, Croatia
+            Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
           </p>
         </div>
 
         {/* Company Story */}
         <div className="max-w-4xl mx-auto space-y-12">
           <section>
-            <h2 className="text-3xl font-semibold text-dark mb-4">Our Mission</h2>
+            <h2 className="text-3xl font-semibold text-dark mb-4">Contract Manufacturing Intermediation</h2>
             <p className="text-lg text-gray-700 mb-4">
-              ViraChem is a Croatian-based intermediary specializing in the distribution of high-purity research chemicals 
-              and biochemicals to qualified research institutions across Europe and internationally. We are committed to 
-              advancing scientific discovery by providing researchers with access to premium-grade compounds for legitimate 
-              research and development purposes.
+              ViraChem j.d.o.o. is an EU-registered intermediary specializing in contract manufacturing of high-purity 
+              research peptides and fine chemicals for academic and industrial laboratories across Europe. We partner with 
+              a GMP-aligned, Poland-based synthesis facility experienced in custom peptide production, lyophilization, and 
+              sterile vialing under inert atmosphere.
             </p>
+            <p className="text-lg text-gray-700 mb-4">
+              All compounds are provided strictly for research use and are not intended for human or veterinary diagnostic 
+              or therapeutic applications. Our core offering includes custom and catalog peptides synthesized to ≥95–99% 
+              purity (HPLC-MS verified) with flexible formulation options.
+            </p>
+            <h3 className="text-2xl font-semibold text-dark mb-3 mt-6">Manufacturing Capabilities</h3>
+            <ul className="space-y-2 text-lg text-gray-700 mb-4">
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>Flexible Vial Formats:</strong> Lyophilized powder in any vial size (1 mL, 2 mL, 5 mL, 10 mL, or client-specified)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>Type I Borosilicate Glass:</strong> Standard packaging with rubber stoppers and aluminum crimp seals under inert atmosphere</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>Batch Scalability:</strong> Production from milligram to multi-gram quantities with full analytical documentation (COA, HPLC-MS)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>EU-Compliant Intermediation:</strong> Registered under Croatian commercial law (MBS: 060500406, OIB: 73782597071)</span>
+              </li>
+            </ul>
             <p className="text-lg text-gray-700">
-              Operating at the "Edge of Research," we bridge the gap between cutting-edge chemical suppliers and pioneering 
-              research laboratories, ensuring that scientists have the tools they need to push the boundaries of knowledge 
-              in biotechnology, pharmaceuticals, and longevity research.
+              ViraChem does not engage in direct retail sales. We facilitate B2B access to reliable, traceable, and 
+              consistently manufactured research substances—bridging European laboratories with trusted Central European 
+              production capacity.
             </p>
           </section>
 
@@ -142,18 +166,18 @@ export default function AboutPage() {
 
           {/* What We Do */}
           <section>
-            <h2 className="text-3xl font-semibold text-dark mb-6">What We Do</h2>
+            <h2 className="text-3xl font-semibold text-dark mb-6">Our Capabilities</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="border-accent-red/20 border-l-4 border-l-accent-red">
                 <CardHeader>
                   <CardTitle className="text-lg">
-                    Research Grade Compounds
+                    Contract Peptide Synthesis
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-700">
-                    We source and distribute high-purity research chemicals (≥95% to ≥99%) with comprehensive analytical 
-                    documentation including CoAs and MSDS.
+                    Custom and catalog peptides synthesized to ≥95–99% purity via Poland-based, GMP-aligned facility. 
+                    HPLC-MS verification with full COA, batch records, and analytical documentation for each production run.
                   </p>
                 </CardContent>
               </Card>
@@ -161,13 +185,13 @@ export default function AboutPage() {
               <Card className="border-accent-teal/20 border-l-4 border-l-accent-teal">
                 <CardHeader>
                   <CardTitle className="text-lg">
-                    Scientific Support
+                    Analytical & Regulatory Documentation
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-700">
-                    Our team provides technical guidance on product specifications, handling procedures, and compliance 
-                    requirements for research applications.
+                    Complete traceability from synthesis through delivery with COA, HPLC-MS chromatograms, mass spectra, 
+                    MSDS, and storage protocols. Type I borosilicate glass packaging with batch-specific quality documentation.
                   </p>
                 </CardContent>
               </Card>
@@ -175,12 +199,13 @@ export default function AboutPage() {
               <Card className="border-accent-gold/20 border-l-4 border-l-accent-gold">
                 <CardHeader>
                   <CardTitle className="text-lg">
-                    International Shipping
+                    Batch Scalability & Custom Formulation
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-700">
-                    We facilitate secure international shipping with full compliance to EU and international regulations 
+                    Flexible vial formats (1 mL, 2 mL, 5 mL, 10 mL, or client-specified) with lyophilized powder presentation. 
+                    Scalable production from milligram to multi-gram quantities with rubber stopper and aluminum crimp sealing 
                     for chemical distribution.
                   </p>
                 </CardContent>

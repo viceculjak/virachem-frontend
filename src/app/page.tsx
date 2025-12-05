@@ -30,12 +30,11 @@ export default function Home() {
           </p>
           
           <h1 className="text-xl md:text-2xl text-gray-700 mb-6">
-            EU-Registered Research Chemical Distribution | Split, Croatia
+            Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
           </h1>
           
           <p className="text-lg text-gray-600 mb-4 max-w-3xl mx-auto">
-            Licensed intermediation in fine chemicals and biochemicals for research and development purposes. 
-            Serving European research institutions with premium-grade compounds.
+            ViraChem j.d.o.o. facilitates B2B access to contract-manufactured research peptides and fine chemicals through our Poland-based, GMP-aligned synthesis partner. We provide HPLC-MS verified compounds (≥95–99% purity) with flexible formulation options, full analytical documentation (COA, HPLC, MS), and EU-compliant intermediation for academic and industrial laboratories.
           </p>
           
           <p className="text-sm text-gray-500 mb-8">
@@ -125,11 +124,12 @@ export default function Home() {
             <Card className="border-accent-teal/30 border-l-4 border-l-accent-teal">
               <CardContent className="pt-6">
                 <h3 className="text-xl font-semibold text-dark mb-3">
-                  EU Compliance
+                  GMP-Aligned Manufacturing
                 </h3>
                 <p className="text-gray-600">
-                  Registered with Trgovački sud u Splitu. Full compliance with Croatian and EU regulations 
-                  for chemical distribution (REACH, CLP).
+                  Contract synthesis through Poland-based, GMP-aligned facility specializing in peptide production, 
+                  lyophilization, and sterile vialing under inert atmosphere. EU-compliant intermediation registered 
+                  with Trgovački sud u Splitu (MBS: 060500406).
                 </p>
               </CardContent>
             </Card>
@@ -137,11 +137,12 @@ export default function Home() {
             <Card className="border-accent-gold/30 border-l-4 border-l-accent-gold">
               <CardContent className="pt-6">
                 <h3 className="text-xl font-semibold text-dark mb-3">
-                  Research Grade Quality
+                  Analytical Documentation & Traceability
                 </h3>
                 <p className="text-gray-600">
-                  High-purity compounds (≥95% to ≥99%) with comprehensive analytical data including 
-                  CoA and MSDS documentation.
+                  Full analytical documentation including COA, HPLC-MS verification, batch records, and MSDS. 
+                  All compounds packaged in Type I borosilicate glass vials with complete traceability from 
+                  synthesis through delivery.
                 </p>
               </CardContent>
             </Card>
@@ -149,11 +150,12 @@ export default function Home() {
             <Card className="border-accent-red/30 border-l-4 border-l-accent-red">
               <CardContent className="pt-6">
                 <h3 className="text-xl font-semibold text-dark mb-3">
-                  Expert Support
+                  Custom Formulation & Batch Scalability
                 </h3>
                 <p className="text-gray-600">
-                  Technical guidance on product specifications, handling procedures, and compliance 
-                  for international research institutions.
+                  Flexible vial formats (1 mL, 2 mL, 5 mL, 10 mL, or client-specified) with batch production 
+                  scalable from milligram to multi-gram quantities. Custom formulation options with rubber 
+                  stopper and aluminum crimp seals.
                 </p>
               </CardContent>
             </Card>

@@ -183,19 +183,19 @@ export default function ProductDetailPage() {
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>High purity with comprehensive analytical data (NMR, HPLC, MS)</span>
+                    <span>≥95–99% purity verified by HPLC-MS with full COA and batch documentation</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Available in multiple vial sizes for flexibility</span>
+                    <span>Custom vial formats available (1 mL, 2 mL, 5 mL, 10 mL, or client-specified) - Type I borosilicate glass with rubber stopper and aluminum crimp seal under inert atmosphere</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Proper storage and handling documentation included</span>
+                    <span>Complete MSDS, COA, and storage protocols (–20°C, desiccated, light-protected)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Fast turnaround and secure shipping</span>
+                    <span>Batch production from mg to multi-gram scale with traceable EU logistics</span>
                   </li>
                 </ul>
               </CardContent>

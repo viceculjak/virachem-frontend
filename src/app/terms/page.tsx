@@ -74,9 +74,21 @@ export default function TermsPage() {
           {/* Services */}
           <section>
             <h2 className="text-2xl font-semibold text-dark mb-3">4. Services Provided</h2>
-            <p className="text-gray-700 mb-3">ViraChem provides:</p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-1">
-              <li>Intermediation services for research-grade chemicals and biochemicals</li>
+            <p className="text-gray-700 mb-3">
+              ViraChem operates as a B2B intermediary for contract-manufactured research peptides and fine chemicals. 
+              We do not engage in direct retail sales. Our services include:
+            </p>
+            <ul className="list-disc pl-6 text-gray-700 space-y-2">
+              <li><strong>Contract Manufacturing Intermediation:</strong> Facilitation of custom peptide synthesis through 
+              our Poland-based, GMP-aligned manufacturing partner</li>
+              <li><strong>Analytical Documentation:</strong> Complete COA, HPLC-MS verification, batch records, and MSDS 
+              for all synthesized compounds</li>
+              <li><strong>Quality Packaging:</strong> Type I borosilicate glass vials with rubber stoppers and aluminum 
+              crimp seals under inert atmosphere</li>
+              <li><strong>Batch Traceability:</strong> Full documentation from synthesis through delivery with unique 
+              batch identifiers</li>
+              <li><strong>Flexible Formulation:</strong> Custom vial formats (1 mL, 2 mL, 5 mL, 10 mL, or client-specified) 
+              and scalable batch quantities (milligram to multi-gram)</li>
               <li>Product information and technical specifications</li>
               <li>Quote request processing</li>
               <li>Customer support for research inquiries</li>

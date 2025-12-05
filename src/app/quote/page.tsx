@@ -35,6 +35,7 @@ function QuotePageContent() {
     quantity: '',
     vial_size: '',
     purity: '',
+    formulation_requirements: '',
     message: '',
     product_id: productId || '',
   });
@@ -180,7 +181,9 @@ function QuotePageContent() {
           <CardHeader>
             <CardTitle className="text-3xl text-dark">Request a Quote</CardTitle>
             <CardDescription>
-              Fill out the form below and our team will get back to you with pricing and availability.
+              GMP-aligned contract manufacturing with flexible formulation options. Our Poland-based synthesis facility 
+              provides custom peptide production with HPLC-MS verification. Specify your requirements below for batch 
+              production from milligram to multi-gram scale.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -230,36 +233,33 @@ function QuotePageContent() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="quantity">Quantity (vials) *</Label>
+                  <Label htmlFor="quantity">Batch Quantity (mg/g) *</Label>
                   <Input
                     id="quantity"
-                    type="number"
-                    min="1"
+                    type="text"
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                    placeholder="1"
+                    placeholder="e.g., 100 mg, 1 g, 5 g"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="vial_size">Vial Size *</Label>
+                  <Label htmlFor="vial_size">Vial Format *</Label>
                   <Select
                     value={formData.vial_size}
                     onValueChange={(value) => setFormData({ ...formData, vial_size: value })}
                     required
                   >
                     <SelectTrigger id="vial_size">
-                      <SelectValue placeholder="Select size" />
+                      <SelectValue placeholder="Select vial format" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="1mg">1 mg</SelectItem>
-                      <SelectItem value="5mg">5 mg</SelectItem>
-                      <SelectItem value="10mg">10 mg</SelectItem>
-                      <SelectItem value="25mg">25 mg</SelectItem>
-                      <SelectItem value="50mg">50 mg</SelectItem>
-                      <SelectItem value="100mg">100 mg</SelectItem>
-                      <SelectItem value="custom">Custom Amount</SelectItem>
+                      <SelectItem value="1ml">1 mL</SelectItem>
+                      <SelectItem value="2ml">2 mL</SelectItem>
+                      <SelectItem value="5ml">5 mL</SelectItem>
+                      <SelectItem value="10ml">10 mL</SelectItem>
+                      <SelectItem value="custom">Custom (specify in comments)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -285,13 +285,24 @@ function QuotePageContent() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Additional Requirements (Optional)</Label>
+                <Label htmlFor="formulation_requirements">Formulation Requirements (Optional)</Label>
+                <textarea
+                  id="formulation_requirements"
+                  value={formData.formulation_requirements}
+                  onChange={(e) => setFormData({ ...formData, formulation_requirements: e.target.value })}
+                  placeholder="e.g., specific excipients, lyophilization parameters, packaging specifications..."
+                  className="w-full min-h-[80px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="message">Additional Comments (Optional)</Label>
                 <textarea
                   id="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Any specific requirements or questions..."
-                  className="w-full min-h-[100px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  placeholder="Any additional requirements, shipping instructions, or questions..."
+                  className="w-full min-h-[80px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
               </div>
 

@@ -10,10 +10,12 @@ export default function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-xl font-bold mb-4">ViraChem j.d.o.o.</h3>
             <p className="text-gray-300 mb-2">
-              EU-Registered Research Chemical Distribution
+              Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis
             </p>
             <p className="text-gray-400 text-sm mb-4">
-              Licensed intermediation in fine chemicals and biochemicals for research and development purposes.
+              B2B intermediary for contract-manufactured research peptides and fine chemicals through Poland-based, 
+              GMP-aligned synthesis facilities. Providing HPLC-MS verified compounds with full analytical documentation 
+              and traceable manufacturing for academic and industrial laboratories.
             </p>
             <div className="space-y-1 text-sm text-gray-300">
               <p><strong>Address:</strong> Pujanke 24A, 21000 Split, Croatia</p>
