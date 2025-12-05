@@ -56,16 +56,25 @@ export default function RootLayout({
         
         {/* Google Translate Widget */}
         <Script id="google-translate-init" strategy="afterInteractive">
-          {`
-            function googleTranslateElementInit() {
-              new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'hr,de,fr,it,es,pl,sl,cs,sk,hu',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-              }, 'google_translate_element');
-            }
-          `}
+                    {`
+                      function googleTranslateElementInit() {
+                        // Desktop widget
+                        new google.translate.TranslateElement({
+                          pageLanguage: 'en',
+                          includedLanguages: 'hr,de,fr,it,es,pl,sl,cs,sk,hu',
+                          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                          autoDisplay: false
+                        }, 'google_translate_element');
+                        
+                        // Mobile widget
+                        new google.translate.TranslateElement({
+                          pageLanguage: 'en',
+                          includedLanguages: 'hr,de,fr,it,es,pl,sl,cs,sk,hu',
+                          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                          autoDisplay: false
+                        }, 'google_translate_element_mobile');
+                      }
+                    `}
         </Script>
         <Script 
           src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"

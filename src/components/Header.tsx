@@ -125,6 +125,12 @@ export default function Header() {
                 >
                   Contact
                 </Link>
+                
+                {/* Google Translate Widget - Mobile */}
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="text-xs text-[#798996] mb-2 uppercase tracking-wider">Language</p>
+                  <div id="google_translate_element_mobile"></div>
+                </div>
               </nav>
 
               {/* Request Quote Button */}

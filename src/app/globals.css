@@ -60,48 +60,125 @@ body {
   top: 0 !important;
 }
 
-#google_translate_element {
+#google_translate_element,
+#google_translate_element_mobile {
   display: inline-block;
 }
 
-/* Style the Google Translate select dropdown */
+/* Clean, professional styling matching ViraChem design */
 .goog-te-gadget {
   font-family: var(--font-urbanist), sans-serif !important;
   font-size: 0.875rem !important;
   color: #0B1F3F !important;
+  line-height: 1.6 !important;
 }
 
+/* Main dropdown button */
 .goog-te-gadget-simple {
-  background-color: transparent !important;
-  border: 1px solid #e5e7eb !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #d1d5db !important;
   border-radius: 0.375rem !important;
-  padding: 0.25rem 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
   font-size: 0.875rem !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
 }
 
 .goog-te-gadget-simple:hover {
-  border-color: #C9364F !important;
+  border-color: #0B1F3F !important;
+  background-color: #FAFAFA !important;
 }
 
+.goog-te-gadget-simple:focus {
+  outline: 2px solid #C9364F !important;
+  outline-offset: 2px !important;
+}
+
+/* Hide the default Google Translate icon */
 .goog-te-gadget-icon {
   display: none !important;
 }
 
-.goog-te-menu-value span {
+/* Style the selected language text */
+.goog-te-menu-value {
   color: #0B1F3F !important;
 }
 
-.goog-te-menu-value span:hover {
+.goog-te-menu-value span {
+  color: #0B1F3F !important;
+  font-weight: 500 !important;
+}
+
+.goog-te-menu-value span:first-child {
+  color: #798996 !important;
+  font-weight: 400 !important;
+}
+
+/* Hide "Powered by" text */
+.goog-te-gadget span {
+  display: none !important;
+}
+
+.goog-te-gadget > span > a {
+  display: none !important;
+}
+
+/* Show only the language selector */
+.goog-te-gadget .goog-te-gadget-simple {
+  display: inline-block !important;
+}
+
+/* Style the dropdown arrow */
+.goog-te-gadget-simple .goog-te-menu-value span:last-child {
+  border-left: 4px solid transparent !important;
+  border-right: 4px solid transparent !important;
+  border-top: 5px solid #0B1F3F !important;
+  margin-left: 8px !important;
+}
+
+/* Dropdown menu styling */
+.goog-te-menu-frame {
+  border: 1px solid #d1d5db !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.goog-te-menu2 {
+  border: none !important;
+  background-color: #FFFFFF !important;
+}
+
+.goog-te-menu2-item {
+  padding: 0.5rem 1rem !important;
+  font-family: var(--font-urbanist), sans-serif !important;
+  color: #0B1F3F !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.goog-te-menu2-item:hover {
+  background-color: #FAFAFA !important;
   color: #C9364F !important;
 }
 
-/* Hide Google branding on mobile */
+.goog-te-menu2-item-selected {
+  background-color: #0B1F3F !important;
+  color: #FFFFFF !important;
+}
+
+/* Mobile specific styling */
 @media (max-width: 768px) {
   .goog-logo-link {
     display: none !important;
   }
   
-  .goog-te-gadget {
-    font-size: 0.75rem !important;
+  #google_translate_element_mobile {
+    width: 100% !important;
+  }
+  
+  #google_translate_element_mobile .goog-te-gadget-simple {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
 }
