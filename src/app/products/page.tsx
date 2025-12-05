@@ -78,7 +78,7 @@ function ProductsPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4">
           <p className="text-sm text-gray-900 font-semibold">
@@ -88,7 +88,7 @@ function ProductsPageContent() {
         </div>
 
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-[#0B1F3F] mb-2">Research Chemicals</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-[#0B1F3F] mb-2">Research Chemicals</h1>
           <p className="text-gray-600 text-lg mb-6">
             High-purity compounds for advanced research applications
           </p>
@@ -116,7 +116,7 @@ function ProductsPageContent() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {products.map((product) => (
               <Link key={product.id} href={`/products/${product.id}`}>
                 <Card className="h-full hover:border-gray-300 transition-colors cursor-pointer border-gray-200 bg-white">
@@ -132,7 +132,7 @@ function ProductsPageContent() {
                         <div className="text-gray-400 text-sm">No structure available</div>
                       )}
                     </div>
-                    <CardTitle className="text-xl text-[#0B1F3F]">{product.name}</CardTitle>
+                    <CardTitle className="text-base md:text-xl text-[#0B1F3F]">{product.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">

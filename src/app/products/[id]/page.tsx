@@ -77,7 +77,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="container mx-auto datasheet-max">
         <Link href="/products" className="text-[#C9364F] hover:underline text-sm inline-block mb-6">
           ← Back to Catalog
@@ -92,7 +92,7 @@ export default function ProductDetailPage() {
 
         <div className="space-y-6">
           <div>
-            <h1 className="text-3xl font-bold text-[#0B1F3F] mb-2">{product.name}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-[#0B1F3F] mb-2">{product.name}</h1>
             <p className="text-gray-500">Research Grade Chemical</p>
           </div>
 
@@ -120,13 +120,13 @@ export default function ProductDetailPage() {
             <CardContent className="pt-6">
               <Tabs defaultValue="overview" className="w-full">
                 <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="specifications">Specifications</TabsTrigger>
-                  <TabsTrigger value="documentation">Documentation</TabsTrigger>
+                  <TabsTrigger value="overview" className="text-xs md:text-sm">Overview</TabsTrigger>
+                  <TabsTrigger value="specifications" className="text-xs md:text-sm">Specs</TabsTrigger>
+                  <TabsTrigger value="documentation" className="text-xs md:text-sm">Docs</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="overview" className="space-y-4 mt-6">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-3 bg-gray-50 rounded">
                       <p className="text-xs font-semibold text-gray-600 mb-1">CAS Number</p>
                       <p className="text-base font-mono text-[#0B1F3F]">{product.cas}</p>
