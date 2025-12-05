@@ -43,7 +43,7 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <h2 className="text-center text-xl font-semibold text-[#0B1F3F] mb-12">
-            Trusted by Research Institutions Across Europe
+            Trusted by Partners Across Europe
           </h2>
           <PartnerGrid />
         </div>
