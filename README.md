@@ -1,8 +1,8 @@
 # ViraChem - EU-Registered Research Chemical Distribution
 
-**EDGE OF RESEARCH** | Split, Croatia
+Split, Croatia
 
-A professional B2B platform for licensed intermediation in fine chemicals and biochemicals. ViraChem j.d.o.o. is a registered Croatian company serving research institutions across Europe and internationally.
+A professional B2B platform for licensed intermediation in fine chemicals and biochemicals. ViraChem j.d.o.o. is a registered Croatian company serving research institutions across the European Union.
 
 ## Company Information
 
@@ -19,32 +19,47 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 
 ### Colors
 - **Navy**: #0B1F3F (Primary brand, headings, molecular structure)
-- **Red**: #C9364F (CTAs, "EDGE OF RESEARCH" tagline)
+- **Red**: #C9364F (CTAs, accents, hover effects)
 - **Gold**: #E8B341 (Badges, purity tags)
 - **Teal**: #5A8A8F (Accents, hover states)
 - **Grey**: #798996 (Secondary text)
 
 ### Typography
-- **Font**: Urbanist (Google Fonts)
+- **Font**: Urbanist (Google Fonts, line-height: 1.7)
 - **Logo**: VIRACHEM (split: VIRA in navy, CHEM in grey)
-- **Tagline**: EDGE OF RESEARCH
+- **Letter Spacing**: -0.02em on headings for modern look
 
 ## Features
 
+### Core Functionality
 - **Homepage Search Bar**: Prominent catalog search directly from homepage
 - **Product Catalog**: Research chemicals with CAS numbers, molecular weights, purity options, and structure images
 - **Search Functionality**: Real-time search by product name or CAS number (homepage and products page)
-- **Quote System**: Professional quote request system with product pre-fill via URL parameters
+- **Quote System**: Professional quote request system with product pre-fill via URL parameters and toast notifications
 - **Legal Compliance**: GDPR-compliant Privacy Policy, Terms & Conditions, research use disclaimers
 - **Company Pages**: About Us with full registration details and company leadership
+
+### Design & UX
+- **Advanced Animations**: Framer Motion entrance effects, staggered card animations, smooth transitions
+- **Glass-morphism**: Modern frosted glass effects on trust badges and cards
+- **Gradient System**: Professional gradient backgrounds and text effects
+- **Micro-interactions**: Hover lift effects, scale animations, glow effects on cards
+- **Copy-to-Clipboard**: Quick copy functionality for CAS numbers and SMILES strings
+- **Toast Notifications**: Real-time feedback with Sonner for form submissions
+- **Tabs Component**: Organized product information (Overview, Specifications, Documentation)
+- **Certification Badges**: Animated trust indicators (GMP, EU, HPLC-MS, Research Grade)
+
+### Visual Identity
 - **Professional Design**: Clean, scientific aesthetic without emojis or casual elements
 - **Molecular Icon**: Professional molecule.png icon in navigation with VIRACHEM branding
-- **EU Focus**: Registered Croatian business serving European research institutions
+- **EU Focus**: Registered Croatian business serving all EU member states
 
 ## Tech Stack
 
 - **Frontend**: Next.js 14 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS v4, ShadCN UI components
+- **Animations**: Framer Motion (entrance effects, stagger animations)
+- **Notifications**: Sonner (toast notifications)
 - **Backend**: Supabase (PostgreSQL, Row Level Security)
 - **Deployment**: Vercel (frontend), Supabase Cloud (backend)
 - **Tools**: RDKit (Python) for chemical structure SVG generation
@@ -124,18 +139,27 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 virachem-frontend/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              # Homepage with search bar
-│   │   ├── layout.tsx            # Root layout with header & footer
+│   │   ├── page.tsx              # Homepage with search bar & animations
+│   │   ├── layout.tsx            # Root layout with header & Toaster
 │   │   ├── about/page.tsx        # About Us with company details
 │   │   ├── privacy/page.tsx      # GDPR-compliant Privacy Policy
 │   │   ├── terms/page.tsx        # Terms & Conditions
 │   │   ├── products/
-│   │   │   ├── page.tsx          # Product listing with search
-│   │   │   └── [id]/page.tsx     # Product detail page
-│   │   └── quote/page.tsx        # Quote request form
+│   │   │   ├── page.tsx          # Product listing with animated cards
+│   │   │   └── [id]/page.tsx     # Product detail with tabs
+│   │   └── quote/page.tsx        # Quote request with toast feedback
 │   ├── components/
+│   │   ├── animations/
+│   │   │   ├── FadeIn.tsx        # Entrance animation wrapper
+│   │   │   └── StaggerContainer.tsx  # Staggered list animations
+│   │   ├── product/
+│   │   │   ├── PurityBadge.tsx   # Animated purity indicator
+│   │   │   └── CopyButton.tsx    # Copy-to-clipboard button
+│   │   ├── trust/
+│   │   │   ├── CertificationBadges.tsx  # Trust badges component
+│   │   │   └── CredentialsBanner.tsx    # Company credentials display
 │   │   ├── footer.tsx            # Company footer with registration
-│   │   └── ui/                   # ShadCN UI components
+│   │   └── ui/                   # ShadCN UI components (including tabs)
 │   └── lib/
 │       └── supabase.ts           # Supabase client
 ├── public/
@@ -211,8 +235,9 @@ Defined in `src/app/globals.css`:
 - **Full logo**: `public/logo.png` - ViraChem complete logo with molecular structure
 - **Molecule icon**: `public/molecule.png` - Used in navbar and all favicons
 - **Navbar**: Shows molecule icon + "VIRACHEM" text (VIRA = navy, CHEM = grey)
-- **Tagline**: "EDGE OF RESEARCH" in red (#C9364F)
 - **Design Philosophy**: Professional, scientific aesthetic without emojis
+- **Animations**: Subtle, purposeful animations that enhance UX without distraction
+- **Color System**: Gradient overlays and glass-morphism for modern B2B appeal
 
 ### Database Schema
 
