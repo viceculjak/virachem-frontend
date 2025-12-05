@@ -40,6 +40,7 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Company Pages**: About Us with full registration details and company leadership
 
 ### Design & UX
+- **Mobile Hamburger Menu**: Slide-in drawer navigation for mobile devices with backdrop overlay
 - **Advanced Animations**: Framer Motion entrance effects, staggered card animations, smooth transitions
 - **Glass-morphism**: Modern frosted glass effects on trust badges and cards
 - **Gradient System**: Professional gradient backgrounds and text effects
@@ -48,6 +49,7 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Toast Notifications**: Real-time feedback with Sonner for form submissions
 - **Tabs Component**: Organized product information (Overview, Specifications, Documentation)
 - **Certification Badges**: Animated trust indicators (GMP, EU, HPLC-MS, Research Grade)
+- **Responsive Navigation**: Desktop horizontal menu, mobile slide-in drawer
 
 ### Visual Identity
 - **Professional Design**: Clean, scientific aesthetic without emojis or casual elements
@@ -149,6 +151,7 @@ virachem-frontend/
 │   │   │   └── [id]/page.tsx     # Product detail with tabs
 │   │   └── quote/page.tsx        # Quote request with toast feedback
 │   ├── components/
+│   │   ├── Header.tsx            # Responsive header with mobile burger menu
 │   │   ├── animations/
 │   │   │   ├── FadeIn.tsx        # Entrance animation wrapper
 │   │   │   └── StaggerContainer.tsx  # Staggered list animations
