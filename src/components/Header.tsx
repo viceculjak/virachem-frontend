@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
@@ -36,7 +37,14 @@ export default function Header() {
   return (
     <header className="border-b border-gray-100 bg-white sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/molecule.png"
+            alt="ViraChem"
+            width={32}
+            height={32}
+            className="w-8 h-8"
+          />
           <span className="text-[#0B1F3F] font-bold tracking-tighter text-2xl">VIRA</span>
           <span className="text-[#798996] font-bold tracking-tighter text-2xl">CHEM</span>
         </Link>
