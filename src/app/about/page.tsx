@@ -15,9 +15,6 @@ export default function AboutPage() {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mb-12">
           <h1 className="text-5xl font-bold text-dark mb-4">About ViraChem</h1>
-          <p className="text-2xl text-accent-red font-semibold mb-4">
-            EDGE OF RESEARCH
-          </p>
           <p className="text-xl text-gray-700">
             Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
           </p>

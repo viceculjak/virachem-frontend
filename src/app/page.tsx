@@ -29,15 +29,8 @@ export default function Home() {
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Tagline */}
-          <FadeIn direction="down" delay={0.1}>
-            <p className="text-2xl md:text-3xl font-bold gradient-text mb-4">
-              EDGE OF RESEARCH
-            </p>
-          </FadeIn>
-          
-          <FadeIn direction="up" delay={0.2}>
-            <h1 className="text-xl md:text-2xl text-gray-700 mb-6">
+          <FadeIn direction="up" delay={0.1}>
+            <h1 className="text-2xl md:text-3xl font-bold text-dark mb-6">
               Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
             </h1>
           </FadeIn>
@@ -127,9 +120,9 @@ export default function Home() {
               </Card>
               <Card className="border-dark/20 text-center glass-card hover-lift">
                 <CardContent className="pt-6">
-                  <div className="inline-block px-3 py-1 mb-3 text-sm font-semibold text-dark bg-dark/10 rounded">GLOBAL</div>
-                  <h3 className="font-semibold text-dark mb-1">International</h3>
-                  <p className="text-sm text-gray-600">Serving EU and worldwide</p>
+                  <div className="inline-block px-3 py-1 mb-3 text-sm font-semibold text-accent-teal bg-accent-teal/10 rounded">EU</div>
+                  <h3 className="font-semibold text-dark mb-1">European Market</h3>
+                  <p className="text-sm text-gray-600">Serving all EU member states</p>
                 </CardContent>
               </Card>
             </StaggerContainer>
