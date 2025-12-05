@@ -15,6 +15,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { toast } from 'sonner';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 type Product = {
   id: string;
@@ -77,6 +79,8 @@ function QuotePageContent() {
     setError(null);
 
     try {
+      toast.loading('Submitting your quote request...', { id: 'quote-submit' });
+      
       const { error: submitError } = await supabase.from('quote_requests').insert([
         {
           ...formData,
@@ -86,9 +90,12 @@ function QuotePageContent() {
 
       if (submitError) throw submitError;
 
+      toast.success('Quote request submitted successfully! We\'ll contact you within 24-48 hours.', { id: 'quote-submit', duration: 5000 });
       setSubmitted(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to submit quote request');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to submit quote request';
+      setError(errorMessage);
+      toast.error(errorMessage, { id: 'quote-submit' });
       console.error('Error submitting quote:', err);
     } finally {
       setLoading(false);
