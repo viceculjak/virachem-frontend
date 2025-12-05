@@ -300,7 +300,7 @@ function QuotePageContent() {
                   value={formData.formulation_requirements}
                   onChange={(e) => setFormData({ ...formData, formulation_requirements: e.target.value })}
                   placeholder="e.g., specific excipients, lyophilization parameters, packaging specifications..."
-                  className="w-full min-h-[80px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  className="w-full min-h-[80px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 text-base"
                 />
               </div>
 
@@ -311,7 +311,7 @@ function QuotePageContent() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Any additional requirements, shipping instructions, or questions..."
-                  className="w-full min-h-[80px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  className="w-full min-h-[80px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 text-base"
                 />
               </div>
 
