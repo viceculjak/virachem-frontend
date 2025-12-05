@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
-import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/footer";
 import { Toaster } from "sonner";
@@ -53,51 +52,6 @@ export default function RootLayout({
           <Footer />
         </div>
         <Toaster position="top-right" />
-        
-        {/* Google Translate Widget */}
-        <Script id="google-translate-init" strategy="afterInteractive">
-                    {`
-                      function googleTranslateElementInit() {
-                        // Desktop widget
-                        new google.translate.TranslateElement({
-                          pageLanguage: 'en',
-                          includedLanguages: 'hr,de,fr,it,es,pl,sl,cs,sk,hu',
-                          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                          autoDisplay: false
-                        }, 'google_translate_element');
-                        
-                        // Mobile widget
-                        new google.translate.TranslateElement({
-                          pageLanguage: 'en',
-                          includedLanguages: 'hr,de,fr,it,es,pl,sl,cs,sk,hu',
-                          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                          autoDisplay: false
-                        }, 'google_translate_element_mobile');
-                        
-                        // Force styling after widgets load
-                        setTimeout(function() {
-                          // Style all translate dropdowns
-                          var selects = document.querySelectorAll('.goog-te-combo');
-                          selects.forEach(function(select) {
-                            select.style.border = '1px solid #d1d5db';
-                            select.style.borderRadius = '0.375rem';
-                            select.style.padding = '0.5rem 0.75rem';
-                            select.style.fontSize = '0.875rem';
-                            select.style.fontFamily = 'var(--font-urbanist), sans-serif';
-                            select.style.color = '#0B1F3F';
-                            select.style.backgroundColor = '#FFFFFF';
-                            select.style.cursor = 'pointer';
-                            select.style.minHeight = '36px';
-                            select.style.width = '100%';
-                          });
-                        }, 500);
-                      }
-                    `}
-        </Script>
-        <Script 
-          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

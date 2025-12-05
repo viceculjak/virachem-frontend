@@ -52,10 +52,6 @@ export default function Header() {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          {/* Google Translate Widget */}
-          <div id="google_translate_element" className="inline-block"></div>
-          
-          {/* Navigation Links */}
           <Link href="/about" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
             About
           </Link>
@@ -125,12 +121,6 @@ export default function Header() {
                 >
                   Contact
                 </Link>
-                
-                {/* Google Translate Widget - Mobile */}
-                <div className="pt-4 border-t border-gray-100">
-                  <p className="text-xs text-[#798996] mb-2 uppercase tracking-wider">Language</p>
-                  <div id="google_translate_element_mobile"></div>
-                </div>
               </nav>
 
               {/* Request Quote Button */}
