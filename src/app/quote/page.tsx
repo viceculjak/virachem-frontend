@@ -116,7 +116,7 @@ function QuotePageContent() {
             <CardContent>
               <p className="text-gray-700 mb-4">
                 We have received your quote request and will contact you at{' '}
-                <span className="font-semibold break-all">{formData.email}</span> within 24-48 hours.
+                <span className="font-semibold break-words">{formData.email}</span> within 24-48 hours.
               </p>
               <p className="text-gray-600 text-sm mb-6">
                 Our team will provide you with detailed pricing, availability, and shipping information.
@@ -155,7 +155,7 @@ function QuotePageContent() {
                     Requesting Quote for: {product.name}
                   </h2>
                   <div className="space-y-1 text-sm text-gray-600">
-                    <p className="break-all"><span className="font-medium">CAS:</span> {product.cas}</p>
+                    <p className="break-words"><span className="font-medium">CAS:</span> {product.cas}</p>
                     <p className="break-words"><span className="font-medium">Molecular Weight:</span> {product.mw}</p>
                     {product.purity_options && product.purity_options.length > 0 && (
                       <div className="flex items-center gap-2 mt-2">
@@ -192,7 +192,7 @@ function QuotePageContent() {
               provides custom peptide production with HPLC-MS verification. Specify your requirements below for batch 
               production from milligram to multi-gram scale.
               <br /><br />
-              <span className="text-sm break-all">Prefer email? Send your requirements directly to: <strong>quotes@virachemical.com</strong></span>
+              <span className="text-sm break-words">Prefer email? Send your requirements directly to: <strong>quotes@virachemical.com</strong></span>
             </CardDescription>
           </CardHeader>
           <CardContent>

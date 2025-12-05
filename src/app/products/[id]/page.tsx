@@ -109,7 +109,7 @@ export default function ProductDetailPage() {
                 {product.smiles && (
                   <div className="mt-4 p-3 bg-gray-100 rounded">
                     <p className="text-xs font-semibold text-gray-700 mb-1">SMILES:</p>
-                    <p className="text-sm font-mono text-gray-800 break-all">{product.smiles}</p>
+                    <p className="text-sm font-mono text-gray-800 break-words">{product.smiles}</p>
                   </div>
                 )}
               </CardContent>

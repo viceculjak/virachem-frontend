@@ -120,7 +120,8 @@ function ProductsPageContent() {
             {products.map((product) => (
               <Link key={product.id} href={`/products/${product.id}`}>
                 <Card className="h-full hover:border-gray-300 transition-colors cursor-pointer border-gray-200 bg-white">
-                  <CardHeader>
+                  {/* Desktop view with image */}
+                  <CardHeader className="hidden md:block">
                     <div className="w-full h-48 flex items-center justify-center bg-gray-50 rounded-md mb-4">
                       {product.image_url ? (
                         <img
@@ -132,14 +133,21 @@ function ProductsPageContent() {
                         <div className="text-gray-400 text-sm">No structure available</div>
                       )}
                     </div>
-                    <CardTitle className="text-base md:text-xl text-[#0B1F3F]">{product.name}</CardTitle>
+                    <CardTitle className="text-xl text-[#0B1F3F] break-words">{product.name}</CardTitle>
                   </CardHeader>
+                  
+                  {/* Mobile view without image */}
+                  <CardHeader className="md:hidden pb-3">
+                    <CardTitle className="text-sm text-[#0B1F3F] break-words leading-tight">{product.name}</CardTitle>
+                  </CardHeader>
+                  
                   <CardContent>
-                    <div className="space-y-3">
+                    {/* Desktop view - full details */}
+                    <div className="hidden md:block space-y-3">
                       <div>
                         <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">CAS Number</span>
                         <div className="mt-1">
-                          <span className="inline-flex items-center px-3 py-1 rounded-md bg-gray-100 border border-gray-200 text-[#0B1F3F] font-mono text-sm">
+                          <span className="inline-flex items-center px-3 py-1 rounded-md bg-gray-100 border border-gray-200 text-[#0B1F3F] font-mono text-sm break-words">
                             {product.cas}
                           </span>
                         </div>
@@ -166,9 +174,15 @@ function ProductsPageContent() {
                         </div>
                       )}
                     </div>
-                    <div className="mt-4 text-right">
-                      <span className="text-sm text-[#C9364F] hover:underline">
-                        Request Quote →
+                    
+                    {/* Mobile view - simple CAS only */}
+                    <div className="md:hidden">
+                      <div className="text-xs text-gray-500 mb-1">CAS: <span className="font-mono text-[#0B1F3F] break-words">{product.cas}</span></div>
+                    </div>
+                    
+                    <div className="mt-3 md:mt-4 text-right">
+                      <span className="text-xs md:text-sm text-[#C9364F] hover:underline">
+                        View →
                       </span>
                     </div>
                   </CardContent>
