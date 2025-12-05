@@ -51,7 +51,11 @@ export default function Header() {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex items-center space-x-6">
+          {/* Google Translate Widget */}
+          <div id="google_translate_element" className="inline-block"></div>
+          
+          {/* Navigation Links */}
           <Link href="/about" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
             About
           </Link>
