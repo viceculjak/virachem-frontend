@@ -107,10 +107,29 @@ export default function ProductDetailPage() {
                   />
                 </div>
                 {product.smiles && (
-                  <div className="mt-4 p-3 bg-gray-100 rounded">
-                    <p className="text-xs font-semibold text-gray-700 mb-1">SMILES:</p>
-                    <p className="text-sm font-mono text-gray-800 break-words">{product.smiles}</p>
-                  </div>
+                  <>
+                    {/* Desktop - always show SMILES */}
+                    <div className="hidden md:block mt-4 p-3 bg-gray-100 rounded">
+                      <p className="text-xs font-semibold text-gray-700 mb-1">SMILES:</p>
+                      <p className="text-sm font-mono text-gray-800 break-words">{product.smiles}</p>
+                    </div>
+                    
+                    {/* Mobile - show SMILES button */}
+                    <div className="md:hidden mt-4">
+                      <details className="group">
+                        <summary className="cursor-pointer list-none">
+                          <div className="p-3 bg-gray-100 rounded hover:bg-gray-200 transition-colors">
+                            <p className="text-xs font-semibold text-gray-700">
+                              Show SMILES <span className="group-open:rotate-180 inline-block transition-transform">▼</span>
+                            </p>
+                          </div>
+                        </summary>
+                        <div className="mt-2 p-3 bg-gray-100 rounded">
+                          <p className="text-sm font-mono text-gray-800 break-words">{product.smiles}</p>
+                        </div>
+                      </details>
+                    </div>
+                  </>
                 )}
               </CardContent>
             </Card>

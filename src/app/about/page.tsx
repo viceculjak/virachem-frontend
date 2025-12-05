@@ -267,15 +267,19 @@ export default function AboutPage() {
             <Card className="border-dark/20">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-dark text-white flex items-center justify-center text-2xl font-bold">
-                    VC
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">
+                    {/* Place founder image at public/team/vice-culjak.jpg */}
+                    <img
+                      src="/team/vice-culjak.jpg"
+                      alt="Vice Čuljak"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-dark">Vice Čuljak</h3>
                     <p className="text-accent-red font-semibold mb-2">Founder & Director</p>
                     <p className="text-gray-700 mb-3">
-                      With expertise in finance, biotechnology, and pharmaceutical research, Vice founded ViraChem to 
-                      provide European researchers with reliable access to cutting-edge research compounds.
+                      Vice founded ViraChem to facilitate European researchers and companies' access to GMP-aligned peptide manufacturing and high-purity research compounds.
                     </p>
                     <p className="text-sm text-gray-600">
                       OIB: 27422906923 | Split, Croatia

@@ -32,7 +32,7 @@ export default function PartnerGrid() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12"
+        className="grid grid-cols-3 gap-8 md:gap-12"
       >
         {partners.map((partner, i) => (
           <motion.div
