@@ -104,7 +104,7 @@ function QuotePageContent() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-background p-8">
+      <div className="min-h-screen bg-background p-4 md:p-8">
         <div className="container mx-auto max-w-2xl">
           <Card className="border-accent-teal/20">
             <CardHeader>
@@ -116,17 +116,17 @@ function QuotePageContent() {
             <CardContent>
               <p className="text-gray-700 mb-4">
                 We have received your quote request and will contact you at{' '}
-                <span className="font-semibold">{formData.email}</span> within 24-48 hours.
+                <span className="font-semibold break-all">{formData.email}</span> within 24-48 hours.
               </p>
               <p className="text-gray-600 text-sm mb-6">
                 Our team will provide you with detailed pricing, availability, and shipping information.
               </p>
-              <div className="flex gap-4">
-                <Link href="/products">
-                  <Button variant="outline">Browse More Products</Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/products" className="flex-1">
+                  <Button variant="outline" className="w-full">Browse More Products</Button>
                 </Link>
-                <Link href="/">
-                  <Button>Return to Home</Button>
+                <Link href="/" className="flex-1">
+                  <Button className="w-full">Return to Home</Button>
                 </Link>
               </div>
             </CardContent>
@@ -137,7 +137,7 @@ function QuotePageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="container mx-auto max-w-2xl">
         <Link href="/products">
           <Button variant="ghost" className="mb-4">
@@ -151,12 +151,12 @@ function QuotePageContent() {
             <CardContent className="pt-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-dark mb-2">
+                  <h2 className="text-lg md:text-xl font-semibold text-dark mb-2 break-words">
                     Requesting Quote for: {product.name}
                   </h2>
                   <div className="space-y-1 text-sm text-gray-600">
-                    <p><span className="font-medium">CAS:</span> {product.cas}</p>
-                    <p><span className="font-medium">Molecular Weight:</span> {product.mw}</p>
+                    <p className="break-all"><span className="font-medium">CAS:</span> {product.cas}</p>
+                    <p className="break-words"><span className="font-medium">Molecular Weight:</span> {product.mw}</p>
                     {product.purity_options && product.purity_options.length > 0 && (
                       <div className="flex items-center gap-2 mt-2">
                         <span className="font-medium">Available Purities:</span>
@@ -186,13 +186,13 @@ function QuotePageContent() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-3xl text-dark">Request a Quote</CardTitle>
+            <CardTitle className="text-2xl md:text-3xl text-dark">Request a Quote</CardTitle>
             <CardDescription>
               GMP-aligned contract manufacturing with flexible formulation options. Our Poland-based synthesis facility 
               provides custom peptide production with HPLC-MS verification. Specify your requirements below for batch 
               production from milligram to multi-gram scale.
               <br /><br />
-              <span className="text-sm">Prefer email? Send your requirements directly to: <strong>quotes@virachemical.com</strong></span>
+              <span className="text-sm break-all">Prefer email? Send your requirements directly to: <strong>quotes@virachemical.com</strong></span>
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -240,7 +240,7 @@ function QuotePageContent() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="quantity">Batch Quantity (mg/g) *</Label>
                   <Input
@@ -337,7 +337,7 @@ function QuotePageContent() {
 export default function QuotePage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-background p-8">
+      <div className="min-h-screen bg-background p-4 md:p-8">
         <div className="container mx-auto max-w-2xl">
           <p className="text-gray-600">Loading quote form...</p>
         </div>
