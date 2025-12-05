@@ -72,7 +72,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Search by product name or CAS number..."
-          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0B1F3F] text-[#0B1F3F]"
+          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0B1F3F] text-[#0B1F3F] text-base placeholder:text-sm md:placeholder:text-base"
         />
       </div>
       

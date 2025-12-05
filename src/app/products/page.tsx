@@ -99,7 +99,7 @@ function ProductsPageContent() {
               placeholder="Search by name or CAS number..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full"
+              className="w-full placeholder:text-sm md:placeholder:text-base"
             />
             {searchQuery && (
               <p className="text-sm text-gray-500 mt-2">
