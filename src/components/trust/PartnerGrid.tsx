@@ -4,14 +4,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const partners = [
-  { name: 'Max Planck Society', logo: '/partners/max-planck.svg' },
-  { name: 'Karolinska Institutet', logo: '/partners/karolinska.svg' },
-  { name: 'CNRS', logo: '/partners/cnrs.svg' },
-  { name: 'ETH Zurich', logo: '/partners/eth.svg' },
-  { name: 'EMBL', logo: '/partners/embl.svg' },
-  { name: 'Cracow University of Technology', logo: '/partners/cracow.svg' },
-  { name: 'University of Copenhagen', logo: '/partners/copenhagen.svg' },
-  { name: 'Helmholtz Association', logo: '/partners/helmholtz.svg' },
+  { name: 'BioLab', logo: '/partners/biolab.jpg' },
+  { name: 'BIOWELL Labs', logo: '/partners/BIOWELLlabs.svg' },
+  { name: 'MOC Research Labs', logo: '/partners/mocresearchlabs.png' },
 ];
 
 const container = {
@@ -37,7 +32,7 @@ export default function PartnerGrid() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12"
       >
         {partners.map((partner, i) => (
           <motion.div
