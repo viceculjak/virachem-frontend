@@ -29,7 +29,7 @@ export default function Footer() {
             <Instagram className="w-5 h-5" />
           </a>
           <a
-            href="https://www.linkedin.com/in/vice-culjak/"
+            href="https://linkedin.com/company/virachemical"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#798996] hover:text-[#0B1F3F] transition-colors"
