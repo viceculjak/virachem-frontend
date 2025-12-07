@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Linkedin } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -281,6 +282,15 @@ export default function AboutPage() {
                     <p className="text-gray-700 mb-3">
                       Vice founded ViraChem to facilitate European researchers and companies' access to GMP-aligned peptide manufacturing and high-purity research compounds.
                     </p>
+                    <a 
+                      href="https://www.linkedin.com/in/vice-culjak/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[#0077B5] hover:text-[#0077B5]/80 transition-colors mb-3"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      <span className="text-sm font-medium">Connect on LinkedIn</span>
+                    </a>
                     <p className="text-sm text-gray-600">
                       OIB: 27422906923 | Split, Croatia
                     </p>
