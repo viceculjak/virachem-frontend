@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS quote_requests (
   quantity INT NOT NULL,
   vial_size TEXT NOT NULL,
   purity TEXT NOT NULL,
+  formulation_requirements TEXT,
   message TEXT,
   status TEXT DEFAULT 'new',
   created_at TIMESTAMPTZ DEFAULT NOW()
