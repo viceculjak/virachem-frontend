@@ -1,8 +1,8 @@
-# MCP Setup Guide for Virachem Development
+# MCP Setup Guide for ViraChem Development
 
 ## What is MCP?
 
-Model Context Protocol (MCP) is a way for AI assistants like Cursor to interact with external tools and services. For Virachem, we can use MCP to enhance AI-assisted development.
+Model Context Protocol (MCP) is a way for AI assistants like Cursor to interact with external tools and services. For ViraChem, we can use MCP to enhance AI-assisted development.
 
 ## Important Note
 
@@ -54,7 +54,7 @@ Create `.cursorrules` file in your project root to give Cursor context about you
 
 ---
 
-## How to Use Cursor AI Effectively for Virachem
+## How to Use Cursor AI Effectively for ViraChem
 
 ### For Adding ShadCN Components:
 ```
@@ -134,7 +134,7 @@ Add to `~/.cursor/config.json`:
 
 ## Practical AI-Assisted Development Workflow
 
-Here's how to effectively use Cursor AI to continue building Virachem:
+Here's how to effectively use Cursor AI to continue building ViraChem:
 
 ### 1. Adding New Features
 ```

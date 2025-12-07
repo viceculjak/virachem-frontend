@@ -401,7 +401,7 @@ See `SETUP-VERIFICATION.md` for detailed deployment instructions to Vercel.
 
 ## Feature Highlights
 
-Your Virachem app now includes:
+Your ViraChem app now includes:
 
 **Complete Product Catalog**
 - Beautiful product cards with structure images

@@ -1,6 +1,6 @@
-# Virachem Setup Verification Checklist
+# ViraChem Setup Verification Checklist
 
-This document helps you verify that your Virachem project is configured correctly and ready to run.
+This document helps you verify that your ViraChem project is configured correctly and ready to run.
 
 ## Environment Variables
 
@@ -259,5 +259,5 @@ If you encounter issues:
 ---
 
 **Last Updated**: December 4, 2025
-**Project**: Virachem Research Chemical Catalog
+**Project**: ViraChem Research Chemical Catalog
 **Tech Stack**: Next.js 14 + Supabase + TailwindCSS + ShadCN UI

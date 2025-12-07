@@ -119,7 +119,7 @@ function QuotePageContent() {
             <CardHeader>
               <CardTitle className="text-2xl text-accent-teal">Quote Request Submitted!</CardTitle>
               <CardDescription>
-                Thank you for your interest in Virachem research chemicals.
+                Thank you for your interest in ViraChem research chemicals.
               </CardDescription>
             </CardHeader>
             <CardContent>
