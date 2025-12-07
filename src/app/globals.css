@@ -13,6 +13,8 @@
   /* Standard Tailwind Colors Override */
   --color-background: #FAFAFA;
   --color-foreground: #0B1F3F;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #0B1F3F;
   
   /* Spacing & Typography */
   --font-family-sans: var(--font-urbanist), system-ui, sans-serif;
