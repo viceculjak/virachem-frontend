@@ -181,13 +181,13 @@ export default function AboutPage() {
                             <span className="text-sm">Follow us on Instagram</span>
                           </a>
                           <a
-                            href="https://www.linkedin.com/in/vice-culjak/"
+                            href="https://linkedin.com/company/virachemical"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 text-gray-700 hover:text-[#0B1F3F] transition-colors"
                           >
                             <Linkedin className="w-5 h-5" />
-                            <span className="text-sm">Connect on LinkedIn</span>
+                            <span className="text-sm">Follow us on LinkedIn</span>
                           </a>
                         </div>
                       </div>
