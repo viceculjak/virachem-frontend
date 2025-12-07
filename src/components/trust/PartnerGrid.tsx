@@ -7,6 +7,7 @@ const partners = [
   { name: 'BioLab', logo: '/partners/biolab.jpg' },
   { name: 'BIOWELL Labs', logo: '/partners/BIOWELLlabs.svg' },
   { name: 'MOC Research Labs', logo: '/partners/mocresearchlabs.png' },
+  { name: 'API Lab', logo: '/partners/apilab.webp' },
 ];
 
 const container = {
@@ -32,7 +33,7 @@ export default function PartnerGrid() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid grid-cols-3 gap-8 md:gap-12"
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
       >
         {partners.map((partner, i) => (
           <motion.div
