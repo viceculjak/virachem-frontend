@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Linkedin } from 'lucide-react';
+import { Linkedin, Facebook, Instagram } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -158,6 +158,38 @@ export default function AboutPage() {
                       <div>
                         <p className="text-sm font-semibold text-gray-600">Response Time</p>
                         <p className="text-gray-700">Quote requests: 24-48 hours</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-600 mb-2">Connect With Us</p>
+                        <div className="space-y-2">
+                          <a
+                            href="https://facebook.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-gray-700 hover:text-[#0B1F3F] transition-colors"
+                          >
+                            <Facebook className="w-5 h-5" />
+                            <span className="text-sm">Follow us on Facebook</span>
+                          </a>
+                          <a
+                            href="https://instagram.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-gray-700 hover:text-[#0B1F3F] transition-colors"
+                          >
+                            <Instagram className="w-5 h-5" />
+                            <span className="text-sm">Follow us on Instagram</span>
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/vice-culjak/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-gray-700 hover:text-[#0B1F3F] transition-colors"
+                          >
+                            <Linkedin className="w-5 h-5" />
+                            <span className="text-sm">Connect on LinkedIn</span>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

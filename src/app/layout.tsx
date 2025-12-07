@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <Toaster position="top-right" />
+        <WhatsAppButton />
       </body>
     </html>
   );
