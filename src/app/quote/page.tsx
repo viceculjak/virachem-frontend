@@ -81,14 +81,23 @@ function QuotePageContent() {
     try {
       toast.loading('Submitting your quote request...', { id: 'quote-submit' });
       
-      const { error: submitError } = await supabase.from('quote_requests').insert([
-        {
-          ...formData,
-          quantity: parseInt(formData.quantity),
+      // Call API route instead of direct Supabase insert
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      ]);
+        body: JSON.stringify({
+          ...formData,
+          quantity: formData.quantity, // API will parse to int
+        }),
+      });
 
-      if (submitError) throw submitError;
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to submit quote request');
+      }
 
       toast.success('Quote request submitted successfully! We\'ll contact you within 24-48 hours.', { id: 'quote-submit', duration: 5000 });
       setSubmitted(true);
