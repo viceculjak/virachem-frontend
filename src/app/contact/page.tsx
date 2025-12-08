@@ -22,11 +22,28 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate form submission (you can connect to API later)
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
       setSubmitted(true);
-    }, 1000);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      alert('Failed to send message. Please try again or contact us directly at info@virachemical.com');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,7 +62,7 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-lg text-gray-700">
-              Thank you for contacting ViraChem. We have received your message and will respond within 24-48 hours.
+              Thank you for contacting ViraChem. We have received your message and will respond at {formData.email} within 24-48 hours.
             </p>
             <div className="flex gap-4">
               <Link href="/" className="flex-1">
@@ -202,8 +219,8 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold text-dark">Address</p>
                       <p className="text-gray-700">
-                        Varaždinska 10<br />
-                        40000 Čakovec<br />
+                        Pujanke 24A<br />
+                        21000 Split<br />
                         Croatia, European Union
                       </p>
                     </div>
@@ -243,7 +260,7 @@ export default function ContactPage() {
                 <CardContent>
                   <div className="flex gap-4">
                     <a 
-                      href="https://www.linkedin.com/company/virachem" 
+                      href="https://www.linkedin.com/company/virachemical" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
@@ -261,7 +278,7 @@ export default function ContactPage() {
                       <Facebook className="w-6 h-6 text-[#1877F2]" />
                     </a>
                     <a 
-                      href="https://instagram.com/virachem" 
+                      href="https://www.instagram.com/virachemical/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"

@@ -146,7 +146,7 @@ export default function QualityPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span><strong>Location:</strong> Varaždinska 10, 40000 Čakovec, Croatia</span>
+                    <span><strong>Location:</strong> Pujanke 24A, 21000 Split, Croatia</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>

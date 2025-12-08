@@ -172,7 +172,7 @@ export default function AboutPage() {
                             <span className="text-sm">Follow us on Facebook</span>
                           </a>
                           <a
-                            href="https://instagram.com"
+                            href="https://www.instagram.com/virachemical/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 text-gray-700 hover:text-[#0B1F3F] transition-colors"
@@ -181,7 +181,7 @@ export default function AboutPage() {
                             <span className="text-sm">Follow us on Instagram</span>
                           </a>
                           <a
-                            href="https://linkedin.com/company/virachemical"
+                            href="https://www.linkedin.com/company/virachemical"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 text-gray-700 hover:text-[#0B1F3F] transition-colors"

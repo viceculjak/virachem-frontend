@@ -42,7 +42,7 @@ export default function Footer() {
             <Facebook className="w-5 h-5" />
           </a>
           <a
-            href="https://instagram.com/virachem"
+            href="https://www.instagram.com/virachemical/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#798996] hover:text-[#0B1F3F] transition-colors"
@@ -51,7 +51,7 @@ export default function Footer() {
             <Instagram className="w-5 h-5" />
           </a>
           <a
-            href="https://linkedin.com/company/virachemical"
+            href="https://www.linkedin.com/company/virachemical"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#798996] hover:text-[#0B1F3F] transition-colors"
