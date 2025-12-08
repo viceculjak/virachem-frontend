@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Toaster } from "sonner";
+import LayoutWrapper from "@/components/LayoutWrapper";
 import "./globals.css";
 
 const urbanist = Urbanist({
@@ -47,11 +48,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${urbanist.variable} antialiased`}>
-        <div className="h-screen bg-background flex flex-col overflow-hidden">
+        <LayoutWrapper>
           <Header />
-          <main className="flex-1 overflow-auto">{children}</main>
+          <main>{children}</main>
           <Footer />
-        </div>
+        </LayoutWrapper>
         <Toaster position="top-right" />
         <WhatsAppButton />
       </body>
