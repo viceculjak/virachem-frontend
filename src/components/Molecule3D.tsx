@@ -72,7 +72,7 @@ const bonds = [
 function CameraResetter({ controlsRef }: { controlsRef: React.RefObject<any> }) {
   const isInteracting = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const initialPosition = useRef(new THREE.Vector3(0, 0, 12));
+  const initialPosition = useRef(new THREE.Vector3(0, 0, 14));
   
   useEffect(() => {
     if (controlsRef.current) {
