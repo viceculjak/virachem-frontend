@@ -132,10 +132,10 @@ function QuotePageContent() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/products" className="flex-1">
-                  <Button variant="outline" className="w-full">Browse More Products</Button>
+                  <Button variant="outline" className="w-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200">Browse More Products</Button>
                 </Link>
                 <Link href="/" className="flex-1">
-                  <Button className="w-full">Return to Home</Button>
+                  <Button className="w-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200">Return to Home</Button>
                 </Link>
               </div>
             </CardContent>
@@ -326,7 +326,7 @@ function QuotePageContent() {
 
               <Button
                 type="submit"
-                className="w-full bg-accent-red hover:bg-accent-red/90 text-white"
+                className="w-full bg-accent-red hover:bg-accent-red/90 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 font-semibold"
                 disabled={loading}
               >
                 {loading ? 'Submitting...' : 'Submit Quote Request'}

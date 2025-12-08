@@ -181,7 +181,7 @@ function ProductsPageContent() {
                     </div>
                     
                     <div className="mt-3 md:mt-4 text-right">
-                      <span className="text-xs md:text-sm text-[#C9364F] hover:underline">
+                      <span className="inline-flex items-center text-xs md:text-sm font-semibold text-white bg-[#C9364F] px-3 py-1.5 rounded shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200">
                         View →
                       </span>
                     </div>

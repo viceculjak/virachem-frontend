@@ -241,7 +241,7 @@ export default function ProductDetailPage() {
           <div className="text-center py-6">
             <Link 
               href={`/quote?product_id=${product.id}`}
-              className="text-[#C9364F] hover:underline font-medium"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#C9364F] rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
             >
               Request Quote for {product.name} →
             </Link>

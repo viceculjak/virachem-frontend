@@ -81,8 +81,8 @@ export default function ServicesGrid() {
             </p>
             <Link
               href={service.link}
-              className="inline-flex items-center justify-center text-sm font-medium transition-colors mt-auto"
-              style={{ color: service.color }}
+              className="inline-flex items-center justify-center text-sm font-semibold px-4 py-2.5 rounded-md shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105 mt-auto text-white"
+              style={{ backgroundColor: service.color }}
             >
               {service.linkText} →
             </Link>
