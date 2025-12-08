@@ -68,28 +68,53 @@ const bonds = [
   { from: 0, to: 5 },
 ];
 
-// Molecule group with subtle breathing/vibration animation
+// Molecule group with subtle breathing/vibration animation and return to origin
 function MoleculeGroup({ 
-  isMobile, 
+  isMobile,
+  isUserInteracting,
   children 
 }: { 
-  isMobile: boolean; 
+  isMobile: boolean;
+  isUserInteracting: boolean;
   children: React.ReactNode;
 }) {
   const groupRef = useRef<THREE.Group>(null);
+  const targetRotation = useRef(new THREE.Euler(0, 0, 0));
   
   useFrame((state) => {
     if (groupRef.current) {
       const time = state.clock.getElapsedTime();
       
-      // Subtle rotation vibration on mobile, very gentle on desktop
       if (isMobile) {
         // Mobile: gentle continuous rotation
         groupRef.current.rotation.y = time * 0.15;
       } else {
-        // Desktop: subtle breathing/vibration effect
-        groupRef.current.rotation.x = Math.sin(time * 0.5) * 0.05;
-        groupRef.current.rotation.y = Math.sin(time * 0.3) * 0.05;
+        // Desktop: slowly return to starting position when not interacting
+        if (!isUserInteracting) {
+          // Gradually lerp back to origin (very slow)
+          groupRef.current.rotation.x = THREE.MathUtils.lerp(
+            groupRef.current.rotation.x,
+            targetRotation.current.x,
+            0.02
+          );
+          groupRef.current.rotation.y = THREE.MathUtils.lerp(
+            groupRef.current.rotation.y,
+            targetRotation.current.y,
+            0.02
+          );
+          groupRef.current.rotation.z = THREE.MathUtils.lerp(
+            groupRef.current.rotation.z,
+            targetRotation.current.z,
+            0.02
+          );
+        }
+        
+        // Add subtle breathing/vibration effect on top
+        const breathX = Math.sin(time * 0.5) * 0.05;
+        const breathY = Math.sin(time * 0.3) * 0.05;
+        
+        groupRef.current.rotation.x += breathX * 0.3;
+        groupRef.current.rotation.y += breathY * 0.3;
       }
     }
   });
@@ -101,6 +126,7 @@ export default function Molecule3D() {
   const [isMobile, setIsMobile] = useState(false);
   const [search, setSearch] = useState('');
   const [searchVisible, setSearchVisible] = useState(true);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
   
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -155,11 +181,13 @@ export default function Molecule3D() {
           enablePan={false}
           maxDistance={15}
           minDistance={8}
+          onStart={() => setIsUserInteracting(true)}
+          onEnd={() => setIsUserInteracting(false)}
         />
       )}
       
       {/* Molecule structure with subtle breathing animation */}
-      <MoleculeGroup isMobile={isMobile}>
+      <MoleculeGroup isMobile={isMobile} isUserInteracting={isUserInteracting}>
         {/* Draw bonds first (appear behind nodes) */}
         {bonds.map((bond, index) => (
           <MoleculeBond
