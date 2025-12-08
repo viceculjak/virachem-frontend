@@ -244,18 +244,19 @@ export default function Molecule3D() {
           />
         ))}
         
-        {/* Search bar positioned at center - desktop only */}
-        {searchVisible && !isMobile && (
+        {/* Search bar positioned at center - both mobile and desktop */}
+        {searchVisible && (
           <Html 
             position={[0, 0, 0]} 
             center 
-            distanceFactor={5}
+            distanceFactor={isMobile ? 10 : 5}
             zIndexRange={[100, 0]}
           >
             <div 
               className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-3" 
               style={{ 
-                width: '380px'
+                width: isMobile ? '280px' : '380px',
+                maxWidth: '90vw'
               }}
             >
               <SearchBar value={search} onChange={setSearch} />
