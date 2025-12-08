@@ -82,8 +82,10 @@ export default function Molecule3D() {
   }, []);
   
   const handleNodeClick = (service: string) => {
+    console.log('Node clicked:', service, 'searchVisible:', searchVisible);
     if (service === 'search') {
       setSearchVisible(!searchVisible);
+      console.log('Toggled searchVisible to:', !searchVisible);
       return;
     }
     router.push(`/${service}`);
@@ -145,21 +147,25 @@ export default function Molecule3D() {
         ))}
         
         {/* Search bar positioned at center */}
-        {searchVisible && (
-          <Html 
-            position={[0, 0, 0]} 
-            center 
-            distanceFactor={isMobile ? 8 : 6}
-            style={{ pointerEvents: 'none' }}
+        <Html 
+          position={[0, 0, 0]} 
+          center 
+          distanceFactor={isMobile ? 8 : 6}
+          style={{ pointerEvents: 'none' }}
+        >
+          <div 
+            className="pointer-events-auto bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border-2 border-[#5A8A8F] p-2 transition-opacity duration-300" 
+            style={{ 
+              width: isMobile ? '280px' : '400px', 
+              maxWidth: '90vw',
+              opacity: searchVisible ? 1 : 0,
+              pointerEvents: searchVisible ? 'auto' : 'none',
+              transform: searchVisible ? 'scale(1)' : 'scale(0.9)'
+            }}
           >
-            <div 
-              className="pointer-events-auto bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border-2 border-[#5A8A8F] p-2" 
-              style={{ width: isMobile ? '280px' : '400px', maxWidth: '90vw' }}
-            >
-              <SearchBar value={search} onChange={setSearch} />
-            </div>
-          </Html>
-        )}
+            <SearchBar value={search} onChange={setSearch} />
+          </div>
+        </Html>
       </group>
     </Canvas>
   );

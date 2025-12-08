@@ -43,12 +43,18 @@ export default function MoleculeNode({
       {/* Main sphere */}
       <mesh
         ref={meshRef}
-        onClick={() => onClick?.(service)}
-        onPointerOver={() => {
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log('Mesh clicked:', service);
+          onClick?.(service);
+        }}
+        onPointerOver={(e) => {
+          e.stopPropagation();
           setHovered(true);
           document.body.style.cursor = 'pointer';
         }}
-        onPointerOut={() => {
+        onPointerOut={(e) => {
+          e.stopPropagation();
           setHovered(false);
           document.body.style.cursor = 'auto';
         }}
