@@ -279,11 +279,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
-export default function ContactPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-background" />}>
-      <ContactPage />
-    </Suspense>
-  );
-}
