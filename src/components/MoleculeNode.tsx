@@ -13,7 +13,6 @@ interface MoleculeNodeProps {
   service: string;
   isCenter?: boolean;
   onClick?: (service: string) => void;
-  children?: React.ReactNode;
 }
 
 export default function MoleculeNode({ 
@@ -23,8 +22,7 @@ export default function MoleculeNode({
   title,
   service,
   isCenter = false,
-  onClick,
-  children
+  onClick
 }: MoleculeNodeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
@@ -77,34 +75,29 @@ export default function MoleculeNode({
         </mesh>
       )}
       
-      {/* Label for satellite nodes */}
-      {!isCenter && (
-        <Html
-          center
-          distanceFactor={8}
-          position={[0, size + 0.5, 0]}
+      {/* Label for all nodes */}
+      <Html
+        center
+        distanceFactor={8}
+        position={[0, size + 0.5, 0]}
+        style={{
+          pointerEvents: 'none',
+          userSelect: 'none',
+        }}
+      >
+        <div
+          className="bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap"
           style={{
-            pointerEvents: 'none',
-            userSelect: 'none',
+            color: color,
+            fontWeight: '600',
+            fontSize: isCenter ? '16px' : '14px',
+            maxWidth: '200px',
+            textAlign: 'center',
           }}
         >
-          <div
-            className="bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap"
-            style={{
-              color: color,
-              fontWeight: '600',
-              fontSize: '14px',
-              maxWidth: '200px',
-              textAlign: 'center',
-            }}
-          >
-            {title}
-          </div>
-        </Html>
-      )}
-      
-      {/* Custom content for center node (search bar) */}
-      {isCenter && children}
+          {isCenter ? 'Search' : title}
+        </div>
+      </Html>
     </group>
   );
 }

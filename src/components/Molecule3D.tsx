@@ -141,17 +141,25 @@ export default function Molecule3D() {
             service={node.service}
             isCenter={node.id === 0}
             onClick={handleNodeClick}
-          >
-            {/* Search bar on center node */}
-            {node.id === 0 && searchVisible && (
-              <Html center distanceFactor={isMobile ? 8 : 6}>
-                <div className="pointer-events-auto" style={{ width: isMobile ? '280px' : '400px', maxWidth: '90vw' }}>
-                  <SearchBar value={search} onChange={setSearch} />
-                </div>
-              </Html>
-            )}
-          </MoleculeNode>
+          />
         ))}
+        
+        {/* Search bar positioned at center */}
+        {searchVisible && (
+          <Html 
+            position={[0, 0, 0]} 
+            center 
+            distanceFactor={isMobile ? 8 : 6}
+            style={{ pointerEvents: 'none' }}
+          >
+            <div 
+              className="pointer-events-auto bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border-2 border-[#5A8A8F] p-2" 
+              style={{ width: isMobile ? '280px' : '400px', maxWidth: '90vw' }}
+            >
+              <SearchBar value={search} onChange={setSearch} />
+            </div>
+          </Html>
+        )}
       </group>
     </Canvas>
   );
