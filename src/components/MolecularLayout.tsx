@@ -12,35 +12,49 @@ const services = [
     description: 'GMP-aligned production',
     link: '/quote',
     linkText: 'Request Quote',
-    color: '#C9364F', // Red
-    position: { left: '20%', top: '35%' },
+    color: '#C9364F', // Red - Large (top-left)
+    position: { left: '25%', top: '20%' },
+    size: 240, // Large
   },
   {
     id: 2,
-    title: 'Research Catalog',
-    description: '35+ compounds ready',
-    link: '/products',
-    linkText: 'View Catalog',
-    color: '#E8B341', // Gold
-    position: { left: '80%', top: '35%' },
-  },
-  {
-    id: 3,
     title: 'Quality Documentation',
     description: 'Full COA & HPLC-MS',
     link: '/about',
     linkText: 'Learn More',
-    color: '#5A8A8F', // Teal
-    position: { left: '20%', top: '65%' },
+    color: '#5A8A8F', // Teal - Medium (top-right)
+    position: { left: '75%', top: '25%' },
+    size: 200, // Medium
+  },
+  {
+    id: 3,
+    title: 'Technical Support',
+    description: '24-48h response',
+    link: '/quote',
+    linkText: 'Contact Us',
+    color: '#E8B341', // Gold - Small (left)
+    position: { left: '15%', top: '45%' },
+    size: 160, // Small
   },
   {
     id: 4,
-    title: 'Technical Support',
-    description: '24-48h response time',
-    link: '/quote',
-    linkText: 'Contact Us',
-    color: '#0B1F3F', // Navy
-    position: { left: '80%', top: '65%' },
+    title: 'Research Catalog',
+    description: '35+ compounds',
+    link: '/products',
+    linkText: 'View Catalog',
+    color: '#C9364F', // Red - Medium (bottom)
+    position: { left: '45%', top: '75%' },
+    size: 200, // Medium
+  },
+  {
+    id: 5,
+    title: 'Regulatory Compliance',
+    description: 'EU documentation',
+    link: '/about',
+    linkText: 'Learn More',
+    color: '#E8B341', // Gold - Medium (bottom-right)
+    position: { left: '75%', top: '70%' },
+    size: 200, // Medium
   },
 ];
 
@@ -179,11 +193,13 @@ export default function MolecularLayout() {
           <motion.div
             key={service.id}
             variants={nodeVariant}
-            className="w-full lg:w-[240px] lg:h-[240px] mx-auto lg:mx-0 lg:absolute"
+            className="w-full mx-auto lg:mx-0 lg:absolute"
             style={{
               left: service.position.left,
               top: service.position.top,
               transform: 'translate(-50%, -50%)',
+              width: `${service.size}px`,
+              height: `${service.size}px`,
             }}
           >
             <Link href={service.link} className="block h-full">
