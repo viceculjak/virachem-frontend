@@ -13,7 +13,7 @@ const services = [
     link: '/quote',
     linkText: 'Request Quote',
     color: '#C9364F', // Red
-    baseAngle: -135, // degrees
+    position: { left: '20%', top: '25%' },
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const services = [
     link: '/products',
     linkText: 'View Catalog',
     color: '#E8B341', // Gold
-    baseAngle: -45, // degrees
+    position: { left: '80%', top: '25%' },
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const services = [
     link: '/about',
     linkText: 'Learn More',
     color: '#5A8A8F', // Teal
-    baseAngle: 135, // degrees
+    position: { left: '20%', top: '75%' },
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const services = [
     link: '/quote',
     linkText: 'Contact Us',
     color: '#0B1F3F', // Navy
-    baseAngle: 45, // degrees
+    position: { left: '80%', top: '75%' },
   },
 ];
 
@@ -83,26 +83,6 @@ const heroVariant = {
 export default function MolecularLayout() {
   const [search, setSearch] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  });
-
-  // Orbital rotation angle based on scroll
-  const orbitalRotation = useTransform(scrollYProgress, [0, 1], [0, 180]);
-
-  // Calculate orbital position for each node
-  const getOrbitalPosition = (baseAngle: number, index: number) => {
-    const radius = 300; // Distance from center
-    const angleInRadians = ((baseAngle + (orbitalRotation.get() || 0)) * Math.PI) / 180;
-    const centerX = 50; // Percentage
-    const centerY = 35; // Percentage
-    
-    const x = centerX + (radius / window.innerWidth) * 100 * Math.cos(angleInRadians);
-    const y = centerY + (radius / window.innerHeight) * 100 * Math.sin(angleInRadians);
-    
-    return { x: `${x}%`, y: `${y}%` };
-  };
 
   return (
     <div ref={containerRef} id="services" className="relative min-h-[900px] lg:min-h-[1100px] py-12 lg:py-20">
@@ -201,18 +181,9 @@ export default function MolecularLayout() {
             variants={nodeVariant}
             className="w-full lg:w-[240px] lg:h-[240px] mx-auto lg:mx-0 lg:absolute"
             style={{
-              left: useTransform(scrollYProgress, (progress) => {
-                if (typeof window === 'undefined') return '50%';
-                const angle = ((service.baseAngle + progress * 180) * Math.PI) / 180;
-                const radius = 300;
-                return `calc(50% + ${radius * Math.cos(angle)}px - 120px)`;
-              }),
-              top: useTransform(scrollYProgress, (progress) => {
-                if (typeof window === 'undefined') return '35%';
-                const angle = ((service.baseAngle + progress * 180) * Math.PI) / 180;
-                const radius = 300;
-                return `calc(35% + ${radius * Math.sin(angle)}px - 120px)`;
-              }),
+              left: service.position.left,
+              top: service.position.top,
+              transform: 'translate(-50%, -50%)',
             }}
           >
             <Link href={service.link} className="block h-full">

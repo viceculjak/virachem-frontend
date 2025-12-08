@@ -2,17 +2,16 @@
 
 import { motion } from 'framer-motion';
 
+// Bond lines from center to each node - matching logo structure
 const bondLines = [
-  // Bonds from center to each node
-  { x1: '50%', y1: '50%', x2: '23%', y2: '28%', delay: 0, color: '#C9364F', type: 'main' },
-  { x1: '50%', y1: '50%', x2: '77%', y2: '28%', delay: 0.1, color: '#E8B341', type: 'main' },
-  { x1: '50%', y1: '50%', x2: '23%', y2: '72%', delay: 0.2, color: '#5A8A8F', type: 'main' },
-  { x1: '50%', y1: '50%', x2: '77%', y2: '72%', delay: 0.3, color: '#0B1F3F', type: 'main' },
-  // Cross bonds between nodes (like in logo)
-  { x1: '23%', y1: '28%', x2: '77%', y2: '28%', delay: 0.4, color: '#0B1F3F', type: 'cross' },
-  { x1: '23%', y1: '72%', x2: '77%', y2: '72%', delay: 0.5, color: '#0B1F3F', type: 'cross' },
-  { x1: '23%', y1: '28%', x2: '23%', y2: '72%', delay: 0.6, color: '#0B1F3F', type: 'cross' },
-  { x1: '77%', y1: '28%', x2: '77%', y2: '72%', delay: 0.7, color: '#0B1F3F', type: 'cross' },
+  // Top-left node (red)
+  { x1: '50%', y1: '50%', x2: '20%', y2: '25%', delay: 0, color: '#C9364F' },
+  // Top-right node (gold)
+  { x1: '50%', y1: '50%', x2: '80%', y2: '25%', delay: 0.1, color: '#E8B341' },
+  // Bottom-left node (teal)
+  { x1: '50%', y1: '50%', x2: '20%', y2: '75%', delay: 0.2, color: '#5A8A8F' },
+  // Bottom-right node (navy)
+  { x1: '50%', y1: '50%', x2: '80%', y2: '75%', delay: 0.3, color: '#0B1F3F' },
 ];
 
 const lineVariant = {
@@ -70,9 +69,9 @@ export default function BondLines() {
             x2={line.x2}
             y2={line.y2}
             stroke={line.color}
-            strokeWidth={line.type === 'main' ? '8' : '6'}
+            strokeWidth="8"
             strokeLinecap="round"
-            opacity={line.type === 'main' ? '0.15' : '0.08'}
+            opacity="0.15"
             filter="url(#glow)"
             variants={lineVariant}
             initial="hidden"
@@ -87,10 +86,9 @@ export default function BondLines() {
             y1={line.y1}
             x2={line.x2}
             y2={line.y2}
-            stroke={line.type === 'main' ? `url(#gradient-${index})` : line.color}
-            strokeWidth={line.type === 'main' ? '5' : '3'}
+            stroke={`url(#gradient-${index})`}
+            strokeWidth="5"
             strokeLinecap="round"
-            opacity={line.type === 'main' ? '1' : '0.3'}
             variants={lineVariant}
             initial="hidden"
             animate="visible"
@@ -101,7 +99,7 @@ export default function BondLines() {
             {/* Pulsing animation */}
             <animate
               attributeName="stroke-width"
-              values={line.type === 'main' ? '5;6;5' : '3;4;3'}
+              values="5;6;5"
               dur="2s"
               repeatCount="indefinite"
             />
