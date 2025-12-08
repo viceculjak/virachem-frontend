@@ -1,11 +1,12 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Html } from '@react-three/drei';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import MoleculeNode from './MoleculeNode';
 import MoleculeBond from './MoleculeBond';
+import SearchBar from './SearchBar';
 
 // Define molecule structure matching logo
 const nodes = [
@@ -70,6 +71,8 @@ const bonds = [
 export default function Molecule3D() {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
+  const [search, setSearch] = useState('');
+  const [searchVisible, setSearchVisible] = useState(false);
   
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -80,7 +83,7 @@ export default function Molecule3D() {
   
   const handleNodeClick = (service: string) => {
     if (service === 'search') {
-      // Focus search bar (handled in parent)
+      setSearchVisible(!searchVisible);
       return;
     }
     router.push(`/${service}`);
@@ -133,8 +136,18 @@ export default function Molecule3D() {
             size={node.size}
             title={node.title}
             service={node.service}
+            isCenter={node.id === 0}
             onClick={handleNodeClick}
-          />
+          >
+            {/* Search bar on center node */}
+            {node.id === 0 && searchVisible && (
+              <Html center distanceFactor={6}>
+                <div className="pointer-events-auto" style={{ width: '400px', maxWidth: '90vw' }}>
+                  <SearchBar value={search} onChange={setSearch} />
+                </div>
+              </Html>
+            )}
+          </MoleculeNode>
         ))}
       </group>
     </Canvas>

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { Html } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface MoleculeNodeProps {
@@ -10,7 +11,9 @@ interface MoleculeNodeProps {
   size: number;
   title: string;
   service: string;
+  isCenter?: boolean;
   onClick?: (service: string) => void;
+  children?: React.ReactNode;
 }
 
 export default function MoleculeNode({ 
@@ -19,7 +22,9 @@ export default function MoleculeNode({
   size, 
   title,
   service,
-  onClick 
+  isCenter = false,
+  onClick,
+  children
 }: MoleculeNodeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
@@ -36,11 +41,10 @@ export default function MoleculeNode({
   });
   
   return (
-    <group>
+    <group position={position}>
       {/* Main sphere */}
       <mesh
         ref={meshRef}
-        position={position}
         onClick={() => onClick?.(service)}
         onPointerOver={() => {
           setHovered(true);
@@ -63,7 +67,7 @@ export default function MoleculeNode({
       
       {/* Outer glow on hover */}
       {hovered && (
-        <mesh position={position} scale={size * 1.3}>
+        <mesh scale={size * 1.3}>
           <sphereGeometry args={[1, 32, 32]} />
           <meshBasicMaterial
             color={color}
@@ -72,6 +76,35 @@ export default function MoleculeNode({
           />
         </mesh>
       )}
+      
+      {/* Label for satellite nodes */}
+      {!isCenter && (
+        <Html
+          center
+          distanceFactor={8}
+          position={[0, size + 0.5, 0]}
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none',
+          }}
+        >
+          <div
+            className="bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap"
+            style={{
+              color: color,
+              fontWeight: '600',
+              fontSize: '14px',
+              maxWidth: '200px',
+              textAlign: 'center',
+            }}
+          >
+            {title}
+          </div>
+        </Html>
+      )}
+      
+      {/* Custom content for center node (search bar) */}
+      {isCenter && children}
     </group>
   );
 }
