@@ -98,8 +98,7 @@ export default function Molecule3D() {
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
-        touchAction: isMobile ? 'pan-y' : 'auto',
-        pointerEvents: isMobile ? 'none' : 'auto'
+        touchAction: 'pan-y'
       }}
     >
       {/* Background color */}
@@ -121,6 +120,10 @@ export default function Molecule3D() {
         enablePan={false}
         maxDistance={20}
         minDistance={8}
+        touches={{
+          ONE: isMobile ? undefined : 2,
+          TWO: undefined
+        }}
       />
       
       {/* Molecule structure */}
