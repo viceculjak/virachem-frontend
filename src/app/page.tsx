@@ -3,12 +3,20 @@
 import MolecularLayout from '@/components/MolecularLayout';
 import MolecularBackground from '@/components/MolecularBackground';
 import BondLines from '@/components/BondLines';
+import ParticleField from '@/components/ParticleField';
+import MolecularNav3D from '@/components/MolecularNav3D';
 
 export default function Home() {
   return (
     <div className="bg-background">
+      {/* 3D Molecule Navigation */}
+      <MolecularNav3D />
+      
       {/* Molecular Hub-and-Spoke Section */}
       <section className="relative overflow-hidden bg-white">
+        {/* Particle field */}
+        <ParticleField />
+        
         {/* Background molecular patterns */}
         <MolecularBackground />
         
