@@ -72,7 +72,7 @@ export default function Molecule3D() {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const [search, setSearch] = useState('');
-  const [searchVisible, setSearchVisible] = useState(false);
+  const [searchVisible, setSearchVisible] = useState(true);
   
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -91,7 +91,10 @@ export default function Molecule3D() {
   
   return (
     <Canvas
-      camera={{ position: [0, 0, 12], fov: 50 }}
+      camera={{ 
+        position: [0, 0, isMobile ? 16 : 12], 
+        fov: isMobile ? 60 : 50 
+      }}
       gl={{ antialias: true, alpha: true }}
       style={{ touchAction: 'auto' }}
     >
@@ -141,8 +144,8 @@ export default function Molecule3D() {
           >
             {/* Search bar on center node */}
             {node.id === 0 && searchVisible && (
-              <Html center distanceFactor={6}>
-                <div className="pointer-events-auto" style={{ width: '400px', maxWidth: '90vw' }}>
+              <Html center distanceFactor={isMobile ? 8 : 6}>
+                <div className="pointer-events-auto" style={{ width: isMobile ? '280px' : '400px', maxWidth: '90vw' }}>
                   <SearchBar value={search} onChange={setSearch} />
                 </div>
               </Html>
