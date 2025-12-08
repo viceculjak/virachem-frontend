@@ -4,6 +4,12 @@
 
 All features have been successfully implemented for ViraChem j.d.o.o., a registered Croatian research chemical distribution company.
 
+**Company Location**: Pujanke 24A, 21000 Split, Croatia  
+**Registration**: MBS 060500406, OIB 73782597071  
+**Website**: [virachemical.com](https://virachemical.com)  
+**LinkedIn**: [linkedin.com/company/virachemical](https://www.linkedin.com/company/virachemical)  
+**Instagram**: [instagram.com/virachemical](https://www.instagram.com/virachemical/)
+
 ---
 
 ## Company Branding & Legal Compliance
@@ -14,37 +20,87 @@ All features have been successfully implemented for ViraChem j.d.o.o., a registe
 - **Market Focus**: EU-only - serving European Union member states
 - **Design Philosophy**: Clean, institutional B2B aesthetic for scientific market
 - **Language**: English-only interface for international B2B communication
+- **3D Navigation**: Interactive Three.js molecule on homepage
 
-### Legal Pages Created
-1. **Privacy Policy** (`/privacy`) - GDPR-compliant, Croatian law compliant
-2. **Terms & Conditions** (`/terms`) - Research use disclaimers, liability terms
-3. **About Us** (`/about`) - Full company details, registration info, leadership
-4. **Footer Component** - Company registration on every page
-5. **Disclaimers** - Research use warnings on all product pages
+### Pages Created
+1. **Homepage** (`/`) - 3D molecular navigation with clickable nodes
+2. **Products** (`/products`) - Catalog with search functionality
+3. **Services** (`/services`) - Contract manufacturing, peptide synthesis, GMP details
+4. **Quality** (`/quality`) - QA processes, COA, compliance, EU registration
+5. **Contact** (`/contact`) - Contact form with email integration
+6. **About Us** (`/about`) - Full company details, registration info, leadership
+7. **Privacy Policy** (`/privacy`) - GDPR-compliant, Croatian law compliant
+8. **Terms & Conditions** (`/terms`) - Research use disclaimers, liability terms
+9. **Quote** (`/quote`) - Professional quote request with email notifications
 
 ## Technical Features Implemented
 
-### 1. Chemical Structure Images Generated
+### 1. 3D Molecular Navigation (Homepage)
 - **Status**: Complete
-- **Files Created**: 
-  - `public/structures/VC-001.svg` (Retatrutide)
-  - `public/structures/VC-002.svg` (GHK-Cu)
-- **Details**: 
-  - Installed RDKit library
-  - Ran the Python script to generate SVG images from SMILES strings
-  - Images are now accessible for the product catalog
-
-### 2. Search Functionality Added
-- **Status**: Complete
-- **File Modified**: `src/app/products/page.tsx`
+- **Technology**: Three.js, React Three Fiber (@react-three/fiber, @react-three/drei)
+- **Files Created**:
+  - `src/components/Molecule3D.tsx` - Main 3D scene
+  - `src/components/MoleculeNode.tsx` - Interactive nodes
+  - `src/components/MoleculeBond.tsx` - Connecting bonds
 - **Features**:
-  - Added search input field at top of products page
+  - Auto-rotating molecule with breathing animation
+  - Manual rotation on desktop (disabled on mobile for scrolling)
+  - 6 nodes: Center (search) + 5 satellites (Products, Quote, Services, Quality, Contact)
+  - Clickable navigation to different pages
+  - Glossy material for professional 3D look
+  - Camera auto-return to starting position after interaction
+
+### 2. Email Integration (Resend API)
+- **Status**: Complete
+- **Files Created**:
+  - `src/app/api/quote/route.ts` - Quote request emails
+  - `src/app/api/contact/route.ts` - Contact form emails
+- **Features**:
+  - Professional HTML email templates
+  - Sends to info@virachemical.com
+  - Reply-to set to sender's email
+  - Error handling and user feedback
+
+### 3. Services Page
+- **Status**: Complete
+- **File**: `src/app/services/page.tsx`
+- **Content**:
+  - Custom peptide synthesis
+  - Formulation & lyophilization
+  - Custom vialing (1-10mL)
+  - GMP-aligned manufacturing
+  - Lead times & capacity
+
+### 4. Quality & Compliance Page
+- **Status**: Complete
+- **File**: `src/app/quality/page.tsx`
+- **Content**:
+  - Quality control processes
+  - Certificate of Analysis details
+  - HPLC-MS verification
+  - GMP alignment
+  - EU regulatory compliance
+
+### 5. Contact Page with Form
+- **Status**: Complete
+- **File**: `src/app/contact/page.tsx`
+- **Features**:
+  - Contact form (name, email, subject, message)
+  - Email integration via Resend
+  - Contact details (address, phone, email)
+  - Social media links
+  - Office hours
+
+### 6. Search Functionality
+- **Status**: Complete
+- **Files**: `src/app/products/page.tsx`, `src/components/SearchBar.tsx`
+- **Features**:
   - Real-time search using Supabase `.ilike()` for fuzzy matching
   - Searches across both product name and CAS number fields
+  - Search bar integrated into 3D molecule center node
   - Displays result count when searching
-  - Automatically filters products as you type
 
-### 3. Quote Form Enhanced with Product Pre-fill
+### 7. Quote Form Enhanced with Product Pre-fill
 - **Status**: Complete
 - **File Modified**: `src/app/quote/page.tsx`
 - **Features**:

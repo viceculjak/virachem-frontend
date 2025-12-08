@@ -32,10 +32,17 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 ## Features
 
 ### Core Functionality
-- **Homepage Search Bar**: Prominent catalog search directly from homepage
+- **3D Molecular Navigation**: Interactive 3D molecule homepage with clickable nodes for navigation
+  - Auto-rotating molecule with manual rotation controls
+  - Center node: Product search integration
+  - 5 satellite nodes: Products, Quote, Services, Quality, Contact
+  - Built with React Three Fiber and Three.js
 - **Product Catalog**: Research chemicals with CAS numbers, molecular weights, purity options, and structure images
 - **Search Functionality**: Real-time search by product name or CAS number (homepage and products page)
-- **Quote System**: Professional quote request system with product pre-fill via URL parameters and toast notifications
+- **Quote System**: Professional quote request system with Resend email integration and toast notifications
+- **Contact Form**: Direct contact form with email notifications to info@virachemical.com
+- **Services Page**: Detailed contract manufacturing, peptide synthesis, and GMP-aligned services
+- **Quality Page**: Quality assurance, COA details, regulatory compliance, and EU registration info
 - **Legal Compliance**: GDPR-compliant Privacy Policy, Terms & Conditions, research use disclaimers
 - **Company Pages**: About Us with full registration details and company leadership
 
@@ -56,8 +63,10 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 ## Tech Stack
 
 - **Frontend**: Next.js 16 (App Router), React 19, TypeScript
+- **3D Graphics**: Three.js, React Three Fiber (@react-three/fiber, @react-three/drei)
 - **Styling**: Tailwind CSS v4, ShadCN UI components
 - **Notifications**: Sonner (toast notifications)
+- **Email**: Resend API for quote and contact form emails
 - **Backend**: Supabase (PostgreSQL, Row Level Security)
 - **Deployment**: Vercel (frontend), Supabase Cloud (backend)
 - **Tools**: RDKit (Python) for chemical structure SVG generation
@@ -86,13 +95,17 @@ Create a `.env.local` file in the project root:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your-project-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+RESEND_API_KEY=your-resend-api-key
 ```
 
 To get these values:
-1. Go to [supabase.com](https://supabase.com) and create a new project (if you haven't already)
-2. Navigate to **Settings → API**
-3. Copy the **Project URL** (e.g., `https://xxxxx.supabase.co`) and **anon public** key
-4. Paste them into your `.env.local` file
+1. **Supabase**: Go to [supabase.com](https://supabase.com) and create a new project
+   - Navigate to **Settings → API**
+   - Copy the **Project URL** and **anon public** key
+2. **Resend**: Go to [resend.com](https://resend.com) and create an account
+   - Create an API key
+   - Verify your domain (virachemical.com)
+   - See `RESEND-EMAIL-SETUP.md` for detailed email setup
 
 **Tip**: See `SETUP-VERIFICATION.md` for detailed setup instructions and troubleshooting.
 
@@ -137,32 +150,39 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 virachem-frontend/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              # Homepage with search bar
+│   │   ├── page.tsx              # Homepage with 3D molecule navigation
 │   │   ├── layout.tsx            # Root layout with header & Toaster
 │   │   ├── about/page.tsx        # About Us with company details
+│   │   ├── services/page.tsx     # Manufacturing services & capabilities
+│   │   ├── quality/page.tsx      # Quality assurance & compliance
+│   │   ├── contact/page.tsx      # Contact form with email integration
 │   │   ├── privacy/page.tsx      # GDPR-compliant Privacy Policy
 │   │   ├── terms/page.tsx        # Terms & Conditions
 │   │   ├── products/
 │   │   │   ├── page.tsx          # Product listing with search
 │   │   │   └── [id]/page.tsx     # Product detail with tabs
-│   │   └── quote/page.tsx        # Quote request with toast feedback
+│   │   ├── quote/page.tsx        # Quote request with email notifications
+│   │   └── api/
+│   │       ├── quote/route.ts    # Quote form email endpoint
+│   │       └── contact/route.ts  # Contact form email endpoint
 │   ├── components/
 │   │   ├── Header.tsx            # Responsive header with mobile burger menu
 │   │   ├── SearchBar.tsx         # Reusable search component
-│   │   ├── trust/
-│   │   │   └── PartnerGrid.tsx   # Partner logos display
-│   │   ├── footer.tsx            # Company footer with registration
+│   │   ├── Molecule3D.tsx        # 3D molecule navigation (Three.js)
+│   │   ├── MoleculeNode.tsx      # 3D molecule node component
+│   │   ├── MoleculeBond.tsx      # 3D molecule bond component
+│   │   ├── footer.tsx            # Company footer with social links
 │   │   └── ui/                   # ShadCN UI components
 │   └── lib/
 │       └── supabase.ts           # Supabase client
 ├── public/
-│   ├── logo.png                  # ViraChem full logo (homepage hero)
-│   ├── molecule.png              # Molecular icon (navbar, favicons)
+│   ├── molecule.png              # Molecular icon (navbar, favicons, logo)
 │   ├── favicon.ico               # Multi-size favicon
 │   ├── apple-touch-icon.png      # iOS icon
 │   ├── android-chrome-*.png      # Android/PWA icons
 │   ├── site.webmanifest          # PWA configuration
-│   └── structures/               # Chemical structure SVGs
+│   ├── structures/               # Chemical structure SVGs
+│   └── partners/                 # Partner logos
 ├── scripts/
 │   └── generate-images.py        # Structure generator (RDKit)
 ├── database-schema.sql           # Database setup
@@ -186,6 +206,7 @@ virachem-frontend/
 3. Add environment variables:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `RESEND_API_KEY`
 4. Deploy!
 
 Alternatively, use the Vercel CLI:
@@ -273,7 +294,14 @@ For issues or questions:
 1. Check the troubleshooting section above
 2. Review [Next.js documentation](https://nextjs.org/docs)
 3. Review [Supabase documentation](https://supabase.com/docs)
+4. Contact us at info@virachemical.com
+
+## Connect
+
+- **Website**: [virachemical.com](https://virachemical.com)
+- **LinkedIn**: [linkedin.com/company/virachemical](https://www.linkedin.com/company/virachemical)
+- **Instagram**: [instagram.com/virachemical](https://www.instagram.com/virachemical/)
 
 ---
 
-Built with Next.js, Supabase, and ShadCN UI
+Built with Next.js, Three.js, Supabase, and ShadCN UI
