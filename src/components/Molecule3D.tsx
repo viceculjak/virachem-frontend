@@ -8,53 +8,53 @@ import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
 import * as THREE from 'three';
 
-// Define molecule structure - Business areas with clear navigation
+// Define molecule structure matching the logo image exactly
 const nodes = [
   {
     id: 0,
     position: [0, 0, 0] as [number, number, number],
-    color: '#2D5F6D', // Dark teal center
+    color: '#1a4d5c', // Dark teal center (matches image)
     size: 1.6,
     service: 'search',
     title: 'Search Products',
   },
   {
     id: 1,
-    position: [-4, 3, 1] as [number, number, number],
-    color: '#D85A5A', // Red - Primary action
+    position: [-4, 3, 0] as [number, number, number],
+    color: '#D85A5A', // Red top-left (matches image)
     size: 1.4,
     service: 'products',
     title: 'Product Catalog',
   },
   {
     id: 2,
-    position: [4, 2.5, -1] as [number, number, number],
-    color: '#E8B741', // Gold - Secondary action
-    size: 1.2,
-    service: 'quote',
-    title: 'Request Quote',
-  },
-  {
-    id: 3,
-    position: [-5, 0, 0.5] as [number, number, number],
-    color: '#6BA892', // Green - Services
+    position: [4.5, 2.5, 0] as [number, number, number],
+    color: '#5a8a8f', // Green/teal top-right (matches image)
     size: 1.2,
     service: 'services',
     title: 'Manufacturing Services',
   },
   {
-    id: 4,
-    position: [0, -3.5, 1.5] as [number, number, number],
-    color: '#E8B741', // Gold - Trust/quality
+    id: 3,
+    position: [-4.5, -0.5, 0] as [number, number, number],
+    color: '#E8B741', // Gold left (matches image)
     size: 1.0,
+    service: 'quote',
+    title: 'Request Quote',
+  },
+  {
+    id: 4,
+    position: [0, -3.5, 0] as [number, number, number],
+    color: '#D85A5A', // Red bottom (matches image)
+    size: 1.4,
     service: 'quality',
     title: 'Quality & Compliance',
   },
   {
     id: 5,
-    position: [4, -3, -1] as [number, number, number],
-    color: '#D85A5A', // Red - Action
-    size: 1.4,
+    position: [4, -3, 0] as [number, number, number],
+    color: '#E8B741', // Gold bottom-right (matches image)
+    size: 1.2,
     service: 'contact',
     title: 'Contact & Support',
   },
