@@ -90,6 +90,7 @@ export default function Molecule3D() {
     <Canvas
       camera={{ position: [0, 0, 12], fov: 50 }}
       gl={{ antialias: true, alpha: true }}
+      style={{ touchAction: 'auto' }}
     >
       {/* Background color */}
       <color attach="background" args={['#FAFAFA']} />
