@@ -68,19 +68,56 @@ const bonds = [
   { from: 0, to: 5 },
 ];
 
-// Molecule group with subtle breathing/vibration animation and return to origin
+// Camera resetter - returns camera to starting position when not interacting
+function CameraResetter({ controlsRef }: { controlsRef: React.RefObject<any> }) {
+  const lastInteractionTime = useRef(Date.now());
+  
+  useFrame((state) => {
+    if (controlsRef.current) {
+      // Check if user moved controls recently
+      const controls = controlsRef.current;
+      const currentAzimuth = controls.getAzimuthalAngle();
+      const currentPolar = controls.getPolarAngle();
+      
+      // If position changed, update last interaction time
+      if (Math.abs(currentAzimuth) > 0.01 || Math.abs(currentPolar - Math.PI / 2) > 0.01) {
+        lastInteractionTime.current = Date.now();
+      }
+      
+      // If no interaction for 500ms, start returning to origin
+      const timeSinceInteraction = Date.now() - lastInteractionTime.current;
+      if (timeSinceInteraction > 500) {
+        // Smoothly lerp camera back to default position (relatively fast)
+        const targetAzimuth = 0;
+        const targetPolar = Math.PI / 2;
+        
+        const newAzimuth = THREE.MathUtils.lerp(currentAzimuth, targetAzimuth, 0.05);
+        const newPolar = THREE.MathUtils.lerp(currentPolar, targetPolar, 0.05);
+        
+        // Update camera position
+        const distance = controls.getDistance();
+        const offset = new THREE.Spherical(distance, newPolar, newAzimuth);
+        const position = new THREE.Vector3().setFromSpherical(offset);
+        
+        state.camera.position.copy(position);
+        state.camera.lookAt(0, 0, 0);
+        controls.update();
+      }
+    }
+  });
+  
+  return null;
+}
+
+// Molecule group with subtle breathing/vibration animation
 function MoleculeGroup({ 
   isMobile,
-  isUserInteracting,
   children 
 }: { 
   isMobile: boolean;
-  isUserInteracting: boolean;
   children: React.ReactNode;
 }) {
   const groupRef = useRef<THREE.Group>(null);
-  const baseRotation = useRef(new THREE.Euler(0, 0, 0));
-  const prevBreath = useRef({ x: 0, y: 0 });
   
   useFrame((state) => {
     if (groupRef.current) {
@@ -90,34 +127,10 @@ function MoleculeGroup({
       const breathX = Math.sin(time * 0.5) * 0.05;
       const breathY = Math.sin(time * 0.3) * 0.05;
       
-      if (!isMobile) {
-        // Desktop behavior
-        if (isUserInteracting) {
-          // User is rotating - capture the base rotation (remove breathing)
-          baseRotation.current.x = groupRef.current.rotation.x - prevBreath.current.x;
-          baseRotation.current.y = groupRef.current.rotation.y - prevBreath.current.y;
-          baseRotation.current.z = groupRef.current.rotation.z;
-        } else {
-          // Not interacting - slowly return to natural starting position (0, 0, 0)
-          baseRotation.current.x = THREE.MathUtils.lerp(baseRotation.current.x, 0, 0.02);
-          baseRotation.current.y = THREE.MathUtils.lerp(baseRotation.current.y, 0, 0.02);
-          baseRotation.current.z = THREE.MathUtils.lerp(baseRotation.current.z, 0, 0.02);
-        }
-        
-        // Apply base rotation + breathing
-        groupRef.current.rotation.x = baseRotation.current.x + breathX;
-        groupRef.current.rotation.y = baseRotation.current.y + breathY;
-        groupRef.current.rotation.z = baseRotation.current.z;
-      } else {
-        // Mobile: just breathing at natural position (no rotation)
-        groupRef.current.rotation.x = breathX;
-        groupRef.current.rotation.y = breathY;
-        groupRef.current.rotation.z = 0;
-      }
-      
-      // Store breathing for next frame
-      prevBreath.current.x = breathX;
-      prevBreath.current.y = breathY;
+      // Apply breathing at natural position
+      groupRef.current.rotation.x = breathX;
+      groupRef.current.rotation.y = breathY;
+      groupRef.current.rotation.z = 0;
     }
   });
   
@@ -128,7 +141,7 @@ export default function Molecule3D() {
   const [isMobile, setIsMobile] = useState(false);
   const [search, setSearch] = useState('');
   const [searchVisible, setSearchVisible] = useState(true);
-  const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const controlsRef = useRef<any>(null);
   
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -175,21 +188,23 @@ export default function Molecule3D() {
       
       {/* Controls - disabled on mobile to allow scrolling */}
       {!isMobile && (
-        <OrbitControls
-          enableDamping
-          dampingFactor={0.05}
-          enableZoom={false}
-          enableRotate={true}
-          enablePan={false}
-          maxDistance={15}
-          minDistance={8}
-          onStart={() => setIsUserInteracting(true)}
-          onEnd={() => setIsUserInteracting(false)}
-        />
+        <>
+          <OrbitControls
+            ref={controlsRef}
+            enableDamping
+            dampingFactor={0.05}
+            enableZoom={false}
+            enableRotate={true}
+            enablePan={false}
+            maxDistance={15}
+            minDistance={8}
+          />
+          <CameraResetter controlsRef={controlsRef} />
+        </>
       )}
       
       {/* Molecule structure with subtle breathing animation */}
-      <MoleculeGroup isMobile={isMobile} isUserInteracting={isUserInteracting}>
+      <MoleculeGroup isMobile={isMobile}>
         {/* Draw bonds first (appear behind nodes) */}
         {bonds.map((bond, index) => (
           <MoleculeBond
