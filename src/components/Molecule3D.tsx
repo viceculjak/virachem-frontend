@@ -102,10 +102,11 @@ export default function Molecule3D() {
       {/* Controls */}
       <OrbitControls
         autoRotate
-        autoRotateSpeed={0.4}
+        autoRotateSpeed={isMobile ? 0.3 : 0.4}
         enableDamping
         dampingFactor={0.05}
-        enableZoom={!isMobile}
+        enableZoom={false}
+        enableRotate={!isMobile}
         enablePan={false}
         maxDistance={20}
         minDistance={8}
