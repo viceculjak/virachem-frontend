@@ -1,11 +1,12 @@
 'use client';
 
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html } from '@react-three/drei';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import MoleculeNode from './MoleculeNode';
 import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
+import * as THREE from 'three';
 
 // Define molecule structure matching logo - scaled up for desktop
 const nodes = [
@@ -67,6 +68,35 @@ const bonds = [
   { from: 0, to: 5 },
 ];
 
+// Molecule group with subtle breathing/vibration animation
+function MoleculeGroup({ 
+  isMobile, 
+  children 
+}: { 
+  isMobile: boolean; 
+  children: React.ReactNode;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+  
+  useFrame((state) => {
+    if (groupRef.current) {
+      const time = state.clock.getElapsedTime();
+      
+      // Subtle rotation vibration on mobile, very gentle on desktop
+      if (isMobile) {
+        // Mobile: gentle continuous rotation
+        groupRef.current.rotation.y = time * 0.15;
+      } else {
+        // Desktop: subtle breathing/vibration effect
+        groupRef.current.rotation.x = Math.sin(time * 0.5) * 0.05;
+        groupRef.current.rotation.y = Math.sin(time * 0.3) * 0.05;
+      }
+    }
+  });
+  
+  return <group ref={groupRef}>{children}</group>;
+}
+
 export default function Molecule3D() {
   const [isMobile, setIsMobile] = useState(false);
   const [search, setSearch] = useState('');
@@ -118,8 +148,6 @@ export default function Molecule3D() {
       {/* Controls - disabled on mobile to allow scrolling */}
       {!isMobile && (
         <OrbitControls
-          autoRotate
-          autoRotateSpeed={0.4}
           enableDamping
           dampingFactor={0.05}
           enableZoom={false}
@@ -130,8 +158,8 @@ export default function Molecule3D() {
         />
       )}
       
-      {/* Molecule structure */}
-      <group>
+      {/* Molecule structure with subtle breathing animation */}
+      <MoleculeGroup isMobile={isMobile}>
         {/* Draw bonds first (appear behind nodes) */}
         {bonds.map((bond, index) => (
           <MoleculeBond
@@ -173,7 +201,7 @@ export default function Molecule3D() {
             </div>
           </Html>
         )}
-      </group>
+      </MoleculeGroup>
     </Canvas>
   );
 }
