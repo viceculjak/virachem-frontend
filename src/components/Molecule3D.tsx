@@ -72,7 +72,7 @@ const bonds = [
 function CameraResetter({ controlsRef }: { controlsRef: React.RefObject<any> }) {
   const isInteracting = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const initialPosition = useRef(new THREE.Vector3(0, 0, 10));
+  const initialPosition = useRef(new THREE.Vector3(0, 0, 13));
   
   useEffect(() => {
     if (controlsRef.current) {
@@ -178,8 +178,8 @@ export default function Molecule3D() {
   return (
     <Canvas
       camera={{ 
-        position: [0, 0, isMobile ? 18 : 10], 
-        fov: isMobile ? 65 : 45 
+        position: [0, 0, isMobile ? 18 : 13], 
+        fov: isMobile ? 65 : 50 
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
