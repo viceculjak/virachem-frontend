@@ -3,7 +3,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Html } from '@react-three/drei';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import MoleculeNode from './MoleculeNode';
 import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
@@ -69,7 +68,6 @@ const bonds = [
 ];
 
 export default function Molecule3D() {
-  const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const [search, setSearch] = useState('');
   const [searchVisible, setSearchVisible] = useState(true);
@@ -88,7 +86,8 @@ export default function Molecule3D() {
       console.log('Toggled searchVisible to:', !searchVisible);
       return;
     }
-    router.push(`/${service}`);
+    // Use window.location to avoid router context issues in Canvas
+    window.location.href = `/${service}`;
   };
   
   return (
@@ -147,25 +146,24 @@ export default function Molecule3D() {
         ))}
         
         {/* Search bar positioned at center */}
-        <Html 
-          position={[0, 0, 0]} 
-          center 
-          distanceFactor={isMobile ? 8 : 6}
-          style={{ pointerEvents: 'none' }}
-        >
-          <div 
-            className="pointer-events-auto bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border-2 border-[#5A8A8F] p-2 transition-opacity duration-300" 
-            style={{ 
-              width: isMobile ? '280px' : '400px', 
-              maxWidth: '90vw',
-              opacity: searchVisible ? 1 : 0,
-              pointerEvents: searchVisible ? 'auto' : 'none',
-              transform: searchVisible ? 'scale(1)' : 'scale(0.9)'
-            }}
+        {searchVisible && (
+          <Html 
+            position={[0, 0, 0]} 
+            center 
+            distanceFactor={isMobile ? 8 : 6}
+            zIndexRange={[100, 0]}
           >
-            <SearchBar value={search} onChange={setSearch} />
-          </div>
-        </Html>
+            <div 
+              className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-3" 
+              style={{ 
+                width: isMobile ? '280px' : '450px',
+                maxWidth: '90vw'
+              }}
+            >
+              <SearchBar value={search} onChange={setSearch} />
+            </div>
+          </Html>
+        )}
       </group>
     </Canvas>
   );
