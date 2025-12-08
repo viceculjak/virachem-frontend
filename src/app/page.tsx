@@ -1,28 +1,45 @@
 'use client';
 
-import MolecularLayout from '@/components/MolecularLayout';
-import MolecularBackground from '@/components/MolecularBackground';
-import BondLines from '@/components/BondLines';
-import ParticleField from '@/components/ParticleField';
-import MolecularNav3D from '@/components/MolecularNav3D';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import SearchBar from '@/components/SearchBar';
+
+// Dynamic import to avoid SSR issues with Three.js
+const Molecule3D = dynamic(() => import('@/components/Molecule3D'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[700px] flex items-center justify-center bg-background">
+      <p className="text-gray-500">Loading 3D molecule...</p>
+    </div>
+  ),
+});
 
 export default function Home() {
+  const [search, setSearch] = useState('');
+
   return (
     <div className="bg-background">
-      {/* 3D Molecule Navigation */}
-      <MolecularNav3D />
-      
-      {/* Molecular Hub-and-Spoke Section */}
-      <section className="relative overflow-hidden bg-white min-h-[1100px]">
-        {/* Particle field */}
-        <ParticleField />
+      {/* Hero Title and Subtitle */}
+      <div className="text-center pt-12 pb-6 px-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#0B1F3F] mb-4 tracking-tighter leading-tight">
+          Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
+        </h1>
+        <p className="text-lg text-[#798996]">
+          EU-Registered intermediary for high-purity research peptides and fine chemicals.
+        </p>
+      </div>
+
+      {/* 3D Molecule with Search Overlay */}
+      <div className="relative h-[500px] md:h-[700px]">
+        <Molecule3D />
         
-        {/* Main molecular layout with integrated bonds */}
-        <div className="relative">
-          <BondLines />
-          <MolecularLayout />
+        {/* Search Bar Overlay */}
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+          <div className="pointer-events-auto max-w-2xl w-full px-4">
+            <SearchBar value={search} onChange={setSearch} />
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Value Props Section */}
       <section className="py-16 bg-[#FAFAFA]">
