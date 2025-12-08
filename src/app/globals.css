@@ -53,3 +53,25 @@
     opacity: 1;
   }
 }
+
+/* Animated Gradient Background */
+@keyframes gradientShift {
+  0%, 100% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(
+    135deg, 
+    #0B1F3F 0%, 
+    #1a3a5a 35%,
+    #2D5F6D 65%,
+    #1a3a5a 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+}

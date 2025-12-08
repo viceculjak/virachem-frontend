@@ -100,24 +100,26 @@ export default function MoleculeNode({
         </mesh>
       )}
       
-      {/* Label for all nodes */}
+      {/* Label for all nodes - Enhanced */}
       <Html
         center
         distanceFactor={8}
-        position={[0, size + 0.5, 0]}
+        position={[0, size + 0.8, 0]}
         style={{
           pointerEvents: 'none',
           userSelect: 'none',
         }}
       >
         <div
-          className="bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg border border-gray-200 whitespace-nowrap"
+          className="bg-white/95 backdrop-blur-sm px-4 py-3 rounded-lg shadow-xl whitespace-nowrap"
           style={{
             color: color,
-            fontWeight: '600',
-            fontSize: isCenter ? '16px' : '14px',
+            fontWeight: '800',
+            fontSize: isCenter ? '20px' : '18px',
             maxWidth: '200px',
             textAlign: 'center',
+            border: `3px solid ${color}`,
+            textShadow: `0 0 20px ${color}40`,
           }}
         >
           {isCenter ? 'Search' : title}
