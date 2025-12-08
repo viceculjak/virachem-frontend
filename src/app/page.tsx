@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import PartnerGrid from '@/components/trust/PartnerGrid';
+import ServicesGrid from '@/components/ServicesGrid';
 import SearchBar from '@/components/SearchBar';
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Partner Grid Section */}
+      {/* Services Section */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -43,9 +43,9 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <h2 className="text-center text-xl font-semibold text-[#0B1F3F] mb-12">
-            Trusted by Partners Across Europe
+            Our Services
           </h2>
-          <PartnerGrid />
+          <ServicesGrid />
         </div>
       </motion.section>
 
