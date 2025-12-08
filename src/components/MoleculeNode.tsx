@@ -100,11 +100,11 @@ export default function MoleculeNode({
         </mesh>
       )}
       
-      {/* Label for all nodes - Enhanced */}
+      {/* Label - Search above node, others in center */}
       <Html
         center
         distanceFactor={8}
-        position={[0, size + 0.8, 0]}
+        position={isCenter ? [0, size + 0.8, 0] : [0, 0, 0]}
         style={{
           pointerEvents: 'none',
           userSelect: 'none',
@@ -115,8 +115,8 @@ export default function MoleculeNode({
           style={{
             color: color,
             fontWeight: '800',
-            fontSize: isCenter ? '20px' : '18px',
-            maxWidth: '250px',
+            fontSize: isCenter ? '20px' : '16px',
+            maxWidth: isCenter ? '250px' : '180px',
             textAlign: 'center',
             border: `3px solid ${color}`,
             textShadow: `0 0 20px ${color}40`,
