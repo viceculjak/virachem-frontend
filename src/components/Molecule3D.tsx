@@ -79,7 +79,8 @@ function MoleculeGroup({
   children: React.ReactNode;
 }) {
   const groupRef = useRef<THREE.Group>(null);
-  const currentRotation = useRef(new THREE.Euler(0, 0, 0));
+  const baseRotation = useRef(new THREE.Euler(0, 0, 0));
+  const prevBreath = useRef({ x: 0, y: 0 });
   
   useFrame((state) => {
     if (groupRef.current) {
@@ -89,41 +90,34 @@ function MoleculeGroup({
       const breathX = Math.sin(time * 0.5) * 0.05;
       const breathY = Math.sin(time * 0.3) * 0.05;
       
-      if (!isMobile && !isUserInteracting) {
-        // Desktop: slowly return to starting position (0, 0, 0) when not interacting
-        currentRotation.current.x = THREE.MathUtils.lerp(
-          currentRotation.current.x,
-          0,
-          0.02
-        );
-        currentRotation.current.y = THREE.MathUtils.lerp(
-          currentRotation.current.y,
-          0,
-          0.02
-        );
-        currentRotation.current.z = THREE.MathUtils.lerp(
-          currentRotation.current.z,
-          0,
-          0.02
-        );
+      if (!isMobile) {
+        // Desktop behavior
+        if (isUserInteracting) {
+          // User is rotating - capture the base rotation (remove breathing)
+          baseRotation.current.x = groupRef.current.rotation.x - prevBreath.current.x;
+          baseRotation.current.y = groupRef.current.rotation.y - prevBreath.current.y;
+          baseRotation.current.z = groupRef.current.rotation.z;
+        } else {
+          // Not interacting - slowly return to natural starting position (0, 0, 0)
+          baseRotation.current.x = THREE.MathUtils.lerp(baseRotation.current.x, 0, 0.02);
+          baseRotation.current.y = THREE.MathUtils.lerp(baseRotation.current.y, 0, 0.02);
+          baseRotation.current.z = THREE.MathUtils.lerp(baseRotation.current.z, 0, 0.02);
+        }
         
         // Apply base rotation + breathing
-        groupRef.current.rotation.x = currentRotation.current.x + breathX;
-        groupRef.current.rotation.y = currentRotation.current.y + breathY;
-        groupRef.current.rotation.z = currentRotation.current.z;
-      } else if (!isMobile && isUserInteracting) {
-        // Desktop: user is rotating - store current rotation
-        currentRotation.current.set(
-          groupRef.current.rotation.x - breathX,
-          groupRef.current.rotation.y - breathY,
-          groupRef.current.rotation.z
-        );
+        groupRef.current.rotation.x = baseRotation.current.x + breathX;
+        groupRef.current.rotation.y = baseRotation.current.y + breathY;
+        groupRef.current.rotation.z = baseRotation.current.z;
       } else {
-        // Mobile: just breathing at origin (no user interaction)
+        // Mobile: just breathing at natural position (no rotation)
         groupRef.current.rotation.x = breathX;
         groupRef.current.rotation.y = breathY;
         groupRef.current.rotation.z = 0;
       }
+      
+      // Store breathing for next frame
+      prevBreath.current.x = breathX;
+      prevBreath.current.y = breathY;
     }
   });
   
