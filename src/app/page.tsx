@@ -19,18 +19,8 @@ export default function Home() {
 
   return (
     <div className="bg-background">
-      {/* Hero Title and Subtitle */}
-      <div className="text-center pt-12 pb-6 px-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#0B1F3F] mb-4 tracking-tighter leading-tight">
-          Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
-        </h1>
-        <p className="text-lg text-[#798996]">
-          EU-Registered intermediary for high-purity research peptides and fine chemicals.
-        </p>
-      </div>
-
       {/* Mobile Search Bar (outside 3D) */}
-      <div className="md:hidden px-4 mb-6">
+      <div className="md:hidden px-4 pt-6 mb-6">
         <SearchBar value={search} onChange={setSearch} />
       </div>
 
