@@ -1,6 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import SearchBar from '@/components/SearchBar';
 
 // Dynamic import to avoid SSR issues with Three.js
 const Molecule3D = dynamic(() => import('@/components/Molecule3D'), {
@@ -13,6 +15,8 @@ const Molecule3D = dynamic(() => import('@/components/Molecule3D'), {
 });
 
 export default function Home() {
+  const [search, setSearch] = useState('');
+
   return (
     <div className="bg-background">
       {/* Hero Title and Subtitle */}
@@ -25,7 +29,12 @@ export default function Home() {
         </p>
       </div>
 
-      {/* 3D Molecule (search bar integrated inside) */}
+      {/* Mobile Search Bar (outside 3D) */}
+      <div className="md:hidden px-4 mb-6">
+        <SearchBar value={search} onChange={setSearch} />
+      </div>
+
+      {/* 3D Molecule (search bar integrated inside on desktop) */}
       <div className="relative h-[500px] md:h-[700px]">
         <Molecule3D />
       </div>

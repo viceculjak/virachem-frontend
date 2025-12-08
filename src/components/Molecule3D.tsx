@@ -93,11 +93,14 @@ export default function Molecule3D() {
   return (
     <Canvas
       camera={{ 
-        position: [0, 0, isMobile ? 16 : 12], 
-        fov: isMobile ? 60 : 50 
+        position: [0, 0, isMobile ? 18 : 12], 
+        fov: isMobile ? 65 : 50 
       }}
       gl={{ antialias: true, alpha: true }}
-      style={{ touchAction: 'auto' }}
+      style={{ 
+        touchAction: isMobile ? 'pan-y' : 'auto',
+        pointerEvents: isMobile ? 'none' : 'auto'
+      }}
     >
       {/* Background color */}
       <color attach="background" args={['#FAFAFA']} />
@@ -146,17 +149,17 @@ export default function Molecule3D() {
         ))}
         
         {/* Search bar positioned at center */}
-        {searchVisible && (
+        {searchVisible && !isMobile && (
           <Html 
             position={[0, 0, 0]} 
             center 
-            distanceFactor={isMobile ? 8 : 6}
+            distanceFactor={6}
             zIndexRange={[100, 0]}
           >
             <div 
               className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-3" 
               style={{ 
-                width: isMobile ? '280px' : '450px',
+                width: '450px',
                 maxWidth: '90vw'
               }}
             >
