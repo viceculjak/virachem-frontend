@@ -3,10 +3,16 @@
 import { motion } from 'framer-motion';
 
 const bondLines = [
-  { x1: '50%', y1: '35%', x2: '23%', y2: '18%', delay: 0, color: '#C9364F' },
-  { x1: '50%', y1: '35%', x2: '77%', y2: '18%', delay: 0.1, color: '#E8B341' },
-  { x1: '50%', y1: '35%', x2: '23%', y2: '75%', delay: 0.2, color: '#5A8A8F' },
-  { x1: '50%', y1: '35%', x2: '77%', y2: '75%', delay: 0.3, color: '#0B1F3F' },
+  // Bonds from center to each node
+  { x1: '50%', y1: '50%', x2: '23%', y2: '28%', delay: 0, color: '#C9364F', type: 'main' },
+  { x1: '50%', y1: '50%', x2: '77%', y2: '28%', delay: 0.1, color: '#E8B341', type: 'main' },
+  { x1: '50%', y1: '50%', x2: '23%', y2: '72%', delay: 0.2, color: '#5A8A8F', type: 'main' },
+  { x1: '50%', y1: '50%', x2: '77%', y2: '72%', delay: 0.3, color: '#0B1F3F', type: 'main' },
+  // Cross bonds between nodes (like in logo)
+  { x1: '23%', y1: '28%', x2: '77%', y2: '28%', delay: 0.4, color: '#0B1F3F', type: 'cross' },
+  { x1: '23%', y1: '72%', x2: '77%', y2: '72%', delay: 0.5, color: '#0B1F3F', type: 'cross' },
+  { x1: '23%', y1: '28%', x2: '23%', y2: '72%', delay: 0.6, color: '#0B1F3F', type: 'cross' },
+  { x1: '77%', y1: '28%', x2: '77%', y2: '72%', delay: 0.7, color: '#0B1F3F', type: 'cross' },
 ];
 
 const lineVariant = {
@@ -64,9 +70,9 @@ export default function BondLines() {
             x2={line.x2}
             y2={line.y2}
             stroke={line.color}
-            strokeWidth="8"
+            strokeWidth={line.type === 'main' ? '8' : '6'}
             strokeLinecap="round"
-            opacity="0.15"
+            opacity={line.type === 'main' ? '0.15' : '0.08'}
             filter="url(#glow)"
             variants={lineVariant}
             initial="hidden"
@@ -81,9 +87,10 @@ export default function BondLines() {
             y1={line.y1}
             x2={line.x2}
             y2={line.y2}
-            stroke={`url(#gradient-${index})`}
-            strokeWidth="5"
+            stroke={line.type === 'main' ? `url(#gradient-${index})` : line.color}
+            strokeWidth={line.type === 'main' ? '5' : '3'}
             strokeLinecap="round"
+            opacity={line.type === 'main' ? '1' : '0.3'}
             variants={lineVariant}
             initial="hidden"
             animate="visible"
@@ -94,7 +101,7 @@ export default function BondLines() {
             {/* Pulsing animation */}
             <animate
               attributeName="stroke-width"
-              values="5;6;5"
+              values={line.type === 'main' ? '5;6;5' : '3;4;3'}
               dur="2s"
               repeatCount="indefinite"
             />
@@ -102,48 +109,6 @@ export default function BondLines() {
         </g>
       ))}
       
-      {/* Central hub circle with enhanced glow */}
-      <g>
-        {/* Outer glow ring */}
-        <motion.circle
-          cx="50%"
-          cy="35%"
-          r="15"
-          fill="none"
-          stroke="#5A8A8F"
-          strokeWidth="2"
-          opacity="0.2"
-          filter="url(#glow)"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: [1, 1.2, 1], 
-            opacity: [0.2, 0.3, 0.2] 
-          }}
-          transition={{
-            delay: 0.3,
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        {/* Main hub circle */}
-        <motion.circle
-          cx="50%"
-          cy="35%"
-          r="10"
-          fill="#5A8A8F"
-          stroke="#0B1F3F"
-          strokeWidth="4"
-          filter="url(#glow)"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.6,
-            type: 'spring' as const,
-          }}
-        />
-      </g>
     </svg>
   );
 }

@@ -139,36 +139,56 @@ export default function MolecularLayout() {
         animate="show"
         className="container mx-auto px-4 lg:relative lg:h-[700px] flex flex-col lg:block gap-6 lg:gap-0"
       >
-        {/* Central Search Bar - In the middle of nodes (desktop only) */}
+        {/* Central Search Node - In the middle of nodes (desktop only) */}
         <motion.div
-          className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-          style={{ width: '500px' }}
-          initial={{ opacity: 0, scale: 0.8 }}
+          className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
+          initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.3, duration: 0.6, type: 'spring' as const }}
         >
-          <div className="relative">
-            {/* Glowing ring around search */}
-            <motion.div
-              className="absolute inset-0 rounded-lg pointer-events-none"
-              style={{
-                boxShadow: '0 0 40px rgba(90, 138, 143, 0.3)',
+          <motion.div
+            className="relative w-[280px] h-[280px] rounded-full bg-white flex items-center justify-center p-8"
+            style={{ 
+              borderWidth: '6px',
+              borderColor: '#5A8A8F',
+              boxShadow: '0 15px 60px rgba(0,0,0,0.2), 0 0 40px rgba(90, 138, 143, 0.5)',
+            }}
+            animate={{
+              boxShadow: [
+                '0 15px 60px rgba(0,0,0,0.2), 0 0 40px rgba(90, 138, 143, 0.5)',
+                '0 15px 60px rgba(0,0,0,0.2), 0 0 60px rgba(90, 138, 143, 0.7)',
+                '0 15px 60px rgba(0,0,0,0.2), 0 0 40px rgba(90, 138, 143, 0.5)',
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            {/* Pulsing glow */}
+            <motion.div 
+              className="absolute inset-0 rounded-full"
+              style={{ 
+                backgroundColor: '#5A8A8F',
+                opacity: 0.1,
               }}
               animate={{
-                boxShadow: [
-                  '0 0 30px rgba(90, 138, 143, 0.3)',
-                  '0 0 50px rgba(90, 138, 143, 0.5)',
-                  '0 0 30px rgba(90, 138, 143, 0.3)',
-                ],
+                opacity: [0.1, 0.2, 0.1],
+                scale: [1, 1.05, 1],
               }}
               transition={{
-                duration: 3,
+                duration: 2,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
             />
-            <SearchBar value={search} onChange={setSearch} />
-          </div>
+            
+            {/* Search bar inside node */}
+            <div className="relative z-10 w-full">
+              <SearchBar value={search} onChange={setSearch} />
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Mobile Search Bar - At top */}
