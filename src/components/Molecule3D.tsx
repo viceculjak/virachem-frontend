@@ -8,12 +8,12 @@ import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
 import * as THREE from 'three';
 
-// Define molecule structure matching logo - scaled up for desktop
+// Define molecule structure matching logo exactly - colors and sizes from molecule.png
 const nodes = [
   {
     id: 0,
     position: [0, 0, 0] as [number, number, number],
-    color: '#5A8A8F',
+    color: '#2D5F6D', // Dark teal center (from logo)
     size: 1.6,
     service: 'search',
     title: 'Search',
@@ -21,7 +21,7 @@ const nodes = [
   {
     id: 1,
     position: [-4, 3, 1] as [number, number, number],
-    color: '#C9364F',
+    color: '#D85A5A', // Coral red (from logo)
     size: 1.4,
     service: 'quote',
     title: 'Custom Peptide Synthesis',
@@ -29,7 +29,7 @@ const nodes = [
   {
     id: 2,
     position: [4, 2.5, -1] as [number, number, number],
-    color: '#5A8A8F',
+    color: '#6BA892', // Light teal/green (from logo)
     size: 1.2,
     service: 'about',
     title: 'Quality Documentation',
@@ -37,7 +37,7 @@ const nodes = [
   {
     id: 3,
     position: [-5, 0, 0.5] as [number, number, number],
-    color: '#E8B341',
+    color: '#E8B741', // Golden yellow (from logo)
     size: 1.0,
     service: 'quote',
     title: 'Technical Support',
@@ -45,15 +45,15 @@ const nodes = [
   {
     id: 4,
     position: [0, -3.5, 1.5] as [number, number, number],
-    color: '#C9364F',
-    size: 1.2,
+    color: '#D85A5A', // Coral red (from logo) - same as top-left
+    size: 1.4, // Large like top-left red node
     service: 'products',
     title: 'Research Catalog',
   },
   {
     id: 5,
     position: [4, -3, -1] as [number, number, number],
-    color: '#E8B341',
+    color: '#E8B741', // Golden yellow (from logo)
     size: 1.2,
     service: 'about',
     title: 'Regulatory Compliance',
