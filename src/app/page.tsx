@@ -1,53 +1,25 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import ServicesGrid from '@/components/ServicesGrid';
-import SearchBar from '@/components/SearchBar';
+import MolecularLayout from '@/components/MolecularLayout';
+import MolecularBackground from '@/components/MolecularBackground';
+import BondLines from '@/components/BondLines';
 
 export default function Home() {
-  const [search, setSearch] = useState('');
-
   return (
     <div className="bg-background">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-20 text-center">
-        <div className="max-w-3xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-bold text-[#0B1F3F] mb-4 tracking-tighter leading-tight"
-          >
-            Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-[#798996] mb-8"
-          >
-            EU-Registered intermediary for high-purity research peptides and fine chemicals.
-          </motion.p>
-          <div className="max-w-2xl mx-auto">
-            <SearchBar value={search} onChange={setSearch} />
-          </div>
+      {/* Molecular Hub-and-Spoke Section */}
+      <section className="relative overflow-hidden bg-white">
+        {/* Background molecular patterns */}
+        <MolecularBackground />
+        
+        {/* Bond lines connecting nodes */}
+        <div className="container mx-auto relative">
+          <BondLines />
         </div>
-      </div>
-
-      {/* Services Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="py-16 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <h2 className="text-center text-xl font-semibold text-[#0B1F3F] mb-12">
-            Our Services
-          </h2>
-          <ServicesGrid />
-        </div>
-      </motion.section>
+        
+        {/* Main molecular layout */}
+        <MolecularLayout />
+      </section>
 
       {/* Value Props Section */}
       <section className="py-16 bg-[#FAFAFA]">
