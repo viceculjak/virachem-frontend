@@ -52,14 +52,25 @@ export default function Header() {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
+          <Link href="/products" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
+            Products
+          </Link>
+          <Link href="/services" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
+            Services
+          </Link>
+          <Link href="/quality" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
+            Quality
+          </Link>
           <Link href="/about" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
             About
           </Link>
-          <Link href="/products" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
-            Catalog
-          </Link>
-          <Link href="/quote" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
+          <Link href="/contact" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
             Contact
+          </Link>
+          <Link href="/quote">
+            <button className="bg-[#C9364F] text-white px-4 py-2 rounded-md hover:bg-[#C9364F]/90 transition-colors font-medium">
+              Request Quote
+            </button>
           </Link>
         </nav>
 
@@ -101,6 +112,27 @@ export default function Header() {
               {/* Navigation Links */}
               <nav className="flex-1 flex flex-col p-6 space-y-4">
                 <Link
+                  href="/products"
+                  onClick={closeMenu}
+                  className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100"
+                >
+                  Products
+                </Link>
+                <Link
+                  href="/services"
+                  onClick={closeMenu}
+                  className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100"
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/quality"
+                  onClick={closeMenu}
+                  className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100"
+                >
+                  Quality
+                </Link>
+                <Link
                   href="/about"
                   onClick={closeMenu}
                   className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100"
@@ -108,14 +140,7 @@ export default function Header() {
                   About
                 </Link>
                 <Link
-                  href="/products"
-                  onClick={closeMenu}
-                  className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100"
-                >
-                  Catalog
-                </Link>
-                <Link
-                  href="/quote"
+                  href="/contact"
                   onClick={closeMenu}
                   className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100"
                 >

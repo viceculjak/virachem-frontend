@@ -8,55 +8,55 @@ import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
 import * as THREE from 'three';
 
-// Define molecule structure matching logo exactly - colors and sizes from molecule.png
+// Define molecule structure - Business areas with clear navigation
 const nodes = [
   {
     id: 0,
     position: [0, 0, 0] as [number, number, number],
-    color: '#2D5F6D', // Dark teal center (from logo)
+    color: '#2D5F6D', // Dark teal center
     size: 1.6,
     service: 'search',
-    title: 'Search',
+    title: 'Search Products',
   },
   {
     id: 1,
     position: [-4, 3, 1] as [number, number, number],
-    color: '#D85A5A', // Coral red (from logo)
+    color: '#D85A5A', // Red - Primary action
     size: 1.4,
-    service: 'quote',
-    title: 'Custom Peptide Synthesis',
+    service: 'products',
+    title: 'Product Catalog',
   },
   {
     id: 2,
     position: [4, 2.5, -1] as [number, number, number],
-    color: '#6BA892', // Light teal/green (from logo)
+    color: '#E8B741', // Gold - Secondary action
     size: 1.2,
-    service: 'about',
-    title: 'Quality Documentation',
+    service: 'quote',
+    title: 'Request Quote',
   },
   {
     id: 3,
     position: [-5, 0, 0.5] as [number, number, number],
-    color: '#E8B741', // Golden yellow (from logo)
-    size: 1.0,
-    service: 'quote',
-    title: 'Technical Support',
+    color: '#6BA892', // Green - Services
+    size: 1.2,
+    service: 'services',
+    title: 'Manufacturing Services',
   },
   {
     id: 4,
     position: [0, -3.5, 1.5] as [number, number, number],
-    color: '#D85A5A', // Coral red (from logo) - same as top-left
-    size: 1.4, // Large like top-left red node
-    service: 'products',
-    title: 'Research Catalog',
+    color: '#E8B741', // Gold - Trust/quality
+    size: 1.0,
+    service: 'quality',
+    title: 'Quality & Compliance',
   },
   {
     id: 5,
     position: [4, -3, -1] as [number, number, number],
-    color: '#E8B741', // Golden yellow (from logo)
-    size: 1.2,
-    service: 'about',
-    title: 'Regulatory Compliance',
+    color: '#D85A5A', // Red - Action
+    size: 1.4,
+    service: 'contact',
+    title: 'Contact & Support',
   },
 ];
 
