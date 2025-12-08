@@ -24,7 +24,7 @@ const lineVariant = {
     transition: {
       pathLength: {
         duration: 0.8,
-        ease: 'easeInOut',
+        type: 'tween' as const,
       },
       opacity: {
         duration: 0.3,
