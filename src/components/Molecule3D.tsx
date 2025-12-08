@@ -195,6 +195,9 @@ export default function Molecule3D() {
         // Allow scroll when not touching nodes
       }}
     >
+      {/* Background color */}
+      <color attach="background" args={['#FAFAFA']} />
+      
       {/* Lighting */}
       <ambientLight intensity={0.6} />
       <pointLight position={[10, 10, 10]} intensity={0.5} />

@@ -111,15 +111,19 @@ export default function MoleculeNode({
         }}
       >
         <div
-          className="bg-white/95 backdrop-blur-sm px-4 py-3 rounded-lg shadow-xl whitespace-nowrap"
+          className="bg-white/95 backdrop-blur-sm px-4 py-3 rounded-lg shadow-xl"
           style={{
             color: color,
             fontWeight: '800',
             fontSize: isCenter ? '20px' : '18px',
-            maxWidth: '200px',
+            maxWidth: '250px',
             textAlign: 'center',
             border: `3px solid ${color}`,
             textShadow: `0 0 20px ${color}40`,
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            whiteSpace: 'normal',
+            lineHeight: '1.2',
           }}
         >
           {isCenter ? 'Search' : title}
