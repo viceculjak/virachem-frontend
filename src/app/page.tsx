@@ -13,17 +13,15 @@ export default function Home() {
       <MolecularNav3D />
       
       {/* Molecular Hub-and-Spoke Section */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-white min-h-[1100px]">
         {/* Particle field */}
         <ParticleField />
         
-        {/* Bond lines connecting nodes */}
-        <div className="container mx-auto relative">
+        {/* Main molecular layout with integrated bonds */}
+        <div className="relative">
           <BondLines />
+          <MolecularLayout />
         </div>
-        
-        {/* Main molecular layout */}
-        <MolecularLayout />
       </section>
 
       {/* Value Props Section */}

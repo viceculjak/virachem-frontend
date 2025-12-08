@@ -13,7 +13,7 @@ const services = [
     link: '/quote',
     linkText: 'Request Quote',
     color: '#C9364F', // Red
-    position: { left: '20%', top: '25%' },
+    position: { left: '20%', top: '35%' },
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const services = [
     link: '/products',
     linkText: 'View Catalog',
     color: '#E8B341', // Gold
-    position: { left: '80%', top: '25%' },
+    position: { left: '80%', top: '35%' },
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const services = [
     link: '/about',
     linkText: 'Learn More',
     color: '#5A8A8F', // Teal
-    position: { left: '20%', top: '75%' },
+    position: { left: '20%', top: '65%' },
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const services = [
     link: '/quote',
     linkText: 'Contact Us',
     color: '#0B1F3F', // Navy
-    position: { left: '80%', top: '75%' },
+    position: { left: '80%', top: '65%' },
   },
 ];
 
