@@ -26,6 +26,7 @@ export default function MoleculeNode({
 }: MoleculeNodeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
   
   // Smooth animation on hover
   useFrame(() => {
@@ -43,10 +44,28 @@ export default function MoleculeNode({
       {/* Main sphere */}
       <mesh
         ref={meshRef}
-        onClick={(e) => {
-          e.stopPropagation();
-          console.log('Mesh clicked:', service);
-          onClick?.(service);
+        onPointerDown={(e) => {
+          touchStartRef.current = {
+            x: e.clientX,
+            y: e.clientY,
+            time: Date.now()
+          };
+        }}
+        onPointerUp={(e) => {
+          if (!touchStartRef.current) return;
+          
+          const deltaX = Math.abs(e.clientX - touchStartRef.current.x);
+          const deltaY = Math.abs(e.clientY - touchStartRef.current.y);
+          const deltaTime = Date.now() - touchStartRef.current.time;
+          
+          // Only trigger click if it's a tap (small movement, quick)
+          if (deltaX < 10 && deltaY < 10 && deltaTime < 300) {
+            e.stopPropagation();
+            console.log('Mesh clicked:', service);
+            onClick?.(service);
+          }
+          
+          touchStartRef.current = null;
         }}
         onPointerOver={(e) => {
           e.stopPropagation();

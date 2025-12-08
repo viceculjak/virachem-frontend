@@ -98,7 +98,8 @@ export default function Molecule3D() {
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
-        touchAction: 'pan-y'
+        touchAction: 'pan-y',
+        userSelect: 'none'
       }}
     >
       {/* Background color */}
