@@ -119,7 +119,7 @@ function ProductsPageContent() {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {products.map((product) => (
               <Link key={product.id} href={`/products/${product.id}`}>
-                <Card className="h-full hover:border-gray-300 transition-colors cursor-pointer border-gray-200 bg-white">
+                <Card className="h-full hover:border-gray-300 shadow-md hover:shadow-lg transition-all cursor-pointer border-gray-200 bg-white">
                   {/* Desktop view with image */}
                   <CardHeader className="hidden md:block">
                     <div className="w-full h-48 flex items-center justify-center bg-gray-50 rounded-md mb-4">

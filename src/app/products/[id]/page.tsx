@@ -97,7 +97,7 @@ export default function ProductDetailPage() {
           </div>
 
           {product.image_url && (
-            <Card>
+            <Card className="shadow-md">
               <CardContent className="pt-6">
                 <div className="w-full h-64 flex items-center justify-center bg-gray-50 rounded-md">
                   <img
@@ -135,7 +135,7 @@ export default function ProductDetailPage() {
             </Card>
           )}
 
-          <Card>
+          <Card className="shadow-md">
             <CardContent className="pt-6">
               <Tabs defaultValue="overview" className="w-full">
                 <TabsList className="grid w-full grid-cols-3">

@@ -63,7 +63,7 @@ export default function ServicesGrid() {
           <motion.div
             key={i}
             variants={item}
-            className="bg-white p-6 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors flex flex-col relative overflow-hidden"
+            className="bg-white p-6 rounded-lg border border-gray-200 hover:border-gray-300 shadow-md hover:shadow-lg transition-all flex flex-col relative overflow-hidden"
           >
             {/* Colored top border accent */}
             <div 
