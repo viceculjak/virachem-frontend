@@ -155,7 +155,6 @@ export default function Molecule3D() {
   // Initialize as mobile to prevent flash of large search bar
   const [isMobile, setIsMobile] = useState(true);
   const [search, setSearch] = useState('');
-  const [searchVisible, setSearchVisible] = useState(true);
   const controlsRef = useRef<any>(null);
   
   useEffect(() => {
@@ -166,10 +165,8 @@ export default function Molecule3D() {
   }, []);
   
   const handleNodeClick = (service: string) => {
-    console.log('Node clicked:', service, 'searchVisible:', searchVisible);
+    // Don't navigate when clicking search node
     if (service === 'search') {
-      setSearchVisible(!searchVisible);
-      console.log('Toggled searchVisible to:', !searchVisible);
       return;
     }
     // Use window.location to avoid router context issues in Canvas
@@ -245,25 +242,23 @@ export default function Molecule3D() {
           />
         ))}
         
-        {/* Search bar positioned at center - constant size */}
-        {searchVisible && (
-          <Html 
-            position={[0, 0, 0]} 
-            center 
-            distanceFactor={8}
-            zIndexRange={[100, 0]}
+        {/* Search bar positioned at center - always visible */}
+        <Html 
+          position={[0, 0, 0]} 
+          center 
+          distanceFactor={8}
+          zIndexRange={[100, 0]}
+        >
+          <div 
+            className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-2.5" 
+            style={{ 
+              width: '300px',
+              maxWidth: '90vw'
+            }}
           >
-            <div 
-              className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-2.5" 
-              style={{ 
-                width: '300px',
-                maxWidth: '90vw'
-              }}
-            >
-              <SearchBar value={search} onChange={setSearch} />
-            </div>
-          </Html>
-        )}
+            <SearchBar value={search} onChange={setSearch} />
+          </div>
+        </Html>
       </MoleculeGroup>
     </Canvas>
   );
