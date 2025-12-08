@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { Search } from 'lucide-react';
 
@@ -19,7 +18,6 @@ interface SearchBarProps {
 export default function SearchBar({ value, onChange }: SearchBarProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -58,9 +56,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
   }, []);
 
   const handleProductClick = (productId: string) => {
-    router.push(`/products/${productId}`);
-    setIsOpen(false);
-    onChange('');
+    window.location.href = `/products/${productId}`;
   };
 
   return (
