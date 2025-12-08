@@ -7,53 +7,53 @@ import MoleculeNode from './MoleculeNode';
 import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
 
-// Define molecule structure matching logo
+// Define molecule structure matching logo - scaled up for desktop
 const nodes = [
   {
     id: 0,
     position: [0, 0, 0] as [number, number, number],
     color: '#5A8A8F',
-    size: 1.4,
+    size: 1.6,
     service: 'search',
     title: 'Search',
   },
   {
     id: 1,
-    position: [-3.5, 2.5, 1] as [number, number, number],
+    position: [-4, 3, 1] as [number, number, number],
     color: '#C9364F',
-    size: 1.2,
+    size: 1.4,
     service: 'quote',
     title: 'Custom Peptide Synthesis',
   },
   {
     id: 2,
-    position: [3.5, 2, -1] as [number, number, number],
+    position: [4, 2.5, -1] as [number, number, number],
     color: '#5A8A8F',
-    size: 1.0,
+    size: 1.2,
     service: 'about',
     title: 'Quality Documentation',
   },
   {
     id: 3,
-    position: [-4.5, 0, 0.5] as [number, number, number],
+    position: [-5, 0, 0.5] as [number, number, number],
     color: '#E8B341',
-    size: 0.8,
+    size: 1.0,
     service: 'quote',
     title: 'Technical Support',
   },
   {
     id: 4,
-    position: [0, -3, 1.5] as [number, number, number],
+    position: [0, -3.5, 1.5] as [number, number, number],
     color: '#C9364F',
-    size: 1.0,
+    size: 1.2,
     service: 'products',
     title: 'Research Catalog',
   },
   {
     id: 5,
-    position: [3.5, -2.5, -1] as [number, number, number],
+    position: [4, -3, -1] as [number, number, number],
     color: '#E8B341',
-    size: 1.0,
+    size: 1.2,
     service: 'about',
     title: 'Regulatory Compliance',
   },
@@ -93,13 +93,18 @@ export default function Molecule3D() {
   return (
     <Canvas
       camera={{ 
-        position: [0, 0, isMobile ? 18 : 12], 
-        fov: isMobile ? 65 : 50 
+        position: [0, 0, isMobile ? 18 : 10], 
+        fov: isMobile ? 65 : 45 
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
-        touchAction: 'pan-y',
-        userSelect: 'none'
+        touchAction: isMobile ? 'pan-y' : 'auto',
+        userSelect: 'none',
+        WebkitTouchCallout: 'none',
+        WebkitUserSelect: 'none'
+      }}
+      onPointerMissed={() => {
+        // Allow scroll when not touching nodes
       }}
     >
       {/* Background color */}
@@ -110,22 +115,20 @@ export default function Molecule3D() {
       <pointLight position={[10, 10, 10]} intensity={0.5} />
       <pointLight position={[-10, -10, -10]} intensity={0.3} />
       
-      {/* Controls */}
-      <OrbitControls
-        autoRotate
-        autoRotateSpeed={isMobile ? 0.3 : 0.4}
-        enableDamping
-        dampingFactor={0.05}
-        enableZoom={false}
-        enableRotate={!isMobile}
-        enablePan={false}
-        maxDistance={20}
-        minDistance={8}
-        touches={{
-          ONE: isMobile ? undefined : 2,
-          TWO: undefined
-        }}
-      />
+      {/* Controls - disabled on mobile to allow scrolling */}
+      {!isMobile && (
+        <OrbitControls
+          autoRotate
+          autoRotateSpeed={0.4}
+          enableDamping
+          dampingFactor={0.05}
+          enableZoom={false}
+          enableRotate={true}
+          enablePan={false}
+          maxDistance={15}
+          minDistance={8}
+        />
+      )}
       
       {/* Molecule structure */}
       <group>
@@ -152,19 +155,18 @@ export default function Molecule3D() {
           />
         ))}
         
-        {/* Search bar positioned at center */}
+        {/* Search bar positioned at center - desktop only */}
         {searchVisible && !isMobile && (
           <Html 
             position={[0, 0, 0]} 
             center 
-            distanceFactor={6}
+            distanceFactor={5}
             zIndexRange={[100, 0]}
           >
             <div 
               className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-3" 
               style={{ 
-                width: '450px',
-                maxWidth: '90vw'
+                width: '380px'
               }}
             >
               <SearchBar value={search} onChange={setSearch} />
