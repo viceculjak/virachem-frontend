@@ -105,13 +105,13 @@ export default function MolecularLayout() {
   };
 
   return (
-    <div ref={containerRef} id="services" className="relative min-h-[900px] lg:min-h-[1000px] py-12 lg:py-20">
-      {/* Central Hub - Hero Section with levitation */}
+    <div ref={containerRef} id="services" className="relative min-h-[900px] lg:min-h-[1100px] py-12 lg:py-20">
+      {/* Hero Title and Subtitle at Top */}
       <motion.div
         variants={heroVariant}
         initial="hidden"
         animate="show"
-        className="relative z-10 max-w-3xl mx-auto text-center px-4 mb-16 lg:mb-0"
+        className="relative z-10 max-w-4xl mx-auto text-center px-4 mb-12 lg:mb-20"
       >
         <motion.div
           animate={{
@@ -126,21 +126,39 @@ export default function MolecularLayout() {
           <h1 className="text-3xl md:text-4xl font-bold text-[#0B1F3F] mb-4 tracking-tighter leading-tight">
             Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
           </h1>
-          <p className="text-lg text-[#798996] mb-8">
+          <p className="text-lg text-[#798996]">
             EU-Registered intermediary for high-purity research peptides and fine chemicals.
           </p>
-          <div className="max-w-2xl mx-auto relative">
+        </motion.div>
+      </motion.div>
+
+      {/* Service Nodes with Orbital Rotation + Central Search Bar */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="container mx-auto px-4 lg:relative lg:h-[700px] flex flex-col lg:block gap-6 lg:gap-0"
+      >
+        {/* Central Search Bar - In the middle of nodes (desktop only) */}
+        <motion.div
+          className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+          style={{ width: '500px' }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <div className="relative">
             {/* Glowing ring around search */}
             <motion.div
-              className="absolute inset-0 rounded-lg"
+              className="absolute inset-0 rounded-lg pointer-events-none"
               style={{
                 boxShadow: '0 0 40px rgba(90, 138, 143, 0.3)',
               }}
               animate={{
                 boxShadow: [
-                  '0 0 20px rgba(90, 138, 143, 0.2)',
-                  '0 0 40px rgba(90, 138, 143, 0.4)',
-                  '0 0 20px rgba(90, 138, 143, 0.2)',
+                  '0 0 30px rgba(90, 138, 143, 0.3)',
+                  '0 0 50px rgba(90, 138, 143, 0.5)',
+                  '0 0 30px rgba(90, 138, 143, 0.3)',
                 ],
               }}
               transition={{
@@ -152,15 +170,11 @@ export default function MolecularLayout() {
             <SearchBar value={search} onChange={setSearch} />
           </div>
         </motion.div>
-      </motion.div>
 
-      {/* Service Nodes with Orbital Rotation */}
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="container mx-auto px-4 lg:relative lg:h-[600px] flex flex-col lg:block gap-6 lg:gap-0 mt-12 lg:mt-0"
-      >
+        {/* Mobile Search Bar - At top */}
+        <div className="lg:hidden mb-8">
+          <SearchBar value={search} onChange={setSearch} />
+        </div>
         {services.map((service, index) => (
           <motion.div
             key={service.id}

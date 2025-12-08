@@ -17,9 +17,6 @@ export default function Home() {
         {/* Particle field */}
         <ParticleField />
         
-        {/* Background molecular patterns */}
-        <MolecularBackground />
-        
         {/* Bond lines connecting nodes */}
         <div className="container mx-auto relative">
           <BondLines />
