@@ -79,42 +79,50 @@ function MoleculeGroup({
   children: React.ReactNode;
 }) {
   const groupRef = useRef<THREE.Group>(null);
-  const targetRotation = useRef(new THREE.Euler(0, 0, 0));
+  const currentRotation = useRef(new THREE.Euler(0, 0, 0));
   
   useFrame((state) => {
     if (groupRef.current) {
       const time = state.clock.getElapsedTime();
       
-      if (isMobile) {
-        // Mobile: gentle continuous rotation
-        groupRef.current.rotation.y = time * 0.15;
+      // Subtle breathing/vibration effect (same for mobile and desktop)
+      const breathX = Math.sin(time * 0.5) * 0.05;
+      const breathY = Math.sin(time * 0.3) * 0.05;
+      
+      if (!isMobile && !isUserInteracting) {
+        // Desktop: slowly return to starting position (0, 0, 0) when not interacting
+        currentRotation.current.x = THREE.MathUtils.lerp(
+          currentRotation.current.x,
+          0,
+          0.02
+        );
+        currentRotation.current.y = THREE.MathUtils.lerp(
+          currentRotation.current.y,
+          0,
+          0.02
+        );
+        currentRotation.current.z = THREE.MathUtils.lerp(
+          currentRotation.current.z,
+          0,
+          0.02
+        );
+        
+        // Apply base rotation + breathing
+        groupRef.current.rotation.x = currentRotation.current.x + breathX;
+        groupRef.current.rotation.y = currentRotation.current.y + breathY;
+        groupRef.current.rotation.z = currentRotation.current.z;
+      } else if (!isMobile && isUserInteracting) {
+        // Desktop: user is rotating - store current rotation
+        currentRotation.current.set(
+          groupRef.current.rotation.x - breathX,
+          groupRef.current.rotation.y - breathY,
+          groupRef.current.rotation.z
+        );
       } else {
-        // Desktop: slowly return to starting position when not interacting
-        if (!isUserInteracting) {
-          // Gradually lerp back to origin (very slow)
-          groupRef.current.rotation.x = THREE.MathUtils.lerp(
-            groupRef.current.rotation.x,
-            targetRotation.current.x,
-            0.02
-          );
-          groupRef.current.rotation.y = THREE.MathUtils.lerp(
-            groupRef.current.rotation.y,
-            targetRotation.current.y,
-            0.02
-          );
-          groupRef.current.rotation.z = THREE.MathUtils.lerp(
-            groupRef.current.rotation.z,
-            targetRotation.current.z,
-            0.02
-          );
-        }
-        
-        // Add subtle breathing/vibration effect on top
-        const breathX = Math.sin(time * 0.5) * 0.05;
-        const breathY = Math.sin(time * 0.3) * 0.05;
-        
-        groupRef.current.rotation.x += breathX * 0.3;
-        groupRef.current.rotation.y += breathY * 0.3;
+        // Mobile: just breathing at origin (no user interaction)
+        groupRef.current.rotation.x = breathX;
+        groupRef.current.rotation.y = breathY;
+        groupRef.current.rotation.z = 0;
       }
     }
   });
