@@ -8,13 +8,17 @@ import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
 import * as THREE from 'three';
 
-// Define molecule structure matching the logo image exactly
-const nodes = [
+// Helper function to scale node sizes for mobile
+const getNodeSize = (baseSize: number, isMobile: boolean) => 
+  isMobile ? baseSize * 1.3 : baseSize;
+
+// Function to generate molecule structure with responsive sizes
+const getNodes = (isMobile: boolean) => [
   {
     id: 0,
     position: [0, 0, 0] as [number, number, number],
     color: '#1a4d5c', // Dark teal center (matches image)
-    size: 1.6,
+    size: getNodeSize(1.6, isMobile),
     service: 'search',
     title: 'Search Products',
   },
@@ -22,7 +26,7 @@ const nodes = [
     id: 1,
     position: [-4, 3, 0] as [number, number, number],
     color: '#D85A5A', // Red top-left (matches image)
-    size: 1.4,
+    size: getNodeSize(1.4, isMobile),
     service: 'products',
     title: 'Product Catalog',
   },
@@ -30,7 +34,7 @@ const nodes = [
     id: 2,
     position: [4.5, 2.5, 0] as [number, number, number],
     color: '#5a8a8f', // Green/teal top-right (matches image)
-    size: 1.2,
+    size: getNodeSize(1.2, isMobile),
     service: 'services',
     title: 'Manufacturing Services',
   },
@@ -38,7 +42,7 @@ const nodes = [
     id: 3,
     position: [-4.5, -0.5, 0] as [number, number, number],
     color: '#E8B741', // Gold left (matches image)
-    size: 1.0,
+    size: getNodeSize(1.0, isMobile),
     service: 'quote',
     title: 'Request Quote',
   },
@@ -46,7 +50,7 @@ const nodes = [
     id: 4,
     position: [0, -3.5, 0] as [number, number, number],
     color: '#D85A5A', // Red bottom (matches image)
-    size: 1.4,
+    size: getNodeSize(1.4, isMobile),
     service: 'quality',
     title: 'Quality & Compliance',
   },
@@ -54,7 +58,7 @@ const nodes = [
     id: 5,
     position: [4, -3, 0] as [number, number, number],
     color: '#E8B741', // Gold bottom-right (matches image)
-    size: 1.2,
+    size: getNodeSize(1.2, isMobile),
     service: 'contact',
     title: 'Contact & Support',
   },
@@ -69,10 +73,10 @@ const bonds = [
 ];
 
 // Camera resetter - returns camera to starting position when not interacting
-function CameraResetter({ controlsRef }: { controlsRef: React.RefObject<any> }) {
+function CameraResetter({ controlsRef, isMobile }: { controlsRef: React.RefObject<any>, isMobile: boolean }) {
   const isInteracting = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const initialPosition = useRef(new THREE.Vector3(0, 0, 14));
+  const initialPosition = useRef(new THREE.Vector3(0, 0, isMobile ? 12 : 14));
   
   useEffect(() => {
     if (controlsRef.current) {
@@ -173,11 +177,14 @@ export default function Molecule3D() {
     window.location.href = `/${service}`;
   };
   
+  // Get nodes with appropriate sizes for current device
+  const nodes = getNodes(isMobile);
+  
   return (
     <Canvas
       camera={{ 
-        position: [0, 0, isMobile ? 18 : 12], 
-        fov: isMobile ? 65 : 49 
+        position: [0, 0, isMobile ? 12 : 14], 
+        fov: isMobile ? 55 : 50 
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
@@ -213,7 +220,7 @@ export default function Molecule3D() {
             maxDistance={15}
             minDistance={8}
           />
-          <CameraResetter controlsRef={controlsRef} />
+          <CameraResetter controlsRef={controlsRef} isMobile={isMobile} />
         </>
       )}
       

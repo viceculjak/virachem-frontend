@@ -14,9 +14,9 @@ const Molecule3D = dynamic(() => import('@/components/Molecule3D'), {
 
 export default function Home() {
   return (
-    <div className="bg-background">
-      {/* 3D Molecule (search bar integrated inside for both mobile and desktop) - full viewport height */}
-      <div className="relative h-[calc(100vh-80px)] md:h-[calc(100vh-120px)]">
+    <div className="h-full bg-background">
+      {/* 3D Molecule (search bar integrated inside for both mobile and desktop) */}
+      <div className="relative h-full">
         <Molecule3D />
       </div>
     </div>

@@ -47,9 +47,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${urbanist.variable} antialiased`}>
-        <div className="min-h-screen bg-background flex flex-col">
+        <div className="h-screen bg-background flex flex-col overflow-hidden">
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-1 overflow-auto">{children}</main>
           <Footer />
         </div>
         <Toaster position="top-right" />
