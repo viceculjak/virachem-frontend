@@ -70,39 +70,53 @@ const bonds = [
 
 // Camera resetter - returns camera to starting position when not interacting
 function CameraResetter({ controlsRef }: { controlsRef: React.RefObject<any> }) {
-  const lastInteractionTime = useRef(Date.now());
+  const isInteracting = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const initialPosition = useRef(new THREE.Vector3(0, 0, 10));
+  
+  useEffect(() => {
+    if (controlsRef.current) {
+      const controls = controlsRef.current;
+      
+      const handleStart = () => {
+        isInteracting.current = true;
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = null;
+        }
+      };
+      
+      const handleEnd = () => {
+        isInteracting.current = false;
+        // Wait 500ms after user stops, then start returning
+        timeoutRef.current = setTimeout(() => {
+          // Trigger return to origin
+          isInteracting.current = false;
+        }, 500);
+      };
+      
+      controls.addEventListener('start', handleStart);
+      controls.addEventListener('end', handleEnd);
+      
+      return () => {
+        controls.removeEventListener('start', handleStart);
+        controls.removeEventListener('end', handleEnd);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      };
+    }
+  }, [controlsRef]);
   
   useFrame((state) => {
-    if (controlsRef.current) {
-      // Check if user moved controls recently
+    if (controlsRef.current && !isInteracting.current) {
       const controls = controlsRef.current;
-      const currentAzimuth = controls.getAzimuthalAngle();
-      const currentPolar = controls.getPolarAngle();
       
-      // If position changed, update last interaction time
-      if (Math.abs(currentAzimuth) > 0.01 || Math.abs(currentPolar - Math.PI / 2) > 0.01) {
-        lastInteractionTime.current = Date.now();
-      }
+      // Smoothly lerp camera back to initial position
+      state.camera.position.lerp(initialPosition.current, 0.05);
+      state.camera.lookAt(0, 0, 0);
       
-      // If no interaction for 500ms, start returning to origin
-      const timeSinceInteraction = Date.now() - lastInteractionTime.current;
-      if (timeSinceInteraction > 500) {
-        // Smoothly lerp camera back to default position (relatively fast)
-        const targetAzimuth = 0;
-        const targetPolar = Math.PI / 2;
-        
-        const newAzimuth = THREE.MathUtils.lerp(currentAzimuth, targetAzimuth, 0.05);
-        const newPolar = THREE.MathUtils.lerp(currentPolar, targetPolar, 0.05);
-        
-        // Update camera position
-        const distance = controls.getDistance();
-        const offset = new THREE.Spherical(distance, newPolar, newAzimuth);
-        const position = new THREE.Vector3().setFromSpherical(offset);
-        
-        state.camera.position.copy(position);
-        state.camera.lookAt(0, 0, 0);
-        controls.update();
-      }
+      // Also reset the controls target
+      controls.target.lerp(new THREE.Vector3(0, 0, 0), 0.05);
+      controls.update();
     }
   });
   
