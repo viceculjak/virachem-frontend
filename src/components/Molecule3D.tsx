@@ -152,7 +152,8 @@ function MoleculeGroup({
 }
 
 export default function Molecule3D() {
-  const [isMobile, setIsMobile] = useState(false);
+  // Initialize as mobile to prevent flash of large search bar
+  const [isMobile, setIsMobile] = useState(true);
   const [search, setSearch] = useState('');
   const [searchVisible, setSearchVisible] = useState(true);
   const controlsRef = useRef<any>(null);
@@ -249,13 +250,13 @@ export default function Molecule3D() {
           <Html 
             position={[0, 0, 0]} 
             center 
-            distanceFactor={isMobile ? 10 : 5}
+            distanceFactor={isMobile ? 10 : 7}
             zIndexRange={[100, 0]}
           >
             <div 
-              className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-3" 
+              className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-2.5" 
               style={{ 
-                width: isMobile ? '280px' : '380px',
+                width: isMobile ? '260px' : '320px',
                 maxWidth: '90vw'
               }}
             >
