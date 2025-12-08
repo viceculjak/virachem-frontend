@@ -18,14 +18,14 @@ export default function Home() {
   const [search, setSearch] = useState('');
 
   return (
-    <div className="bg-background min-h-screen flex flex-col">
+    <div className="bg-background">
       {/* Mobile Search Bar (outside 3D) */}
       <div className="md:hidden px-4 pt-6 mb-6">
         <SearchBar value={search} onChange={setSearch} />
       </div>
 
-      {/* 3D Molecule (search bar integrated inside on desktop) - takes remaining space */}
-      <div className="relative flex-1 min-h-[500px]">
+      {/* 3D Molecule (search bar integrated inside on desktop) - full viewport height */}
+      <div className="relative h-[calc(100vh-140px)] md:h-[calc(100vh-120px)]">
         <Molecule3D />
       </div>
     </div>

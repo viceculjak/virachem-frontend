@@ -183,6 +183,8 @@ export default function Molecule3D() {
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
+        width: '100%',
+        height: '100%',
         touchAction: isMobile ? 'pan-y' : 'auto',
         userSelect: 'none',
         WebkitTouchCallout: 'none',
