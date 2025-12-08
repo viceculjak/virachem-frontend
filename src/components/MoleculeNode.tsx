@@ -79,12 +79,16 @@ export default function MoleculeNode({
         }}
       >
         <sphereGeometry args={[size, 32, 32]} />
-        <meshStandardMaterial
+        <meshPhysicalMaterial
           color={color}
           emissive={color}
-          emissiveIntensity={hovered ? 0.4 : 0.15}
-          metalness={0.3}
-          roughness={0.7}
+          emissiveIntensity={hovered ? 0.3 : 0.1}
+          metalness={0.1}
+          roughness={0.2}
+          clearcoat={1.0}
+          clearcoatRoughness={0.1}
+          reflectivity={0.8}
+          envMapIntensity={1.2}
         />
       </mesh>
       

@@ -1,7 +1,7 @@
 'use client';
 
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Html } from '@react-three/drei';
+import { OrbitControls, Html, Environment } from '@react-three/drei';
 import { useState, useEffect, useRef } from 'react';
 import MoleculeNode from './MoleculeNode';
 import MoleculeBond from './MoleculeBond';
@@ -198,10 +198,19 @@ export default function Molecule3D() {
       {/* Background color */}
       <color attach="background" args={['#FAFAFA']} />
       
-      {/* Lighting */}
-      <ambientLight intensity={0.6} />
-      <pointLight position={[10, 10, 10]} intensity={0.5} />
-      <pointLight position={[-10, -10, -10]} intensity={0.3} />
+      {/* Lighting - Enhanced for 3D shine */}
+      <ambientLight intensity={0.4} />
+      <pointLight position={[10, 10, 10]} intensity={1.0} color="#ffffff" />
+      <pointLight position={[-10, -10, -10]} intensity={0.4} color="#4a90e2" />
+      <spotLight 
+        position={[0, 15, 0]} 
+        intensity={0.8} 
+        angle={0.6}
+        penumbra={0.5}
+      />
+      
+      {/* Environment reflections */}
+      <Environment preset="city" />
       
       {/* Controls - disabled on mobile to allow scrolling */}
       {!isMobile && (
