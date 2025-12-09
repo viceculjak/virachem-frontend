@@ -15,11 +15,11 @@ const getNodeSize = (baseSize: number, isMobile: boolean) =>
 // Function to generate molecule structure with responsive sizes and layout
 const getNodes = (isMobile: boolean) => {
   if (isMobile) {
-    // Vertical chain for mobile - evenly spaced
+    // Zigzag pattern for mobile - alternating left/right
     return [
       {
         id: 0,
-        position: [0, 5, 0] as [number, number, number],
+        position: [0, 5, 0] as [number, number, number],  // Center top
         color: '#1a4d5c', // Dark teal center
         size: getNodeSize(1.6, isMobile),
         service: 'search',
@@ -27,7 +27,7 @@ const getNodes = (isMobile: boolean) => {
       },
       {
         id: 1,
-        position: [0, 3, 0] as [number, number, number],
+        position: [-3, 3, 0] as [number, number, number],  // Left
         color: '#D85A5A', // Red
         size: getNodeSize(1.4, isMobile),
         service: 'products',
@@ -35,7 +35,7 @@ const getNodes = (isMobile: boolean) => {
       },
       {
         id: 2,
-        position: [0, 1, 0] as [number, number, number],
+        position: [3, 1, 0] as [number, number, number],  // Right
         color: '#5a8a8f', // Green/teal
         size: getNodeSize(1.2, isMobile),
         service: 'services',
@@ -43,7 +43,7 @@ const getNodes = (isMobile: boolean) => {
       },
       {
         id: 3,
-        position: [0, -1, 0] as [number, number, number],
+        position: [-3, -1, 0] as [number, number, number],  // Left
         color: '#E8B741', // Gold
         size: getNodeSize(1.0, isMobile),
         service: 'quote',
@@ -51,7 +51,7 @@ const getNodes = (isMobile: boolean) => {
       },
       {
         id: 4,
-        position: [0, -3, 0] as [number, number, number],
+        position: [3, -3, 0] as [number, number, number],  // Right
         color: '#D85A5A', // Red
         size: getNodeSize(1.4, isMobile),
         service: 'quality',
@@ -59,7 +59,7 @@ const getNodes = (isMobile: boolean) => {
       },
       {
         id: 5,
-        position: [0, -5, 0] as [number, number, number],
+        position: [0, -5, 0] as [number, number, number],  // Center bottom
         color: '#E8B741', // Gold
         size: getNodeSize(1.2, isMobile),
         service: 'contact',
