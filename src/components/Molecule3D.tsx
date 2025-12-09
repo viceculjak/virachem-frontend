@@ -243,6 +243,7 @@ export default function Molecule3D() {
             position={node.position}
             color={node.color}
             size={node.size}
+            service={node.service}
             onClick={() => handleNodeClick(node.service)}
             title={node.title}
           />
