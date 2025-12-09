@@ -241,17 +241,16 @@ export default function Molecule3D() {
   }, []);
   
   const handleNodeClick = (service: string) => {
-    // Don't navigate when clicking search node
-    if (service === 'search') {
+    // Don't navigate on center node
+    if (service === 'none') {
       return;
     }
     // Use window.location to avoid router context issues in Canvas
     window.location.href = `/${service}`;
   };
   
-  // Get nodes and bonds with appropriate layout for current device
+  // Get nodes with appropriate sizes for current device
   const nodes = getNodes(isMobile);
-  const bonds = getBonds(isMobile);
   
   return (
     <Canvas
