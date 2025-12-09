@@ -22,7 +22,7 @@ export default function Home() {
       {/* Search bar at top - separate from molecule */}
       <div className="w-full px-4 pt-4 pb-2 flex justify-center">
         <div className="w-full max-w-xl">
-          <SearchBar search={search} setSearch={setSearch} />
+          <SearchBar value={search} onChange={setSearch} />
         </div>
       </div>
       
