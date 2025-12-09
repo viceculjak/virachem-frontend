@@ -12,137 +12,66 @@ import * as THREE from 'three';
 const getNodeSize = (baseSize: number, isMobile: boolean) => 
   isMobile ? baseSize * 1.3 : baseSize;
 
-// Function to generate molecule structure with responsive sizes and layout
-const getNodes = (isMobile: boolean) => {
-  if (isMobile) {
-    // Zigzag pattern for mobile - alternating left/right
-    return [
-      {
-        id: 0,
-        position: [0, 5, 0] as [number, number, number],  // Center top
-        color: '#1a4d5c', // Dark teal center
-        size: getNodeSize(1.6, isMobile),
-        service: 'search',
-        title: 'Search Products',
-      },
-      {
-        id: 1,
-        position: [-3, 3, 0] as [number, number, number],  // Left
-        color: '#D85A5A', // Red
-        size: getNodeSize(1.4, isMobile),
-        service: 'products',
-        title: 'Product Catalog',
-      },
-      {
-        id: 2,
-        position: [3, 1, 0] as [number, number, number],  // Right
-        color: '#5a8a8f', // Green/teal
-        size: getNodeSize(1.2, isMobile),
-        service: 'services',
-        title: 'Manufacturing Services',
-      },
-      {
-        id: 3,
-        position: [-3, -1, 0] as [number, number, number],  // Left
-        color: '#E8B741', // Gold
-        size: getNodeSize(1.0, isMobile),
-        service: 'quote',
-        title: 'Request Quote',
-      },
-      {
-        id: 4,
-        position: [3, -3, 0] as [number, number, number],  // Right
-        color: '#D85A5A', // Red
-        size: getNodeSize(1.4, isMobile),
-        service: 'quality',
-        title: 'Quality & Compliance',
-      },
-      {
-        id: 5,
-        position: [0, -5, 0] as [number, number, number],  // Center bottom
-        color: '#E8B741', // Gold
-        size: getNodeSize(1.2, isMobile),
-        service: 'contact',
-        title: 'Contact & Support',
-      },
-    ];
-  } else {
-    // Desktop: hub-and-spoke radial layout
-    return [
-      {
-        id: 0,
-        position: [0, 0, 0] as [number, number, number],
-        color: '#1a4d5c', // Dark teal center
-        size: getNodeSize(1.6, isMobile),
-        service: 'search',
-        title: 'Search Products',
-      },
-      {
-        id: 1,
-        position: [-4, 3, 0] as [number, number, number],
-        color: '#D85A5A', // Red top-left
-        size: getNodeSize(1.4, isMobile),
-        service: 'products',
-        title: 'Product Catalog',
-      },
-      {
-        id: 2,
-        position: [4.5, 2.5, 0] as [number, number, number],
-        color: '#5a8a8f', // Green/teal top-right
-        size: getNodeSize(1.2, isMobile),
-        service: 'services',
-        title: 'Manufacturing Services',
-      },
-      {
-        id: 3,
-        position: [-4.5, -0.5, 0] as [number, number, number],
-        color: '#E8B741', // Gold left
-        size: getNodeSize(1.0, isMobile),
-        service: 'quote',
-        title: 'Request Quote',
-      },
-      {
-        id: 4,
-        position: [0, -3.5, 0] as [number, number, number],
-        color: '#D85A5A', // Red bottom
-        size: getNodeSize(1.4, isMobile),
-        service: 'quality',
-        title: 'Quality & Compliance',
-      },
-      {
-        id: 5,
-        position: [4, -3, 0] as [number, number, number],
-        color: '#E8B741', // Gold bottom-right
-        size: getNodeSize(1.2, isMobile),
-        service: 'contact',
-        title: 'Contact & Support',
-      },
-    ];
-  }
-};
+// Hub-and-spoke layout for all devices
+const getNodes = (isMobile: boolean) => [
+  {
+    id: 0,
+    position: [0, 0, 0] as [number, number, number],
+    color: '#1a4d5c', // Dark teal center
+    size: getNodeSize(1.6, isMobile),
+    service: 'none',
+    title: 'ViraChem',
+  },
+  {
+    id: 1,
+    position: [-4, 3, 0] as [number, number, number],
+    color: '#D85A5A', // Red
+    size: getNodeSize(1.4, isMobile),
+    service: 'products',
+    title: 'Product Catalog',
+  },
+  {
+    id: 2,
+    position: [4.5, 2.5, 0] as [number, number, number],
+    color: '#5a8a8f', // Green/teal
+    size: getNodeSize(1.2, isMobile),
+    service: 'services',
+    title: 'Manufacturing Services',
+  },
+  {
+    id: 3,
+    position: [-4.5, -0.5, 0] as [number, number, number],
+    color: '#E8B741', // Gold
+    size: getNodeSize(1.0, isMobile),
+    service: 'quote',
+    title: 'Request Quote',
+  },
+  {
+    id: 4,
+    position: [0, -3.5, 0] as [number, number, number],
+    color: '#D85A5A', // Red
+    size: getNodeSize(1.4, isMobile),
+    service: 'quality',
+    title: 'Quality & Compliance',
+  },
+  {
+    id: 5,
+    position: [4, -3, 0] as [number, number, number],
+    color: '#E8B741', // Gold
+    size: getNodeSize(1.2, isMobile),
+    service: 'contact',
+    title: 'Contact & Support',
+  },
+];
 
-// Function to generate bond connections based on layout
-const getBonds = (isMobile: boolean) => {
-  if (isMobile) {
-    // Vertical chain: sequential connections
-    return [
-      { from: 0, to: 1 },
-      { from: 1, to: 2 },
-      { from: 2, to: 3 },
-      { from: 3, to: 4 },
-      { from: 4, to: 5 },
-    ];
-  } else {
-    // Desktop: hub-and-spoke from center
-    return [
-      { from: 0, to: 1 },
-      { from: 0, to: 2 },
-      { from: 0, to: 3 },
-      { from: 0, to: 4 },
-      { from: 0, to: 5 },
-    ];
-  }
-};
+// Hub-and-spoke bonds for all devices
+const bonds = [
+  { from: 0, to: 1 },
+  { from: 0, to: 2 },
+  { from: 0, to: 3 },
+  { from: 0, to: 4 },
+  { from: 0, to: 5 },
+];
 
 // Camera resetter - returns camera to starting position when not interacting
 function CameraResetter({ controlsRef, isMobile }: { controlsRef: React.RefObject<any>, isMobile: boolean }) {
@@ -314,30 +243,10 @@ export default function Molecule3D() {
             position={node.position}
             color={node.color}
             size={node.size}
+            onClick={() => handleNodeClick(node.service)}
             title={node.title}
-            service={node.service}
-            isCenter={node.id === 0}
-            onClick={handleNodeClick}
           />
         ))}
-        
-        {/* Search bar positioned at center - always visible */}
-        <Html 
-          position={[0, 0, 0]} 
-          center 
-          distanceFactor={8}
-          zIndexRange={[100, 0]}
-        >
-          <div 
-            className="pointer-events-auto bg-white backdrop-blur-sm rounded-lg shadow-2xl border-4 border-[#5A8A8F] p-2.5" 
-            style={{ 
-              width: '300px',
-              maxWidth: '90vw'
-            }}
-          >
-            <SearchBar value={search} onChange={setSearch} />
-          </div>
-        </Html>
       </MoleculeGroup>
     </Canvas>
   );
