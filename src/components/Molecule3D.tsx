@@ -8,17 +8,13 @@ import MoleculeBond from './MoleculeBond';
 import SearchBar from './SearchBar';
 import * as THREE from 'three';
 
-// Helper function to scale node sizes for mobile
-const getNodeSize = (baseSize: number, isMobile: boolean) => 
-  isMobile ? baseSize * 1.3 : baseSize;
-
-// Hub-and-spoke layout for all devices
-const getNodes = (isMobile: boolean) => [
+// Hub-and-spoke layout - same for all devices
+const getNodes = () => [
   {
     id: 0,
     position: [0, 0, 0] as [number, number, number],
     color: '#1a4d5c', // Dark teal center
-    size: getNodeSize(1.6, isMobile),
+    size: 1.6,
     service: 'none',
     title: 'ViraChem',
   },
@@ -26,7 +22,7 @@ const getNodes = (isMobile: boolean) => [
     id: 1,
     position: [-4, 3, 0] as [number, number, number],
     color: '#D85A5A', // Red
-    size: getNodeSize(1.4, isMobile),
+    size: 1.4,
     service: 'products',
     title: 'Product Catalog',
   },
@@ -34,7 +30,7 @@ const getNodes = (isMobile: boolean) => [
     id: 2,
     position: [4.5, 2.5, 0] as [number, number, number],
     color: '#5a8a8f', // Green/teal
-    size: getNodeSize(1.2, isMobile),
+    size: 1.2,
     service: 'services',
     title: 'Manufacturing Services',
   },
@@ -42,7 +38,7 @@ const getNodes = (isMobile: boolean) => [
     id: 3,
     position: [-4.5, -0.5, 0] as [number, number, number],
     color: '#E8B741', // Gold
-    size: getNodeSize(1.0, isMobile),
+    size: 1.0,
     service: 'quote',
     title: 'Request Quote',
   },
@@ -50,7 +46,7 @@ const getNodes = (isMobile: boolean) => [
     id: 4,
     position: [0, -3.5, 0] as [number, number, number],
     color: '#D85A5A', // Red
-    size: getNodeSize(1.4, isMobile),
+    size: 1.4,
     service: 'quality',
     title: 'Quality & Compliance',
   },
@@ -58,7 +54,7 @@ const getNodes = (isMobile: boolean) => [
     id: 5,
     position: [4, -3, 0] as [number, number, number],
     color: '#E8B741', // Gold
-    size: getNodeSize(1.2, isMobile),
+    size: 1.2,
     service: 'contact',
     title: 'Contact & Support',
   },
@@ -74,10 +70,10 @@ const bonds = [
 ];
 
 // Camera resetter - returns camera to starting position when not interacting
-function CameraResetter({ controlsRef, isMobile }: { controlsRef: React.RefObject<any>, isMobile: boolean }) {
+function CameraResetter({ controlsRef }: { controlsRef: React.RefObject<any> }) {
   const isInteracting = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const initialPosition = useRef(new THREE.Vector3(0, 0, isMobile ? 18 : 14));
+  const initialPosition = useRef(new THREE.Vector3(0, 0, 14));
   
   useEffect(() => {
     if (controlsRef.current) {
@@ -178,14 +174,14 @@ export default function Molecule3D() {
     window.location.href = `/${service}`;
   };
   
-  // Get nodes with appropriate sizes for current device
-  const nodes = getNodes(isMobile);
+  // Get nodes - same for all devices
+  const nodes = getNodes();
   
   return (
     <Canvas
       camera={{ 
-        position: [0, 0, isMobile ? 18 : 14], 
-        fov: isMobile ? 65 : 50 
+        position: [0, 0, 14], 
+        fov: 50 
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
@@ -221,7 +217,7 @@ export default function Molecule3D() {
             maxDistance={15}
             minDistance={8}
           />
-          <CameraResetter controlsRef={controlsRef} isMobile={isMobile} />
+          <CameraResetter controlsRef={controlsRef} />
         </>
       )}
       
