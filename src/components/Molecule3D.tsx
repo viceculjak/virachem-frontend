@@ -138,14 +138,15 @@ function MoleculeGroup({
     if (groupRef.current) {
       const time = state.clock.getElapsedTime();
       
-      // Subtle breathing/vibration effect (same for mobile and desktop)
-      const breathX = Math.sin(time * 0.5) * 0.05;
-      const breathY = Math.sin(time * 0.3) * 0.05;
+      // More noticeable breathing/vibration effect
+      const breathX = Math.sin(time * 1.0) * 0.15;
+      const breathY = Math.sin(time * 0.8) * 0.15;
+      const breathZ = Math.sin(time * 0.6) * 0.08;
       
       // Apply breathing at natural position
       groupRef.current.rotation.x = breathX;
       groupRef.current.rotation.y = breathY;
-      groupRef.current.rotation.z = 0;
+      groupRef.current.rotation.z = breathZ;
     }
   });
   
