@@ -25,11 +25,15 @@ export default function MoleculeNode({
   onClick
 }: MoleculeNodeProps) {
   const meshRef = useRef<THREE.Mesh>(null);
+  const glowRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
   
-  // Smooth animation on hover
-  useFrame(() => {
+  // Check if this is the center node
+  const isCenterNode = service === 'none';
+  
+  // Smooth animation on hover + pulsing glow
+  useFrame((state) => {
     if (meshRef.current) {
       const targetScale = hovered ? 1.15 : 1;
       meshRef.current.scale.lerp(
@@ -37,10 +41,29 @@ export default function MoleculeNode({
         0.1
       );
     }
+    
+    // Pulsing glow effect for all nodes
+    if (glowRef.current) {
+      const time = state.clock.getElapsedTime();
+      const pulse = Math.sin(time * 2) * 0.5 + 0.5; // 0 to 1
+      glowRef.current.scale.setScalar(size * (1.2 + pulse * 0.3));
+      (glowRef.current.material as THREE.MeshBasicMaterial).opacity = 0.1 + pulse * 0.15;
+    }
   });
   
   return (
     <group position={position}>
+      {/* Main sphere */}
+      {/* Pulsing glow (always visible) */}
+      <mesh ref={glowRef} scale={size * 1.3}>
+        <sphereGeometry args={[1, 32, 32]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={0.2}
+        />
+      </mesh>
+      
       {/* Main sphere */}
       <mesh
         ref={meshRef}
@@ -70,7 +93,9 @@ export default function MoleculeNode({
         onPointerOver={(e) => {
           e.stopPropagation();
           setHovered(true);
-          document.body.style.cursor = 'pointer';
+          if (service !== 'none') {
+            document.body.style.cursor = 'pointer';
+          }
         }}
         onPointerOut={(e) => {
           e.stopPropagation();
@@ -82,33 +107,21 @@ export default function MoleculeNode({
         <meshPhysicalMaterial
           color={color}
           emissive={color}
-          emissiveIntensity={hovered ? 0.3 : 0.1}
-          metalness={0.1}
-          roughness={0.2}
+          emissiveIntensity={hovered ? 0.4 : 0.2}
+          metalness={0.2}
+          roughness={0.15}
           clearcoat={1.0}
-          clearcoatRoughness={0.1}
-          reflectivity={0.8}
-          envMapIntensity={1.2}
+          clearcoatRoughness={0.05}
+          reflectivity={0.9}
+          envMapIntensity={1.5}
         />
       </mesh>
       
-      {/* Outer glow on hover */}
-      {hovered && (
-        <mesh scale={size * 1.3}>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial
-            color={color}
-            transparent
-            opacity={0.15}
-          />
-        </mesh>
-      )}
-      
-      {/* Label - Search above node, others in center */}
+      {/* Label - Center node has styled ViraChem, others in center */}
       <Html
         center
         distanceFactor={8}
-        position={isCenter ? [0, size + 0.8, 0] : [0, 0, 0]}
+        position={[0, 0, 0]}
         style={{
           pointerEvents: 'none',
           userSelect: 'none',
@@ -117,20 +130,30 @@ export default function MoleculeNode({
         <div
           className="bg-white/95 backdrop-blur-sm px-4 py-3 rounded-lg shadow-xl"
           style={{
-            color: color,
             fontWeight: '800',
-            fontSize: isCenter ? '20px' : '16px',
-            maxWidth: isCenter ? '250px' : '180px',
+            fontSize: isCenterNode ? '22px' : '16px',
+            maxWidth: isCenterNode ? '250px' : '180px',
             textAlign: 'center',
             border: `3px solid ${color}`,
-            textShadow: `0 0 20px ${color}40`,
             wordWrap: 'break-word',
             overflowWrap: 'break-word',
             whiteSpace: 'normal',
             lineHeight: '1.2',
           }}
         >
-          {isCenter ? 'Search' : title}
+          {isCenterNode ? (
+            <div style={{ letterSpacing: '-0.05em' }}>
+              <span style={{ color: '#0B1F3F' }}>VIRA</span>
+              <span style={{ color: '#798996' }}>CHEM</span>
+            </div>
+          ) : (
+            <span style={{ 
+              color: color,
+              textShadow: `0 0 20px ${color}40`
+            }}>
+              {title}
+            </span>
+          )}
         </div>
       </Html>
     </group>
