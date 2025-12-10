@@ -91,12 +91,12 @@ export default function Header() {
           {/* Backdrop */}
           <div
             onClick={closeMenu}
-            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            className="fixed inset-0 bg-black/50 z-[9998] md:hidden"
             aria-hidden="true"
           />
 
           {/* Drawer */}
-          <div className="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-xl md:hidden transform transition-transform duration-300">
+          <div className="fixed top-0 right-0 h-full w-64 bg-white z-[9999] shadow-xl md:hidden transform transition-transform duration-300">
             <div className="flex flex-col h-full">
               {/* Close Button */}
               <div className="flex justify-end p-4 border-b border-gray-100">
