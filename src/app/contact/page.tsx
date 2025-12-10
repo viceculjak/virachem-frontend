@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, MessageSquare } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -267,15 +267,6 @@ export default function ContactPage() {
                       aria-label="LinkedIn"
                     >
                       <Linkedin className="w-6 h-6 text-[#0077B5]" />
-                    </a>
-                    <a 
-                      href="https://facebook.com/virachem" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                      aria-label="Facebook"
-                    >
-                      <Facebook className="w-6 h-6 text-[#1877F2]" />
                     </a>
                     <a 
                       href="https://www.instagram.com/virachemical/" 

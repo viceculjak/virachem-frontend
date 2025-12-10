@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -32,15 +32,6 @@ export default function Footer() {
         
         {/* Social Media Icons */}
         <div className="flex items-center justify-center gap-4 mb-6">
-          <a
-            href="https://facebook.com/virachem"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#798996] hover:text-[#0B1F3F] transition-colors"
-            aria-label="Facebook"
-          >
-            <Facebook className="w-5 h-5" />
-          </a>
           <a
             href="https://www.instagram.com/virachemical/"
             target="_blank"
