@@ -125,7 +125,9 @@ export default function MoleculeNode({
         style={{
           pointerEvents: 'none',
           userSelect: 'none',
+          zIndex: 10,
         }}
+        zIndexRange={[10, 0]}
       >
         <div
           className="bg-white/95 backdrop-blur-sm px-4 py-3 rounded-lg shadow-xl"
