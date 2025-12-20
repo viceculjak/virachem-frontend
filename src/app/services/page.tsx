@@ -100,7 +100,7 @@ export default function ServicesPage() {
                     </div>
                     
                     <div>
-                      <p className="text-sm text-gray-600 italic">Lead Time: 2-4 weeks</p>
+                      <p className="text-sm text-gray-600 italic">Lead Time: 1 week</p>
                     </div>
                     
                     <Link href="/products">
@@ -298,7 +298,7 @@ export default function ServicesPage() {
                   </tr>
                   <tr className="border-b border-gray-200 bg-white">
                     <td className="p-3 font-medium">Lead Time</td>
-                    <td className="p-3 text-center">2-4 weeks</td>
+                    <td className="p-3 text-center">1 week</td>
                     <td className="p-3 text-center">4-6 weeks</td>
                     <td className="p-3 text-center">2-3 weeks</td>
                   </tr>
