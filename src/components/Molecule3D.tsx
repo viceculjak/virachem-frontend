@@ -32,7 +32,7 @@ const getNodes = () => [
     color: '#5a8a8f', // Green/teal
     size: 1.2,
     service: 'services',
-    title: 'Manufacturing Services',
+    title: 'Services',
   },
   {
     id: 3,
