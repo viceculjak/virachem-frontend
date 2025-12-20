@@ -19,7 +19,10 @@ export async function POST(request: Request) {
         purity: data.purity,
         formulation_requirements: data.formulation_requirements || null,
         message: data.message || null,
-        status: 'new'
+        status: 'new',
+        unit_price: data.unit_price ? parseFloat(data.unit_price) : null,
+        total_price: data.total_price ? parseFloat(data.total_price) : null,
+        price_tier: data.price_tier || null,
       }])
       .select()
       .single();
@@ -94,9 +97,24 @@ export async function POST(request: Request) {
                   ${productInfo}
                   
                   <h3 style="color: #0B1F3F; margin-top: 20px;">Order Details</h3>
-                  <div class="field"><strong>Quantity:</strong> ${data.quantity}</div>
+                  <div class="field"><strong>Quantity:</strong> ${data.quantity} units</div>
                   <div class="field"><strong>Vial Size:</strong> ${data.vial_size}</div>
                   <div class="field"><strong>Purity Required:</strong> ${data.purity}</div>
+                  
+                  ${data.unit_price && data.total_price ? `
+                  <h3 style="color: #0B1F3F; margin-top: 20px; padding-top: 15px; border-top: 2px solid #C9364F;">Pricing Information</h3>
+                  <div style="background-color: #f0f9ff; padding: 20px; border-radius: 8px; border: 2px solid #3b82f6;">
+                    ${data.price_tier ? `<div class="field"><strong>Price Tier:</strong> ${data.price_tier}</div>` : ''}
+                    <div class="field"><strong>Unit Price:</strong> €${data.unit_price}</div>
+                    <div class="field" style="font-size: 18px; padding-top: 10px; border-top: 1px solid #93c5fd; margin-top: 10px;">
+                      <strong style="color: #C9364F;">Total Estimated Price:</strong> 
+                      <span style="color: #C9364F; font-size: 24px; font-weight: bold;">€${data.total_price}</span>
+                    </div>
+                    <p style="font-size: 12px; color: #6b7280; margin-top: 10px; font-style: italic;">
+                      Note: This is an estimated price based on quantity tier. Final pricing to be confirmed.
+                    </p>
+                  </div>
+                  ` : ''}
                   
                   ${data.formulation_requirements ? `
                   <h3 style="color: #0B1F3F; margin-top: 20px;">Formulation Requirements</h3>

@@ -4,8 +4,19 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { 
+  PRICING_TIERS, 
+  calculatePricePerUnit, 
+  calculateTotalPrice,
+  getTierForQuantity,
+  calculateSavingsPercentage,
+  getTierPriceRange
+} from '@/lib/pricing';
 
 type Product = {
   id: string;
@@ -16,6 +27,7 @@ type Product = {
   purity_options: string[];
   image_url: string;
   created_at: string;
+  cost_per_vial: number;
 };
 
 export default function ProductDetailPage() {
@@ -25,6 +37,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -75,6 +88,11 @@ export default function ProductDetailPage() {
       </div>
     );
   }
+
+  const currentTier = getTierForQuantity(quantity);
+  const pricePerUnit = calculatePricePerUnit(product.cost_per_vial, quantity);
+  const totalPrice = calculateTotalPrice(product.cost_per_vial, quantity);
+  const savings = calculateSavingsPercentage(product.cost_per_vial, quantity);
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
@@ -131,6 +149,134 @@ export default function ProductDetailPage() {
                     </div>
                   </>
                 )}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Pricing Section */}
+          {product.cost_per_vial && (
+            <Card className="shadow-md border-2 border-[#C9364F]/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">Pricing & Order</CardTitle>
+                <CardDescription>Volume-based pricing for research use. Prices decrease with higher quantities.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Pricing Table */}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b-2 border-gray-300">
+                        <th className="text-left p-3 font-semibold text-dark">Quantity</th>
+                        <th className="text-center p-3 font-semibold text-dark">Price/Unit</th>
+                        <th className="text-center p-3 font-semibold text-dark">Total Range</th>
+                        <th className="text-center p-3 font-semibold text-dark">Savings</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PRICING_TIERS.map((tier) => {
+                        const tierPricePerUnit = product.cost_per_vial / tier.margin;
+                        const priceRange = getTierPriceRange(product.cost_per_vial, tier);
+                        const tierSavings = tier.min === 1 ? 0 : calculateSavingsPercentage(product.cost_per_vial, tier.min);
+                        const isSelected = currentTier?.label === tier.label;
+                        const isBestValue = tier.label === '500+';
+                        
+                        return (
+                          <tr 
+                            key={tier.label} 
+                            className={`border-b border-gray-200 transition-colors ${
+                              isSelected ? 'bg-blue-50 border-blue-300' : 'hover:bg-gray-50'
+                            } ${isBestValue ? 'bg-green-50' : ''}`}
+                          >
+                            <td className="p-3">
+                              <div className="flex items-center gap-2">
+                                <span className="font-medium">{tier.label} units</span>
+                                {isBestValue && (
+                                  <span className="text-xs bg-green-600 text-white px-2 py-0.5 rounded-full font-semibold">
+                                    Best Value
+                                  </span>
+                                )}
+                              </div>
+                            </td>
+                            <td className="p-3 text-center font-semibold text-[#C9364F]">
+                              €{tierPricePerUnit.toFixed(2)}
+                            </td>
+                            <td className="p-3 text-center text-gray-600">
+                              €{priceRange.min.toFixed(2)} - €{priceRange.max.toFixed(2)}{tier.max === Infinity ? '+' : ''}
+                            </td>
+                            <td className="p-3 text-center">
+                              {tierSavings > 0 ? (
+                                <span className="text-green-600 font-semibold">
+                                  {tierSavings}% off
+                                </span>
+                              ) : (
+                                <span className="text-gray-400">—</span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Quantity Selector and Price Display */}
+                <div className="grid md:grid-cols-2 gap-6 pt-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="quantity" className="text-base font-semibold">
+                      Select Quantity (units)
+                    </Label>
+                    <Input
+                      id="quantity"
+                      type="number"
+                      min="1"
+                      value={quantity}
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value);
+                        if (!isNaN(val) && val > 0) {
+                          setQuantity(val);
+                        }
+                      }}
+                      className="text-lg font-semibold"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Current tier: <span className="font-semibold text-gray-700">{currentTier?.label}</span>
+                    </p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+                    <p className="text-sm text-gray-600 mb-1">Your Price</p>
+                    <p className="text-3xl font-bold text-[#0B1F3F] mb-2">
+                      €{pricePerUnit.toFixed(2)}
+                      <span className="text-base font-normal text-gray-600"> / unit</span>
+                    </p>
+                    <div className="flex justify-between items-center pt-3 border-t border-blue-200">
+                      <span className="text-sm text-gray-600">Total for {quantity} units:</span>
+                      <span className="text-xl font-bold text-[#C9364F]">€{totalPrice.toFixed(2)}</span>
+                    </div>
+                    {savings > 0 && (
+                      <p className="text-xs text-green-600 font-semibold mt-2">
+                        You save {savings}% vs small quantity pricing
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Request Quote Button */}
+                <Link 
+                  href={`/quote?product_id=${product.id}&quantity=${quantity}&price=${pricePerUnit.toFixed(2)}&total=${totalPrice.toFixed(2)}&tier=${currentTier?.label || '1-5'}`}
+                >
+                  <Button 
+                    size="lg" 
+                    className="w-full bg-[#C9364F] hover:bg-[#C9364F]/90 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+                  >
+                    Request Quote for {quantity} Unit{quantity !== 1 ? 's' : ''} →
+                  </Button>
+                </Link>
+
+                {/* Pricing Disclaimer */}
+                <p className="text-xs text-gray-500 italic text-center pt-2">
+                  Prices shown are estimates. Final pricing will be confirmed in your quote response.
+                </p>
               </CardContent>
             </Card>
           )}
@@ -237,15 +383,6 @@ export default function ProductDetailPage() {
               </Tabs>
             </CardContent>
           </Card>
-
-          <div className="text-center py-6">
-            <Link 
-              href={`/quote?product_id=${product.id}`}
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#C9364F] rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
-            >
-              Request Quote for {product.name} →
-            </Link>
-          </div>
         </div>
       </div>
     </div>

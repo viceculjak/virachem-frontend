@@ -29,17 +29,24 @@ type Product = {
 function QuotePageContent() {
   const searchParams = useSearchParams();
   const productId = searchParams.get('product_id');
+  const prefilledQuantity = searchParams.get('quantity');
+  const unitPrice = searchParams.get('price');
+  const totalPrice = searchParams.get('total');
+  const priceTier = searchParams.get('tier');
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     institution: '',
-    quantity: '',
+    quantity: prefilledQuantity || '',
     vial_size: '',
     purity: '',
     formulation_requirements: '',
     message: '',
     product_id: productId || '',
+    unit_price: unitPrice || '',
+    total_price: totalPrice || '',
+    price_tier: priceTier || '',
   });
 
   const [product, setProduct] = useState<Product | null>(null);
@@ -188,6 +195,41 @@ function QuotePageContent() {
                     View Details →
                   </Button>
                 </Link>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Pricing Summary Card */}
+        {unitPrice && totalPrice && (
+          <Card className="mb-6 bg-blue-50 border-2 border-blue-300">
+            <CardHeader>
+              <CardTitle className="text-lg">Pricing Summary</CardTitle>
+              <CardDescription>Based on your selected quantity tier</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center pb-2">
+                  <span className="text-gray-600">Quantity:</span>
+                  <span className="font-semibold text-lg">{prefilledQuantity} units</span>
+                </div>
+                {priceTier && (
+                  <div className="flex justify-between items-center pb-2">
+                    <span className="text-gray-600">Price Tier:</span>
+                    <span className="font-semibold text-blue-600">{priceTier}</span>
+                  </div>
+                )}
+                <div className="flex justify-between items-center pb-2 border-t pt-2">
+                  <span className="text-gray-600">Price per unit:</span>
+                  <span className="font-semibold text-lg">€{unitPrice}</span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-t-2 border-blue-300 pt-3">
+                  <span className="font-bold text-lg">Total Estimated Price:</span>
+                  <span className="font-bold text-2xl text-[#C9364F]">€{totalPrice}</span>
+                </div>
+                <p className="text-xs text-gray-500 italic pt-2">
+                  Final pricing will be confirmed in our response within 24-48 hours.
+                </p>
               </div>
             </CardContent>
           </Card>
