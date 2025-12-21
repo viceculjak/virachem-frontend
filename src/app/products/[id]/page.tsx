@@ -14,8 +14,7 @@ import {
   calculatePricePerUnit, 
   calculateTotalPrice,
   getTierForQuantity,
-  calculateSavingsPercentage,
-  getTierPriceRange
+  calculateSavingsPercentage
 } from '@/lib/pricing';
 
 type Product = {
@@ -37,7 +36,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number | ''>(1);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -89,10 +88,11 @@ export default function ProductDetailPage() {
     );
   }
 
-  const currentTier = getTierForQuantity(quantity);
-  const pricePerUnit = calculatePricePerUnit(product.cost_per_vial, quantity);
-  const totalPrice = calculateTotalPrice(product.cost_per_vial, quantity);
-  const savings = calculateSavingsPercentage(product.cost_per_vial, quantity);
+  const effectiveQuantity = quantity === '' ? 1 : quantity;
+  const currentTier = getTierForQuantity(effectiveQuantity);
+  const pricePerUnit = calculatePricePerUnit(product.cost_per_vial, effectiveQuantity);
+  const totalPrice = calculateTotalPrice(product.cost_per_vial, effectiveQuantity);
+  const savings = calculateSavingsPercentage(product.cost_per_vial, effectiveQuantity);
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
@@ -168,14 +168,12 @@ export default function ProductDetailPage() {
                       <tr className="border-b-2 border-gray-300">
                         <th className="text-left p-3 font-semibold text-dark">Quantity</th>
                         <th className="text-center p-3 font-semibold text-dark">Price/Unit</th>
-                        <th className="text-center p-3 font-semibold text-dark">Total Range</th>
                         <th className="text-center p-3 font-semibold text-dark">Savings</th>
                       </tr>
                     </thead>
                     <tbody>
                       {PRICING_TIERS.map((tier) => {
                         const tierPricePerUnit = product.cost_per_vial / tier.margin;
-                        const priceRange = getTierPriceRange(product.cost_per_vial, tier);
                         const tierSavings = tier.min === 1 ? 0 : calculateSavingsPercentage(product.cost_per_vial, tier.min);
                         const isSelected = currentTier?.label === tier.label;
                         const isBestValue = tier.label === '500+';
@@ -199,9 +197,6 @@ export default function ProductDetailPage() {
                             </td>
                             <td className="p-3 text-center font-semibold text-[#C9364F]">
                               €{tierPricePerUnit.toFixed(2)}
-                            </td>
-                            <td className="p-3 text-center text-gray-600">
-                              €{priceRange.min.toFixed(2)} - €{priceRange.max.toFixed(2)}{tier.max === Infinity ? '+' : ''}
                             </td>
                             <td className="p-3 text-center">
                               {tierSavings > 0 ? (
@@ -231,9 +226,14 @@ export default function ProductDetailPage() {
                       min="1"
                       value={quantity}
                       onChange={(e) => {
-                        const val = parseInt(e.target.value);
-                        if (!isNaN(val) && val > 0) {
-                          setQuantity(val);
+                        const val = e.target.value;
+                        if (val === '') {
+                          setQuantity('');
+                        } else {
+                          const num = parseInt(val);
+                          if (!isNaN(num) && num > 0) {
+                            setQuantity(num);
+                          }
                         }
                       }}
                       className="text-lg font-semibold"
@@ -250,7 +250,7 @@ export default function ProductDetailPage() {
                       <span className="text-base font-normal text-gray-600"> / unit</span>
                     </p>
                     <div className="flex justify-between items-center pt-3 border-t border-blue-200">
-                      <span className="text-sm text-gray-600">Total for {quantity} units:</span>
+                      <span className="text-sm text-gray-600">Total for {effectiveQuantity} units:</span>
                       <span className="text-xl font-bold text-[#C9364F]">€{totalPrice.toFixed(2)}</span>
                     </div>
                     {savings > 0 && (
@@ -263,13 +263,13 @@ export default function ProductDetailPage() {
 
                 {/* Request Quote Button */}
                 <Link 
-                  href={`/quote?product_id=${product.id}&quantity=${quantity}&price=${pricePerUnit.toFixed(2)}&total=${totalPrice.toFixed(2)}&tier=${currentTier?.label || '1-5'}`}
+                  href={`/quote?product_id=${product.id}&quantity=${effectiveQuantity}&price=${pricePerUnit.toFixed(2)}&total=${totalPrice.toFixed(2)}&tier=${currentTier?.label || '1-5'}`}
                 >
                   <Button 
                     size="lg" 
                     className="w-full bg-[#C9364F] hover:bg-[#C9364F]/90 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
                   >
-                    Request Quote for {quantity} Unit{quantity !== 1 ? 's' : ''} →
+                    Request Quote for {effectiveQuantity} Unit{effectiveQuantity !== 1 ? 's' : ''} →
                   </Button>
                 </Link>
 
