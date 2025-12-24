@@ -73,7 +73,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
       </div>
       
       {isOpen && products.length > 0 && (
-        <div className="absolute z-10 mt-2 w-full bg-white border-2 border-gray-200 rounded-lg shadow-2xl">
+        <div className="absolute z-[9999] mt-2 w-full bg-white border-2 border-gray-200 rounded-lg shadow-2xl">
           {products.map((product) => (
             <button
               key={product.id}
