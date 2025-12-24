@@ -35,7 +35,7 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="border-b border-gray-100 bg-white sticky top-0 z-50">
+    <header className="border-b border-gray-100 bg-white sticky top-0 z-50 mx-4 mt-4 rounded-2xl shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-0">
           <Image
