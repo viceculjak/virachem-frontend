@@ -134,7 +134,7 @@ function QuotePageContent() {
                 We have received your quote request and will contact you at{' '}
                 <span className="font-semibold break-words">{formData.email}</span> within 24-48 hours.
               </p>
-              <p className="text-gray-600 text-sm mb-6">
+              <p className="text-gray-600 text-sm mb-3">
                 Our team will provide you with detailed pricing, availability, and shipping information.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -163,7 +163,7 @@ function QuotePageContent() {
 
         {/* Product Information Banner */}
         {product && (
-          <Card className="mb-6 bg-primary/5 border-primary/20">
+          <Card className="mb-3 bg-primary/5 border-primary/20">
             <CardContent className="pt-6">
               <div className="flex items-start justify-between">
                 <div>
@@ -202,7 +202,7 @@ function QuotePageContent() {
 
         {/* Pricing Summary Card */}
         {unitPrice && totalPrice && (
-          <Card className="mb-6 bg-blue-50 border-2 border-blue-300">
+          <Card className="mb-3 bg-blue-50 border-2 border-blue-300">
             <CardHeader>
               <CardTitle className="text-lg">Pricing Summary</CardTitle>
               <CardDescription>Based on your selected quantity tier</CardDescription>
@@ -237,7 +237,7 @@ function QuotePageContent() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl text-dark">Request a Quote</CardTitle>
+            <CardTitle className="text-xl md:text-2xl text-dark">Request a Quote</CardTitle>
             <CardDescription>
               GMP-aligned contract manufacturing with flexible formulation options. Our Poland-based synthesis facility 
               provides custom peptide production with HPLC-MS verification. Specify your requirements below for batch 
@@ -247,7 +247,7 @@ function QuotePageContent() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
                   <p className="font-semibold">Error submitting quote</p>

@@ -78,18 +78,18 @@ function ProductsPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4 shadow-lg">
-          <p className="text-sm text-gray-900 font-semibold">
+    <div className="min-h-screen bg-background p-2 md:p-4">
+      <div className="container mx-auto max-w-7xl">
+        <div className="mb-3 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-2 shadow-lg">
+          <p className="text-xs text-gray-900 font-semibold">
             <strong>WARNING: RESEARCH USE ONLY</strong> — All products are intended for research and development purposes only. 
             Not for human or veterinary use.
           </p>
         </div>
 
-        <div className="mb-8">
-          <h1 className="text-2xl md:text-4xl font-bold text-[#0B1F3F] mb-2">Research Chemicals</h1>
-          <p className="text-gray-600 text-lg mb-6">
+        <div className="mb-4">
+          <h1 className="text-xl md:text-2xl font-bold text-[#0B1F3F] mb-1">Research Chemicals</h1>
+          <p className="text-gray-600 text-sm mb-3">
             High-purity compounds for advanced research applications
           </p>
           
@@ -116,7 +116,7 @@ function ProductsPageContent() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
             {products.map((product) => (
               <Link key={product.id} href={`/products/${product.id}`}>
                 <Card className="h-full hover:border-gray-300 shadow-md hover:shadow-lg transition-all cursor-pointer border-gray-200 bg-white">

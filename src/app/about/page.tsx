@@ -6,38 +6,38 @@ import { Linkedin, Instagram } from 'lucide-react';
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-3 py-6">
         <Link href="/">
-          <Button variant="ghost" className="mb-6">
+          <Button variant="ghost" className="mb-3">
             ← Back to Home
           </Button>
         </Link>
 
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-dark mb-4">About ViraChem</h1>
-          <p className="text-base md:text-xl text-gray-700 break-words">
+        <div className="max-w-4xl mx-auto mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-dark mb-2">About ViraChem</h1>
+          <p className="text-sm md:text-base text-gray-700 break-words">
             Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
           </p>
         </div>
 
         {/* Company Story */}
-        <div className="max-w-4xl mx-auto space-y-12">
+        <div className="max-w-4xl mx-auto space-y-6">
           <section>
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-4">Contract Manufacturing Intermediation</h2>
-            <p className="text-lg text-gray-700 mb-4">
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-2">Contract Manufacturing Intermediation</h2>
+            <p className="text-base text-gray-700 mb-2">
               ViraChem j.d.o.o. is an EU-registered intermediary specializing in contract manufacturing of high-purity 
               research peptides and fine chemicals for academic and industrial laboratories across Europe. We partner with 
               a GMP-aligned, Poland-based synthesis facility experienced in custom peptide production, lyophilization, and 
               sterile vialing under inert atmosphere.
             </p>
-            <p className="text-lg text-gray-700 mb-4">
+            <p className="text-base text-gray-700 mb-2">
               All compounds are provided strictly for research use and are not intended for human or veterinary diagnostic 
               or therapeutic applications. Our core offering includes custom and catalog peptides synthesized to ≥95–99% 
               purity (HPLC-MS verified) with flexible formulation options.
             </p>
-            <h3 className="text-xl md:text-2xl font-semibold text-dark mb-3 mt-6">Manufacturing Capabilities</h3>
-            <ul className="space-y-2 text-lg text-gray-700 mb-4">
+            <h3 className="text-lg md:text-xl font-semibold text-dark mb-2 mt-3">Manufacturing Capabilities</h3>
+            <ul className="space-y-1 text-sm text-gray-700 mb-2">
               <li className="flex items-start gap-2">
                 <span className="text-accent-teal mt-1">•</span>
                 <span><strong>Flexible Vial Formats:</strong> Lyophilized powder in any vial size (1 mL, 2 mL, 5 mL, 10 mL, or client-specified)</span>
@@ -64,13 +64,13 @@ export default function AboutPage() {
 
           {/* Company Registration */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-6">Company Registration</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Company Registration</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="border-dark/20">
                 <CardHeader>
                   <CardTitle className="text-xl">Legal Information</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-2">
                   <div>
                     <p className="text-sm font-semibold text-gray-600">Company Name</p>
                     <p className="text-gray-900">ViraChem jednostavno društvo s ograničenom odgovornošću</p>
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 <CardHeader>
                   <CardTitle className="text-xl">Business Details</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-2">
                   <div>
                     <p className="text-sm font-semibold text-gray-600">Primary Activity</p>
                     <p className="text-gray-900">46.19.0 - Posredovanje u nespecijaliziranoj trgovini na veliko</p>
@@ -128,7 +128,7 @@ export default function AboutPage() {
 
           {/* Location */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-6">Our Location</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Our Location</h2>
             <Card className="border-dark/20">
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -191,7 +191,7 @@ export default function AboutPage() {
 
           {/* What We Do */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-6">Our Capabilities</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Our Capabilities</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="border-accent-red/20 border-l-4 border-l-accent-red">
                 <CardHeader>
@@ -240,7 +240,7 @@ export default function AboutPage() {
 
           {/* Compliance */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-6">Regulatory Compliance</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Regulatory Compliance</h2>
             <div className="bg-dark/5 border border-dark/20 rounded-lg p-6">
               <p className="text-gray-800 mb-4">
                 ViraChem operates in strict compliance with:
@@ -264,7 +264,7 @@ export default function AboutPage() {
 
           {/* Target Market */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-6">Who We Serve</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Who We Serve</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="text-xl font-semibold text-dark mb-3">Research Institutions</h3>
@@ -287,7 +287,7 @@ export default function AboutPage() {
 
           {/* Leadership */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-6">Leadership</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Leadership</h2>
             <Card className="border-dark/20">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
@@ -325,7 +325,7 @@ export default function AboutPage() {
 
           {/* CTA */}
           <section className="text-center py-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-dark mb-4">Ready to Start Your Research?</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-4">Ready to Start Your Research?</h2>
             <p className="text-lg text-gray-700 mb-6">
               Request a quote for high-purity research compounds or contact us for more information.
             </p>

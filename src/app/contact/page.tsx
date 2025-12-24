@@ -61,7 +61,7 @@ export default function ContactPage() {
             <CardTitle className="text-3xl text-dark">Message Sent!</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-lg text-gray-700">
+            <p className="text-base text-gray-700">
               Thank you for contacting ViraChem. We have received your message and will respond at {formData.email} within 24-48 hours.
             </p>
             <div className="flex gap-4">
@@ -85,16 +85,16 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-3 py-6">
         <Link href="/">
-          <Button variant="ghost" className="mb-6">
+          <Button variant="ghost" className="mb-3">
             ← Back to Home
           </Button>
         </Link>
 
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h1 className="text-3xl md:text-5xl font-bold text-dark mb-4">Get in Touch</h1>
             <p className="text-base md:text-xl text-gray-700 max-w-2xl mx-auto">
               Contact our team for technical support, custom synthesis inquiries, or general questions about ViraChem services.
@@ -108,7 +108,7 @@ export default function ContactPage() {
                 <CardTitle className="text-2xl text-dark">Send Us a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-3">
                   <div>
                     <Label htmlFor="name">Full Name *</Label>
                     <Input
@@ -178,7 +178,7 @@ export default function ContactPage() {
             </Card>
 
             {/* Contact Information */}
-            <div className="space-y-6">
+            <div className="space-y-3">
               <Card className="shadow-md hover:shadow-lg transition-all">
                 <CardHeader>
                   <CardTitle className="text-2xl text-dark">Contact Information</CardTitle>

@@ -15,40 +15,40 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-3 py-6">
         <Link href="/">
-          <Button variant="ghost" className="mb-6">
+          <Button variant="ghost" className="mb-3">
             ← Back to Home
           </Button>
         </Link>
 
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-dark mb-4">Services & Business Models</h1>
-          <p className="text-base md:text-xl text-gray-700">
+        <div className="max-w-4xl mx-auto mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-dark mb-2">Services & Business Models</h1>
+          <p className="text-sm md:text-base text-gray-700">
             Three flexible models for research supply and processing — from ready inventory to custom manufacturing to client-supplied fill & finish
           </p>
         </div>
 
         {/* Business Models Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-dark mb-8 text-center">How We Work: Choose Your Model</h2>
+        <div className="max-w-6xl mx-auto mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-dark mb-4 text-center">How We Work: Choose Your Model</h2>
           
           {/* Model Cards Grid */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-3 mb-6">
             {/* Model 1 */}
             <Card className="border-2 border-[#D85A5A] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(1)}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
-                    <div className="text-sm font-bold text-[#D85A5A] mb-2">MODEL 1</div>
-                    <CardTitle className="text-xl text-dark">Finished RUO Vials</CardTitle>
-                    <p className="text-sm text-gray-600 mt-2">ViraChem-Sourced & Supplied</p>
+                    <div className="text-xs font-bold text-[#D85A5A] mb-1">MODEL 1</div>
+                    <CardTitle className="text-lg text-dark">Finished RUO Vials</CardTitle>
+                    <p className="text-xs text-gray-600 mt-1">ViraChem-Sourced & Supplied</p>
                   </div>
-                  {expandedModel === 1 ? <ChevronUp className="w-5 h-5 text-[#D85A5A]" /> : <ChevronDown className="w-5 h-5 text-[#D85A5A]" />}
+                  {expandedModel === 1 ? <ChevronUp className="w-4 h-4 text-[#D85A5A]" /> : <ChevronDown className="w-4 h-4 text-[#D85A5A]" />}
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-2">
                 <div className="text-sm text-gray-700 font-medium border-t pt-4">
                   Fast availability | Fixed specs | Ready inventory
                 </div>
@@ -118,14 +118,14 @@ export default function ServicesPage() {
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
-                    <div className="text-sm font-bold text-[#5a8a8f] mb-2">MODEL 2</div>
-                    <CardTitle className="text-xl text-dark">Custom Manufacturing</CardTitle>
-                    <p className="text-sm text-gray-600 mt-2">ViraChem-Sourced Raw Materials</p>
+                    <div className="text-xs font-bold text-[#5a8a8f] mb-1">MODEL 2</div>
+                    <CardTitle className="text-lg text-dark">Custom Manufacturing</CardTitle>
+                    <p className="text-xs text-gray-600 mt-1">ViraChem-Sourced Raw Materials</p>
                   </div>
-                  {expandedModel === 2 ? <ChevronUp className="w-5 h-5 text-[#5a8a8f]" /> : <ChevronDown className="w-5 h-5 text-[#5a8a8f]" />}
+                  {expandedModel === 2 ? <ChevronUp className="w-4 h-4 text-[#5a8a8f]" /> : <ChevronDown className="w-4 h-4 text-[#5a8a8f]" />}
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-2">
                 <div className="text-sm text-gray-700 font-medium border-t pt-4">
                   Your specs | Extended timeline | Full traceability
                 </div>
@@ -195,14 +195,14 @@ export default function ServicesPage() {
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
-                    <div className="text-sm font-bold text-[#E8B741] mb-2">MODEL 3</div>
-                    <CardTitle className="text-xl text-dark">Fill & Finish Service</CardTitle>
-                    <p className="text-sm text-gray-600 mt-2">Client-Supplied Material</p>
+                    <div className="text-xs font-bold text-[#E8B741] mb-1">MODEL 3</div>
+                    <CardTitle className="text-lg text-dark">Fill & Finish Service</CardTitle>
+                    <p className="text-xs text-gray-600 mt-1">Client-Supplied Material</p>
                   </div>
-                  {expandedModel === 3 ? <ChevronUp className="w-5 h-5 text-[#E8B741]" /> : <ChevronDown className="w-5 h-5 text-[#E8B741]" />}
+                  {expandedModel === 3 ? <ChevronUp className="w-4 h-4 text-[#E8B741]" /> : <ChevronDown className="w-4 h-4 text-[#E8B741]" />}
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-2">
                 <div className="text-sm text-gray-700 font-medium border-t pt-4">
                   Your material | Our processing | Clear boundaries
                 </div>

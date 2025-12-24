@@ -5,16 +5,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export default function QualityPage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-3 py-6">
         <Link href="/">
-          <Button variant="ghost" className="mb-6">
+          <Button variant="ghost" className="mb-3">
             ← Back to Home
           </Button>
         </Link>
 
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-dark mb-4">Quality Assurance & Regulatory Compliance</h1>
+        <div className="max-w-4xl mx-auto mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-dark mb-4">Quality Assurance & Regulatory Compliance</h1>
           <p className="text-base md:text-xl text-gray-700">
             Rigorous quality control and full EU regulatory compliance for research-grade peptides and fine chemicals
           </p>

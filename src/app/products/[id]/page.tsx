@@ -95,23 +95,23 @@ export default function ProductDetailPage() {
   const savings = calculateSavingsPercentage(product.cost_per_vial, effectiveQuantity);
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
+    <div className="min-h-screen bg-background p-2 md:p-4">
       <div className="container mx-auto datasheet-max">
-        <Link href="/products" className="text-[#C9364F] hover:underline text-sm inline-block mb-6">
+        <Link href="/products" className="text-[#C9364F] hover:underline text-sm inline-block mb-3">
           ← Back to Catalog
         </Link>
 
-        <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4">
-          <p className="text-sm text-gray-900 font-semibold">
+        <div className="mb-3 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-2">
+          <p className="text-xs text-gray-900 font-semibold">
             <strong>WARNING: RESEARCH USE ONLY</strong> — This product is intended for research purposes only. 
             Not for human or veterinary use.
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-[#0B1F3F] mb-2">{product.name}</h1>
-            <p className="text-gray-500">Research Grade Chemical</p>
+            <h1 className="text-xl md:text-2xl font-bold text-[#0B1F3F] mb-1">{product.name}</h1>
+            <p className="text-gray-500 text-sm">Research Grade Chemical</p>
           </div>
 
           {product.image_url && (
@@ -157,10 +157,10 @@ export default function ProductDetailPage() {
           {product.cost_per_vial && (
             <Card className="shadow-md border-2 border-[#C9364F]/20">
               <CardHeader>
-                <CardTitle className="text-2xl">Pricing & Order</CardTitle>
-                <CardDescription>Volume-based pricing for research use. Prices decrease with higher quantities.</CardDescription>
+                <CardTitle className="text-lg">Pricing & Order</CardTitle>
+                <CardDescription className="text-xs">Volume-based pricing for research use. Prices decrease with higher quantities.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-3">
                 {/* Pricing Table */}
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
