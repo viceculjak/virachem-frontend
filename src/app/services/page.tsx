@@ -37,7 +37,7 @@ export default function ServicesPage() {
           {/* Model Cards Grid */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {/* Model 1 */}
-            <Card className="border-2 border-[#D85A5A] hover:shadow-xl transition-all cursor-pointer" onClick={() => toggleModel(1)}>
+            <Card className="border-2 border-[#D85A5A] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(1)}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
@@ -104,7 +104,7 @@ export default function ServicesPage() {
                     </div>
                     
                     <Link href="/products">
-                      <Button className="w-full bg-[#D85A5A] hover:bg-[#D85A5A]/90 text-white">
+                      <Button className="w-full bg-[#D85A5A] hover:bg-[#D85A5A]/90 text-white shadow-lg hover:shadow-xl transition-all">
                         Browse Catalog →
                       </Button>
                     </Link>
@@ -114,7 +114,7 @@ export default function ServicesPage() {
             </Card>
 
             {/* Model 2 */}
-            <Card className="border-2 border-[#5a8a8f] hover:shadow-xl transition-all cursor-pointer" onClick={() => toggleModel(2)}>
+            <Card className="border-2 border-[#5a8a8f] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(2)}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
@@ -191,7 +191,7 @@ export default function ServicesPage() {
             </Card>
 
             {/* Model 3 */}
-            <Card className="border-2 border-[#E8B741] hover:shadow-xl transition-all cursor-pointer" onClick={() => toggleModel(3)}>
+            <Card className="border-2 border-[#E8B741] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(3)}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
@@ -266,7 +266,7 @@ export default function ServicesPage() {
                     </div>
                     
                     <Link href="/contact">
-                      <Button className="w-full bg-[#E8B741] hover:bg-[#E8B741]/90 text-white">
+                      <Button className="w-full bg-[#E8B741] hover:bg-[#E8B741]/90 text-white shadow-lg hover:shadow-xl transition-all">
                         Discuss Your Project →
                       </Button>
                     </Link>

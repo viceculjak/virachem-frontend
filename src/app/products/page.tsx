@@ -80,7 +80,7 @@ function ProductsPageContent() {
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="container mx-auto max-w-6xl">
-        <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4">
+        <div className="mb-6 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-4 shadow-lg">
           <p className="text-sm text-gray-900 font-semibold">
             <strong>WARNING: RESEARCH USE ONLY</strong> — All products are intended for research and development purposes only. 
             Not for human or veterinary use.
@@ -99,7 +99,7 @@ function ProductsPageContent() {
               placeholder="Search by name or CAS number..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full placeholder:text-sm md:placeholder:text-base"
+              className="w-full placeholder:text-sm md:placeholder:text-base shadow-lg focus:shadow-xl transition-shadow"
             />
             {searchQuery && (
               <p className="text-sm text-gray-500 mt-2">
