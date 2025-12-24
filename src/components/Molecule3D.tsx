@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html } from '@react-three/drei';
+import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { useState, useEffect, useRef } from 'react';
 import MoleculeNode from './MoleculeNode';
 import MoleculeBond from './MoleculeBond';
@@ -246,6 +247,16 @@ export default function Molecule3D() {
           />
         ))}
       </MoleculeGroup>
+
+      {/* Bloom Post-Processing Effect */}
+      <EffectComposer>
+        <Bloom
+          intensity={0.5}
+          luminanceThreshold={0.2}
+          luminanceSmoothing={0.9}
+          mipmapBlur={true}
+        />
+      </EffectComposer>
     </Canvas>
   );
 }

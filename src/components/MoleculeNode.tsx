@@ -32,6 +32,9 @@ export default function MoleculeNode({
   // Check if this is the center node
   const isCenterNode = service === 'none';
   
+  // Track pulse for emissive intensity
+  const pulseRef = useRef(0);
+  
   // Smooth animation on hover + pulsing glow
   useFrame((state) => {
     if (meshRef.current) {
@@ -40,6 +43,17 @@ export default function MoleculeNode({
         new THREE.Vector3(targetScale, targetScale, targetScale),
         0.1
       );
+      
+      // Update pulse for emissive intensity
+      const time = state.clock.getElapsedTime();
+      const pulse = Math.sin(time * 2) * 0.5 + 0.5; // 0 to 1
+      pulseRef.current = pulse;
+      
+      // Update emissive intensity based on pulse
+      if (meshRef.current.material instanceof THREE.MeshPhysicalMaterial) {
+        const baseIntensity = isCenterNode ? 1.2 : 0.8;
+        meshRef.current.material.emissiveIntensity = baseIntensity + pulse * 0.4;
+      }
     }
     
     // Pulsing glow effect for all nodes
@@ -107,13 +121,12 @@ export default function MoleculeNode({
         <meshPhysicalMaterial
           color={color}
           emissive={color}
-          emissiveIntensity={hovered ? 0.4 : 0.2}
-          metalness={0.2}
-          roughness={0.15}
+          emissiveIntensity={isCenterNode ? 1.2 : 0.8}
+          metalness={0.3}
+          roughness={0.2}
+          reflectivity={0.8}
           clearcoat={1.0}
-          clearcoatRoughness={0.05}
-          reflectivity={0.9}
-          envMapIntensity={1.5}
+          clearcoatRoughness={0.1}
         />
       </mesh>
       

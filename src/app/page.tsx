@@ -27,7 +27,7 @@ export default function Home() {
       </div>
       
       {/* 3D Molecule */}
-      <div className="relative flex-1">
+      <div className="relative flex-1 bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929]">
         <Molecule3D />
       </div>
     </div>
