@@ -47,6 +47,7 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Company Pages**: About Us with full registration details and company leadership
 
 ### Design & UX
+- **Compact Layout**: Aggressive 40-50% reduction in spacing for efficient information density
 - **Mobile Hamburger Menu**: Slide-in drawer navigation for mobile devices with backdrop overlay
 - **Responsive Design**: Mobile-first approach with simplified product cards and optimized layouts
 - **Toast Notifications**: Real-time feedback with Sonner for form submissions
@@ -233,6 +234,16 @@ Defined in `src/app/globals.css`:
 --color-dark: #0B1F3F           /* Navy - headings */
 --color-text-secondary: #798996 /* Grey - secondary text */
 ```
+
+### Compact Design System
+
+The site uses an aggressive spacing reduction approach for efficient information density:
+- Container padding: `p-2 md:p-4` (reduced from `p-4 md:p-8`)
+- Section margins: `mb-3` to `mb-6` (reduced from `mb-6` to `mb-12`)
+- Typography: Smaller headings (`text-xl md:text-2xl` vs `text-2xl md:text-4xl`)
+- Card padding: `p-4` (reduced from `p-6`)
+- Grid gaps: `gap-2 md:gap-3` (reduced from `gap-4 md:gap-6`)
+- Result: 40-50% reduction in vertical scrolling while maintaining readability
 
 ### Adding Products
 
