@@ -24,42 +24,186 @@ export default function AboutPage() {
         {/* Company Story */}
         <div className="max-w-4xl mx-auto space-y-6">
           <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-2">Contract Manufacturing Intermediation</h2>
             <p className="text-base text-gray-700 mb-2">
-              ViraChem j.d.o.o. is an EU-registered intermediary specializing in contract manufacturing of high-purity 
-              research peptides and fine chemicals for academic and industrial laboratories across Europe. We partner with 
-              a GMP-aligned, Poland-based synthesis facility experienced in custom peptide production, lyophilization, and 
-              sterile vialing under inert atmosphere.
+              ViraChem j.d.o.o. is an EU-registered intermediary and <strong>access layer connecting Central European peptide manufacturing capacity</strong> with research and industrial laboratories across Europe. We <strong>coordinate</strong> sourcing, synthesis, and processing of high-purity research peptides and fine chemicals, providing fully traceable, GMP-aligned solutions while ensuring regulatory clarity for our <strong>partners</strong>.
             </p>
             <p className="text-base text-gray-700 mb-2">
-              All compounds are provided strictly for research use and are not intended for human or veterinary diagnostic 
-              or therapeutic applications. Our core offering includes custom and catalog peptides synthesized to ≥95–99% 
-              purity (HPLC-MS verified) with flexible formulation options.
+              All compounds are strictly for research use and are <strong>not intended for human or veterinary diagnostic or therapeutic applications</strong>. Our core offerings include custom and catalog peptides synthesized to ≥95–99% purity (HPLC-MS verified), with flexible formulation and packaging options.
             </p>
-            <h3 className="text-lg md:text-xl font-semibold text-dark mb-2 mt-3">Manufacturing Capabilities</h3>
-            <ul className="space-y-1 text-sm text-gray-700 mb-2">
-              <li className="flex items-start gap-2">
-                <span className="text-accent-teal mt-1">•</span>
-                <span><strong>Flexible Vial Formats:</strong> Lyophilized powder in any vial size (1 mL, 2 mL, 5 mL, 10 mL, or client-specified)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent-teal mt-1">•</span>
-                <span><strong>Type I Borosilicate Glass:</strong> Standard packaging with rubber stoppers and aluminum crimp seals under inert atmosphere</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent-teal mt-1">•</span>
-                <span><strong>Batch Scalability:</strong> Production from milligram to multi-gram quantities with full analytical documentation (COA, HPLC-MS)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent-teal mt-1">•</span>
-                <span><strong>EU-Compliant Intermediation:</strong> Registered under Croatian commercial law (MBS: 060500406, OIB: 73782597071)</span>
-              </li>
-            </ul>
-            <p className="text-lg text-gray-700">
-              ViraChem does not engage in direct retail sales. We facilitate B2B access to reliable, traceable, and 
-              consistently manufactured research substances—bridging European laboratories with trusted Central European 
-              production capacity.
-            </p>
+          </section>
+
+          {/* Engagement Models */}
+          <section>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">How We Work: Engagement Models (assigned based on partner profile)</h2>
+            
+            <div className="space-y-6">
+              {/* Model 1 */}
+              <Card className="border-l-4 border-l-accent-red bg-dark/5">
+                <CardHeader>
+                  <p className="text-xs font-bold uppercase tracking-wider text-accent-red mb-1">Model 1</p>
+                  <CardTitle className="text-xl">Finished RUO Vials</CardTitle>
+                  <p className="text-gray-900 font-semibold">ViraChem-Sourced & Supplied</p>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-base text-gray-700 font-semibold">
+                    Short-term access for early-stage or time-sensitive research programs.
+                  </p>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Intended use:</p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Program initiation</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Demand stabilization</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Interim supply prior to custom manufacturing</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Fixed specifications</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Limited catalog availability</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Predefined batch sizes</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Research Use Only (RUO)</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Notes:</p>
+                    <p className="text-sm text-gray-700">
+                      Finished RUO Vials are not designed for sustained high-volume programs. Partners on this model are typically transitioned to Model 2 once specifications and volumes stabilize.
+                    </p>
+                  </div>
+                  <p className="text-sm text-gray-700">
+                    <strong>Lead Time:</strong> ~1 week
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Model 2 */}
+              <Card className="border-l-4 border-l-accent-teal bg-dark/5">
+                <CardHeader>
+                  <p className="text-xs font-bold uppercase tracking-wider text-accent-teal mb-1">Model 2</p>
+                  <CardTitle className="text-xl">Custom Manufacturing</CardTitle>
+                  <p className="text-gray-900 font-semibold">ViraChem-Sourced Raw Materials</p>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-base text-gray-700 font-semibold">
+                    Core engagement model for institutional partners.
+                  </p>
+                  <p className="text-base text-gray-700">
+                    This model provides full access to ViraChem-sourced peptide APIs and coordinated EU-based manufacturing. It is the primary pathway for long-term, repeat-volume research programs requiring traceability and supply continuity.
+                  </p>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>ViraChem-sourced raw materials</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Custom specifications and batch sizes</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>End-to-end batch traceability</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Extended production timelines aligned with GMP-adjacent workflows</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Partner Profile:</p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Compounding pharmacies</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>GMP-adjacent laboratories</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>CDMOs</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Institutional research organizations</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <p className="text-base text-gray-700">
+                    This model forms the <strong>backbone of ViraChem's supply ecosystem</strong>.
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    <strong>Lead Time:</strong> 4–6 weeks
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Model 3 */}
+              <Card className="border-l-4 border-l-accent-gold bg-dark/5">
+                <CardHeader>
+                  <p className="text-xs font-bold uppercase tracking-wider text-accent-gold mb-1">Model 3</p>
+                  <CardTitle className="text-xl">Fill & Finish Service</CardTitle>
+                  <p className="text-gray-900 font-semibold">Client-Supplied Material</p>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-base text-gray-700 font-semibold">
+                    Processing access for partners supplying their own material.
+                  </p>
+                  <p className="text-base text-gray-700">
+                    This model provides sterile processing, formulation, and lyophilization services using client-supplied raw material. Clear responsibility boundaries are maintained regarding material origin and quality.
+                  </p>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Client-supplied API</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>ViraChem-managed processing and documentation</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Defined scope of responsibility</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Suitable for regulatory or internal sourcing constraints</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <p className="text-sm text-gray-700">
+                    <strong>Lead Time:</strong> 2–3 weeks
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </section>
 
           {/* Company Registration */}
@@ -189,53 +333,87 @@ export default function AboutPage() {
             </Card>
           </section>
 
-          {/* What We Do */}
+          {/* Manufacturing & Processing Capabilities */}
           <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Our Capabilities</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-accent-red/20 border-l-4 border-l-accent-red">
-                <CardHeader>
-                  <CardTitle className="text-lg">
-                    Contract Peptide Synthesis
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700">
-                    Custom and catalog peptides synthesized to ≥95–99% purity via Poland-based, GMP-aligned facility. 
-                    HPLC-MS verification with full COA, batch records, and analytical documentation for each production run.
-                  </p>
-                </CardContent>
-              </Card>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Our Manufacturing & Processing Capabilities</h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg md:text-xl font-semibold text-dark mb-3">Flexible Vialing & Formulation</h3>
+                <ul className="space-y-1 text-base text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Lyophilized peptide powders in 1 mL, 2 mL, 5 mL, 10 mL, or partner-specified formats</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Type I borosilicate glass with rubber stoppers and aluminum crimp seals under inert atmosphere</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Custom buffer systems available</span>
+                  </li>
+                </ul>
+              </div>
 
-              <Card className="border-accent-teal/20 border-l-4 border-l-accent-teal">
-                <CardHeader>
-                  <CardTitle className="text-lg">
-                    Analytical & Regulatory Documentation
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700">
-                    Complete traceability from synthesis through delivery with COA, HPLC-MS chromatograms, mass spectra, 
-                    MSDS, and storage protocols. Type I borosilicate glass packaging with batch-specific quality documentation.
-                  </p>
-                </CardContent>
-              </Card>
+              <div>
+                <h3 className="text-lg md:text-xl font-semibold text-dark mb-3">Scalable Production</h3>
+                <ul className="space-y-1 text-base text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Batch sizes from milligram to multi-gram quantities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Full analytical documentation including COA, HPLC-MS chromatograms, and mass spectra</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>GMP-aligned production under EU standards</span>
+                  </li>
+                </ul>
+              </div>
 
-              <Card className="border-accent-gold/20 border-l-4 border-l-accent-gold">
-                <CardHeader>
-                  <CardTitle className="text-lg">
-                    Batch Scalability & Custom Formulation
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700">
-                    Flexible vial formats (1 mL, 2 mL, 5 mL, 10 mL, or client-specified) with lyophilized powder presentation. 
-                    Scalable production from milligram to multi-gram quantities with rubber stopper and aluminum crimp sealing 
-                    for chemical distribution.
-                  </p>
-                </CardContent>
-              </Card>
+              <div>
+                <h3 className="text-lg md:text-xl font-semibold text-dark mb-3">EU-Compliant Intermediation</h3>
+                <ul className="space-y-1 text-base text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Centralized coordination between raw material sourcing, Poland-based GMP-aligned manufacturing, and institutional research partners</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Facilitates secure B2B access while maintaining supply chain traceability and documentation integrity</span>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </section>
+
+          {/* Why ViraChem Is Different */}
+          <section>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Why ViraChem Is Different</h2>
+            <p className="text-base text-gray-700 mb-4">
+              ViraChem is <strong>more than a supplier</strong>. We provide structured access to peptide research compounds and processing services designed to ensure:
+            </p>
+            <ul className="space-y-2 text-base text-gray-700 mb-4">
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>Continuity of supply:</strong> Institutional partners rely on us for secure, repeatable access to critical compounds</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>Traceability:</strong> Full batch records, analytical verification, and chain of custody from synthesis through delivery</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>Regulatory alignment:</strong> Compliant with EU chemical distribution law, REACH, CLP, and international shipping regulations</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span><strong>Ecosystem integration:</strong> Partner laboratories and research institutions benefit from our network and coordination, ensuring long-term operational stability</span>
+              </li>
+            </ul>
           </section>
 
           {/* Compliance */}
@@ -243,10 +421,10 @@ export default function AboutPage() {
             <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Regulatory Compliance</h2>
             <div className="bg-dark/5 border border-dark/20 rounded-lg p-6">
               <p className="text-gray-800 mb-4">
-                ViraChem operates in strict compliance with:
+                ViraChem operates in strict adherence to:
               </p>
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Croatian commercial law and regulations</li>
+                <li>Croatian commercial law</li>
                 <li>European Union chemical distribution directives</li>
                 <li>REACH (Registration, Evaluation, Authorization and Restriction of Chemicals)</li>
                 <li>CLP (Classification, Labelling and Packaging) regulations</li>
@@ -265,7 +443,7 @@ export default function AboutPage() {
           {/* Target Market */}
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Who We Serve</h2>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 mb-4">
               <div>
                 <h3 className="text-xl font-semibold text-dark mb-3">Research Institutions</h3>
                 <ul className="list-disc pl-6 text-gray-700 space-y-1">
@@ -275,7 +453,7 @@ export default function AboutPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-dark mb-3">Industry</h3>
+                <h3 className="text-xl font-semibold text-dark mb-3">Industry Partners</h3>
                 <ul className="list-disc pl-6 text-gray-700 space-y-1">
                   <li>Pharmaceutical R&D departments</li>
                   <li>Biotechnology companies</li>
@@ -283,6 +461,9 @@ export default function AboutPage() {
                 </ul>
               </div>
             </div>
+            <p className="text-base text-gray-700">
+              ViraChem is <strong>partner-focused</strong>, ensuring that research programs, laboratories, and industrial operations have reliable access to high-purity, traceable compounds without exposing them to supply risk or regulatory uncertainty.
+            </p>
           </section>
 
           {/* Leadership */}
@@ -327,7 +508,7 @@ export default function AboutPage() {
           <section className="text-center py-12">
             <h2 className="text-xl md:text-2xl font-semibold text-dark mb-4">Ready to Start Your Research?</h2>
             <p className="text-lg text-gray-700 mb-6">
-              Request a quote for high-purity research compounds or contact us for more information.
+              Request a quote for high-purity research compounds or contact us to discuss your <strong>partnership needs and access requirements</strong>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/products">

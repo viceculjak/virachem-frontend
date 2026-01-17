@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViraChem - Company Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #798996;
+            background: #FFFFFF;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Brand Colors */
+        :root {
+            --navy: #0B1F3F;
+            --red: #C9364F;
+            --teal: #5A8A8F;
+            --gold: #E8B341;
+            --grey: #798996;
+            --white: #FFFFFF;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 16px;
+            margin-top: 32px;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: var(--grey);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--grey);
+        }
+
+        strong {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* Page Container */
+        .page {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 25mm;
+            background: var(--white);
+            min-height: 297mm;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100%;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 32px;
+        }
+
+        .tagline {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--grey);
+            margin-bottom: 8px;
+        }
+
+        .location {
+            font-size: 14px;
+            color: var(--grey);
+            margin-top: 24px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        /* Cards */
+        .card {
+            border: 1px solid rgba(11, 31, 63, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            background: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .card-content {
+            font-size: 14px;
+            color: var(--grey);
+        }
+
+        /* Business Model Cards */
+        .model-card {
+            border-left: 4px solid;
+            padding: 16px;
+            margin-bottom: 16px;
+            background: rgba(11, 31, 63, 0.02);
+        }
+
+        .model-1 {
+            border-left-color: var(--red);
+        }
+
+        .model-2 {
+            border-left-color: var(--teal);
+        }
+
+        .model-3 {
+            border-left-color: var(--gold);
+        }
+
+        .model-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .model-1 .model-label {
+            color: var(--red);
+        }
+
+        .model-2 .model-label {
+            color: var(--teal);
+        }
+
+        .model-3 .model-label {
+            color: var(--gold);
+        }
+
+        /* Contact Info */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        .contact-item {
+            margin-bottom: 16px;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--grey);
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 14px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* Lists with Bullets */
+        .bullet-list li {
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+
+        .comparison-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid rgba(11, 31, 63, 0.2);
+        }
+
+        .comparison-table td {
+            padding: 10px 12px;
+            border: 1px solid rgba(11, 31, 63, 0.1);
+            color: var(--grey);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(11, 31, 63, 0.02);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(11, 31, 63, 0.05);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(11, 31, 63, 0.1);
+            font-size: 12px;
+            color: var(--grey);
+            text-align: center;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                margin: 0;
+                padding: 20mm;
+                box-shadow: none;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
+
+            .card, .model-card {
+                page-break-inside: avoid;
+            }
+
+            .two-column, .three-column, .contact-grid {
+                page-break-inside: avoid;
+            }
+
+            .comparison-table {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Screen Styles */
+        @media screen {
+            body {
+                background: #f5f5f5;
+                padding: 20px;
+            }
+
+            .page {
+                background: white;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 8px; }
+        .mt-2 { margin-top: 16px; }
+        .mt-3 { margin-top: 24px; }
+        .mb-1 { margin-bottom: 8px; }
+        .mb-2 { margin-bottom: 16px; }
+        .mb-3 { margin-bottom: 24px; }
+
+        .highlight {
+            color: var(--navy);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page cover">
+        <img src="public/molecule.png" alt="ViraChem Logo" class="logo" onerror="this.style.display='none'">
+        <h1 style="font-size: 48px; font-weight: 700; letter-spacing: -0.05em; margin-bottom: 16px;">
+            <span style="color: #0B1F3F;">VIRA</span><span style="color: #798996;">CHEM</span>
+        </h1>
+        <div class="tagline">EU-Registered Research Chemical Distribution</div>
+        <div class="subtitle">Research Supply & Manufacturing Services</div>
+        <div class="location">Split, Croatia | European Union</div>
+    </div>
+
+    <!-- Page 2: About ViraChem -->
+    <div class="page">
+        <h2>About ViraChem</h2>
+        
+        <div class="section">
+            <p><strong>Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered</strong></p>
+            <p>ViraChem j.d.o.o. is an EU-registered intermediary and access layer connecting Central European peptide manufacturing capacity with research and industrial laboratories across Europe. We coordinate sourcing, synthesis, and processing of high-purity research peptides and fine chemicals, providing fully traceable, GMP-aligned solutions while ensuring regulatory clarity for our partners.</p>
+            <p>All compounds are strictly for research use and are <strong>not intended for human or veterinary diagnostic or therapeutic applications</strong>. Our core offerings include custom and catalog peptides synthesized to ≥95–99% purity (HPLC-MS verified), with flexible formulation and packaging options.</p>
+        </div>
+    </div>
+
+    <!-- Page 3: Engagement Models -->
+    <div class="page">
+        <h2>How We Work: Engagement Models (assigned based on partner profile)</h2>
+
+        <div class="model-card model-1">
+            <div class="model-label">Model 1</div>
+            <h3>Finished RUO Vials</h3>
+            <p><strong>ViraChem-Sourced & Supplied</strong></p>
+            <p class="mb-2"><strong>Short-term access for early-stage or time-sensitive research programs.</strong></p>
+            <p class="mb-2"><strong>Intended use:</strong></p>
+            <ul class="bullet-list">
+                <li>Program initiation</li>
+                <li>Demand stabilization</li>
+                <li>Interim supply prior to custom manufacturing</li>
+            </ul>
+            <p class="mb-2 mt-2"><strong>Characteristics:</strong></p>
+            <ul class="bullet-list">
+                <li>Fixed specifications</li>
+                <li>Limited catalog availability</li>
+                <li>Predefined batch sizes</li>
+                <li>Research Use Only (RUO)</li>
+            </ul>
+            <p class="mt-2"><strong>Notes:</strong></p>
+            <p>Finished RUO Vials are not designed for sustained high-volume programs. Partners on this model are typically transitioned to Model 2 once specifications and volumes stabilize.</p>
+            <p class="mt-2"><strong>Lead Time:</strong> ~1 week</p>
+        </div>
+
+        <div class="model-card model-2">
+            <div class="model-label">Model 2</div>
+            <h3>Custom Manufacturing</h3>
+            <p><strong>ViraChem-Sourced Raw Materials</strong></p>
+            <p class="mb-2"><strong>Core engagement model for institutional partners.</strong></p>
+            <p class="mb-2">This model provides full access to ViraChem-sourced peptide APIs and coordinated EU-based manufacturing. It is the primary pathway for long-term, repeat-volume research programs requiring traceability and supply continuity.</p>
+            <p class="mb-2 mt-2"><strong>Characteristics:</strong></p>
+            <ul class="bullet-list">
+                <li>ViraChem-sourced raw materials</li>
+                <li>Custom specifications and batch sizes</li>
+                <li>End-to-end batch traceability</li>
+                <li>Extended production timelines aligned with GMP-adjacent workflows</li>
+            </ul>
+            <p class="mb-2 mt-2"><strong>Partner Profile:</strong></p>
+            <ul class="bullet-list">
+                <li>Compounding pharmacies</li>
+                <li>GMP-adjacent laboratories</li>
+                <li>CDMOs</li>
+                <li>Institutional research organizations</li>
+            </ul>
+            <p class="mt-2">This model forms the backbone of ViraChem's supply ecosystem.</p>
+            <p class="mt-2"><strong>Lead Time:</strong> 4–6 weeks</p>
+        </div>
+
+        <div class="model-card model-3">
+            <div class="model-label">Model 3</div>
+            <h3>Fill & Finish Service</h3>
+            <p><strong>Client-Supplied Material</strong></p>
+            <p class="mb-2"><strong>Processing access for partners supplying their own material.</strong></p>
+            <p class="mb-2">This model provides sterile processing, formulation, and lyophilization services using client-supplied raw material. Clear responsibility boundaries are maintained regarding material origin and quality.</p>
+            <p class="mb-2 mt-2"><strong>Characteristics:</strong></p>
+            <ul class="bullet-list">
+                <li>Client-supplied API</li>
+                <li>ViraChem-managed processing and documentation</li>
+                <li>Defined scope of responsibility</li>
+                <li>Suitable for regulatory or internal sourcing constraints</li>
+            </ul>
+            <p class="mt-2"><strong>Lead Time:</strong> 2–3 weeks</p>
+        </div>
+    </div>
+
+    <!-- Page 4: Manufacturing & Processing Capabilities -->
+    <div class="page">
+        <h2>Our Manufacturing & Processing Capabilities</h2>
+
+        <div class="section">
+            <h3>Flexible Vialing & Formulation</h3>
+            <ul class="bullet-list">
+                <li>Lyophilized peptide powders in 1 mL, 2 mL, 5 mL, 10 mL, or partner-specified formats</li>
+                <li>Type I borosilicate glass with rubber stoppers and aluminum crimp seals under inert atmosphere</li>
+                <li>Custom buffer systems available</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Scalable Production</h3>
+            <ul class="bullet-list">
+                <li>Batch sizes from milligram to multi-gram quantities</li>
+                <li>Full analytical documentation including COA, HPLC-MS chromatograms, and mass spectra</li>
+                <li>GMP-aligned production under EU standards</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>EU-Compliant Intermediation</h3>
+            <ul class="bullet-list">
+                <li>Centralized coordination between raw material sourcing, Poland-based GMP-aligned manufacturing, and institutional research partners</li>
+                <li>Facilitates secure B2B access while maintaining supply chain traceability and documentation integrity</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page 5: Why ViraChem Is Different + Who We Serve -->
+    <div class="page">
+        <h2>Why ViraChem Is Different</h2>
+        
+        <div class="section">
+            <p>ViraChem is <strong>more than a supplier</strong>. We provide structured access to peptide research compounds and processing services designed to ensure:</p>
+            <ul class="bullet-list">
+                <li><strong>Continuity of supply:</strong> Institutional partners rely on us for secure, repeatable access to critical compounds</li>
+                <li><strong>Traceability:</strong> Full batch records, analytical verification, and chain of custody from synthesis through delivery</li>
+                <li><strong>Regulatory alignment:</strong> Compliant with EU chemical distribution law, REACH, CLP, and international shipping regulations</li>
+                <li><strong>Ecosystem integration:</strong> Partner laboratories and research institutions benefit from our network and coordination, ensuring long-term operational stability</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Who We Serve</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Research Institutions</h3>
+                    <ul class="bullet-list">
+                        <li>Universities and academic research labs</li>
+                        <li>Government research facilities</li>
+                        <li>Non-profit research organizations</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Industry Partners</h3>
+                    <ul class="bullet-list">
+                        <li>Pharmaceutical R&D departments</li>
+                        <li>Biotechnology companies</li>
+                        <li>Contract research organizations (CROs)</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-2">ViraChem is <strong>partner-focused</strong>, ensuring that research programs, laboratories, and industrial operations have reliable access to high-purity, traceable compounds without exposing them to supply risk or regulatory uncertainty.</p>
+        </div>
+    </div>
+
+    <!-- Page 6: Legal & Registration Information + Regulatory Compliance -->
+    <div class="page">
+        <h2>Legal & Registration Information</h2>
+        
+        <div class="section">
+            <p><strong>Company Name:</strong> ViraChem jednostavno društvo s ograničenom odgovornošću (ViraChem j.d.o.o.)</p>
+            <p><strong>Registration Court:</strong> Trgovački sud u Splitu</p>
+            <p><strong>Company Registration Number:</strong> MBS: 060500406</p>
+            <p><strong>Tax Identification Number:</strong> OIB: 73782597071</p>
+            <p><strong>EUID:</strong> HRSR.060500406</p>
+            <p><strong>Status:</strong> Active (Bez postupka)</p>
+        </div>
+
+        <div class="section">
+            <p><strong>Primary Activity:</strong> Intermediation in non-specialized wholesale trade (46.19.0)</p>
+            <p><strong>Licensed Activities:</strong></p>
+            <ul class="bullet-list">
+                <li>Intermediation in fine chemicals and biochemicals for R&D</li>
+                <li>Preliminary research activities</li>
+                <li>Trade intermediation (domestic and international)</li>
+            </ul>
+            <p><strong>Founded:</strong> June 27, 2025</p>
+            <p><strong>Headquarters:</strong> Pujanke 24A, 21000 Split, Croatia, EU</p>
+        </div>
+
+        <div class="section">
+            <h3>Contact</h3>
+            <ul class="bullet-list">
+                <li>General: <a href="mailto:info@virachemical.com" style="color: var(--navy);">info@virachemical.com</a></li>
+                <li>Quotes: <a href="mailto:quotes@virachemical.com" style="color: var(--navy);">quotes@virachemical.com</a></li>
+                <li>Technical: <a href="mailto:tech@virachemical.com" style="color: var(--navy);">tech@virachemical.com</a></li>
+                <li>Compliance: <a href="mailto:compliance@virachemical.com" style="color: var(--navy);">compliance@virachemical.com</a></li>
+            </ul>
+            <p class="mt-2"><strong>Business Hours:</strong> Monday – Friday, 09:00–17:00 CET</p>
+            <p><strong>Response Time:</strong> Quote requests 24–48 hours</p>
+        </div>
+
+        <div class="section">
+            <h2>Regulatory Compliance</h2>
+            <p>ViraChem operates in strict adherence to:</p>
+            <ul class="bullet-list">
+                <li>Croatian commercial law</li>
+                <li>EU chemical distribution directives</li>
+                <li>REACH (Registration, Evaluation, Authorization, and Restriction of Chemicals)</li>
+                <li>CLP (Classification, Labelling, and Packaging) regulations</li>
+                <li>GDPR</li>
+                <li>International shipping and customs regulations</li>
+            </ul>
+            <div class="card mt-2" style="background: rgba(201, 54, 79, 0.1); border-left: 4px solid var(--red);">
+                <p style="color: var(--navy); font-weight: 600; margin-bottom: 8px;"><strong>WARNING:</strong> Research Use Only — All products are strictly for research and development purposes. Not for human or veterinary use.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 7: Contact & Next Steps -->
+    <div class="page">
+        <h2>Contact & Next Steps</h2>
+
+        <div class="section">
+            <h3>Get in Touch</h3>
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-item">
+                        <div class="contact-label">General Inquiries</div>
+                        <div class="contact-value">info@virachemical.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Quote Requests</div>
+                        <div class="contact-value">quotes@virachemical.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Technical Support</div>
+                        <div class="contact-value">tech@virachemical.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Compliance & Documentation</div>
+                        <div class="contact-value">compliance@virachemical.com</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="contact-item">
+                        <div class="contact-label">Headquarters</div>
+                        <div class="contact-value">
+                            ViraChem j.d.o.o.<br>
+                            Pujanke 24A<br>
+                            21000 Split<br>
+                            Croatia (Hrvatska)<br>
+                            European Union
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Business Hours</div>
+                        <div class="contact-value">Monday - Friday: 9:00 - 17:00 CET</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Response Time</div>
+                        <div class="contact-value">Quote requests: 24-48 hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Connect With Us</h3>
+            <p><strong>Website:</strong> <a href="https://virachemical.com" style="color: var(--navy);">virachemical.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/virachemical" style="color: var(--navy);">linkedin.com/company/virachemical</a></p>
+            <p><strong>Instagram:</strong> <a href="https://www.instagram.com/virachemical/" style="color: var(--navy);">instagram.com/virachemical</a></p>
+        </div>
+
+        <div class="section">
+            <div class="card" style="background: rgba(11, 31, 63, 0.05); border-left: 4px solid var(--red);">
+                <h3 style="margin-top: 0; color: var(--navy);">Ready to Start Your Research?</h3>
+                <p>Request a quote for high-purity research compounds or contact us to discuss your partnership needs and access requirements.</p>
+                <p class="mt-2"><strong>Visit our website to browse our product catalog or submit a quote request online.</strong></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>ViraChem j.d.o.o.</strong> | MBS: 060500406 | OIB: 73782597071</p>
+            <p>Pujanke 24A, 21000 Split, Croatia | European Union</p>
+            <p style="margin-top: 8px; font-size: 11px; color: var(--grey);">For research use only. Not for human or veterinary use.</p>
+        </div>
+    </div>
+</body>
+</html>
