@@ -54,7 +54,7 @@ export default function Footer() {
         
         {/* Copyright */}
         <div className="text-center text-[#798996] text-sm space-y-1">
-          <p>© 2025 ViraChem j.d.o.o. All rights reserved.</p>
+          <p>© 2025-2026 ViraChem j.d.o.o. All rights reserved.</p>
           <p className="text-xs">For research use only. Not for human or veterinary use.</p>
         </div>
       </div>
