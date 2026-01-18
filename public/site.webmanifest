@@ -1,7 +1,7 @@
 {
-  "name": "ViraChem - Research Chemical Distribution",
+  "name": "ViraChem - Contract Manufacturing Intermediation & Research API Access",
   "short_name": "ViraChem",
-  "description": "EU-Registered Research Chemical Distribution | Split, Croatia",
+  "description": "EU-registered access platform for GMP-aligned peptide manufacturing and research-grade APIs | Split, Croatia",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",

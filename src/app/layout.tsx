@@ -13,10 +13,32 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "ViraChem | EU-Registered Research Chemical Distribution",
-  description: "Licensed intermediation in fine chemicals and biochemicals for research institutions. Based in Split, Croatia. MBS: 060500406",
-  keywords: "research chemicals, biochemicals, fine chemicals, laboratory supplies, EU, Croatia, research grade, peptides",
+  title: "ViraChem | Contract Manufacturing Intermediation & Research API Access | EU-Registered",
+  description: "EU-registered contract manufacturing intermediary and access platform connecting qualified European research partners with vetted Central European peptide manufacturing capacity. GMP-aligned coordination layer for research API access, custom manufacturing, and fill & finish services. Based in Split, Croatia.",
+  keywords: "contract manufacturing intermediation, research API access, access platform, coordination layer, peptide manufacturing access, engagement models, CDMO, GMP-aligned, manufacturing intermediary, research chemicals, biochemicals, fine chemicals, laboratory supplies, EU, Croatia, research grade, peptides",
   manifest: '/site.webmanifest',
+  openGraph: {
+    title: "ViraChem | Contract Manufacturing Intermediation & Research API Access",
+    description: "EU-registered access platform for GMP-aligned peptide manufacturing and research-grade APIs. Coordination and qualification layer for institutional partners.",
+    url: "https://virachemical.com",
+    siteName: "ViraChem",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "ViraChem - EU-Registered Research Chemical Distribution",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ViraChem | Contract Manufacturing Intermediation & Research API Access",
+    description: "EU-registered access platform for GMP-aligned peptide manufacturing and research-grade APIs.",
+    images: ["/logo.png"],
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '48x48' },

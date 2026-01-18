@@ -616,7 +616,11 @@ export default function AboutPage() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">
-                    {/* Place profile image at public/team/radoslav-atanasow.jpg when available */}
+                    <img
+                      src="/team/Radoslav.png"
+                      alt="Radoslav Atanasow"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-dark">Radoslav Atanasow</h3>
