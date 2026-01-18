@@ -611,6 +611,23 @@ export default function AboutPage() {
                 </div>
               </CardContent>
             </Card>
+
+            <Card className="border-dark/20">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">
+                    {/* Place profile image at public/team/radoslav-atanasow.jpg when available */}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-dark">Radoslav Atanasow</h3>
+                    <p className="text-accent-red font-semibold mb-2">Partnerships & Manufacturing Manager</p>
+                    <p className="text-gray-700 mb-3">
+                      Radoslav leads partner acquisition and manufacturing coordination across ViraChem's EU-based network. He works directly with clinics, laboratories, and institutional clients to structure supply relationships while overseeing technical feasibility, production alignment, and delivery execution with manufacturing partners.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           {/* CTA */}
