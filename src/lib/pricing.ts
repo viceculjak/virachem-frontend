@@ -42,7 +42,7 @@ export async function fetchPricingTiers(): Promise<PricingTier[]> {
       .from('pricing_tiers_config')
       .select('*')
       .eq('active', true)
-      .order('tier_number', { ascending: true });
+      .order('min_quantity', { ascending: true });
 
     if (error) {
       console.error('Error fetching pricing tiers:', error);
