@@ -230,22 +230,32 @@ export default function ProductDetailPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {pricingTiers.map((tier) => {
+                      {pricingTiers.map((tier, index) => {
                         const tierPricePerUnit = product.cost_per_vial / tier.margin;
-                        const tierSavings = tier.min === 1 ? 0 : calculateSavingsPercentage(pricingTiers, product.cost_per_vial, tier.min);
-                        const isSelected = currentTier?.label === tier.label;
-                        const isBestValue = tier.label === '500+';
+                        // Calculate savings compared to first tier (tier 1)
+                        const tier1PricePerUnit = pricingTiers[0] ? product.cost_per_vial / pricingTiers[0].margin : tierPricePerUnit;
+                        const tierSavings = index === 0 ? 0 : Math.round(((tier1PricePerUnit - tierPricePerUnit) / tier1PricePerUnit) * 100);
+                        
+                        // Generate quantity range string
+                        const quantityRange = tier.max === Infinity 
+                          ? `${tier.min}+` 
+                          : tier.min === tier.max 
+                            ? `${tier.min}` 
+                            : `${tier.min}-${tier.max}`;
+                        
+                        const isSelected = currentTier?.min === tier.min && currentTier?.max === tier.max;
+                        const isBestValue = index === pricingTiers.length - 1; // Last tier (highest quantity) is best value
                         
                         return (
                           <tr 
-                            key={tier.label} 
+                            key={`${tier.min}-${tier.max}`}
                             className={`border-b border-gray-200 transition-colors ${
                               isSelected ? 'bg-blue-50 border-blue-300' : 'hover:bg-gray-50'
                             } ${isBestValue ? 'bg-green-50' : ''}`}
                           >
                             <td className="p-3">
                               <div className="flex items-center gap-2">
-                                <span className="font-medium">{tier.label} units</span>
+                                <span className="font-medium">{quantityRange} units</span>
                                 {isBestValue && (
                                   <span className="text-xs bg-green-600 text-white px-2 py-0.5 rounded-full font-semibold">
                                     Best Value
