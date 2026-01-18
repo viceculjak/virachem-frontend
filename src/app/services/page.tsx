@@ -26,13 +26,13 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto mb-6">
           <h1 className="text-2xl md:text-3xl font-bold text-dark mb-2">Services & Business Models</h1>
           <p className="text-sm md:text-base text-gray-700">
-            Three flexible models for research supply and processing — from ready inventory to custom manufacturing to client-supplied fill & finish
+            Coordinated EU-based sourcing, manufacturing, and processing for advanced research compounds. Engagement models are assigned based on partner profile, project maturity, and compliance requirements.
           </p>
         </div>
 
         {/* Business Models Section */}
         <div className="max-w-6xl mx-auto mb-8">
-          <h2 className="text-xl md:text-2xl font-bold text-dark mb-4 text-center">How We Work: Choose Your Model</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-dark mb-4 text-center">How We Work: Engagement Models (assigned based on partner profile)</h2>
           
           {/* Model Cards Grid */}
           <div className="grid md:grid-cols-3 gap-3 mb-6">
@@ -50,57 +50,60 @@ export default function ServicesPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="text-sm text-gray-700 font-medium border-t pt-4">
-                  Fast availability | Fixed specs | Ready inventory
+                  Short-term access for early-stage or time-sensitive research programs.
                 </div>
                 
                 {expandedModel === 1 && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
                     <div>
-                      <h4 className="font-semibold text-dark mb-2">Key Characteristics:</h4>
-                      <ul className="space-y-2 text-sm text-gray-700">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Raw materials sourced by ViraChem</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Manufacturing, filling, and packaging by partner facilities</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Each batch with analytical documentation (COA, HPLC, MS)</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Inventory held and distributed by ViraChem</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Fixed lead times and predefined specifications</span>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-dark mb-2">Best Suited For:</h4>
+                      <h4 className="font-semibold text-dark mb-2">Intended use:</h4>
                       <ul className="space-y-1 text-sm text-gray-700">
                         <li className="flex items-start gap-2">
                           <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Laboratories requiring fast availability</span>
+                          <span>Program initiation</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Standardized experimental workflows</span>
+                          <span>Demand stabilization</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#D85A5A] mt-1">•</span>
-                          <span>Repeated or recurring research use</span>
+                          <span>Interim supply prior to custom manufacturing</span>
                         </li>
                       </ul>
                     </div>
                     
                     <div>
-                      <p className="text-sm text-gray-600 italic">Lead Time: 1 week</p>
+                      <h4 className="font-semibold text-dark mb-2">Characteristics:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#D85A5A] mt-1">•</span>
+                          <span>Fixed specifications</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#D85A5A] mt-1">•</span>
+                          <span>Limited catalog availability</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#D85A5A] mt-1">•</span>
+                          <span>Predefined batch sizes</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#D85A5A] mt-1">•</span>
+                          <span>Research Use Only (RUO)</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Notes:</h4>
+                      <p className="text-sm text-gray-700">
+                        Finished RUO Vials are not designed for sustained high-volume programs. Partners on this model are typically transitioned to Model 2 once specifications and volumes stabilize.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <p className="text-sm text-gray-600 italic">Lead Time: ~1 week</p>
                     </div>
                     
                     <Link href="/products">
@@ -127,57 +130,65 @@ export default function ServicesPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="text-sm text-gray-700 font-medium border-t pt-4">
-                  Your specs | Extended timeline | Full traceability
+                  Core engagement model for institutional partners.
                 </div>
                 
                 {expandedModel === 2 && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
-                    <div>
-                      <h4 className="font-semibold text-dark mb-2">Key Characteristics:</h4>
-                      <ul className="space-y-2 text-sm text-gray-700">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>Raw materials sourced and qualified by ViraChem</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>Batch manufactured on-demand</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>Custom vial count, fill volume, or concentration</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>Extended lead times due to batch setup and validation</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>Documentation per client-defined requirements (RUO scope)</span>
-                        </li>
-                      </ul>
-                    </div>
+                    <p className="text-sm text-gray-700">
+                      This model provides full access to ViraChem-sourced peptide APIs and coordinated EU-based manufacturing. It is the primary pathway for long-term, repeat-volume research programs requiring traceability and supply continuity.
+                    </p>
                     
                     <div>
-                      <h4 className="font-semibold text-dark mb-2">Best Suited For:</h4>
+                      <h4 className="font-semibold text-dark mb-2">Characteristics:</h4>
                       <ul className="space-y-1 text-sm text-gray-700">
                         <li className="flex items-start gap-2">
                           <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>Specialized research programs</span>
+                          <span>ViraChem-sourced raw materials</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>CROs and institutional labs</span>
+                          <span>Custom specifications and batch sizes</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#5a8a8f] mt-1">•</span>
-                          <span>Projects requiring batch traceability or non-standard configurations</span>
+                          <span>End-to-end batch traceability</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#5a8a8f] mt-1">•</span>
+                          <span>Extended production timelines aligned with GMP-adjacent workflows</span>
                         </li>
                       </ul>
                     </div>
                     
                     <div>
-                      <p className="text-sm text-gray-600 italic">Lead Time: 4-6 weeks</p>
+                      <h4 className="font-semibold text-dark mb-2">Partner Profile:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#5a8a8f] mt-1">•</span>
+                          <span>Compounding pharmacies</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#5a8a8f] mt-1">•</span>
+                          <span>GMP-adjacent laboratories</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#5a8a8f] mt-1">•</span>
+                          <span>CDMOs</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#5a8a8f] mt-1">•</span>
+                          <span>Institutional research organizations</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <p className="text-sm text-gray-700">
+                      This model forms the <strong>backbone of ViraChem's supply ecosystem</strong>.
+                    </p>
+                    
+                    <div>
+                      <p className="text-sm text-gray-600 italic">Lead Time: 4–6 weeks</p>
                     </div>
                     
                     <Link href="/quote">
@@ -204,33 +215,33 @@ export default function ServicesPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="text-sm text-gray-700 font-medium border-t pt-4">
-                  Your material | Our processing | Clear boundaries
+                  Processing access for partners supplying their own material.
                 </div>
                 
                 {expandedModel === 3 && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
+                    <p className="text-sm text-gray-700">
+                      This model provides sterile processing, formulation, and lyophilization services using client-supplied raw material. Clear responsibility boundaries are maintained regarding material origin and quality.
+                    </p>
+                    
                     <div>
-                      <h4 className="font-semibold text-dark mb-2">Key Characteristics:</h4>
-                      <ul className="space-y-2 text-sm text-gray-700">
+                      <h4 className="font-semibold text-dark mb-2">Characteristics:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
                         <li className="flex items-start gap-2">
                           <span className="text-[#E8B741] mt-1">•</span>
-                          <span>Raw material provided directly by the client</span>
+                          <span>Client-supplied API</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#E8B741] mt-1">•</span>
-                          <span>ViraChem performs vial filling, packaging, and labeling</span>
+                          <span>ViraChem-managed processing and documentation</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#E8B741] mt-1">•</span>
-                          <span>No sourcing or quality representation of raw material by ViraChem</span>
+                          <span>Defined scope of responsibility</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-[#E8B741] mt-1">•</span>
-                          <span>Processing conducted strictly per RUO handling standards</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#E8B741] mt-1">•</span>
-                          <span>Separate contractual framework applies</span>
+                          <span>Suitable for regulatory or internal sourcing constraints</span>
                         </li>
                       </ul>
                     </div>
@@ -239,30 +250,12 @@ export default function ServicesPage() {
                       <h4 className="font-semibold text-dark mb-2 text-sm">Important Clarification:</h4>
                       <p className="text-xs text-gray-700">
                         ViraChem does not manufacture, certify, or assume responsibility for the quality, purity, or suitability 
-                        of client-supplied raw materials. Responsibility for raw material identity and integrity remains entirely with the client.
+                        of client-supplied raw materials. Clear responsibility boundaries are maintained regarding material origin and quality.
                       </p>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-dark mb-2">Best Suited For:</h4>
-                      <ul className="space-y-1 text-sm text-gray-700">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#E8B741] mt-1">•</span>
-                          <span>Laboratories with existing raw inventories</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#E8B741] mt-1">•</span>
-                          <span>Research groups seeking cost-efficient vial preparation</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#E8B741] mt-1">•</span>
-                          <span>Institutions requiring internal material control</span>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <p className="text-sm text-gray-600 italic">Lead Time: 2-3 weeks</p>
+                      <p className="text-sm text-gray-600 italic">Lead Time: 2–3 weeks</p>
                     </div>
                     
                     <Link href="/contact">
@@ -298,9 +291,9 @@ export default function ServicesPage() {
                   </tr>
                   <tr className="border-b border-gray-200 bg-white">
                     <td className="p-3 font-medium">Lead Time</td>
-                    <td className="p-3 text-center">1 week</td>
-                    <td className="p-3 text-center">4-6 weeks</td>
-                    <td className="p-3 text-center">2-3 weeks</td>
+                    <td className="p-3 text-center">~1 week</td>
+                    <td className="p-3 text-center">4–6 weeks</td>
+                    <td className="p-3 text-center">2–3 weeks</td>
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="p-3 font-medium">Customization</td>
@@ -331,8 +324,7 @@ export default function ServicesPage() {
           <div className="text-center">
             <h2 className="text-3xl font-bold text-dark mb-4">Technical Capabilities Across All Models</h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Regardless of which model you choose, all services benefit from our partner's GMP-aligned manufacturing 
-              capabilities and comprehensive analytical verification.
+              All engagement models leverage the same EU-based manufacturing infrastructure and analytical framework.
             </p>
           </div>
         </div>
@@ -409,7 +401,7 @@ export default function ServicesPage() {
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-accent-teal mt-1">•</span>
-                  <span><strong>Vial Sizes:</strong> 1 mL, 2 mL, 5 mL, 10 mL, or client-specified</span>
+                  <span><strong>Vial Sizes:</strong> 1 mL, 2 mL, 5 mL, 10 mL, or partner-specified</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent-teal mt-1">•</span>
@@ -522,7 +514,7 @@ export default function ServicesPage() {
             </ul>
             <p className="text-center text-sm italic mt-6 text-gray-600">
               These three models are intentionally separated to preserve regulatory clarity, correctly allocate technical 
-              and legal responsibility, and allow clients to choose speed, customization, or cost-efficiency without ambiguity.
+              and legal responsibility, and provide structured access to speed, customization, or cost-efficiency based on partner profile and project requirements.
             </p>
           </div>
         </div>
