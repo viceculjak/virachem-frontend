@@ -26,10 +26,18 @@ type DbPricingTier = {
  * Convert database tier row to PricingTier interface
  * Note: margin_percentage represents the cost share (percentage of price that is cost)
  * So if margin_percentage = 25, it means 25% of price is cost → price = cost / 0.25
+ * 
+ * IMPORTANT: If your database stores margin_percentage where higher values = higher prices,
+ * you may need to invert: margin = (100 - margin_percentage) / 100
  */
 function convertDbTierToPricingTier(dbTier: DbPricingTier): PricingTier {
-  // margin_percentage is the cost percentage, so margin = margin_percentage / 100
-  const margin = dbTier.margin_percentage / 100;
+  // If margin_percentage is stored as "ViraChem's markup percentage" (higher = higher price),
+  // we need to convert to "cost share percentage" (higher = lower price)
+  // margin_percentage = 75 (high markup) → cost share = 25 → margin = 0.25 → price = cost / 0.25 (high price)
+  // margin_percentage = 25 (low markup) → cost share = 75 → margin = 0.75 → price = cost / 0.75 (low price)
+  
+  // Try inverted interpretation: cost_share = 100 - margin_percentage
+  const margin = (100 - dbTier.margin_percentage) / 100;
   
   return {
     min: dbTier.min_quantity,
