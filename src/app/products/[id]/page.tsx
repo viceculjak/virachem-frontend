@@ -64,10 +64,23 @@ export default function ProductDetailPage() {
     async function fetchTiers() {
       try {
         const tiers = await fetchPricingTiers();
-        setPricingTiers(tiers);
+        if (tiers && tiers.length > 0) {
+          setPricingTiers(tiers);
+        } else {
+          // Fallback: if no tiers from DB, check console for RLS policy issue
+          console.warn('No pricing tiers returned from database. Check RLS policies on pricing_tiers_config table.');
+          setTiersError('No active pricing tiers found in database. Please check RLS policies.');
+        }
       } catch (err) {
         setTiersError(err instanceof Error ? err.message : 'Failed to load pricing tiers');
         console.error('Error fetching pricing tiers:', err);
+        // Log detailed error for debugging
+        if (err && typeof err === 'object' && 'code' in err) {
+          console.error('Supabase error code:', err.code);
+          if (err.code === '42501' || err.code === 'PGRST301') {
+            console.error('RLS Policy Error: pricing_tiers_config table needs public read access. Run: CREATE POLICY "Allow public read access to pricing_tiers_config" ON pricing_tiers_config FOR SELECT USING (active = true);');
+          }
+        }
       } finally {
         setTiersLoading(false);
       }
