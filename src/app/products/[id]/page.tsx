@@ -230,7 +230,7 @@ export default function ProductDetailPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {pricingTiers.map((tier, index) => {
+                      {pricingTiers.slice(0, 6).map((tier, index) => {
                         // Debug: Log tier calculation
                         if (index === 0 || index === pricingTiers.length - 1) {
                           console.log(`Tier ${index + 1} (${tier.min}-${tier.max === Infinity ? '∞' : tier.max}): margin=${tier.margin}, cost=${product.cost_per_vial}, price=${(product.cost_per_vial / tier.margin).toFixed(2)}`);
