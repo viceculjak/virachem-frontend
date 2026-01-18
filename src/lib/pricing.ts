@@ -1,11 +1,64 @@
 // ViraChem Tiered Pricing Utilities
 // Pricing tiers based on quantity with decreasing margins
 
+import { supabase } from './supabase';
+
 export interface PricingTier {
   min: number;
   max: number;
   margin: number;
   label: string;
+}
+
+// Database tier row type
+type DbPricingTier = {
+  id: string;
+  tier_name: string;
+  tier_number: number;
+  min_quantity: number;
+  max_quantity: number | null;
+  margin_percentage: number;
+  active: boolean;
+};
+
+/**
+ * Convert database tier row to PricingTier interface
+ */
+function convertDbTierToPricingTier(dbTier: DbPricingTier): PricingTier {
+  return {
+    min: dbTier.min_quantity,
+    max: dbTier.max_quantity ?? Infinity,
+    margin: dbTier.margin_percentage / 100,
+    label: dbTier.tier_name || `${dbTier.min_quantity}-${dbTier.max_quantity ?? '∞'}`,
+  };
+}
+
+/**
+ * Fetch active pricing tiers from database
+ */
+export async function fetchPricingTiers(): Promise<PricingTier[]> {
+  try {
+    const { data, error } = await supabase
+      .from('pricing_tiers_config')
+      .select('*')
+      .eq('active', true)
+      .order('tier_number', { ascending: true });
+
+    if (error) {
+      console.error('Error fetching pricing tiers:', error);
+      throw error;
+    }
+
+    if (!data || data.length === 0) {
+      console.warn('No active pricing tiers found in database');
+      return [];
+    }
+
+    return data.map(convertDbTierToPricingTier);
+  } catch (err) {
+    console.error('Failed to fetch pricing tiers from database:', err);
+    throw err;
+  }
 }
 
 export const PRICING_TIERS: PricingTier[] = [
@@ -19,34 +72,47 @@ export const PRICING_TIERS: PricingTier[] = [
 
 /**
  * Calculate the price per unit based on cost and quantity
+ * @param tiers - Array of pricing tiers
  * @param cost - Cost per vial in EUR
  * @param quantity - Number of units being ordered
  * @returns Price per unit in EUR (rounded to 2 decimal places)
  */
-export function calculatePricePerUnit(cost: number, quantity: number): number {
-  const tier = PRICING_TIERS.find(t => quantity >= t.min && quantity <= t.max);
-  if (!tier) return Number((cost / 0.25).toFixed(2)); // Default to tier 1
+export function calculatePricePerUnit(tiers: PricingTier[], cost: number, quantity: number): number {
+  if (!tiers || tiers.length === 0) {
+    console.warn('No pricing tiers provided, using default margin');
+    return Number((cost / 0.25).toFixed(2));
+  }
+  
+  const tier = tiers.find(t => quantity >= t.min && quantity <= t.max);
+  if (!tier) {
+    // Use first tier as default
+    const defaultTier = tiers[0];
+    return Number((cost / defaultTier.margin).toFixed(2));
+  }
   return Number((cost / tier.margin).toFixed(2));
 }
 
 /**
  * Calculate the total price based on cost and quantity
+ * @param tiers - Array of pricing tiers
  * @param cost - Cost per vial in EUR
  * @param quantity - Number of units being ordered
  * @returns Total price in EUR (rounded to 2 decimal places)
  */
-export function calculateTotalPrice(cost: number, quantity: number): number {
-  const pricePerUnit = calculatePricePerUnit(cost, quantity);
+export function calculateTotalPrice(tiers: PricingTier[], cost: number, quantity: number): number {
+  const pricePerUnit = calculatePricePerUnit(tiers, cost, quantity);
   return Number((pricePerUnit * quantity).toFixed(2));
 }
 
 /**
  * Get the pricing tier for a given quantity
+ * @param tiers - Array of pricing tiers
  * @param quantity - Number of units
  * @returns The pricing tier object or undefined
  */
-export function getTierForQuantity(quantity: number): PricingTier | undefined {
-  return PRICING_TIERS.find(t => quantity >= t.min && quantity <= t.max);
+export function getTierForQuantity(tiers: PricingTier[], quantity: number): PricingTier | undefined {
+  if (!tiers || tiers.length === 0) return undefined;
+  return tiers.find(t => quantity >= t.min && quantity <= t.max);
 }
 
 /**
@@ -60,13 +126,17 @@ export function calculateMarginPercentage(tier: PricingTier): number {
 
 /**
  * Calculate savings percentage compared to tier 1 pricing
+ * @param tiers - Array of pricing tiers
  * @param cost - Cost per vial in EUR
  * @param quantity - Number of units being ordered
  * @returns Savings percentage (e.g., 29 for 29% savings)
  */
-export function calculateSavingsPercentage(cost: number, quantity: number): number {
-  const tier1Price = cost / 0.25;
-  const currentPrice = calculatePricePerUnit(cost, quantity);
+export function calculateSavingsPercentage(tiers: PricingTier[], cost: number, quantity: number): number {
+  if (!tiers || tiers.length === 0) return 0;
+  
+  const tier1 = tiers[0]; // First tier (tier 1)
+  const tier1Price = cost / tier1.margin;
+  const currentPrice = calculatePricePerUnit(tiers, cost, quantity);
   const savings = ((tier1Price - currentPrice) / tier1Price) * 100;
   return Math.round(savings);
 }

@@ -10,7 +10,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { 
-  PRICING_TIERS, 
+  type PricingTier,
+  fetchPricingTiers,
   calculatePricePerUnit, 
   calculateTotalPrice,
   getTierForQuantity,
@@ -37,6 +38,9 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number | ''>(1);
+  const [pricingTiers, setPricingTiers] = useState<PricingTier[] | null>(null);
+  const [tiersLoading, setTiersLoading] = useState(true);
+  const [tiersError, setTiersError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -57,8 +61,21 @@ export default function ProductDetailPage() {
       }
     }
 
+    async function fetchTiers() {
+      try {
+        const tiers = await fetchPricingTiers();
+        setPricingTiers(tiers);
+      } catch (err) {
+        setTiersError(err instanceof Error ? err.message : 'Failed to load pricing tiers');
+        console.error('Error fetching pricing tiers:', err);
+      } finally {
+        setTiersLoading(false);
+      }
+    }
+
     if (productId) {
       fetchProduct();
+      fetchTiers();
     }
   }, [productId]);
 
@@ -89,10 +106,10 @@ export default function ProductDetailPage() {
   }
 
   const effectiveQuantity = quantity === '' ? 1 : quantity;
-  const currentTier = getTierForQuantity(effectiveQuantity);
-  const pricePerUnit = calculatePricePerUnit(product.cost_per_vial, effectiveQuantity);
-  const totalPrice = calculateTotalPrice(product.cost_per_vial, effectiveQuantity);
-  const savings = calculateSavingsPercentage(product.cost_per_vial, effectiveQuantity);
+  const currentTier = pricingTiers ? getTierForQuantity(pricingTiers, effectiveQuantity) : undefined;
+  const pricePerUnit = pricingTiers ? calculatePricePerUnit(pricingTiers, product.cost_per_vial, effectiveQuantity) : 0;
+  const totalPrice = pricingTiers ? calculateTotalPrice(pricingTiers, product.cost_per_vial, effectiveQuantity) : 0;
+  const savings = pricingTiers ? calculateSavingsPercentage(pricingTiers, product.cost_per_vial, effectiveQuantity) : 0;
 
   return (
     <div className="min-h-screen bg-background p-2 md:p-4">
@@ -155,6 +172,34 @@ export default function ProductDetailPage() {
 
           {/* Pricing Section */}
           {product.cost_per_vial && (
+            tiersLoading ? (
+              <Card className="shadow-md border-2 border-[#C9364F]/20">
+                <CardHeader>
+                  <CardTitle className="text-lg">Pricing & Order</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">Loading pricing information...</p>
+                </CardContent>
+              </Card>
+            ) : tiersError ? (
+              <Card className="shadow-md border-2 border-red-200">
+                <CardHeader>
+                  <CardTitle className="text-lg">Pricing & Order</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-red-600">Pricing unavailable. Please contact us for a quote.</p>
+                </CardContent>
+              </Card>
+            ) : !pricingTiers || pricingTiers.length === 0 ? (
+              <Card className="shadow-md border-2 border-red-200">
+                <CardHeader>
+                  <CardTitle className="text-lg">Pricing & Order</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-red-600">Pricing tiers not available. Please contact us for a quote.</p>
+                </CardContent>
+              </Card>
+            ) : (
             <Card className="shadow-md border-2 border-[#C9364F]/20">
               <CardHeader>
                 <CardTitle className="text-lg">Pricing & Order</CardTitle>
@@ -172,9 +217,9 @@ export default function ProductDetailPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {PRICING_TIERS.map((tier) => {
+                      {pricingTiers.map((tier) => {
                         const tierPricePerUnit = product.cost_per_vial / tier.margin;
-                        const tierSavings = tier.min === 1 ? 0 : calculateSavingsPercentage(product.cost_per_vial, tier.min);
+                        const tierSavings = tier.min === 1 ? 0 : calculateSavingsPercentage(pricingTiers, product.cost_per_vial, tier.min);
                         const isSelected = currentTier?.label === tier.label;
                         const isBestValue = tier.label === '500+';
                         
@@ -279,6 +324,7 @@ export default function ProductDetailPage() {
                 </p>
               </CardContent>
             </Card>
+            )
           )}
 
           <Card className="shadow-md">
