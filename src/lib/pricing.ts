@@ -18,17 +18,23 @@ type DbPricingTier = {
   min_quantity: number;
   max_quantity: number | null;
   margin_percentage: number;
+  mrp_margin_percentage: number;
   active: boolean;
 };
 
 /**
  * Convert database tier row to PricingTier interface
+ * Note: margin_percentage represents the cost share (percentage of price that is cost)
+ * So if margin_percentage = 25, it means 25% of price is cost → price = cost / 0.25
  */
 function convertDbTierToPricingTier(dbTier: DbPricingTier): PricingTier {
+  // margin_percentage is the cost percentage, so margin = margin_percentage / 100
+  const margin = dbTier.margin_percentage / 100;
+  
   return {
     min: dbTier.min_quantity,
     max: dbTier.max_quantity ?? Infinity,
-    margin: dbTier.margin_percentage / 100,
+    margin: margin,
     label: dbTier.tier_name || `${dbTier.min_quantity}-${dbTier.max_quantity ?? '∞'}`,
   };
 }
@@ -54,7 +60,15 @@ export async function fetchPricingTiers(): Promise<PricingTier[]> {
       return [];
     }
 
-    return data.map(convertDbTierToPricingTier);
+    const tiers = data.map(convertDbTierToPricingTier);
+    // Debug: Log tier data to verify values
+    console.log('Fetched pricing tiers from database:', tiers.map(t => ({
+      range: `${t.min}-${t.max === Infinity ? '∞' : t.max}`,
+      margin: t.margin,
+      marginPercent: (t.margin * 100).toFixed(1) + '%'
+    })));
+    
+    return tiers;
   } catch (err) {
     console.error('Failed to fetch pricing tiers from database:', err);
     throw err;
