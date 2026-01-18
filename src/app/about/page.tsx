@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto mb-6">
           <h1 className="text-xl md:text-2xl font-bold text-dark mb-2">About ViraChem</h1>
           <p className="text-sm md:text-base text-gray-700 break-words">
-            Contract Manufacturing Intermediation | GMP-Aligned Peptide Synthesis | EU-Registered
+            Contract Manufacturing Intermediation | Research API Access | GMP-Aligned Peptide Manufacturing | EU-Registered
           </p>
         </div>
 
@@ -25,18 +25,119 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto space-y-6">
           <section>
             <p className="text-base text-gray-700 mb-2">
-              ViraChem j.d.o.o. is an EU-registered intermediary and <strong>access layer connecting Central European peptide manufacturing capacity</strong> with research and industrial laboratories across Europe. We <strong>coordinate</strong> sourcing, synthesis, and processing of high-purity research peptides and fine chemicals, providing fully traceable, GMP-aligned solutions while ensuring regulatory clarity for our <strong>partners</strong>.
+              ViraChem j.d.o.o. is an <strong>EU-registered contract manufacturing intermediary and access platform</strong> that connects <strong>qualified European research and industrial partners</strong> with <strong>vetted Central European peptide manufacturing capacity</strong>.
             </p>
             <p className="text-base text-gray-700 mb-2">
-              All compounds are strictly for research use and are <strong>not intended for human or veterinary diagnostic or therapeutic applications</strong>. Our core offerings include custom and catalog peptides synthesized to ≥95–99% purity (HPLC-MS verified), with flexible formulation and packaging options.
+              We operate as a <strong>coordination and qualification layer</strong> across the peptide supply chain — from <strong>research-grade active ingredients (APIs)</strong> to <strong>custom manufacturing, formulation, and fill & finish services</strong> — while maintaining <strong>clear regulatory boundaries</strong>, full traceability, and partner accountability.
+            </p>
+            <p className="text-base text-gray-700 mb-2">
+              ViraChem does <strong>not</strong> operate as a retail seller, compounding pharmacy, or direct manufacturer. Our role is to <strong>structure access</strong>, <strong>coordinate execution</strong>, and <strong>de-risk sourcing</strong> for institutional partners who require consistency, documentation, and long-term supply continuity.
+            </p>
+            <p className="text-base text-gray-700 mb-2">
+              All compounds are supplied <strong>strictly for research use only (RUO)</strong> and are <strong>not intended for human or veterinary diagnostic or therapeutic applications</strong>.
+            </p>
+          </section>
+
+          {/* Our Position in the Industry Ecosystem */}
+          <section>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Our Position in the Industry Ecosystem</h2>
+            <p className="text-base text-gray-700 mb-4">
+              ViraChem sits <strong>between upstream manufacturers and downstream users</strong>, enabling:
+            </p>
+            <ul className="space-y-2 text-base text-gray-700 mb-4">
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span>Secure access to qualified peptide APIs</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span>Coordinated EU-based synthesis and processing</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span>Structured transition from early-stage research to repeat-volume programs</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent-teal mt-1">•</span>
+                <span>Documentation-driven, GMP-aligned workflows without assuming clinical liability</span>
+              </li>
+            </ul>
+            <p className="text-base text-gray-700">
+              This positioning allows partners to scale <strong>without supply chain fragmentation or regulatory ambiguity</strong>.
             </p>
           </section>
 
           {/* Engagement Models */}
           <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">How We Work: Engagement Models (assigned based on partner profile)</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-2">How We Work: Engagement Models</h2>
+            <p className="text-sm italic text-gray-600 mb-6">(Assigned based on partner profile, use case, and operational maturity)</p>
             
             <div className="space-y-6">
+              {/* Model 0 */}
+              <Card className="border-l-4 border-l-dark bg-dark/5">
+                <CardHeader>
+                  <p className="text-xs font-bold uppercase tracking-wider text-dark mb-1">Model 0</p>
+                  <CardTitle className="text-xl">Research API Access (Qualified Partners Only)</CardTitle>
+                  <p className="text-gray-900 font-semibold">ViraChem-Sourced Raw Materials</p>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-base text-gray-700">
+                    This model provides <strong>upstream access to high-purity research peptide APIs</strong> supplied in bulk powder form, without formulation, vialing, or downstream processing.
+                  </p>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Intended for:</p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>CDMOs</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>GMP / GMP-adjacent laboratories</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Compounding pharmacies (jurisdiction-dependent)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Institutional research organizations with internal processing capabilities</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>ViraChem-qualified API sources</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Bulk powder presentation</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Full analytical documentation (COA, HPLC-MS)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>No formulation or packaging</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent-teal mt-1">•</span>
+                        <span>Clear transfer of responsibility at delivery</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="mt-4 p-3 bg-dark/5 border-l-4 border-l-dark rounded">
+                    <p className="text-sm text-gray-700 italic">
+                      API access is provided as part of a structured supply relationship and is <strong>not offered as a general commercial product</strong>.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Model 1 */}
               <Card className="border-l-4 border-l-accent-red bg-dark/5">
                 <CardHeader>
@@ -347,7 +448,11 @@ export default function AboutPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Type I borosilicate glass with rubber stoppers and aluminum crimp seals under inert atmosphere</span>
+                    <span>Type I borosilicate glass vials with rubber stoppers and aluminum crimp seals</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>Sealed under inert atmosphere (N₂)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
@@ -361,15 +466,19 @@ export default function AboutPage() {
                 <ul className="space-y-1 text-base text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Batch sizes from milligram to multi-gram quantities</span>
+                    <span>Milligram to multi-gram batch sizes</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Full analytical documentation including COA, HPLC-MS chromatograms, and mass spectra</span>
+                    <span>Full analytical documentation per batch</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>GMP-aligned production under EU standards</span>
+                    <span>HPLC-MS verification and COA</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-accent-teal mt-1">•</span>
+                    <span>GMP-aligned EU manufacturing environment</span>
                   </li>
                 </ul>
               </div>
@@ -379,41 +488,40 @@ export default function AboutPage() {
                 <ul className="space-y-1 text-base text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Centralized coordination between raw material sourcing, Poland-based GMP-aligned manufacturing, and institutional research partners</span>
+                    <span>Centralized coordination between upstream API sourcing and Poland-based GMP-aligned manufacturing</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent-teal mt-1">•</span>
-                    <span>Facilitates secure B2B access while maintaining supply chain traceability and documentation integrity</span>
+                    <span>Maintains traceability, documentation integrity, and partner accountability</span>
                   </li>
                 </ul>
               </div>
             </div>
           </section>
 
-          {/* Why ViraChem Is Different */}
+          {/* Why ViraChem Exists */}
           <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Why ViraChem Is Different</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-dark mb-6">Why ViraChem Exists</h2>
             <p className="text-base text-gray-700 mb-4">
-              ViraChem is <strong>more than a supplier</strong>. We provide structured access to peptide research compounds and processing services designed to ensure:
+              ViraChem was built to solve three structural problems in the peptide industry:
             </p>
             <ul className="space-y-2 text-base text-gray-700 mb-4">
               <li className="flex items-start gap-2">
                 <span className="text-accent-teal mt-1">•</span>
-                <span><strong>Continuity of supply:</strong> Institutional partners rely on us for secure, repeatable access to critical compounds</span>
+                <span><strong>Fragmented sourcing</strong></span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-accent-teal mt-1">•</span>
-                <span><strong>Traceability:</strong> Full batch records, analytical verification, and chain of custody from synthesis through delivery</span>
+                <span><strong>Inconsistent quality and documentation</strong></span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-accent-teal mt-1">•</span>
-                <span><strong>Regulatory alignment:</strong> Compliant with EU chemical distribution law, REACH, CLP, and international shipping regulations</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent-teal mt-1">•</span>
-                <span><strong>Ecosystem integration:</strong> Partner laboratories and research institutions benefit from our network and coordination, ensuring long-term operational stability</span>
+                <span><strong>Regulatory ambiguity between suppliers and users</strong></span>
               </li>
             </ul>
+            <p className="text-base text-gray-700">
+              We address these by acting as a <strong>neutral, documentation-driven access layer</strong> that enables partners to focus on research and development — not supply chain risk.
+            </p>
           </section>
 
           {/* Compliance */}
@@ -458,6 +566,7 @@ export default function AboutPage() {
                   <li>Pharmaceutical R&D departments</li>
                   <li>Biotechnology companies</li>
                   <li>Contract research organizations (CROs)</li>
+                  <li>CDMOs and GMP-adjacent laboratories</li>
                 </ul>
               </div>
             </div>
@@ -484,7 +593,7 @@ export default function AboutPage() {
                     <h3 className="text-xl font-semibold text-dark">Vice Čuljak</h3>
                     <p className="text-accent-red font-semibold mb-2">Founder & Director</p>
                     <p className="text-gray-700 mb-3">
-                      Vice founded ViraChem to facilitate European researchers and companies' access to GMP-aligned peptide manufacturing and high-purity research compounds.
+                      Vice founded ViraChem to provide European laboratories and industrial partners with <strong>structured, compliant access to GMP-aligned peptide manufacturing and research-grade APIs</strong>, without exposing them to supply chain instability or regulatory uncertainty.
                     </p>
                     <a 
                       href="https://www.linkedin.com/in/vice-culjak/" 

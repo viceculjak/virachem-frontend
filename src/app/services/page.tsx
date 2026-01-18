@@ -32,10 +32,92 @@ export default function ServicesPage() {
 
         {/* Business Models Section */}
         <div className="max-w-6xl mx-auto mb-8">
-          <h2 className="text-xl md:text-2xl font-bold text-dark mb-4 text-center">How We Work: Engagement Models (assigned based on partner profile)</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-dark mb-2 text-center">How We Work: Engagement Models</h2>
+          <p className="text-sm italic text-gray-600 text-center mb-4">(Assigned based on partner profile, use case, and operational maturity)</p>
           
           {/* Model Cards Grid */}
-          <div className="grid md:grid-cols-3 gap-3 mb-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+            {/* Model 0 */}
+            <Card className="border-2 border-[#0B1F3F] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(0)}>
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="text-xs font-bold text-[#0B1F3F] mb-1">MODEL 0</div>
+                    <CardTitle className="text-lg text-dark">Research API Access (Qualified Partners Only)</CardTitle>
+                    <p className="text-xs text-gray-600 mt-1">ViraChem-Sourced Raw Materials</p>
+                  </div>
+                  {expandedModel === 0 ? <ChevronUp className="w-4 h-4 text-[#0B1F3F]" /> : <ChevronDown className="w-4 h-4 text-[#0B1F3F]" />}
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <div className="text-sm text-gray-700 font-medium border-t pt-4">
+                  Upstream access to high-purity research peptide APIs in bulk powder form.
+                </div>
+                
+                {expandedModel === 0 && (
+                  <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
+                    <p className="text-sm text-gray-700">
+                      This model provides <strong>upstream access to high-purity research peptide APIs</strong> supplied in bulk powder form, without formulation, vialing, or downstream processing.
+                    </p>
+                    
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Intended for:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>CDMOs</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>GMP / GMP-adjacent laboratories</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>Compounding pharmacies (jurisdiction-dependent)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>Institutional research organizations with internal processing capabilities</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Characteristics:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>ViraChem-qualified API sources</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>Bulk powder presentation</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>Full analytical documentation (COA, HPLC-MS)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>No formulation or packaging</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#0B1F3F] mt-1">•</span>
+                          <span>Clear transfer of responsibility at delivery</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-[#0B1F3F]/5 border border-[#0B1F3F]/30 p-3 rounded-lg">
+                      <p className="text-xs text-gray-700 italic">
+                        API access is provided as part of a structured supply relationship and is <strong>not offered as a general commercial product</strong>.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
             {/* Model 1 */}
             <Card className="border-2 border-[#D85A5A] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(1)}>
               <CardHeader>
@@ -413,7 +495,7 @@ export default function ServicesPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent-teal mt-1">•</span>
-                  <span><strong>Environment:</strong> Sealed under inert atmosphere</span>
+                  <span><strong>Environment:</strong> Sealed under inert atmosphere (N₂)</span>
                 </li>
               </ul>
             </CardContent>
