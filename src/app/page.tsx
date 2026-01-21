@@ -8,7 +8,7 @@ import SearchBar from '@/components/SearchBar';
 const Molecule3D = dynamic(() => import('@/components/Molecule3D'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[700px] flex items-center justify-center bg-background">
+    <div className="w-full h-[400px] md:h-full flex items-center justify-center bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929]">
       <p className="text-gray-500">Loading 3D molecule...</p>
     </div>
   ),
@@ -26,10 +26,60 @@ export default function Home() {
         </div>
       </div>
       
-      {/* 3D Molecule */}
-      <div className="relative flex-1 bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929] mx-4 mb-4 rounded-2xl overflow-hidden shadow-2xl">
-        <Molecule3D />
-      </div>
+      {/* Three-column layout: Lab Image | 3D Molecule | Vials Image */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-0 mx-4 mb-4 rounded-2xl overflow-hidden shadow-2xl h-[calc(100vh-140px)]">
+        
+        {/* LEFT: Lab Image + Text Overlay */}
+        <div className="relative h-[350px] md:h-auto overflow-hidden">
+          <img 
+            src="/hf_20260121_212606_f12576ea-33c1-4ec6-9a39-3d22a3acc736.png"
+            alt="GMP-aligned laboratory facility"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85" />
+          <div className="relative z-10 p-6 md:p-8 flex flex-col justify-center h-full text-white">
+            <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Contract Manufacturing Intermediation</h3>
+            <p className="text-base mb-4 leading-relaxed">
+              EU-registered access platform connecting qualified research partners with GMP-aligned peptide manufacturing
+            </p>
+            <div className="space-y-2 text-sm">
+              <p><span className="text-[#E8B341] font-semibold">Model 0:</span> Research API Access</p>
+              <p><span className="text-[#E8B341] font-semibold">Model 1:</span> Finished RUO Vials</p>
+            </div>
+          </div>
+        </div>
+
+        {/* CENTER: 3D Molecule (existing component) */}
+        <div className="relative h-[450px] md:h-auto bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929]">
+          <Molecule3D />
+        </div>
+
+        {/* RIGHT: Vials Video + Text Overlay */}
+        <div className="relative h-[350px] md:h-auto overflow-hidden">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/signal-2026-01-17-162407.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85" />
+          <div className="relative z-10 p-6 md:p-8 flex flex-col justify-center h-full text-white">
+            <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Structured Access Pathways</h3>
+            <p className="text-base mb-4 leading-relaxed">
+              Institutional partners, CDMOs, and research organizations benefit from coordinated EU-based manufacturing
+            </p>
+            <div className="space-y-2 text-sm">
+              <p><span className="text-[#5a8a8f] font-semibold">Model 2:</span> Custom Manufacturing</p>
+              <p><span className="text-[#5a8a8f] font-semibold">Model 3:</span> Fill & Finish Service</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
     </div>
   );
 }

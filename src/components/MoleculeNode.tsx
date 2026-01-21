@@ -46,22 +46,22 @@ export default function MoleculeNode({
       
       // Update pulse for emissive intensity
       const time = state.clock.getElapsedTime();
-      const pulse = Math.sin(time * 2) * 0.5 + 0.5; // 0 to 1
+      const pulse = Math.sin(time * 1.0) * 0.5 + 0.5; // 0 to 1
       pulseRef.current = pulse;
       
       // Update emissive intensity based on pulse
       if (meshRef.current.material instanceof THREE.MeshPhysicalMaterial) {
         const baseIntensity = isCenterNode ? 1.2 : 0.8;
-        meshRef.current.material.emissiveIntensity = baseIntensity + pulse * 0.4;
+        meshRef.current.material.emissiveIntensity = baseIntensity + pulse * 0.15;
       }
     }
     
     // Pulsing glow effect for all nodes
     if (glowRef.current) {
       const time = state.clock.getElapsedTime();
-      const pulse = Math.sin(time * 2) * 0.5 + 0.5; // 0 to 1
-      glowRef.current.scale.setScalar(size * (1.2 + pulse * 0.3));
-      (glowRef.current.material as THREE.MeshBasicMaterial).opacity = 0.1 + pulse * 0.15;
+      const pulse = Math.sin(time * 1.0) * 0.5 + 0.5; // 0 to 1
+      glowRef.current.scale.setScalar(size * (1.2 + pulse * 0.12));
+      (glowRef.current.material as THREE.MeshBasicMaterial).opacity = 0.1 + pulse * 0.06;
     }
   });
   
