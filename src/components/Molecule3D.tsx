@@ -182,8 +182,8 @@ export default function Molecule3D() {
   return (
     <Canvas
       camera={{ 
-        position: [0, 0, 14], 
-        fov: 50 
+        position: [0, 0, isMobile ? 18 : 14], 
+        fov: isMobile ? 60 : 50 
       }}
       gl={{ antialias: true, alpha: true }}
       style={{ 
