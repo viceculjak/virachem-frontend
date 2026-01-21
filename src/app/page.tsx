@@ -27,7 +27,7 @@ export default function Home() {
       </div>
       
       {/* Three-column layout: Lab Image | 3D Molecule | Vials Image */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-0 mx-4 mb-4 rounded-2xl overflow-hidden shadow-2xl h-[calc(100vh-140px)]">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-0 mx-4 mb-4 rounded-2xl shadow-2xl md:overflow-hidden md:h-[calc(100vh-140px)]">
         
         {/* LEFT: Lab Image + Text Overlay */}
         <div className="relative h-[350px] md:h-auto overflow-hidden">
