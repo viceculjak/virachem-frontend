@@ -27,7 +27,7 @@ export default function Home() {
       </div>
       
       {/* Three-column layout: Lab Image | 3D Molecule | Vials Image */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-0 mx-4 mb-4 rounded-2xl shadow-2xl md:overflow-hidden md:h-[calc(100vh-140px)]">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-4 mb-4 md:overflow-hidden md:h-[calc(100vh-140px)]">
         
         {/* LEFT: Lab Image + Text Overlay */}
         <div className="relative h-[350px] md:h-auto overflow-hidden">
@@ -50,12 +50,12 @@ export default function Home() {
         </div>
 
         {/* CENTER: 3D Molecule (existing component) */}
-        <div className="relative h-[450px] md:h-auto bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929]">
+        <div className="relative h-[450px] md:h-auto bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929] rounded-2xl shadow-lg overflow-hidden">
           <Molecule3D />
         </div>
 
         {/* RIGHT: Vials Video + Text Overlay */}
-        <div className="relative h-[350px] md:h-auto overflow-hidden">
+        <div className="relative h-[350px] md:h-auto overflow-hidden rounded-2xl shadow-lg">
           <video 
             autoPlay 
             loop 
