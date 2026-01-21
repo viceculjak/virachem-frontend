@@ -7,14 +7,23 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
   const isHomepage = pathname === '/';
 
   if (isHomepage) {
-    // Sticky footer layout for homepage only - no scroll, footer at bottom
     const [header, main, footer] = children as any;
     return (
-      <div className="h-screen bg-background flex flex-col overflow-hidden">
-        {header}
-        <main className="flex-1 overflow-auto">{main.props.children}</main>
-        {footer}
-      </div>
+      <>
+        {/* Mobile: Normal scrolling layout - footer at end of content */}
+        <div className="md:hidden min-h-screen bg-background flex flex-col">
+          {header}
+          <main className="flex-grow">{main.props.children}</main>
+          {footer}
+        </div>
+        
+        {/* Desktop: Sticky footer layout - footer always visible */}
+        <div className="hidden md:flex h-screen bg-background flex-col overflow-hidden">
+          {header}
+          <main className="flex-1 overflow-auto">{main.props.children}</main>
+          {footer}
+        </div>
+      </>
     );
   }
 
