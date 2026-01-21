@@ -30,7 +30,7 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-4 mb-4 md:overflow-hidden md:h-[calc(100vh-140px)]">
         
         {/* LEFT: Lab Image + Text Overlay */}
-        <div className="relative h-[350px] md:h-auto overflow-hidden">
+        <div className="relative h-[350px] md:h-auto overflow-hidden rounded-2xl shadow-lg">
           <img 
             src="/hf_20260121_212606_f12576ea-33c1-4ec6-9a39-3d22a3acc736.png"
             alt="GMP-aligned laboratory facility"
