@@ -141,7 +141,6 @@ export default function MoleculeNode({
           zIndex: 10,
           opacity: hovered || isCenterNode ? 1 : 0,
           transition: 'opacity 0.2s ease',
-          transform: hovered ? 'scale(1.05)' : 'scale(1)',
         }}
         zIndexRange={[10, 0]}
       >
@@ -157,6 +156,8 @@ export default function MoleculeNode({
             overflowWrap: 'break-word',
             whiteSpace: 'normal',
             lineHeight: '1.2',
+            transform: hovered ? 'scale(1.05)' : 'scale(1)',
+            transition: 'transform 0.2s ease',
           }}
         >
           {isCenterNode ? (
