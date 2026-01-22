@@ -2,7 +2,7 @@
 
 Split, Croatia
 
-A professional B2B platform for licensed intermediation in fine chemicals and biochemicals. ViraChem j.d.o.o. is a registered Croatian company serving research institutions across the European Union.
+An EU-registered contract manufacturing intermediary and access platform for GMP-aligned peptide manufacturing and research-grade APIs. ViraChem j.d.o.o. operates as a coordination and qualification layer connecting qualified European research partners with vetted Central European peptide manufacturing capacity.
 
 ## Company Information
 
@@ -14,6 +14,14 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Activity Code**: 46.19.0 (Intermediation in wholesale trade)
 - **Founded**: June 27, 2025
 - **Location**: Pujanke 24A, 21000 Split, Croatia
+
+### Leadership
+
+**Vice Čuljak** - Founder & Director  
+Founded ViraChem to provide European laboratories with structured, compliant access to GMP-aligned peptide manufacturing and research-grade APIs.
+
+**Radoslav Atanasow** - Partnerships & Manufacturing Manager  
+Leads partner acquisition and manufacturing coordination across ViraChem's EU-based network, working directly with clinics, laboratories, and institutional clients.
 
 ## Brand Identity
 
@@ -32,10 +40,12 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 ## Features
 
 ### Core Functionality
-- **3D Molecular Navigation**: Interactive 3D molecule homepage with clickable nodes for navigation
-  - Auto-rotating molecule with manual rotation controls
-  - Center node: Product search integration
-  - 5 satellite nodes: Products, Quote, Services, Quality, Contact
+- **3-Panel Homepage**: Modern layout with real ViraChem media
+  - Left panel: Lab facility photo with Contract Manufacturing Intermediation (Model 0-1)
+  - Center panel: Interactive 3D molecule with hover-activated node labels (desktop)
+  - Right panel: Looping peptides video with Structured Access Pathways (Model 2-3)
+  - Responsive design: Vertical stack on mobile/tablet (< 1024px), 3-column on desktop (≥ 1024px)
+  - Rounded corners with card-style spacing between panels
   - Built with React Three Fiber and Three.js
 - **Product Catalog**: Research chemicals with CAS numbers, molecular weights, purity options, and structure images
 - **Search Functionality**: Real-time search by product name or CAS number (homepage and products page)
@@ -49,7 +59,11 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 ### Design & UX
 - **Compact Layout**: Aggressive 40-50% reduction in spacing for efficient information density
 - **Mobile Hamburger Menu**: Slide-in drawer navigation for mobile devices with backdrop overlay
-- **Responsive Design**: Mobile-first approach with simplified product cards and optimized layouts
+- **Responsive Design**: Mobile-first approach with lg breakpoint (1024px) for desktop 3-column layout
+  - Mobile/Tablet (< 1024px): Vertical stack with scrolling
+  - Desktop (≥ 1024px): 3-column side-by-side layout
+- **Node Hover Interaction**: Labels appear on hover (desktop only) for cleaner molecule display
+- **Rounded Panel Design**: Card-style spacing and shadows for modern aesthetic
 - **Toast Notifications**: Real-time feedback with Sonner for form submissions
 - **Tabs Component**: Organized product information (Overview, Specifications, Documentation)
 - **Clean Navigation**: Desktop horizontal menu, mobile slide-in drawer
@@ -66,6 +80,7 @@ A professional B2B platform for licensed intermediation in fine chemicals and bi
 - **Frontend**: Next.js 16 (App Router), React 19, TypeScript
 - **3D Graphics**: Three.js, React Three Fiber (@react-three/fiber, @react-three/drei)
 - **Styling**: Tailwind CSS v4, ShadCN UI components
+- **Responsive**: lg breakpoint (1024px) for desktop 3-column layout, vertical stack for mobile/tablet
 - **Notifications**: Sonner (toast notifications)
 - **Email**: Resend API for quote and contact form emails
 - **Backend**: Supabase (PostgreSQL, Row Level Security)
@@ -119,8 +134,9 @@ To get these values:
 5. Run the query to create tables and sample data
 
 The schema creates:
-- `products` table: Chemical catalog items
-- `quote_requests` table: Customer quote requests
+- `products` table: Chemical catalog items with CAS, SMILES, molecular weights
+- `quote_requests` table: Customer quote requests with full contact details
+- `pricing_tiers_config` table: Dynamic pricing tiers with margin-based calculations
 - Sample products (Aspirin, Caffeine)
 
 ### 4. Generate Chemical Structure Images (Optional)
@@ -151,7 +167,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 virachem-frontend/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              # Homepage with 3D molecule navigation
+│   │   ├── page.tsx              # Homepage with 3-panel layout (lab photo, molecule, video)
 │   │   ├── layout.tsx            # Root layout with header & Toaster
 │   │   ├── about/page.tsx        # About Us with company details
 │   │   ├── services/page.tsx     # Manufacturing services & capabilities
@@ -178,12 +194,17 @@ virachem-frontend/
 │       └── supabase.ts           # Supabase client
 ├── public/
 │   ├── molecule.png              # Molecular icon (navbar, favicons, logo)
+│   ├── hf_20260121_212606_f12576ea-33c1-4ec6-9a39-3d22a3acc736.png  # Lab facility photo
+│   ├── signal-2026-01-17-162407.mp4  # Peptides video (looping)
 │   ├── favicon.ico               # Multi-size favicon
 │   ├── apple-touch-icon.png      # iOS icon
 │   ├── android-chrome-*.png      # Android/PWA icons
 │   ├── site.webmanifest          # PWA configuration
 │   ├── structures/               # Chemical structure SVGs
-│   └── partners/                 # Partner logos
+│   ├── partners/                 # Partner logos
+│   └── team/
+│       ├── vice-culjak.jpg       # Founder photo
+│       └── Radoslav.png          # Partnerships Manager photo
 ├── scripts/
 │   └── generate-images.py        # Structure generator (RDKit)
 ├── database-schema.sql           # Database setup
@@ -265,6 +286,11 @@ The site uses an aggressive spacing reduction approach for efficient information
 - **Color System**: Flat colors, minimal gradients, professional appearance
 
 ### Database Schema
+
+The project uses the following Supabase tables:
+- **`products`** - Product catalog with CAS, SMILES, molecular weights, purity options, and cost data
+- **`quote_requests`** - Customer quote submissions with product references and contact information
+- **`pricing_tiers_config`** - Dynamic pricing tiers with active-based tiering system for volume discounts
 
 To modify the database structure, update `database-schema.sql` and run the changes in your Supabase SQL editor. Remember to update TypeScript types in your components accordingly.
 

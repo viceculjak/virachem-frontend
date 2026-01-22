@@ -41,6 +41,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 Go to **Table Editor** in Supabase and check for:
 - `products` table (7 columns)
 - `quote_requests` table (10 columns)
+- `pricing_tiers_config` table (9 columns) - for dynamic pricing
 
 ### 3. Verify sample data:
 Check that the `products` table has 2 sample products:
@@ -104,13 +105,16 @@ npm run dev
 ### 2. Test these pages:
 
 #### Homepage (`http://localhost:3000`)
-- [ ] ViraChem branding displays (molecule icon + VIRACHEM text)
-- [ ] Large search bar visible in hero section
-- [ ] "Browse All Products" button works
-- [ ] "Request Quote" button works
-- [ ] Trust badges show (EU, LICENSED, RESEARCH, GLOBAL)
-- [ ] Services section displays with colored left borders (no emojis)
-- [ ] No emojis visible anywhere
+- [ ] 3-panel layout displays correctly (lab photo | molecule | video)
+- [ ] Left panel shows "Contract Manufacturing Intermediation" with Model 0-1
+- [ ] Right panel shows "Structured Access Pathways" with Model 2-3
+- [ ] Center molecule is interactive and properly sized
+- [ ] On desktop hover, node labels appear smoothly (fade in/out)
+- [ ] On tablet/mobile (< 1024px), panels stack vertically
+- [ ] On desktop (≥ 1024px), panels display side-by-side in 3 columns
+- [ ] All panels have rounded corners and spacing between them
+- [ ] Peptides video loops continuously on right panel
+- [ ] Search bar visible at top of page
 
 #### Products Page (`http://localhost:3000/products`)
 - [ ] Products load from Supabase
@@ -131,6 +135,14 @@ npm run dev
 - [ ] Molecular weight displays
 - [ ] Purity options display as tags
 - [ ] "Request Quote" button works and passes product_id
+
+#### Product Pricing
+- [ ] Pricing table loads from database (pricing_tiers_config)
+- [ ] Shows first 6 tiers with quantity ranges (e.g., "1-5 units", "501+ units")
+- [ ] Price per unit decreases with higher quantity (volume discount)
+- [ ] Savings percentage calculated correctly vs. first tier
+- [ ] "Best Value" badge appears on highest quantity tier
+- [ ] Current tier highlights based on selected quantity
 
 #### Quote Form (`http://localhost:3000/quote`)
 - [ ] Form displays with all fields
@@ -258,6 +270,6 @@ If you encounter issues:
 
 ---
 
-**Last Updated**: December 4, 2025
+**Last Updated**: January 22, 2026
 **Project**: ViraChem Research Chemical Catalog
-**Tech Stack**: Next.js 14 + Supabase + TailwindCSS + ShadCN UI
+**Tech Stack**: Next.js 16 + Supabase + TailwindCSS v4 + ShadCN UI
