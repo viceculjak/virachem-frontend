@@ -27,17 +27,17 @@ export default function Home() {
       </div>
       
       {/* Three-column layout: Lab Image | 3D Molecule | Vials Image */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-4 mb-4 md:overflow-hidden md:h-[calc(100vh-140px)]">
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 mx-4 mb-4 lg:overflow-hidden lg:h-[calc(100vh-140px)]">
         
         {/* LEFT: Lab Image + Text Overlay */}
-        <div className="relative h-[350px] md:h-auto overflow-hidden rounded-2xl shadow-lg">
+        <div className="relative h-[350px] lg:h-auto overflow-hidden rounded-2xl shadow-lg">
           <img 
             src="/hf_20260121_212606_f12576ea-33c1-4ec6-9a39-3d22a3acc736.png"
             alt="GMP-aligned laboratory facility"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85" />
-          <div className="relative z-10 p-6 md:p-8 flex flex-col justify-center h-full text-white">
+          <div className="relative z-10 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
             <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Contract Manufacturing Intermediation</h3>
             <p className="text-base mb-4 leading-relaxed">
               EU-registered access platform connecting qualified research partners with GMP-aligned peptide manufacturing
@@ -50,12 +50,12 @@ export default function Home() {
         </div>
 
         {/* CENTER: 3D Molecule (existing component) */}
-        <div className="relative h-[450px] md:h-auto bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929] rounded-2xl shadow-lg overflow-hidden">
+        <div className="relative h-[450px] lg:h-auto bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929] rounded-2xl shadow-lg overflow-hidden">
           <Molecule3D />
         </div>
 
         {/* RIGHT: Vials Video + Text Overlay */}
-        <div className="relative h-[350px] md:h-auto overflow-hidden rounded-2xl shadow-lg">
+        <div className="relative h-[350px] lg:h-auto overflow-hidden rounded-2xl shadow-lg">
           <video 
             autoPlay 
             loop 
@@ -67,7 +67,7 @@ export default function Home() {
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85" />
-          <div className="relative z-10 p-6 md:p-8 flex flex-col justify-center h-full text-white">
+          <div className="relative z-10 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
             <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Structured Access Pathways</h3>
             <p className="text-base mb-4 leading-relaxed">
               Institutional partners, CDMOs, and research organizations benefit from coordinated EU-based manufacturing

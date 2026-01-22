@@ -139,6 +139,9 @@ export default function MoleculeNode({
           pointerEvents: 'none',
           userSelect: 'none',
           zIndex: 10,
+          opacity: hovered || isCenterNode ? 1 : 0,
+          transition: 'opacity 0.2s ease',
+          transform: hovered ? 'scale(1.05)' : 'scale(1)',
         }}
         zIndexRange={[10, 0]}
       >
