@@ -13,7 +13,7 @@ This folder contains photos of ViraChem team members.
 - **Photo**: vice-culjak.jpg
 - **Focus**: Strategic direction, European laboratory partnerships, GMP-aligned peptide manufacturing access
 
-### Radoslav Atanasow
+### Radoslav Atanasov
 - **Role**: Partnerships & Manufacturing Manager
 - **Photo**: Radoslav.png
 - **Focus**: Partner acquisition and manufacturing coordination across EU-based network, working directly with clinics, laboratories, and institutional clients

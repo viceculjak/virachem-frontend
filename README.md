@@ -20,7 +20,7 @@ An EU-registered contract manufacturing intermediary and access platform for GMP
 **Vice Čuljak** - Founder & Director  
 Founded ViraChem to provide European laboratories with structured, compliant access to GMP-aligned peptide manufacturing and research-grade APIs.
 
-**Radoslav Atanasow** - Partnerships & Manufacturing Manager  
+**Radoslav Atanasov** - Partnerships & Manufacturing Manager  
 Leads partner acquisition and manufacturing coordination across ViraChem's EU-based network, working directly with clinics, laboratories, and institutional clients.
 
 ## Brand Identity
