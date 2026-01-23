@@ -124,7 +124,7 @@ export default function ServicesPage() {
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="text-xs font-bold text-[#D85A5A] mb-1">MODEL 1</div>
-                    <CardTitle className="text-lg text-dark">Finished RUO Vials</CardTitle>
+                    <CardTitle className="text-lg text-dark">Finished RUO Formats</CardTitle>
                     <p className="text-xs text-gray-600 mt-1">ViraChem-Sourced & Supplied</p>
                   </div>
                   {allExpanded ? <ChevronUp className="w-4 h-4 text-[#D85A5A]" /> : <ChevronDown className="w-4 h-4 text-[#D85A5A]" />}
@@ -137,6 +137,24 @@ export default function ServicesPage() {
                 
                 {allExpanded && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Available Formats:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#D85A5A] mt-1">•</span>
+                          <span>Vials (lyophilized or liquid)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#D85A5A] mt-1">•</span>
+                          <span>Capsules (custom formulations)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#D85A5A] mt-1">•</span>
+                          <span>Device-based configurations (pre-filled delivery systems)</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
                     <div>
                       <h4 className="font-semibold text-dark mb-2">Intended use:</h4>
                       <ul className="space-y-1 text-sm text-gray-700">
@@ -180,7 +198,7 @@ export default function ServicesPage() {
                     <div>
                       <h4 className="font-semibold text-dark mb-2">Notes:</h4>
                       <p className="text-sm text-gray-700">
-                        Finished RUO Vials are not designed for sustained high-volume programs. Partners on this model are typically transitioned to Model 2 once specifications and volumes stabilize.
+                        Finished RUO Formats are not designed for sustained high-volume programs. Partners on this model are typically transitioned to Model 2 once specifications and volumes stabilize.
                       </p>
                     </div>
                     

@@ -49,7 +49,7 @@ export default function Home() {
             </p>
             <div className="space-y-2 text-sm">
               <p><span className="text-[#E8B341] font-semibold">Model 0:</span> Research API Access</p>
-              <p><span className="text-[#E8B341] font-semibold">Model 1:</span> Finished RUO Vials</p>
+              <p><span className="text-[#E8B341] font-semibold">Model 1:</span> Finished RUO Formats</p>
             </div>
           </div>
         </div>
