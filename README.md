@@ -41,12 +41,13 @@ Leads partner acquisition and manufacturing coordination across ViraChem's EU-ba
 
 ### Core Functionality
 - **3-Panel Homepage**: Modern layout with real ViraChem media
-  - Left panel: Lab facility photo with Contract Manufacturing Intermediation (Model 0-1)
+  - Left panel: Lab facility photo with Contract Manufacturing Intermediation (Model 0 & Model 1: Finished RUO Formats)
   - Center panel: Interactive 3D molecule with hover-activated node labels (desktop)
-  - Right panel: Looping peptides video with Structured Access Pathways (Model 2-3)
+  - Right panel: Looping peptides video with Structured Access Pathways (Model 2 & Model 3)
   - Responsive design: Vertical stack on mobile/tablet (< 1024px), 3-column on desktop (≥ 1024px)
   - Rounded corners with card-style spacing between panels
   - Built with React Three Fiber and Three.js
+  - Optimized with Next.js Image for automatic WebP conversion and responsive sizing
 - **Product Catalog**: Research chemicals with CAS numbers, molecular weights, purity options, and structure images
 - **Search Functionality**: Real-time search by product name or CAS number (homepage and products page)
 - **Quote System**: Professional quote request system with Resend email integration and toast notifications
@@ -58,7 +59,11 @@ Leads partner acquisition and manufacturing coordination across ViraChem's EU-ba
 
 ### Design & UX
 - **Compact Layout**: Aggressive 40-50% reduction in spacing for efficient information density
-- **Mobile Hamburger Menu**: Slide-in drawer navigation for mobile devices with backdrop overlay
+- **Mobile Hamburger Menu**: Slide-in drawer navigation with Framer Motion animations
+  - Spring-physics drawer slide-in from right
+  - Backdrop fade-in/out effect
+  - Staggered navigation link cascade
+  - Rounded left corners matching header design
 - **Responsive Design**: Mobile-first approach with lg breakpoint (1024px) for desktop 3-column layout
   - Mobile/Tablet (< 1024px): Vertical stack with scrolling
   - Desktop (≥ 1024px): 3-column side-by-side layout
@@ -66,8 +71,9 @@ Leads partner acquisition and manufacturing coordination across ViraChem's EU-ba
 - **Rounded Panel Design**: Card-style spacing and shadows for modern aesthetic
 - **Toast Notifications**: Real-time feedback with Sonner for form submissions
 - **Tabs Component**: Organized product information (Overview, Specifications, Documentation)
-- **Clean Navigation**: Desktop horizontal menu, mobile slide-in drawer
+- **Clean Navigation**: Desktop horizontal menu, mobile animated slide-in drawer
 - **Professional Aesthetic**: Minimal, institutional design focused on scientific B2B market
+- **Performance**: Next.js Image optimization, responsive video, progressive loading
 
 ### Visual Identity
 - **Professional Design**: Clean, institutional aesthetic without emojis or casual elements
@@ -79,6 +85,7 @@ Leads partner acquisition and manufacturing coordination across ViraChem's EU-ba
 
 - **Frontend**: Next.js 16 (App Router), React 19, TypeScript
 - **3D Graphics**: Three.js, React Three Fiber (@react-three/fiber, @react-three/drei)
+- **Animations**: Framer Motion (mobile menu, page transitions)
 - **Styling**: Tailwind CSS v4, ShadCN UI components
 - **Responsive**: lg breakpoint (1024px) for desktop 3-column layout, vertical stack for mobile/tablet
 - **Notifications**: Sonner (toast notifications)
@@ -241,6 +248,19 @@ vercel
 ### Backend (Supabase)
 
 Your Supabase backend is already hosted in the cloud. No additional deployment needed.
+
+## Media Optimization
+
+The homepage uses optimized images and video for fast loading:
+
+- **Image Optimization**: Next.js Image component provides automatic WebP/AVIF conversion
+- **Video Optimization**: See `MEDIA-OPTIMIZATION-GUIDE.md` for FFmpeg compression commands
+- **Performance Targets**: 
+  - Image size: < 400KB (WebP)
+  - Video size: < 5MB (H.264, optimized bitrate)
+  - Total page load: < 3s on Slow 3G
+
+For detailed optimization instructions, see the Media Optimization Guide.
 
 ## Customization
 

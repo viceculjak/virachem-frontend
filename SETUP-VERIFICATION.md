@@ -90,8 +90,10 @@ npm install
 - `react` (19.2.0+)
 - `@supabase/supabase-js` (2.86.2+)
 - `tailwindcss` (4.0+)
+- `framer-motion` (11.0+) - for mobile menu animations
 - ShadCN UI components
 - `lucide-react` (icons)
+- `@react-three/fiber` & `@react-three/drei` (Three.js React bindings)
 
 ---
 
@@ -106,14 +108,15 @@ npm run dev
 
 #### Homepage (`http://localhost:3000`)
 - [ ] 3-panel layout displays correctly (lab photo | molecule | video)
-- [ ] Left panel shows "Contract Manufacturing Intermediation" with Model 0-1
+- [ ] Left panel shows "Contract Manufacturing Intermediation" with Model 0 & Model 1: Finished RUO Formats
 - [ ] Right panel shows "Structured Access Pathways" with Model 2-3
 - [ ] Center molecule is interactive and properly sized
 - [ ] On desktop hover, node labels appear smoothly (fade in/out)
 - [ ] On tablet/mobile (< 1024px), panels stack vertically
 - [ ] On desktop (≥ 1024px), panels display side-by-side in 3 columns
 - [ ] All panels have rounded corners and spacing between them
-- [ ] Peptides video loops continuously on right panel
+- [ ] Peptides video loops continuously on right panel (optimized, < 5MB)
+- [ ] Lab image loads quickly (Next.js Image optimization, WebP format)
 - [ ] Search bar visible at top of page
 
 #### Products Page (`http://localhost:3000/products`)
@@ -162,6 +165,16 @@ npm run dev
 - [ ] Click Search button
 - [ ] Should redirect to products page with filtered results
 - [ ] URL should contain ?search= parameter
+
+#### Mobile Menu Animations (Mobile view < 768px)
+- [ ] Click hamburger icon - drawer slides in from right with spring effect
+- [ ] Backdrop fades in smoothly behind drawer
+- [ ] Drawer has rounded left corners (rounded-l-2xl)
+- [ ] Navigation links cascade down with stagger effect (0.07s delay each)
+- [ ] Close button fades in after drawer appears
+- [ ] Click X or backdrop - menu slides out smoothly
+- [ ] Links cascade back up in reverse order
+- [ ] All animations feel smooth and professional (60fps)
 
 ---
 
@@ -270,6 +283,6 @@ If you encounter issues:
 
 ---
 
-**Last Updated**: January 22, 2026
+**Last Updated**: January 23, 2026
 **Project**: ViraChem Research Chemical Catalog
-**Tech Stack**: Next.js 16 + Supabase + TailwindCSS v4 + ShadCN UI
+**Tech Stack**: Next.js 16 + Supabase + TailwindCSS v4 + ShadCN UI + Framer Motion
