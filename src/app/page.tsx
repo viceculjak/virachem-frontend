@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import SearchBar from '@/components/SearchBar';
 
 // Dynamic import to avoid SSR issues with Three.js
@@ -31,13 +32,17 @@ export default function Home() {
         
         {/* LEFT: Lab Image + Text Overlay */}
         <div className="relative h-[350px] lg:h-auto overflow-hidden rounded-2xl shadow-lg">
-          <img 
+          <Image 
             src="/hf_20260121_212606_f12576ea-33c1-4ec6-9a39-3d22a3acc736.png"
             alt="GMP-aligned laboratory facility"
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            quality={85}
+            sizes="(max-width: 1024px) 100vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85" />
-          <div className="relative z-10 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85 z-10" />
+          <div className="relative z-20 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
             <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Contract Manufacturing Intermediation</h3>
             <p className="text-base mb-4 leading-relaxed">
               EU-registered access platform connecting qualified research partners with GMP-aligned peptide manufacturing
@@ -61,13 +66,14 @@ export default function Home() {
             loop 
             muted 
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/signal-2026-01-17-162407.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85" />
-          <div className="relative z-10 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85 z-10" />
+          <div className="relative z-20 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
             <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Structured Access Pathways</h3>
             <p className="text-base mb-4 leading-relaxed">
               Institutional partners, CDMOs, and research organizations benefit from coordinated EU-based manufacturing
