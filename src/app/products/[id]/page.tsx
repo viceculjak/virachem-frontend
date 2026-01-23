@@ -373,22 +373,26 @@ export default function ProductDetailPage() {
                   )}
                 </div>
 
-                {/* Request Quote Button */}
-                <Link 
-                  href={`/quote?product_id=${product.id}&quantity=${effectiveQuantity}&price=${pricePerUnit.toFixed(2)}&total=${totalPrice.toFixed(2)}&tier=${currentTier?.label || '1-5'}`}
-                >
-                  <Button 
-                    size="lg" 
-                    className="w-full bg-[#C9364F] hover:bg-[#C9364F]/90 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
-                  >
-                    Request Quote for {effectiveQuantity} Unit{effectiveQuantity !== 1 ? 's' : ''} →
-                  </Button>
-                </Link>
+                {/* Request Quote Button - Only show for standard quantities */}
+                {!exceedsDisplayedTiers && (
+                  <>
+                    <Link 
+                      href={`/quote?product_id=${product.id}&quantity=${effectiveQuantity}&price=${pricePerUnit.toFixed(2)}&total=${totalPrice.toFixed(2)}&tier=${currentTier?.label || '1-5'}`}
+                    >
+                      <Button 
+                        size="lg" 
+                        className="w-full bg-[#C9364F] hover:bg-[#C9364F]/90 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+                      >
+                        Request Quote for {effectiveQuantity} Unit{effectiveQuantity !== 1 ? 's' : ''} →
+                      </Button>
+                    </Link>
 
-                {/* Pricing Disclaimer */}
-                <p className="text-xs text-gray-500 italic text-center pt-2">
-                  Prices shown are estimates. Final pricing will be confirmed in your quote response.
-                </p>
+                    {/* Pricing Disclaimer */}
+                    <p className="text-xs text-gray-500 italic text-center pt-2">
+                      Prices shown are estimates. Final pricing will be confirmed in your quote response.
+                    </p>
+                  </>
+                )}
               </CardContent>
             </Card>
             )
