@@ -152,6 +152,20 @@ export default function ProductDetailPage() {
           </p>
         </div>
 
+        <div className="mb-3 bg-[#E8B341]/10 border-l-4 border-[#E8B341] rounded p-3">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="bg-[#E8B341] text-[#0B1F3F] text-xs font-bold px-2 py-0.5 rounded">MODEL 1</span>
+            <span className="text-sm font-bold text-[#0B1F3F]">Finished RUO Vials</span>
+          </div>
+          <p className="text-xs text-gray-700">
+            ViraChem-sourced, ready-to-use research vials with fixed specifications and ~1 week lead time. 
+            Designed for early-stage programs and interim supply. 
+            <Link href="/services" className="text-[#5A8A8F] hover:underline font-semibold ml-1">
+              Need custom manufacturing? See Model 2 →
+            </Link>
+          </p>
+        </div>
+
         <div className="space-y-3">
           <div>
             <h1 className="text-xl md:text-2xl font-bold text-[#0B1F3F] mb-1">{product.name}</h1>
