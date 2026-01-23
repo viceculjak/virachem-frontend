@@ -7,10 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function ServicesPage() {
-  const [expandedModel, setExpandedModel] = useState<number | null>(null);
+  const [allExpanded, setAllExpanded] = useState<boolean>(false);
 
-  const toggleModel = (modelId: number) => {
-    setExpandedModel(expandedModel === modelId ? null : modelId);
+  const toggleAllModels = () => {
+    setAllExpanded(!allExpanded);
   };
 
   return (
@@ -38,7 +38,7 @@ export default function ServicesPage() {
           {/* Model Cards Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
             {/* Model 0 */}
-            <Card className="border-2 border-[#0B1F3F] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(0)}>
+            <Card className="border-2 border-[#0B1F3F] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={toggleAllModels}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
@@ -46,7 +46,7 @@ export default function ServicesPage() {
                     <CardTitle className="text-lg text-dark">Research API Access (Qualified Partners Only)</CardTitle>
                     <p className="text-xs text-gray-600 mt-1">ViraChem-Sourced Raw Materials</p>
                   </div>
-                  {expandedModel === 0 ? <ChevronUp className="w-4 h-4 text-[#0B1F3F]" /> : <ChevronDown className="w-4 h-4 text-[#0B1F3F]" />}
+                  {allExpanded ? <ChevronUp className="w-4 h-4 text-[#0B1F3F]" /> : <ChevronDown className="w-4 h-4 text-[#0B1F3F]" />}
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -54,7 +54,7 @@ export default function ServicesPage() {
                   Upstream access to high-purity research peptide APIs in bulk powder form.
                 </div>
                 
-                {expandedModel === 0 && (
+                {allExpanded && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
                     <p className="text-sm text-gray-700">
                       This model provides <strong>upstream access to high-purity research peptide APIs</strong> supplied in bulk powder form, without formulation, vialing, or downstream processing.
@@ -119,7 +119,7 @@ export default function ServicesPage() {
             </Card>
 
             {/* Model 1 */}
-            <Card className="border-2 border-[#D85A5A] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(1)}>
+            <Card className="border-2 border-[#D85A5A] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={toggleAllModels}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
@@ -127,7 +127,7 @@ export default function ServicesPage() {
                     <CardTitle className="text-lg text-dark">Finished RUO Vials</CardTitle>
                     <p className="text-xs text-gray-600 mt-1">ViraChem-Sourced & Supplied</p>
                   </div>
-                  {expandedModel === 1 ? <ChevronUp className="w-4 h-4 text-[#D85A5A]" /> : <ChevronDown className="w-4 h-4 text-[#D85A5A]" />}
+                  {allExpanded ? <ChevronUp className="w-4 h-4 text-[#D85A5A]" /> : <ChevronDown className="w-4 h-4 text-[#D85A5A]" />}
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -135,7 +135,7 @@ export default function ServicesPage() {
                   Short-term access for early-stage or time-sensitive research programs.
                 </div>
                 
-                {expandedModel === 1 && (
+                {allExpanded && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
                     <div>
                       <h4 className="font-semibold text-dark mb-2">Intended use:</h4>
@@ -199,7 +199,7 @@ export default function ServicesPage() {
             </Card>
 
             {/* Model 2 */}
-            <Card className="border-2 border-[#5a8a8f] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(2)}>
+            <Card className="border-2 border-[#5a8a8f] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={toggleAllModels}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
@@ -207,7 +207,7 @@ export default function ServicesPage() {
                     <CardTitle className="text-lg text-dark">Custom Manufacturing</CardTitle>
                     <p className="text-xs text-gray-600 mt-1">ViraChem-Sourced Raw Materials</p>
                   </div>
-                  {expandedModel === 2 ? <ChevronUp className="w-4 h-4 text-[#5a8a8f]" /> : <ChevronDown className="w-4 h-4 text-[#5a8a8f]" />}
+                  {allExpanded ? <ChevronUp className="w-4 h-4 text-[#5a8a8f]" /> : <ChevronDown className="w-4 h-4 text-[#5a8a8f]" />}
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -215,7 +215,7 @@ export default function ServicesPage() {
                   Core engagement model for institutional partners.
                 </div>
                 
-                {expandedModel === 2 && (
+                {allExpanded && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
                     <p className="text-sm text-gray-700">
                       This model provides full access to ViraChem-sourced peptide APIs and coordinated EU-based manufacturing. It is the primary pathway for long-term, repeat-volume research programs requiring traceability and supply continuity.
@@ -284,7 +284,7 @@ export default function ServicesPage() {
             </Card>
 
             {/* Model 3 */}
-            <Card className="border-2 border-[#E8B741] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={() => toggleModel(3)}>
+            <Card className="border-2 border-[#E8B741] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={toggleAllModels}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
@@ -292,7 +292,7 @@ export default function ServicesPage() {
                     <CardTitle className="text-lg text-dark">Fill & Finish Service</CardTitle>
                     <p className="text-xs text-gray-600 mt-1">Client-Supplied Material</p>
                   </div>
-                  {expandedModel === 3 ? <ChevronUp className="w-4 h-4 text-[#E8B741]" /> : <ChevronDown className="w-4 h-4 text-[#E8B741]" />}
+                  {allExpanded ? <ChevronUp className="w-4 h-4 text-[#E8B741]" /> : <ChevronDown className="w-4 h-4 text-[#E8B741]" />}
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -300,7 +300,7 @@ export default function ServicesPage() {
                   Processing access for partners supplying their own material.
                 </div>
                 
-                {expandedModel === 3 && (
+                {allExpanded && (
                   <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
                     <p className="text-sm text-gray-700">
                       This model provides sterile processing, formulation, and lyophilization services using client-supplied raw material. Clear responsibility boundaries are maintained regarding material origin and quality.
