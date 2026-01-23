@@ -119,10 +119,24 @@ export default function ProductDetailPage() {
   }
 
   const effectiveQuantity = quantity === '' ? 1 : quantity;
+  const displayedTiers = pricingTiers ? pricingTiers.slice(0, 6) : [];
+  const maxDisplayedTierQuantity = displayedTiers.length > 0 
+    ? displayedTiers[displayedTiers.length - 1].max 
+    : 0;
+
+  // Check if quantity exceeds displayed tiers (6th tier)
+  const exceedsDisplayedTiers = pricingTiers && maxDisplayedTierQuantity !== Infinity && effectiveQuantity > maxDisplayedTierQuantity;
+
   const currentTier = pricingTiers ? getTierForQuantity(pricingTiers, effectiveQuantity) : undefined;
-  const pricePerUnit = pricingTiers ? calculatePricePerUnit(pricingTiers, product.cost_per_vial, effectiveQuantity) : 0;
-  const totalPrice = pricingTiers ? calculateTotalPrice(pricingTiers, product.cost_per_vial, effectiveQuantity) : 0;
-  const savings = pricingTiers ? calculateSavingsPercentage(pricingTiers, product.cost_per_vial, effectiveQuantity) : 0;
+  const pricePerUnit = pricingTiers && !exceedsDisplayedTiers 
+    ? calculatePricePerUnit(pricingTiers, product.cost_per_vial, effectiveQuantity) 
+    : 0;
+  const totalPrice = pricingTiers && !exceedsDisplayedTiers 
+    ? calculateTotalPrice(pricingTiers, product.cost_per_vial, effectiveQuantity) 
+    : 0;
+  const savings = pricingTiers && !exceedsDisplayedTiers 
+    ? calculateSavingsPercentage(pricingTiers, product.cost_per_vial, effectiveQuantity) 
+    : 0;
 
   return (
     <div className="min-h-screen bg-background p-2 md:p-4">
@@ -315,22 +329,48 @@ export default function ProductDetailPage() {
                     </p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
-                    <p className="text-sm text-gray-600 mb-1">Your Price</p>
-                    <p className="text-3xl font-bold text-[#0B1F3F] mb-2">
-                      €{pricePerUnit.toFixed(2)}
-                      <span className="text-base font-normal text-gray-600"> / unit</span>
-                    </p>
-                    <div className="flex justify-between items-center pt-3 border-t border-blue-200">
-                      <span className="text-sm text-gray-600">Total for {effectiveQuantity} units:</span>
-                      <span className="text-xl font-bold text-[#C9364F]">€{totalPrice.toFixed(2)}</span>
-                    </div>
-                    {savings > 0 && (
-                      <p className="text-xs text-green-600 font-semibold mt-2">
-                        You save {savings}% vs small quantity pricing
+                  {exceedsDisplayedTiers ? (
+                    // Show custom manufacturing message for large quantities
+                    <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-lg border-2 border-amber-300">
+                      <p className="text-sm font-semibold text-amber-900 mb-2">
+                        Large Volume Order
                       </p>
-                    )}
-                  </div>
+                      <p className="text-base text-gray-800 mb-4">
+                        Quantities over <strong>{maxDisplayedTierQuantity} units</strong> require:
+                      </p>
+                      <div className="bg-white p-4 rounded border border-amber-200 mb-4">
+                        <p className="font-bold text-[#C9364F] text-lg mb-1">
+                          Model 2: Custom Manufacturing
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          ViraChem-sourced raw materials with custom specifications and batch sizes
+                        </p>
+                      </div>
+                      <Link href={`/quote?product_id=${product.id}&quantity=${effectiveQuantity}`}>
+                        <Button className="w-full bg-[#C9364F] hover:bg-[#b8304a]">
+                          Request Custom Manufacturing Quote
+                        </Button>
+                      </Link>
+                    </div>
+                  ) : (
+                    // Show normal price calculator for standard quantities
+                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+                      <p className="text-sm text-gray-600 mb-1">Your Price</p>
+                      <p className="text-3xl font-bold text-[#0B1F3F] mb-2">
+                        €{pricePerUnit.toFixed(2)}
+                        <span className="text-base font-normal text-gray-600"> / unit</span>
+                      </p>
+                      <div className="flex justify-between items-center pt-3 border-t border-blue-200">
+                        <span className="text-sm text-gray-600">Total for {effectiveQuantity} units:</span>
+                        <span className="text-xl font-bold text-[#C9364F]">€{totalPrice.toFixed(2)}</span>
+                      </div>
+                      {savings > 0 && (
+                        <p className="text-xs text-green-600 font-semibold mt-2">
+                          You save {savings}% vs small quantity pricing
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Request Quote Button */}
