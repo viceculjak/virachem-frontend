@@ -293,13 +293,15 @@ function QuotePageContent() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="quantity">Batch Quantity (mg/g) *</Label>
+                  <Label htmlFor="quantity">
+                    {product ? 'Quantity (units) *' : 'Batch Quantity (mg/g) *'}
+                  </Label>
                   <Input
                     id="quantity"
                     type="text"
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                    placeholder="e.g., 100 mg, 1 g, 5 g"
+                    placeholder={product ? 'e.g., 10, 50, 100 units' : 'e.g., 100 mg, 1 g, 5 g'}
                     required
                   />
                 </div>
