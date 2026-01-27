@@ -616,14 +616,11 @@ export default function AboutPage() {
                       href="https://www.linkedin.com/in/vice-culjak/" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#0077B5] hover:text-[#0077B5]/80 transition-colors mb-3"
+                      className="inline-flex items-center gap-2 text-[#0077B5] hover:text-[#0077B5]/80 transition-colors"
                     >
                       <Linkedin className="w-4 h-4" />
                       <span className="text-sm font-medium">Connect on LinkedIn</span>
                     </a>
-                    <p className="text-sm text-gray-600">
-                      OIB: 27422906923 | Split, Croatia
-                    </p>
                   </div>
                 </div>
               </CardContent>
