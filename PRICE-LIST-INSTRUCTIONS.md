@@ -94,7 +94,7 @@ To add full pricing tables for more products (currently showing 3 examples):
 
 ---
 
-## Current Contents
+## Current Contents - ALL 38 Products Included
 
 ### Page 1: Cover
 - Model 1 branding
@@ -102,31 +102,41 @@ To add full pricing tables for more products (currently showing 3 examples):
 - Validity period
 - Company info
 
-### Page 2: Sample Products with Full Pricing
-- Retatrutide (VC-001)
-- Semaglutide (VC-003)
+### Page 2: GLP-1 Agonists (8 products)
+- Retatrutide 5mg + Kit
+- Semaglutide 2mg, 4mg + Kit
+- Tirzepatide 5mg + Kit
 
-### Page 3: More Products
-- Tirzepatide (VC-004)
-- BPC-157 (VC-005)
+### Page 3: Peptide Therapeutics (8 products)
+- BPC-157, TB-500, BPC+TB Mix
+- Epithalon, PT-141, Melanotan 2
+- Selank, Semax
 
-### Page 4: Product List
-- All 27 additional products listed
-- Reference to contact for detailed pricing
+### Page 4: Growth Hormone & Secretagogues (6 products)
+- HGH Fragment, CJC-1295 DAC
+- GHRP-2, GHRP-6, MOTS-C, GHK-Cu
 
-### Page 5: Terms & Conditions
-- Product specifications
-- Ordering & delivery
-- Pricing & payment
+### Page 5: SARMs & Modulators (5 products)
+- GW-501516, Ostarine, Ligandrol
+- Ibutamoren, Stenabolic
+
+### Page 6: NAD+ & Advanced (8 products)
+- NAD+ vial/lipo/caps, Bluemethyl
+- SLU-PP-332, TUDCA, Yohimbine
+
+### Page 7: Oral & Supplies (4 products)
+- Oral BPC-157, Oral Epithalon
+- Bacteriostatic Water 2mL & 10mL
+
+### Page 8: Terms & Contact
+- Product specifications & formats
+- Ordering & delivery (~1 week)
+- Payment terms, pricing info
 - Quality & compliance
-- Customer qualification
-- Transition to Model 2
+- Contact information (all emails)
+- Company registration
 
-### Page 6: Contact Information
-- Head office address
-- Email contacts (sales, tech, compliance)
-- Company registration details
-- Online presence
+**✅ NO COST INFORMATION SHOWN** - Client-facing document only shows final prices
 
 ---
 
