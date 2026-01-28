@@ -119,13 +119,11 @@ export default function ProductDetailPage() {
   }
 
   const effectiveQuantity = quantity === '' ? 1 : quantity;
-  const displayedTiers = pricingTiers ? pricingTiers.slice(0, 6) : [];
-  const maxDisplayedTierQuantity = displayedTiers.length > 0 
-    ? displayedTiers[displayedTiers.length - 1].max 
-    : 0;
+  const displayedTiers = pricingTiers ? pricingTiers.slice(0, 5) : []; // Only show first 5 tiers
+  const maxDisplayedTierQuantity = 500; // Threshold for Model 2
 
-  // Check if quantity exceeds displayed tiers (6th tier)
-  const exceedsDisplayedTiers = pricingTiers && maxDisplayedTierQuantity !== Infinity && effectiveQuantity > maxDisplayedTierQuantity;
+  // Check if quantity exceeds 500 units (requires Model 2)
+  const exceedsDisplayedTiers = effectiveQuantity > maxDisplayedTierQuantity;
 
   const currentTier = pricingTiers ? getTierForQuantity(pricingTiers, effectiveQuantity) : undefined;
   const pricePerUnit = pricingTiers && !exceedsDisplayedTiers 
@@ -258,7 +256,7 @@ export default function ProductDetailPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {pricingTiers.slice(0, 6).map((tier, index) => {
+                      {pricingTiers.slice(0, 5).map((tier, index) => {
                         // Debug: Log tier calculation
                         if (index === 0 || index === pricingTiers.length - 1) {
                           console.log(`Tier ${index + 1} (${tier.min}-${tier.max === Infinity ? '∞' : tier.max}): margin=${tier.margin}, cost=${product.cost_per_vial}, price=${(product.cost_per_vial / tier.margin).toFixed(2)}`);
@@ -276,7 +274,7 @@ export default function ProductDetailPage() {
                             : `${tier.min}-${tier.max}`;
                         
                         const isSelected = currentTier?.min === tier.min && currentTier?.max === tier.max;
-                        const isBestValue = index === pricingTiers.length - 1; // Last tier (highest quantity) is best value
+                        const isBestValue = index === 4; // 5th tier is best value shown
                         
                         return (
                           <tr 
@@ -344,25 +342,25 @@ export default function ProductDetailPage() {
                   </div>
                   
                   {exceedsDisplayedTiers ? (
-                    // Show custom manufacturing message for large quantities
+                    // Show custom manufacturing message for large quantities (>500)
                     <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-lg border-2 border-amber-300">
                       <p className="text-sm font-semibold text-amber-900 mb-2">
-                        Large Volume Order
+                        📦 Need quantities over 500 vials?
                       </p>
                       <p className="text-base text-gray-800 mb-4">
-                        Quantities over <strong>{maxDisplayedTierQuantity} units</strong> require:
+                        For bulk orders, please use:
                       </p>
                       <div className="bg-white p-4 rounded border border-amber-200 mb-4">
                         <p className="font-bold text-[#C9364F] text-lg mb-1">
                           Model 2: Custom Manufacturing
                         </p>
                         <p className="text-sm text-gray-600">
-                          ViraChem-sourced raw materials with custom specifications and batch sizes
+                          ViraChem-sourced raw materials with custom specifications, batch sizes, and optimized pricing for repeat-volume programs
                         </p>
                       </div>
                       <Link href={`/quote?product_id=${product.id}&quantity=${effectiveQuantity}`}>
                         <Button className="w-full bg-[#C9364F] hover:bg-[#b8304a]">
-                          Request Custom Manufacturing Quote
+                          Request Personalized Quote →
                         </Button>
                       </Link>
                     </div>
