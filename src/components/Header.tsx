@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -27,13 +29,29 @@ export default function Header() {
   // Close menu on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeMenu();
+      if (e.key === 'Escape') {
+        closeMenu();
+        setIsServicesOpen(false);
+      }
     };
-    if (isOpen) {
+    if (isOpen || isServicesOpen) {
       document.addEventListener('keydown', handleEscape);
     }
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen]);
+  }, [isOpen, isServicesOpen]);
+
+  // Close services dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    };
+    if (isServicesOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isServicesOpen]);
 
   return (
     <header className="border-b border-gray-100 bg-white sticky top-0 z-50 mx-4 mt-4 rounded-2xl shadow-lg">
@@ -56,9 +74,72 @@ export default function Header() {
           <Link href="/products" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
             Products
           </Link>
-          <Link href="/services" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
-            Services
-          </Link>
+          
+          {/* Services Dropdown */}
+          <div 
+            ref={servicesRef}
+            className="relative"
+            onMouseEnter={() => setIsServicesOpen(true)}
+            onMouseLeave={() => setIsServicesOpen(false)}
+          >
+            <button
+              className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors flex items-center gap-1"
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+            >
+              Services
+              <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <AnimatePresence>
+              {isServicesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                >
+                  <Link
+                    href="/services"
+                    className="block px-4 py-2 text-sm text-[#0B1F3F] hover:bg-gray-50 hover:text-[#C9364F] transition-colors"
+                  >
+                    Overview
+                  </Link>
+                  <Link
+                    href="/services/model-0"
+                    className="block px-4 py-2 text-sm text-[#0B1F3F] hover:bg-gray-50 hover:text-[#C9364F] transition-colors"
+                  >
+                    Model 0 - Research API Access
+                  </Link>
+                  <Link
+                    href="/services/model-1"
+                    className="block px-4 py-2 text-sm text-[#0B1F3F] hover:bg-gray-50 hover:text-[#C9364F] transition-colors"
+                  >
+                    Model 1 - Finished RUO Formats
+                  </Link>
+                  <Link
+                    href="/services/model-2"
+                    className="block px-4 py-2 text-sm text-[#0B1F3F] hover:bg-gray-50 hover:text-[#C9364F] transition-colors"
+                  >
+                    Model 2 - Custom Manufacturing
+                  </Link>
+                  <Link
+                    href="/services/model-3"
+                    className="block px-4 py-2 text-sm text-[#0B1F3F] hover:bg-gray-50 hover:text-[#C9364F] transition-colors"
+                  >
+                    Model 3 - Fill & Finish Service
+                  </Link>
+                  <Link
+                    href="/services/model-4"
+                    className="block px-4 py-2 text-sm text-[#0B1F3F] hover:bg-gray-50 hover:text-[#C9364F] transition-colors"
+                  >
+                    Model 4 - Cosmetic White-Label Formats
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          
           <Link href="/quality" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
             Quality
           </Link>
@@ -162,13 +243,68 @@ export default function Header() {
                       closed: { opacity: 0, x: 20 }
                     }}
                   >
-                    <Link
-                      href="/services"
-                      onClick={closeMenu}
-                      className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100 block"
-                    >
-                      Services
-                    </Link>
+                    <div className="border-b border-gray-100">
+                      <button
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                        className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 w-full flex items-center justify-between"
+                      >
+                        Services
+                        <ChevronDown className={`h-5 w-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      <AnimatePresence>
+                        {isServicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="pl-4 pb-2 space-y-2"
+                          >
+                            <Link
+                              href="/services"
+                              onClick={closeMenu}
+                              className="text-[#798996] hover:text-[#C9364F] transition-colors text-base py-1 block"
+                            >
+                              Overview
+                            </Link>
+                            <Link
+                              href="/services/model-0"
+                              onClick={closeMenu}
+                              className="text-[#798996] hover:text-[#C9364F] transition-colors text-base py-1 block"
+                            >
+                              Model 0 - Research API Access
+                            </Link>
+                            <Link
+                              href="/services/model-1"
+                              onClick={closeMenu}
+                              className="text-[#798996] hover:text-[#C9364F] transition-colors text-base py-1 block"
+                            >
+                              Model 1 - Finished RUO Formats
+                            </Link>
+                            <Link
+                              href="/services/model-2"
+                              onClick={closeMenu}
+                              className="text-[#798996] hover:text-[#C9364F] transition-colors text-base py-1 block"
+                            >
+                              Model 2 - Custom Manufacturing
+                            </Link>
+                            <Link
+                              href="/services/model-3"
+                              onClick={closeMenu}
+                              className="text-[#798996] hover:text-[#C9364F] transition-colors text-base py-1 block"
+                            >
+                              Model 3 - Fill & Finish Service
+                            </Link>
+                            <Link
+                              href="/services/model-4"
+                              onClick={closeMenu}
+                              className="text-[#798996] hover:text-[#C9364F] transition-colors text-base py-1 block"
+                            >
+                              Model 4 - Cosmetic White-Label Formats
+                            </Link>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </motion.div>
                   
                   <motion.div

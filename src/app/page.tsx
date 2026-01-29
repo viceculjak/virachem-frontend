@@ -81,6 +81,7 @@ export default function Home() {
             <div className="space-y-2 text-sm">
               <p><span className="text-[#5a8a8f] font-semibold">Model 2:</span> Custom Manufacturing</p>
               <p><span className="text-[#5a8a8f] font-semibold">Model 3:</span> Fill & Finish Service</p>
+              <p><span className="text-[#C9364F] font-semibold">Model 4:</span> Cosmetic White-Label Formats</p>
             </div>
           </div>
         </div>

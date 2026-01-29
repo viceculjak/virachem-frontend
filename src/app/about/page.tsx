@@ -72,146 +72,45 @@ export default function AboutPage() {
             <h2 className="text-xl md:text-2xl font-semibold text-dark mb-2">How We Work: Engagement Models</h2>
             <p className="text-sm italic text-gray-600 mb-6">(Assigned based on partner profile, use case, and operational maturity)</p>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Model 0 */}
               <Card className="border-l-4 border-l-dark bg-dark/5">
                 <CardHeader>
-                  <p className="text-xs font-bold uppercase tracking-wider text-dark mb-1">Model 0</p>
-                  <CardTitle className="text-xl">Research API Access (Qualified Partners Only)</CardTitle>
-                  <p className="text-gray-900 font-semibold">ViraChem-Sourced Raw Materials</p>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-dark mb-1">Model 0</p>
+                      <CardTitle className="text-xl">Research API Access (Qualified Partners Only)</CardTitle>
+                      <p className="text-gray-900 font-semibold">ViraChem-Sourced Raw Materials</p>
+                    </div>
+                    <Link href="/services/model-0">
+                      <Button variant="outline" size="sm">Learn More →</Button>
+                    </Link>
+                  </div>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent>
                   <p className="text-base text-gray-700">
-                    This model provides <strong>upstream access to high-purity research peptide APIs</strong> supplied in bulk powder form, without formulation, vialing, or downstream processing.
+                    Upstream access to high-purity research peptide APIs in bulk powder form, without formulation or packaging. Intended for CDMOs, GMP-adjacent laboratories, and institutional research organizations with internal processing capabilities.
                   </p>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Intended for:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>CDMOs</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>GMP / GMP-adjacent laboratories</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Compounding pharmacies (jurisdiction-dependent)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Institutional research organizations with internal processing capabilities</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>ViraChem-qualified API sources</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Bulk powder presentation</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Full analytical documentation (COA, HPLC-MS)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>No formulation or packaging</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Clear transfer of responsibility at delivery</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-4 p-3 bg-dark/5 border-l-4 border-l-dark rounded">
-                    <p className="text-sm text-gray-700 italic">
-                      API access is provided as part of a structured supply relationship and is <strong>not offered as a general commercial product</strong>.
-                    </p>
-                  </div>
                 </CardContent>
               </Card>
 
               {/* Model 1 */}
               <Card className="border-l-4 border-l-accent-red bg-dark/5">
                 <CardHeader>
-                  <p className="text-xs font-bold uppercase tracking-wider text-accent-red mb-1">Model 1</p>
-                  <CardTitle className="text-xl">Finished RUO Formats</CardTitle>
-                  <p className="text-gray-900 font-semibold">ViraChem-Sourced & Supplied</p>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-accent-red mb-1">Model 1</p>
+                      <CardTitle className="text-xl">Finished RUO Formats</CardTitle>
+                      <p className="text-gray-900 font-semibold">ViraChem-Sourced & Supplied</p>
+                    </div>
+                    <Link href="/services/model-1">
+                      <Button variant="outline" size="sm">Learn More →</Button>
+                    </Link>
+                  </div>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-base text-gray-700 font-semibold">
-                    Short-term access for early-stage or time-sensitive research programs.
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Available Formats:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-red mt-1">•</span>
-                        <span>Vials (lyophilized or liquid)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-red mt-1">•</span>
-                        <span>Capsules (custom formulations)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-red mt-1">•</span>
-                        <span>Device-based configurations (pre-filled delivery systems)</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Intended use:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Program initiation</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Demand stabilization</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Interim supply prior to custom manufacturing</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Fixed specifications</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Limited catalog availability</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Predefined batch sizes</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Research Use Only (RUO)</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Notes:</p>
-                    <p className="text-sm text-gray-700">
-                      Finished RUO Formats are not designed for sustained high-volume programs. Partners on this model are typically transitioned to Model 2 once specifications and volumes stabilize.
-                    </p>
-                  </div>
-                  <p className="text-sm text-gray-700">
-                    <strong>Lead Time:</strong> ~1 week
+                <CardContent>
+                  <p className="text-base text-gray-700">
+                    Short-term access for early-stage or time-sensitive research programs. Available in vials, capsules, or device-based configurations. Fixed specifications with predefined batch sizes. Lead time: ~1 week.
                   </p>
                 </CardContent>
               </Card>
@@ -219,64 +118,20 @@ export default function AboutPage() {
               {/* Model 2 */}
               <Card className="border-l-4 border-l-accent-teal bg-dark/5">
                 <CardHeader>
-                  <p className="text-xs font-bold uppercase tracking-wider text-accent-teal mb-1">Model 2</p>
-                  <CardTitle className="text-xl">Custom Manufacturing</CardTitle>
-                  <p className="text-gray-900 font-semibold">ViraChem-Sourced Raw Materials</p>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-accent-teal mb-1">Model 2</p>
+                      <CardTitle className="text-xl">Custom Manufacturing</CardTitle>
+                      <p className="text-gray-900 font-semibold">ViraChem-Sourced Raw Materials</p>
+                    </div>
+                    <Link href="/services/model-2">
+                      <Button variant="outline" size="sm">Learn More →</Button>
+                    </Link>
+                  </div>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-base text-gray-700 font-semibold">
-                    Core engagement model for institutional partners.
-                  </p>
+                <CardContent>
                   <p className="text-base text-gray-700">
-                    This model provides full access to ViraChem-sourced peptide APIs and coordinated EU-based manufacturing. It is the primary pathway for long-term, repeat-volume research programs requiring traceability and supply continuity.
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>ViraChem-sourced raw materials</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Custom specifications and batch sizes</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>End-to-end batch traceability</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Extended production timelines aligned with GMP-adjacent workflows</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Partner Profile:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Compounding pharmacies</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>GMP-adjacent laboratories</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>CDMOs</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Institutional research organizations</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <p className="text-base text-gray-700">
-                    This model forms the <strong>backbone of ViraChem's supply ecosystem</strong>.
-                  </p>
-                  <p className="text-sm text-gray-700">
-                    <strong>Lead Time:</strong> 4–6 weeks
+                    Core engagement model for institutional partners. Full access to ViraChem-sourced peptide APIs with coordinated EU-based manufacturing. Custom specifications, end-to-end traceability, and custom labeling options available. Lead time: 4–6 weeks.
                   </p>
                 </CardContent>
               </Card>
@@ -284,40 +139,20 @@ export default function AboutPage() {
               {/* Model 3 */}
               <Card className="border-l-4 border-l-accent-gold bg-dark/5">
                 <CardHeader>
-                  <p className="text-xs font-bold uppercase tracking-wider text-accent-gold mb-1">Model 3</p>
-                  <CardTitle className="text-xl">Fill & Finish Service</CardTitle>
-                  <p className="text-gray-900 font-semibold">Client-Supplied Material</p>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-base text-gray-700 font-semibold">
-                    Processing access for partners supplying their own material.
-                  </p>
-                  <p className="text-base text-gray-700">
-                    This model provides sterile processing, formulation, and lyophilization services using client-supplied raw material. Clear responsibility boundaries are maintained regarding material origin and quality.
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Characteristics:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Client-supplied API</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>ViraChem-managed processing and documentation</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Defined scope of responsibility</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent-teal mt-1">•</span>
-                        <span>Suitable for regulatory or internal sourcing constraints</span>
-                      </li>
-                    </ul>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-accent-gold mb-1">Model 3</p>
+                      <CardTitle className="text-xl">Fill & Finish Service</CardTitle>
+                      <p className="text-gray-900 font-semibold">Client-Supplied Material</p>
+                    </div>
+                    <Link href="/services/model-3">
+                      <Button variant="outline" size="sm">Learn More →</Button>
+                    </Link>
                   </div>
-                  <p className="text-sm text-gray-700">
-                    <strong>Lead Time:</strong> 2–3 weeks
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base text-gray-700">
+                    Sterile processing, formulation, and lyophilization services using client-supplied raw material. ViraChem-managed processing with clear responsibility boundaries. Suitable for regulatory or internal sourcing constraints. Lead time: 2–3 weeks.
                   </p>
                 </CardContent>
               </Card>
@@ -325,70 +160,20 @@ export default function AboutPage() {
               {/* Model 4 */}
               <Card className="border-l-4 border-l-[#C9364F] bg-dark/5">
                 <CardHeader>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#C9364F] mb-1">Model 4</p>
-                  <CardTitle className="text-xl">Cosmetic White-Label Formats</CardTitle>
-                  <p className="text-gray-900 font-semibold">Licensed Cosmetic Products</p>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#C9364F] mb-1">Model 4</p>
+                      <CardTitle className="text-xl">Cosmetic White-Label Formats</CardTitle>
+                      <p className="text-gray-900 font-semibold">Licensed Cosmetic Products</p>
+                    </div>
+                    <Link href="/services/model-4">
+                      <Button variant="outline" size="sm">Learn More →</Button>
+                    </Link>
+                  </div>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-base text-gray-700 font-semibold">
-                    Fully licensed peptide-based cosmetic products for clinics, brands, or labs.
-                  </p>
+                <CardContent>
                   <p className="text-base text-gray-700">
-                    This model provides <strong>fully licensed peptide-based cosmetic products</strong> (creams, serums, gels) to clinics, brands, or labs. Products are manufactured with ViraChem-sourced ingredients and optional white-label branding.
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Features:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>ViraChem-sourced or partner-specific cosmetic-grade formulations</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Optional partner/project labeling (white-label) for branding and traceability</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Fully EU-licensed cosmetic production</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Analytical support (COA, stability testing) per batch</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Flexible batch sizes to support development or commercial integration</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-dark mb-1">Product Types:</p>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Creams</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Serums</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Gels</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-[#C9364F] mt-1">•</span>
-                        <span>Peptide-based formulations</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-4 p-3 bg-[#C9364F]/5 border-l-4 border-l-[#C9364F] rounded">
-                    <p className="text-sm text-gray-700 italic">
-                      <strong>Important:</strong> These products are cosmetics, fully compliant with EU cosmetic regulations. Not for therapeutic, diagnostic, or pharmaceutical use.
-                    </p>
-                  </div>
-                  <p className="text-sm text-gray-700">
-                    <strong>Lead Time:</strong> 4–6 weeks
+                    Fully licensed peptide-based cosmetic products (creams, serums, gels) for clinics, brands, or labs. EU-licensed production with optional white-label branding. Analytical support and flexible batch sizes. Lead time: 4–6 weeks.
                   </p>
                 </CardContent>
               </Card>

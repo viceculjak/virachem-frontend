@@ -8,21 +8,15 @@
 
 ---
 
-## ⚠️ Important: Website vs Price List Pricing Tiers
+## ⚠️ Important: Pricing Tiers Update
 
-### **Website (`/products/[id]`):**
-- Shows only **5 pricing tiers** (1-500 units)
-- Tier 5 max: **201-500 units**
-- Quantities **> 500 units** automatically redirect to **Model 2: Custom Manufacturing**
+### **Both Website AND Price List:**
+- Show only **5 pricing tiers** (1-500 units)
+- Tier 5 max: **201-500 units** (BEST Value)
+- Quantities **> 500 units** redirect to **Model 2: Custom Manufacturing**
 - Message shown: _"📦 Need quantities over 500 vials? For bulk orders, please use Model 2"_
 
-### **Price List (this document):**
-- Shows all **6 pricing tiers** (1-999 units)
-- Tier 6: **501-999 units** at 38% margin (60% off)
-- Internal document for sales team reference only
-- Provides complete pricing transparency
-
-**Rationale:** We emphasize Model 2 (Custom Manufacturing) as our core offering for bulk orders, while keeping full pricing available internally for sales flexibility.
+**Rationale:** We emphasize Model 2 (Custom Manufacturing) as our core offering for bulk orders. The 6th tier (501-999 units) has been removed from both the public website and internal price list to maintain consistency and focus on Model 2 for high-volume programs.
 
 ---
 
@@ -74,11 +68,10 @@ Margins by tier:
 - Tier 2 (6-20 units):    margin = 0.35 (65%)  →  Price = cost / 0.35 = cost × 2.86
 - Tier 3 (21-50 units):   margin = 0.45 (55%)  →  Price = cost / 0.45 = cost × 2.22
 - Tier 4 (51-200 units):  margin = 0.53 (47%)  →  Price = cost / 0.53 = cost × 1.89
-- Tier 5 (201-500 units): margin = 0.58 (42%)  →  Price = cost / 0.58 = cost × 1.72
-- Tier 6 (501-999 units): margin = 0.62 (38%)  →  Price = cost / 0.62 = cost × 1.61
+- Tier 5 (201-500 units): margin = 0.58 (42%)  →  Price = cost / 0.58 = cost × 1.72  ← BEST Value
 ```
 
-**Note:** Tier 6 is shown in price list but hidden on website (redirects to Model 2)
+**Note:** Quantities over 500 units redirect to Model 2 for personalized quotes
 
 ### Example Calculation:
 
@@ -87,8 +80,9 @@ For **Retatrutide 5mg** with `cost_per_vial = €8.50`:
 - Tier 2: €8.50 / 0.35 = **€24.29/unit** (29% off)
 - Tier 3: €8.50 / 0.45 = **€18.89/unit** (44% off)
 - Tier 4: €8.50 / 0.53 = **€16.04/unit** (53% off)
-- Tier 5: €8.50 / 0.58 = **€14.66/unit** (57% off) ← **Website stops here**
-- Tier 6: €8.50 / 0.62 = **€13.71/unit** (60% off) ← **Price list only**
+- Tier 5: €8.50 / 0.58 = **€14.66/unit** (57% off) ← **BEST Value - stops here**
+
+> **Over 500 units?** Contact us for Model 2: Custom Manufacturing pricing
 
 ### Update Products:
 
