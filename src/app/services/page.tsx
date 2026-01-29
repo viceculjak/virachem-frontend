@@ -36,7 +36,7 @@ export default function ServicesPage() {
           <p className="text-sm italic text-gray-600 text-center mb-4">(Assigned based on partner profile, use case, and operational maturity)</p>
           
           {/* Model Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
             {/* Model 0 */}
             <Card className="border-2 border-[#0B1F3F] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={toggleAllModels}>
               <CardHeader>
@@ -283,6 +283,13 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                     
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Custom Labeling:</h4>
+                      <p className="text-sm text-gray-700">
+                        Custom labeling options available for long-term manufacturing partnerships. Partner branding, custom specifications, and regulatory-compliant labeling can be arranged to meet your requirements.
+                      </p>
+                    </div>
+                    
                     <p className="text-sm text-gray-700">
                       This model forms the <strong>backbone of ViraChem's supply ecosystem</strong>.
                     </p>
@@ -346,6 +353,13 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                     
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Custom Labeling:</h4>
+                      <p className="text-sm text-gray-700">
+                        Custom labeling options available for fill & finish services. Partner branding and custom specifications can be incorporated into the final product packaging.
+                      </p>
+                    </div>
+                    
                     <div className="bg-amber-50 border border-amber-200 p-3 rounded-lg">
                       <h4 className="font-semibold text-dark mb-2 text-sm">Important Clarification:</h4>
                       <p className="text-xs text-gray-700">
@@ -367,6 +381,97 @@ export default function ServicesPage() {
                 )}
               </CardContent>
             </Card>
+
+            {/* Model 4 */}
+            <Card className="border-2 border-[#C9364F] shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105" onClick={toggleAllModels}>
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="text-xs font-bold text-[#C9364F] mb-1">MODEL 4</div>
+                    <CardTitle className="text-lg text-dark">Cosmetic White-Label Formats</CardTitle>
+                    <p className="text-xs text-gray-600 mt-1">Licensed Cosmetic Products</p>
+                  </div>
+                  {allExpanded ? <ChevronUp className="w-4 h-4 text-[#C9364F]" /> : <ChevronDown className="w-4 h-4 text-[#C9364F]" />}
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <div className="text-sm text-gray-700 font-medium border-t pt-4">
+                  Fully licensed peptide-based cosmetic products for clinics, brands, or labs.
+                </div>
+                
+                {allExpanded && (
+                  <div className="space-y-4 border-t pt-4 animate-in slide-in-from-top">
+                    <p className="text-sm text-gray-700">
+                      This model provides <strong>fully licensed peptide-based cosmetic products</strong> (creams, serums, gels) to clinics, brands, or labs. Products are manufactured with ViraChem-sourced ingredients and optional white-label branding.
+                    </p>
+                    
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Features:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>ViraChem-sourced or partner-specific cosmetic-grade formulations</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Optional partner/project labeling (white-label) for branding and traceability</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Fully EU-licensed cosmetic production</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Analytical support (COA, stability testing) per batch</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Flexible batch sizes to support development or commercial integration</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-dark mb-2">Product Types:</h4>
+                      <ul className="space-y-1 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Creams</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Serums</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Gels</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#C9364F] mt-1">•</span>
+                          <span>Peptide-based formulations</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-[#C9364F]/5 border border-[#C9364F]/30 p-3 rounded-lg">
+                      <p className="text-xs text-gray-700 italic">
+                        <strong>Important:</strong> These products are cosmetics, fully compliant with EU cosmetic regulations. Not for therapeutic, diagnostic, or pharmaceutical use.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <p className="text-sm text-gray-600 italic">Lead Time: 4–6 weeks</p>
+                    </div>
+                    
+                    <Link href="/contact">
+                      <Button className="w-full bg-[#C9364F] hover:bg-[#C9364F]/90 text-white shadow-lg hover:shadow-xl transition-all">
+                        Discuss Your Project →
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </div>
 
           {/* Comparison Table */}
@@ -380,6 +485,7 @@ export default function ServicesPage() {
                     <th className="text-center p-3 font-semibold text-[#D85A5A]">Model 1</th>
                     <th className="text-center p-3 font-semibold text-[#5a8a8f]">Model 2</th>
                     <th className="text-center p-3 font-semibold text-[#E8B741]">Model 3</th>
+                    <th className="text-center p-3 font-semibold text-[#C9364F]">Model 4</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700">
@@ -388,30 +494,35 @@ export default function ServicesPage() {
                     <td className="p-3 text-center">ViraChem</td>
                     <td className="p-3 text-center">ViraChem</td>
                     <td className="p-3 text-center">Client</td>
+                    <td className="p-3 text-center">ViraChem</td>
                   </tr>
                   <tr className="border-b border-gray-200 bg-white">
                     <td className="p-3 font-medium">Lead Time</td>
                     <td className="p-3 text-center">~1 week</td>
                     <td className="p-3 text-center">4–6 weeks</td>
                     <td className="p-3 text-center">2–3 weeks</td>
+                    <td className="p-3 text-center">4–6 weeks</td>
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="p-3 font-medium">Customization</td>
                     <td className="p-3 text-center">Limited (catalog)</td>
                     <td className="p-3 text-center">Full</td>
                     <td className="p-3 text-center">Full (processing only)</td>
+                    <td className="p-3 text-center">Full (white-label)</td>
                   </tr>
                   <tr className="border-b border-gray-200 bg-white">
                     <td className="p-3 font-medium">Batch Size</td>
                     <td className="p-3 text-center">Fixed</td>
                     <td className="p-3 text-center">Custom</td>
                     <td className="p-3 text-center">Client-defined</td>
+                    <td className="p-3 text-center">Flexible</td>
                   </tr>
                   <tr>
                     <td className="p-3 font-medium">Responsibility</td>
                     <td className="p-3 text-center">ViraChem</td>
                     <td className="p-3 text-center">ViraChem</td>
                     <td className="p-3 text-center text-xs">Client (material)<br/>ViraChem (processing)</td>
+                    <td className="p-3 text-center">ViraChem</td>
                   </tr>
                 </tbody>
               </table>
@@ -596,7 +707,7 @@ export default function ServicesPage() {
           <h3 className="text-xl font-bold text-dark mb-4 text-center">Critical Boundaries (Non-Negotiable)</h3>
           <div className="space-y-4 text-gray-700">
             <p className="text-center font-semibold text-lg">
-              Across all three models:
+              Across all models:
             </p>
             <ul className="space-y-2 max-w-2xl mx-auto">
               <li className="flex items-start gap-2">
@@ -613,7 +724,7 @@ export default function ServicesPage() {
               </li>
             </ul>
             <p className="text-center text-sm italic mt-6 text-gray-600">
-              These three models are intentionally separated to preserve regulatory clarity, correctly allocate technical 
+              These models are intentionally separated to preserve regulatory clarity, correctly allocate technical 
               and legal responsibility, and provide structured access to speed, customization, or cost-efficiency based on partner profile and project requirements.
             </p>
           </div>
