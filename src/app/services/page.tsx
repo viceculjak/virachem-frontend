@@ -278,34 +278,6 @@ export default function ServicesPage() {
             </Button>
           </Link>
         </div>
-
-        {/* Critical Boundaries - Enhanced */}
-        <div className="max-w-4xl mx-auto mt-12 p-8 bg-amber-50 rounded-lg border-2 border-amber-400">
-          <h3 className="text-xl font-bold text-dark mb-4 text-center">Critical Boundaries (Non-Negotiable)</h3>
-          <div className="space-y-4 text-gray-700">
-            <p className="text-center font-semibold text-lg">
-              Across all models:
-            </p>
-            <ul className="space-y-2 max-w-2xl mx-auto">
-              <li className="flex items-start gap-2">
-                <span className="text-amber-600 mt-1 font-bold">•</span>
-                <span><strong>Research Use Only:</strong> All products and services are supplied strictly for research applications</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-amber-600 mt-1 font-bold">•</span>
-                <span><strong>Not for human or veterinary use:</strong> Not intended for diagnostic or therapeutic applications</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-amber-600 mt-1 font-bold">•</span>
-                <span><strong>Governed by written agreements:</strong> Activities are defined by contracts specifying scope and liability</span>
-              </li>
-            </ul>
-            <p className="text-center text-sm italic mt-6 text-gray-600">
-              These models are intentionally separated to preserve regulatory clarity, correctly allocate technical 
-              and legal responsibility, and provide structured access to speed, customization, or cost-efficiency based on partner profile and project requirements.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );
