@@ -149,6 +149,11 @@ export default function Header() {
           <Link href="/contact" className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors">
             Contact
           </Link>
+          <Link href="/partners/apply">
+            <button className="bg-[#0B1F3F] text-white border-2 border-[#E8B341] px-4 py-2 rounded-md hover:bg-[#0B1F3F]/90 transition-colors font-medium">
+              MAGIC BUTTON
+            </button>
+          </Link>
           <Link href="/quote">
             <button className="bg-[#C9364F] text-white px-4 py-2 rounded-md hover:bg-[#C9364F]/90 transition-colors font-medium">
               Request Quote
@@ -349,6 +354,21 @@ export default function Header() {
                       className="text-[#0B1F3F] hover:text-[#C9364F] transition-colors text-lg py-2 border-b border-gray-100 block"
                     >
                       Contact
+                    </Link>
+                  </motion.div>
+
+                  <motion.div
+                    variants={{
+                      open: { opacity: 1, x: 0 },
+                      closed: { opacity: 0, x: 20 }
+                    }}
+                  >
+                    <Link
+                      href="/partners/apply"
+                      onClick={closeMenu}
+                      className="block w-full text-center py-3 rounded-md bg-[#0B1F3F] text-white border-2 border-[#E8B341] hover:bg-[#0B1F3F]/90 transition-colors font-medium border-b border-gray-100"
+                    >
+                      MAGIC BUTTON
                     </Link>
                   </motion.div>
                 </motion.nav>

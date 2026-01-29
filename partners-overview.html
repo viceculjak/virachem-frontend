@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViraChem - Partners Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #798996;
+            background: #FFFFFF;
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --navy: #0B1F3F;
+            --red: #C9364F;
+            --teal: #5A8A8F;
+            --gold: #E8B341;
+            --grey: #798996;
+            --white: #FFFFFF;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 16px;
+            margin-top: 32px;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: var(--grey);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--grey);
+        }
+
+        strong {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .page {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 25mm;
+            background: var(--white);
+            min-height: 297mm;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100%;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 32px;
+        }
+
+        .tagline {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--grey);
+            margin-bottom: 8px;
+        }
+
+        .location {
+            font-size: 14px;
+            color: var(--grey);
+            margin-top: 24px;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Tier Cards */
+        .tier-card {
+            border-left: 4px solid;
+            padding: 16px;
+            margin-bottom: 16px;
+            background: rgba(11, 31, 63, 0.02);
+        }
+
+        .tier-1 {
+            border-left-color: var(--teal);
+        }
+
+        .tier-2 {
+            border-left-color: var(--gold);
+        }
+
+        .tier-3 {
+            border-left-color: var(--red);
+        }
+
+        .tier-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .tier-1 .tier-label {
+            color: var(--teal);
+        }
+
+        .tier-2 .tier-label {
+            color: var(--gold);
+        }
+
+        .tier-3 .tier-label {
+            color: var(--red);
+        }
+
+        .bullet-list li {
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        .bullet-list.can-do li::before {
+            color: var(--teal);
+        }
+
+        .bullet-list.cannot-do li::before {
+            color: var(--red);
+        }
+
+        /* Summary Table */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+
+        .summary-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid rgba(11, 31, 63, 0.2);
+        }
+
+        .summary-table td {
+            padding: 10px 12px;
+            border: 1px solid rgba(11, 31, 63, 0.1);
+            color: var(--grey);
+        }
+
+        .summary-table tr:nth-child(even) {
+            background: rgba(11, 31, 63, 0.02);
+        }
+
+        .summary-table .tick {
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .summary-table .cross {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .summary-table .power-low { color: var(--teal); }
+        .summary-table .power-high { color: var(--gold); }
+        .summary-table .power-extreme { color: var(--red); }
+
+        .intro-box {
+            background: rgba(11, 31, 63, 0.05);
+            border-left: 4px solid var(--navy);
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .intro-box p {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        .rule-box {
+            background: rgba(201, 54, 79, 0.06);
+            border: 2px solid var(--red);
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .rule-box h3 { margin-top: 0; color: var(--red); }
+        .rule-box .virachem { color: var(--navy); }
+        .rule-box .partners { color: var(--teal); }
+
+        .model-block {
+            border-left: 4px solid var(--navy);
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            background: rgba(11, 31, 63, 0.03);
+        }
+
+        .model-block h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .model-block .verdict { font-weight: 600; margin-top: 8px; }
+        .model-block .restriction { color: var(--red); font-size: 13px; margin-top: 6px; }
+
+        .map-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+
+        .map-table th {
+            background: var(--navy);
+            color: var(--white);
+            padding: 10px 12px;
+            text-align: left;
+            border: 1px solid rgba(11, 31, 63, 0.2);
+        }
+
+        .map-table td {
+            padding: 8px 12px;
+            border: 1px solid rgba(11, 31, 63, 0.1);
+            color: var(--grey);
+        }
+
+        .map-table tr:nth-child(even) { background: rgba(11, 31, 63, 0.02); }
+        .map-table .ok { color: var(--teal); font-weight: 600; }
+        .map-table .warn { color: var(--gold); font-weight: 600; }
+        .map-table .no { color: var(--red); font-weight: 600; }
+
+        .danger-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .danger-list li {
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .danger-list li::before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        .verdict-box {
+            background: rgba(11, 31, 63, 0.08);
+            border-left: 4px solid var(--navy);
+            padding: 16px;
+            margin-top: 24px;
+        }
+
+        .verdict-box p { margin-bottom: 8px; }
+        .verdict-box p:last-child { margin-bottom: 0; }
+        .verdict-box .lead { font-size: 15px; font-weight: 600; color: var(--navy); }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(11, 31, 63, 0.1);
+            font-size: 12px;
+            color: var(--grey);
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 8px; }
+        .mt-2 { margin-top: 16px; }
+        .mt-3 { margin-top: 24px; }
+        .mb-1 { margin-bottom: 8px; }
+        .mb-2 { margin-bottom: 16px; }
+
+        @media print {
+            body { background: white; }
+            .page {
+                margin: 0;
+                padding: 20mm;
+                box-shadow: none;
+            }
+            @page { size: A4; margin: 0; }
+            h2 { page-break-after: avoid; }
+            .tier-card, .rule-box, .model-block, .verdict-box { page-break-inside: avoid; }
+            .summary-table, .map-table { page-break-inside: avoid; }
+        }
+
+        @media screen {
+            body {
+                background: #f5f5f5;
+                padding: 20px;
+            }
+            .page {
+                background: white;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover -->
+    <div class="page cover">
+        <img src="public/molecule.png" alt="ViraChem Logo" class="logo" onerror="this.style.display='none'">
+        <h1 style="font-size: 48px; font-weight: 700; letter-spacing: -0.05em; margin-bottom: 16px;">
+            <span style="color: #0B1F3F;">VIRA</span><span style="color: #798996;">CHEM</span>
+        </h1>
+        <div class="tagline">Partners Overview</div>
+        <div class="subtitle">Tiered Access Framework</div>
+        <div class="location">Split, Croatia | European Union</div>
+    </div>
+
+    <!-- Page 2: Core Truth + Universal Rule -->
+    <div class="page">
+        <h2>Core Truth</h2>
+        <p><strong>Tiers describe commercial authority. Models describe operational execution.</strong> That’s why one tier structure can work across all models — only if authority is always upstream of execution.</p>
+        <p>If a partner ever controls both execution and authority, ViraChem loses control. Regulatory and reputational risk follows.</p>
+
+        <h2 class="mt-3">Universal Rule (Non-Negotiable)</h2>
+        <p>Across <strong>all</strong> models:</p>
+        <div class="rule-box">
+            <h3>ViraChem controls</h3>
+            <ul class="bullet-list can-do">
+                <li class="virachem">API source</li>
+                <li class="virachem">Specs</li>
+                <li class="virachem">Documentation</li>
+                <li class="virachem">Labeling logic</li>
+                <li class="virachem">Compliance language</li>
+            </ul>
+            <h3 class="mt-2">Partners control</h3>
+            <ul class="bullet-list can-do">
+                <li class="partners">Relationships</li>
+                <li class="partners">Logistics (only if Tier 3)</li>
+                <li class="partners">Coordination fees</li>
+                <li class="partners">Regional access</li>
+            </ul>
+            <p class="mt-2" style="margin-bottom:0;"><strong>Break this once → whole structure collapses.</strong></p>
+        </div>
+    </div>
+
+    <!-- Page 3: Partner Tiers -->
+    <div class="page">
+        <h2>Partner Tiers</h2>
+
+        <div class="intro-box">
+            <p>ViraChem works with qualified partners under a <strong>tiered access framework</strong>. Partner capabilities expand over time based on <strong>performance</strong>, <strong>compliance</strong>, and <strong>demonstrated demand</strong>.</p>
+        </div>
+
+        <div class="tier-card tier-1">
+            <div class="tier-label">Tier 1</div>
+            <h3>Referral Partner</h3>
+            <p class="mb-2">Introduce qualified leads. RUO only. Step back. No power. No risk.</p>
+            <p><strong>Example:</strong> A consultant introduces a university lab; ViraChem handles everything; the consultant is compensated for the referral.</p>
+        </div>
+
+        <div class="tier-card tier-2">
+            <div class="tier-label">Tier 2</div>
+            <h3>Authorized Access Partner</h3>
+            <p class="mb-2">Main working partner tier. Regional front-end: manage client relationships, collect specs and timelines, coordinate projects, discuss schedules and capacity, forecast volumes (non-binding or semi-binding), add service markup.</p>
+            <p class="mb-2 mt-2"><strong>Can do:</strong></p>
+            <ul class="bullet-list can-do">
+                <li>Act as regional front-end</li>
+                <li>Manage client relationships</li>
+                <li>Collect specs &amp; timelines</li>
+                <li>Coordinate projects</li>
+                <li>Discuss schedules and capacity</li>
+                <li>Forecast volumes (non-binding or semi-binding)</li>
+                <li>Add service markup</li>
+            </ul>
+            <p class="mb-2 mt-2"><strong>Cannot do:</strong></p>
+            <ul class="bullet-list cannot-do">
+                <li>Hold stock</li>
+                <li>Speculate</li>
+                <li>Relabel</li>
+                <li>Sell off-the-shelf</li>
+                <li>Make claims</li>
+                <li>Bypass ViraChem</li>
+            </ul>
+            <p class="mt-2">Manufacturing and documentation remain under ViraChem control. No stock. No grey market.</p>
+        </div>
+
+        <div class="tier-card tier-3">
+            <div class="tier-label">Tier 3</div>
+            <h3>Authorized Distributor (Stock-Holding)</h3>
+            <p class="mb-2">The only tier with inventory. Reached after sustained performance as Tier 2: real volume, clean compliance, accurate forecasting. Not offered to partners who ask for stock early.</p>
+            <p class="mb-2 mt-2"><strong>Can do:</strong></p>
+            <ul class="bullet-list can-do">
+                <li>Hold approved SKUs only</li>
+                <li>Fixed vial formats</li>
+                <li>Fixed RUO labeling</li>
+                <li>Supply pre-qualified institutional clients</li>
+                <li>Shorten lead times regionally</li>
+            </ul>
+            <p class="mb-2 mt-2"><strong>Cannot do:</strong></p>
+            <ul class="bullet-list cannot-do">
+                <li>Custom manufacturing</li>
+                <li>Relabel freely</li>
+                <li>Sub-distribute</li>
+                <li>Make claims</li>
+                <li>Mix cosmetic and RUO</li>
+            </ul>
+            <p class="mt-2"><strong>Geography:</strong> One distributor per region where demand justifies stock (e.g. DACH, Nordics, Benelux), not one per country. Logistics, not freedom.</p>
+        </div>
+    </div>
+
+    <!-- Page 4: Model-by-Model Stress Test -->
+    <div class="page">
+        <h2>Model-by-Model: How Tiers Map</h2>
+
+        <div class="model-block">
+            <h4>Model 0 — Research API Access (Bulk)</h4>
+            <p><strong>Tier 1:</strong> Refers labs needing bulk peptide. <strong>Tier 2:</strong> Sourcing agent for CROs/CDMOs; can aggregate demand; can invoice client. <strong>Tier 3:</strong> Rare — only if holding validated bulk lots (dangerous, limited).</p>
+            <p class="restriction">❌ No speculative bulk stocking. Bulk APIs are risk-heavy — Tier 3 here must be extremely limited.</p>
+            <p class="verdict">Works; Tier 3 is niche.</p>
+        </div>
+
+        <div class="model-block">
+            <h4>Model 1 — Finished RUO Formats (Fast Access)</h4>
+            <p><strong>Tier 1:</strong> Sends labs needing fast turnaround. <strong>Tier 2:</strong> Core users; sell access + coordination; no stock. <strong>Tier 3:</strong> Ideal — holds limited SKUs; fixed vial sizes only.</p>
+            <p>Fixed specs, predictable demand, RUO labeling, low customization. This model loves Tier 3.</p>
+            <p class="verdict">Perfect fit.</p>
+        </div>
+
+        <div class="model-block">
+            <h4>Model 2 — Custom Manufacturing (Core Model)</h4>
+            <p><strong>Tier 1:</strong> Introduces institutional programs. <strong>Tier 2:</strong> Main workhorse — discusses timelines, plans batches, forecasts volumes. <strong>Tier 3:</strong> ❌ No stock. ❌ No customization authority. Tier 3 here is basically Tier 2 with logistics strength.</p>
+            <p class="restriction">Custom manufacturing never becomes distributor-led. If a Tier 3 partner asks to “own” custom programs → kill it immediately.</p>
+            <p class="verdict">Works; Tier 3 is constrained.</p>
+        </div>
+
+        <div class="model-block">
+            <h4>Model 3 — Fill &amp; Finish (Client-Supplied)</h4>
+            <p><strong>Tier 1:</strong> Rare, but possible. <strong>Tier 2:</strong> Main interface — coordinates specs, manages client expectations. <strong>Tier 3:</strong> No stock. No resale. Pure logistics / scheduling.</p>
+            <p>Material ownership ≠ execution authority. ViraChem manages the boundary.</p>
+            <p class="verdict">Works cleanly.</p>
+        </div>
+
+        <div class="model-block">
+            <h4>Model 4 — Cosmetic White Label</h4>
+            <p><strong>Tier 1:</strong> Brand introducers. <strong>Tier 2:</strong> Brand managers / agencies; white-label coordinators. <strong>Tier 3:</strong> Only tier allowed to hold cosmetic stock; must be licensed; must follow cosmetic regs.</p>
+            <p class="restriction">🚨 Cosmetic Tier 3 ≠ RUO Tier 3. Never mix inventory rights across regulatory regimes. If someone wants both → split contracts or walk away.</p>
+            <p class="verdict">Works if legally segmented.</p>
+        </div>
+    </div>
+
+    <!-- Page 5: Where People Screw Up + Universal Map + Final Verdict -->
+    <div class="page">
+        <h2>Where People Screw This Up</h2>
+        <ul class="danger-list">
+            <li>Letting Tier 2 “temporarily” hold stock</li>
+            <li>Letting Tier 3 customize specs</li>
+            <li>Letting distributors talk science publicly</li>
+            <li>Mixing cosmetic and RUO inventory rights</li>
+            <li>Promising country exclusivity early</li>
+        </ul>
+        <p class="mt-2">You avoid all of these by keeping tiers about <strong>authority</strong>, not chemistry.</p>
+
+        <h2 class="mt-3">Final Universal Map</h2>
+        <table class="map-table">
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Tier 1</th>
+                    <th>Tier 2</th>
+                    <th>Tier 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Model 0</td>
+                    <td class="ok">✔</td>
+                    <td class="ok">✔</td>
+                    <td class="warn">⚠ limited</td>
+                </tr>
+                <tr>
+                    <td>Model 1</td>
+                    <td class="ok">✔</td>
+                    <td class="ok">✔</td>
+                    <td class="ok">✔ ideal</td>
+                </tr>
+                <tr>
+                    <td>Model 2</td>
+                    <td class="ok">✔</td>
+                    <td class="ok">✔ core</td>
+                    <td class="no">❌ no stock</td>
+                </tr>
+                <tr>
+                    <td>Model 3</td>
+                    <td class="ok">✔</td>
+                    <td class="ok">✔ core</td>
+                    <td class="no">❌ no resale</td>
+                </tr>
+                <tr>
+                    <td>Model 4</td>
+                    <td class="ok">✔</td>
+                    <td class="ok">✔</td>
+                    <td class="ok">✔ separate</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="verdict-box">
+            <p class="lead">Final verdict</p>
+            <p>One tier structure can cover all models — but only if you accept:</p>
+            <p><strong>Tier ≠ power over product. Tier = commercial role.</strong></p>
+        </div>
+    </div>
+
+    <!-- Page 6: Summary Table + Footer -->
+    <div class="page">
+        <h2>Summary</h2>
+
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Tier</th>
+                    <th>Role</th>
+                    <th>Can Invoice Client</th>
+                    <th>Can Hold Stock</th>
+                    <th>Power</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Tier 1</strong></td>
+                    <td>Referral</td>
+                    <td class="cross">No</td>
+                    <td class="cross">No</td>
+                    <td class="power-low">Low</td>
+                </tr>
+                <tr>
+                    <td><strong>Tier 2</strong></td>
+                    <td>Authorized Access Partner</td>
+                    <td class="tick">Yes (optional)</td>
+                    <td class="cross">No</td>
+                    <td class="power-high">High</td>
+                </tr>
+                <tr>
+                    <td><strong>Tier 3</strong></td>
+                    <td>Authorized Distributor</td>
+                    <td class="tick">Yes</td>
+                    <td class="tick">Yes</td>
+                    <td class="power-extreme">Extreme</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section mt-3">
+            <p>Specific commercial terms, promotion criteria, and regional assignments are defined in separate agreements. This overview describes the framework only.</p>
+        </div>
+
+        <div class="footer">
+            <p>ViraChem j.d.o.o. | Trgovački sud u Splitu | MBS: 060500406 | OIB: 73782597071</p>
+            <p class="mt-1">Pujanke 24A, 21000 Split, Croatia | info@virachemical.com</p>
+            <p class="mt-1">Research use only. Not for human or veterinary use.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -155,17 +155,24 @@ function MoleculeGroup({
 }
 
 export default function Molecule3D() {
+  // Defer Canvas mount until client is ready (avoids null WebGL/gl context in Next/Turbopack)
+  const [mounted, setMounted] = useState(false);
   // Initialize as mobile to prevent flash of large search bar
   const [isMobile, setIsMobile] = useState(true);
   const [search, setSearch] = useState('');
   const controlsRef = useRef<any>(null);
   
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [mounted]);
   
   const handleNodeClick = (service: string) => {
     // Don't navigate on center node
@@ -178,6 +185,14 @@ export default function Molecule3D() {
   
   // Get nodes - same for all devices
   const nodes = getNodes();
+
+  if (!mounted) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929]">
+        <p className="text-gray-500">Loading 3D molecule...</p>
+      </div>
+    );
+  }
   
   return (
     <Canvas
