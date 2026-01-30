@@ -5,7 +5,6 @@ import Footer from "@/components/footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Toaster } from "sonner";
 import LayoutWrapper from "@/components/LayoutWrapper";
-import MoleculeBgDebug from "@/components/MoleculeBgDebug";
 import "./globals.css";
 
 const urbanist = Urbanist({
@@ -71,7 +70,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${urbanist.variable} antialiased`}>
-        <MoleculeBgDebug />
         <LayoutWrapper>
           <Header />
           <main>{children}</main>
