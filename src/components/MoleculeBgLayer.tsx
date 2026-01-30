@@ -13,8 +13,12 @@ const INITIAL_POSITIONS = [
   { left: 42, top: 88 }, { left: 70, top: 90 }, { left: 90, top: 92 },
 ];
 
-/** Fewer molecules on mobile so the background is not overwhelming */
-const MOBILE_MAX_DOTS = 8;
+/** Fewer molecules on mobile, evenly spread top-to-bottom (not clustered at top) */
+const MOBILE_POSITIONS = [
+  { left: 12, top: 15 }, { left: 50, top: 10 }, { left: 88, top: 18 },
+  { left: 22, top: 48 }, { left: 78, top: 52 },
+  { left: 10, top: 82 }, { left: 50, top: 88 }, { left: 90, top: 85 },
+];
 const MOBILE_BREAKPOINT = 1024;
 
 const VELOCITY_MIN = 0.25;
@@ -42,9 +46,7 @@ function initDots(positions: { left: number; top: number }[] = INITIAL_POSITIONS
 export default function MoleculeBgLayer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const positions = isMobile
-    ? INITIAL_POSITIONS.slice(0, MOBILE_MAX_DOTS)
-    : INITIAL_POSITIONS;
+  const positions = isMobile ? MOBILE_POSITIONS : INITIAL_POSITIONS;
   const dotsRef = useRef<Dot[]>(initDots());
   const lastRef = useRef<number>(0);
 
@@ -53,9 +55,7 @@ export default function MoleculeBgLayer() {
     const update = () => {
       const mobile = mql.matches;
       setIsMobile(mobile);
-      dotsRef.current = initDots(
-        mobile ? INITIAL_POSITIONS.slice(0, MOBILE_MAX_DOTS) : INITIAL_POSITIONS
-      );
+      dotsRef.current = initDots(mobile ? MOBILE_POSITIONS : INITIAL_POSITIONS);
     };
     update();
     mql.addEventListener('change', update);
