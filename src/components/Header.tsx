@@ -356,30 +356,22 @@ export default function Header() {
                       Contact
                     </Link>
                   </motion.div>
-
-                  <motion.div
-                    variants={{
-                      open: { opacity: 1, x: 0 },
-                      closed: { opacity: 0, x: 20 }
-                    }}
-                  >
-                    <Link
-                      href="/partners/apply"
-                      onClick={closeMenu}
-                      className="block w-full text-center py-3 rounded-md bg-[#0B1F3F] text-white border-2 border-[#E8B341] hover:bg-[#0B1F3F]/90 transition-colors font-medium border-b border-gray-100"
-                    >
-                      MAGIC BUTTON
-                    </Link>
-                  </motion.div>
                 </motion.nav>
 
-                {/* Request Quote Button with animation */}
+                {/* CTA buttons grouped together at bottom */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="p-6 border-t border-gray-100"
+                  className="p-6 border-t border-gray-100 space-y-3"
                 >
+                  <Link
+                    href="/partners/apply"
+                    onClick={closeMenu}
+                    className="block w-full text-center py-3 rounded-md bg-[#0B1F3F] text-white border-2 border-[#E8B341] hover:bg-[#0B1F3F]/90 transition-colors font-medium"
+                  >
+                    MAGIC BUTTON
+                  </Link>
                   <Link
                     href="/quote"
                     onClick={closeMenu}
