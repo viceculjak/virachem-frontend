@@ -120,7 +120,7 @@ function QuotePageContent() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-background p-4 md:p-8">
+      <div className="min-h-screen p-4 md:p-8">
         <div className="container mx-auto max-w-2xl">
           <Card className="border-accent-teal/20">
             <CardHeader>
@@ -153,7 +153,7 @@ function QuotePageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
+    <div className="min-h-screen p-4 md:p-8">
       <div className="container mx-auto max-w-2xl">
         <Link href="/products">
           <Button variant="ghost" className="mb-4">
@@ -390,7 +390,7 @@ function QuotePageContent() {
 export default function QuotePage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-background p-4 md:p-8">
+      <div className="min-h-screen p-4 md:p-8">
         <div className="container mx-auto max-w-2xl">
           <p className="text-gray-600">Loading quote form...</p>
         </div>

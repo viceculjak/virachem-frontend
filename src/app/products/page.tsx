@@ -54,7 +54,7 @@ function ProductsPageContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background p-8">
+      <div className="min-h-screen p-8">
         <div className="container mx-auto max-w-6xl">
           <h1 className="text-3xl font-bold text-[#0B1F3F] mb-6">Research Chemicals</h1>
           <p className="text-gray-600">Loading products...</p>
@@ -65,7 +65,7 @@ function ProductsPageContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-background p-8">
+      <div className="min-h-screen p-8">
         <div className="container mx-auto max-w-6xl">
           <h1 className="text-3xl font-bold text-[#0B1F3F] mb-6">Research Chemicals</h1>
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
@@ -78,7 +78,7 @@ function ProductsPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-2 md:p-4">
+    <div className="min-h-screen p-2 md:p-4">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-3 bg-accent-red/10 border-2 border-accent-red/30 rounded-lg p-2 shadow-lg">
           <p className="text-xs text-gray-900 font-semibold">
@@ -213,7 +213,7 @@ function ProductsPageContent() {
 export default function ProductsPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-background p-8">
+      <div className="min-h-screen p-8">
         <div className="container mx-auto max-w-6xl">
           <h1 className="text-3xl font-bold text-[#0B1F3F] mb-6">Research Chemicals</h1>
           <p className="text-gray-600">Loading products...</p>

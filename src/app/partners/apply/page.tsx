@@ -77,7 +77,7 @@ export default function PartnerApplyPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center px-4">
+      <div className="min-h-screen flex items-center justify-center px-4">
         <Card className="max-w-2xl w-full shadow-lg">
           <CardHeader>
             <CardTitle className="text-3xl text-dark">Application Received</CardTitle>
@@ -111,7 +111,7 @@ export default function PartnerApplyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <div className="container mx-auto px-3 py-6">
         <Link href="/">
           <Button variant="ghost" className="mb-3">

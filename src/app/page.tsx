@@ -20,7 +20,7 @@ export default function Home() {
   const [search, setSearch] = useState('');
 
   return (
-    <div className="h-full bg-background flex flex-col">
+    <div className="h-full flex flex-col">
       {/* Search bar at top - separate from molecule */}
       <div className="w-full px-4 pt-4 pb-5 flex justify-center">
         <div className="w-full max-w-xl">

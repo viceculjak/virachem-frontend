@@ -20,9 +20,16 @@
   --font-family-sans: var(--font-urbanist), system-ui, sans-serif;
 }
 
+/* Layout content panel: semi-transparent so molecule background layer shows through */
+.layout-content-bg {
+  background-color: rgba(250, 250, 250, 0.62);
+}
+
 @layer base {
   body {
-    @apply text-foreground bg-background;
+    @apply text-foreground;
+    background-color: transparent;
+    /* background on layout wrapper so molecule layer can show through */
     line-height: 1.6;
   }
   
@@ -74,4 +81,56 @@
   );
   background-size: 200% 200%;
   animation: gradientShift 20s ease infinite;
+}
+
+/* Global molecule background – many small molecules, rotating + drifting */
+@keyframes moleculeRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes moleculeDrift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(var(--drift-x, 0), var(--drift-y, 0)); }
+}
+
+.molecule-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.molecule-bg__dot {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  margin-left: -36px;
+  margin-top: -36px;
+  animation: moleculeDrift 18s ease-in-out infinite alternate;
+}
+
+.molecule-bg__dot--physics {
+  animation: none;
+}
+
+.molecule-bg__dot--physics .molecule-bg__dot-inner {
+  animation: none;
+}
+
+.molecule-bg__dot-inner {
+  width: 100%;
+  height: 100%;
+  background: url("/molecule.png") center / contain no-repeat;
+  opacity: 0.28;
+  animation: moleculeRotate var(--duration, 60s) linear infinite;
+  animation-direction: var(--direction, normal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .molecule-bg__dot,
+  .molecule-bg__dot-inner {
+    animation: none;
+  }
 }

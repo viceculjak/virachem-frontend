@@ -94,7 +94,7 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background p-8">
+      <div className="min-h-screen p-8">
         <div className="container mx-auto datasheet-max">
           <p className="text-gray-600">Loading product...</p>
         </div>
@@ -104,7 +104,7 @@ export default function ProductDetailPage() {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen bg-background p-8">
+      <div className="min-h-screen p-8">
         <div className="container mx-auto datasheet-max">
           <Link href="/products" className="text-[#C9364F] hover:underline text-sm">
             ← Back to Catalog
@@ -137,7 +137,7 @@ export default function ProductDetailPage() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-background p-2 md:p-4">
+    <div className="min-h-screen p-2 md:p-4">
       <div className="container mx-auto datasheet-max">
         <Link href="/products" className="text-[#C9364F] hover:underline text-sm inline-block mb-3">
           ← Back to Catalog
