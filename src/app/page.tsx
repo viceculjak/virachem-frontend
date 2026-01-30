@@ -29,10 +29,10 @@ export default function Home() {
       </div>
       
       {/* Three-column layout: Lab Image | 3D Molecule | Vials Image — height reduced by extra search margin so no desktop scroll */}
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 mx-4 mb-4 lg:overflow-hidden lg:h-[calc(100vh-152px)]">
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-4 sm:px-4 mb-4 lg:overflow-hidden lg:h-[calc(100vh-152px)] overflow-x-hidden">
         
         {/* LEFT: Lab Image + All models */}
-        <div className="relative h-[350px] lg:h-auto overflow-hidden rounded-2xl shadow-lg">
+        <div className="relative h-[350px] lg:h-auto overflow-hidden rounded-2xl shadow-lg min-w-0">
           <Image 
             src="/hf_20260121_212606_f12576ea-33c1-4ec6-9a39-3d22a3acc736.png"
             alt="GMP-aligned laboratory facility"
@@ -43,14 +43,14 @@ export default function Home() {
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85 z-10" />
-          <div className="relative z-20 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
-            <Link href="/services" className="block mb-3 group">
-              <h3 className="text-2xl font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:underline">Access &amp; Manufacturing Models</h3>
+          <div className="relative z-20 p-4 sm:p-6 lg:p-8 flex flex-col justify-center h-full text-white min-w-0 max-w-full overflow-hidden">
+            <Link href="/services" className="block mb-2 sm:mb-3 group min-w-0">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:underline break-words">Access &amp; Manufacturing Models</h3>
             </Link>
-            <p className="text-base mb-3 leading-relaxed">
+            <p className="text-sm sm:text-base mb-2 sm:mb-3 leading-relaxed break-words">
               EU-registered platform connecting qualified research partners with GMP-aligned peptide manufacturing.
             </p>
-            <div className="space-y-1.5 text-sm">
+            <div className="space-y-1 sm:space-y-1.5 text-xs sm:text-sm break-words">
               <p><Link href="/services/model-0" className="text-[#E8B341] font-semibold hover:underline">Model 0:</Link> Research API Access</p>
               <p><Link href="/services/model-1" className="text-[#E8B341] font-semibold hover:underline">Model 1:</Link> Finished RUO Formats</p>
               <p><Link href="/services/model-2" className="text-[#5a8a8f] font-semibold hover:underline">Model 2:</Link> Custom Manufacturing</p>
@@ -61,12 +61,12 @@ export default function Home() {
         </div>
 
         {/* CENTER: 3D Molecule (existing component) */}
-        <div className="relative h-[450px] lg:h-auto bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929] rounded-2xl shadow-lg overflow-hidden">
+        <div className="relative h-[450px] lg:h-auto bg-gradient-to-br from-[#0B1F3F] via-[#1a4d5c] to-[#0a1929] rounded-2xl shadow-lg overflow-hidden min-w-0">
           <Molecule3D />
         </div>
 
         {/* RIGHT: Vials Video + Partner programs */}
-        <div className="relative h-[350px] lg:h-auto overflow-hidden rounded-2xl shadow-lg">
+        <div className="relative h-[350px] lg:h-auto overflow-hidden rounded-2xl shadow-lg min-w-0">
           <video 
             autoPlay 
             loop 
@@ -79,14 +79,14 @@ export default function Home() {
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3F]/95 to-[#0B1F3F]/85 z-10" />
-          <div className="relative z-20 p-6 lg:p-8 flex flex-col justify-center h-full text-white">
-            <Link href="/partners/apply" className="block mb-3 group">
-              <h3 className="text-2xl font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:underline">Partner Programs</h3>
+          <div className="relative z-20 p-4 sm:p-6 lg:p-8 flex flex-col justify-center h-full text-white min-w-0 max-w-full overflow-hidden">
+            <Link href="/partners/apply" className="block mb-2 sm:mb-3 group min-w-0">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:underline break-words">Partner Programs</h3>
             </Link>
-            <p className="text-sm mb-3 leading-relaxed">
+            <p className="text-xs sm:text-sm mb-2 sm:mb-3 leading-relaxed break-words">
               We work with qualified partners under a tiered framework: clear roles, regional reach, and shared compliance. Partners add value for their clients without taking on risk they are not authorized for; end clients get local support and one quality standard; we scale reach while keeping control of specs and compliance.
             </p>
-            <div className="space-y-1.5 text-sm leading-relaxed">
+            <div className="space-y-1 sm:space-y-1.5 text-xs sm:text-sm leading-relaxed break-words">
               <p><Link href="/partners/apply" className="text-[#E8B341] font-semibold hover:underline">Tier 1 Referral</Link> — Introduce qualified leads; step back. No inventory, no execution risk.</p>
               <p><Link href="/partners/apply" className="text-[#E8B341] font-semibold hover:underline">Tier 2 Authorized Access</Link> — Regional front-end: manage relationships, coordinate projects, add service value. No stock.</p>
               <p><Link href="/partners/apply" className="text-[#C9364F] font-semibold hover:underline">Tier 3 Authorized Distributor</Link> — For proven partners only; limited stock-holding where demand justifies it. Fixed formats and RUO labeling.</p>

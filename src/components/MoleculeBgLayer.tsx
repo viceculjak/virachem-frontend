@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const INITIAL_POSITIONS = [
   { left: 5, top: 8 }, { left: 18, top: 15 }, { left: 32, top: 6 }, { left: 48, top: 12 },
@@ -13,6 +13,10 @@ const INITIAL_POSITIONS = [
   { left: 42, top: 88 }, { left: 70, top: 90 }, { left: 90, top: 92 },
 ];
 
+/** Fewer molecules on mobile so the background is not overwhelming */
+const MOBILE_MAX_DOTS = 8;
+const MOBILE_BREAKPOINT = 1024;
+
 const VELOCITY_MIN = 0.25;
 const VELOCITY_MAX = 1;
 const COLLISION_RADIUS = 6;
@@ -24,8 +28,8 @@ const OMEGA_DAMP = 0.998;
 
 type Dot = { x: number; y: number; vx: number; vy: number; rotation: number; omega: number };
 
-function initDots(): Dot[] {
-  return INITIAL_POSITIONS.map(({ left, top }) => ({
+function initDots(positions: { left: number; top: number }[] = INITIAL_POSITIONS): Dot[] {
+  return positions.map(({ left, top }) => ({
     x: left,
     y: top,
     vx: (Math.random() - 0.5) * 2 * (VELOCITY_MIN + Math.random() * (VELOCITY_MAX - VELOCITY_MIN)),
@@ -37,8 +41,26 @@ function initDots(): Dot[] {
 
 export default function MoleculeBgLayer() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const positions = isMobile
+    ? INITIAL_POSITIONS.slice(0, MOBILE_MAX_DOTS)
+    : INITIAL_POSITIONS;
   const dotsRef = useRef<Dot[]>(initDots());
   const lastRef = useRef<number>(0);
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const update = () => {
+      const mobile = mql.matches;
+      setIsMobile(mobile);
+      dotsRef.current = initDots(
+        mobile ? INITIAL_POSITIONS.slice(0, MOBILE_MAX_DOTS) : INITIAL_POSITIONS
+      );
+    };
+    update();
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -126,13 +148,13 @@ export default function MoleculeBgLayer() {
 
   return (
     <div className="molecule-bg" aria-hidden="true" ref={containerRef}>
-      {INITIAL_POSITIONS.map((_, i) => (
+      {positions.map((pos, i) => (
         <div
           key={i}
           className="molecule-bg__dot molecule-bg__dot--physics"
           style={{
-            left: `${dotsRef.current[i]?.x ?? INITIAL_POSITIONS[i].left}%`,
-            top: `${dotsRef.current[i]?.y ?? INITIAL_POSITIONS[i].top}%`,
+            left: `${dotsRef.current[i]?.x ?? pos.left}%`,
+            top: `${dotsRef.current[i]?.y ?? pos.top}%`,
           }}
         >
           <div className="molecule-bg__dot-inner" />
