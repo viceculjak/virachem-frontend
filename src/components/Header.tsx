@@ -40,18 +40,18 @@ export default function Header() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, isServicesOpen]);
 
-  // Close services dropdown when clicking outside
+  // Close services dropdown when clicking outside (desktop only; on mobile drawer, toggle button handles close)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
         setIsServicesOpen(false);
       }
     };
-    if (isServicesOpen) {
+    if (isServicesOpen && !isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isServicesOpen]);
+  }, [isServicesOpen, isOpen]);
 
   return (
     <header className="border-b border-gray-100 bg-white sticky top-0 z-50 mx-4 mt-4 rounded-2xl shadow-lg">
